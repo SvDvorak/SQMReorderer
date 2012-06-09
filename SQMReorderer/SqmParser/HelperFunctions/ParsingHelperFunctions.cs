@@ -11,6 +11,14 @@ namespace SQMReorderer.SqmParser
         private readonly Regex startBracketRegex = new Regex(@"\s*\{\s*", RegexOptions.Compiled);
         private readonly Regex endBracketRegex = new Regex(@"\s*\}\s*", RegexOptions.Compiled);
 
+        public bool IsLineBracket(string line)
+        {
+            var startBracketMatch = startBracketRegex.Match(line);
+            var endBracketMatch = endBracketRegex.Match(line);
+
+            return startBracketMatch.Success || endBracketMatch.Success;
+        }
+
         public BracketPositionResult GetNextBracketsPositions(string[] inputText, int currentRow)
         {
             var result = new BracketPositionResult();

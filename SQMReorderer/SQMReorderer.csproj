@@ -73,7 +73,7 @@
     <Compile Include="SqmParser\Parsers\Item.cs" />
     <Compile Include="SqmParser\Parsers\ItemParser.cs" />
     <Compile Include="SqmParser\Parsers\ItemParserTests.cs" />
-    <Compile Include="SqmParser\SqmParsingException.cs" />
+    <Compile Include="SqmParser\SqmParseException.cs" />
     <Compile Include="SqmParser\ResultObjects\Intel.cs" />
     <Compile Include="SqmParser\SqmParser.cs" />
     <Compile Include="SqmParser\ResultObjects\ParseResult.cs" />

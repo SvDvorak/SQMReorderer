@@ -4,6 +4,7 @@ namespace SQMReorderer.SqmParser.Parsers
     {
         public int Number { get; set; }
 
+        public int Id { get; set; }
         public string Side { get; set; }
         public string Vehicle { get; set; }
         public string Rank { get; set; }

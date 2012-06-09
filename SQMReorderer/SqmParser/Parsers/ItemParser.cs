@@ -10,12 +10,14 @@ namespace SQMReorderer.SqmParser.Parsers
     {
         private readonly Regex _itemHeaderRegex = new Regex(@"Item(?<number>\d+)", RegexOptions.Compiled);
 
+        private readonly Regex _idRegex = new Regex(@"id\=""(?<id>\d+)""", RegexOptions.Compiled);
         private readonly Regex _sideRegex = new Regex(@"side\=""(?<side>\w+)""", RegexOptions.Compiled);
         private readonly Regex _vehicleRegex = new Regex(@"vehicle\=""(?<vehicle>\w+)""", RegexOptions.Compiled);
         private readonly Regex _rankRegex = new Regex(@"rank\=""(?<rank>\w+)""", RegexOptions.Compiled);
         private readonly Regex _textRegex = new Regex(@"text\=""(?<text>\w+)""", RegexOptions.Compiled);
         private readonly Regex _descriptionRegex = new Regex(@"description\=""(?<description>[\w\s]+)""", RegexOptions.Compiled);
-
+        
+        private ParsingHelperFunctions _parsingHelperFunctions = new ParsingHelperFunctions();
 
         public bool IsItem(string inputRow)
         {
@@ -28,16 +30,29 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             var item = new Item();
 
-            var currentMatch = _itemHeaderRegex.Match(inputText[0]);
-
-            if (currentMatch.Success)
-            {
-                var numberGroup = currentMatch.Groups["number"];
-                item.Number = Convert.ToInt32(numberGroup.Value);
-            }
-
             foreach (var line in inputText)
             {
+                if(_parsingHelperFunctions.IsLineBracket(line))
+                {
+                    continue;
+                }
+
+                var currentMatch = _itemHeaderRegex.Match(line);
+                if (currentMatch.Success)
+                {
+                    var numberGroup = currentMatch.Groups["number"];
+                    item.Number = Convert.ToInt32(numberGroup.Value);
+                    continue;
+                }
+
+                currentMatch = _idRegex.Match(line);
+                if (currentMatch.Success)
+                {
+                    var idGroup = currentMatch.Groups["id"];
+                    item.Id = Convert.ToInt32(idGroup.Value);
+                    continue;
+                }
+
                 currentMatch = _sideRegex.Match(line);
                 if (currentMatch.Success)
                 {
@@ -78,7 +93,7 @@ namespace SQMReorderer.SqmParser.Parsers
                     continue;
                 }
 
-                throw new SqmParsingException("Unknown property: " + line);
+                //throw new SqmParseException("Unknown property: " + line);
             }
 
             return item;

@@ -63,6 +63,23 @@ namespace SQMReorderer.SqmParser.Parsers
             Assert.AreEqual("CORPORAL", itemResult.Rank);
             Assert.AreEqual("UnitUS_Alpha_FTL", itemResult.Text);
             Assert.AreEqual("US Army Alpha Fireteam Leader", itemResult.Description);
+            // TODO: Add rest of existing properties
+        }
+
+        // TODO: Reimplement
+        [Test]
+        [Ignore]
+        public void Expect_exception_if_property_not_found()
+        {
+            var inputText = new[]
+                              {
+                                  "class Item0",
+                                  "{",
+                                  "derpderp=\"herpderp\"",
+                                  "}"
+                              };
+
+            Assert.Throws<SqmParseException>(() => _parser.ParseItem(inputText));
         }
     }
 }

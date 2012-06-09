@@ -18,6 +18,24 @@ namespace SQMReorderer.SqmParser.HelperFunctions
         }
 
         [Test]
+        public void Expect_line_to_be_bracket_given_start_or_end_bracket()
+        {
+            var isLineBracket1 = _parsingHelperFunctions.IsLineBracket("  {  ");
+            var isLineBracket2 = _parsingHelperFunctions.IsLineBracket("  }  ");
+
+            Assert.IsTrue(isLineBracket1);
+            Assert.IsTrue(isLineBracket2);
+        }
+
+        [Test]
+        public void Expect_line_to_not_be_bracket_given_incorrect_data()
+        {
+            var isLineBracket = _parsingHelperFunctions.IsLineBracket("class Item0");
+
+            Assert.IsFalse(isLineBracket);
+        }
+
+        [Test]
         public void Expect_to_return_failure_on_no_brackets_found()
         {
             var inputText = new string[0];

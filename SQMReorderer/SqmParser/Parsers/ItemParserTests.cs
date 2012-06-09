@@ -11,7 +11,7 @@ namespace SQMReorderer.SqmParser.Parsers
     {
         private ItemParser _parser;
 
-        private string[] completeItemText = new[]
+        private string[] completeSimpleItemText = new[]
             {
                 "class Item5",
                 "{",
@@ -38,24 +38,25 @@ namespace SQMReorderer.SqmParser.Parsers
         }
 
         [Test]
-        public void Expect_is_item_to_return_true_on_correct_item_syntax()
+        public void Expect_is_item_to_return_true_on_correct_item_element_syntax()
         {
-            var inputText = new[]
-                {
-                    "class Item0",
-                    "{",
-                    "}"
-                };
+            var isItemElement = _parser.IsItemElement("class Item0");
 
-            var isItem = _parser.IsItem(inputText[0]);
+            Assert.IsTrue(isItemElement);
+        }
 
-            Assert.AreEqual(true, isItem);
+        [Test]
+        public void Expect_is_item_to_return_false_on_incorrect_item_element_syntax()
+        {
+            var isItemElement = _parser.IsItemElement("class Markers");
+
+            Assert.IsFalse(isItemElement);
         }
 
         [Test]
         public void Expect_parser_to_parse_all_properties()
         {
-            var itemResult = _parser.ParseItem(completeItemText);
+            var itemResult = _parser.ParseItemElement(completeSimpleItemText);
 
             Assert.AreEqual(5, itemResult.Number);
             Assert.AreEqual("WEST", itemResult.Side);
@@ -76,10 +77,34 @@ namespace SQMReorderer.SqmParser.Parsers
                                   "class Item0",
                                   "{",
                                   "derpderp=\"herpderp\"",
-                                  "}"
+                                  "};"
                               };
 
-            Assert.Throws<SqmParseException>(() => _parser.ParseItem(inputText));
+            Assert.Throws<SqmParseException>(() => _parser.ParseItemElement(inputText));
+        }
+
+        [Test]
+        public void Expect_parser_to_parse_sub_items()
+        {
+            var inputText = new[]
+                              {
+                                  "class Item0",
+                                  "{",
+                                  "side=\"WEST\";",
+                                  "class Vehicles",
+                                  "{",
+                                  "items=4;",
+                                  "class Item0",
+                                  "{",
+                                  "text=\"SomeText\";",
+                                  "};",
+                                  "};",
+                                  "};"
+                              };
+
+            var itemResult = _parser.ParseItemElement(inputText);
+
+            Assert.AreEqual("SomeText", itemResult.Items[0].Text);
         }
     }
 }

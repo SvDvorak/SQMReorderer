@@ -73,11 +73,15 @@
     <Compile Include="SqmParser\Parsers\Item.cs" />
     <Compile Include="SqmParser\Parsers\ItemParser.cs" />
     <Compile Include="SqmParser\Parsers\ItemParserTests.cs" />
+    <Compile Include="SqmParser\Parsers\VehiclesParser.cs" />
+    <Compile Include="SqmParser\Parsers\VehiclesParserTests.cs" />
     <Compile Include="SqmParser\SqmParseException.cs" />
     <Compile Include="SqmParser\ResultObjects\Intel.cs" />
     <Compile Include="SqmParser\SqmParser.cs" />
     <Compile Include="SqmParser\ResultObjects\ParseResult.cs" />
     <Compile Include="SqmParser\SqmParserTests.cs" />
+    <Compile Include="SqmParser\SqmStream.cs" />
+    <Compile Include="SqmParser\SqmStreamTests.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

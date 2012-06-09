@@ -8,7 +8,7 @@ namespace SQMReorderer.SqmParser.Parsers
 {
     public class ItemParser
     {
-        private readonly Regex _itemHeaderRegex = new Regex(@"Item(?<number>\d+)", RegexOptions.Compiled);
+        private readonly Regex _itemHeaderRegex = new Regex(@"class Item(?<number>\d+)", RegexOptions.Compiled);
 
         private readonly Regex _idRegex = new Regex(@"id\=""(?<id>\d+)""", RegexOptions.Compiled);
         private readonly Regex _sideRegex = new Regex(@"side\=""(?<side>\w+)""", RegexOptions.Compiled);
@@ -18,15 +18,16 @@ namespace SQMReorderer.SqmParser.Parsers
         private readonly Regex _descriptionRegex = new Regex(@"description\=""(?<description>[\w\s]+)""", RegexOptions.Compiled);
         
         private ParsingHelperFunctions _parsingHelperFunctions = new ParsingHelperFunctions();
+        private VehiclesParser _vehiclesParser = new VehiclesParser();
 
-        public bool IsItem(string inputRow)
+        public bool IsItemElement(string inputLine)
         {
-            var match = _itemHeaderRegex.Match(inputRow);
+            var match = _itemHeaderRegex.Match(inputLine);
 
             return match.Success;
         }
 
-        public Item ParseItem(string[] inputText)
+        public Item ParseItemElement(string[] inputText)
         {
             var item = new Item();
 
@@ -35,6 +36,12 @@ namespace SQMReorderer.SqmParser.Parsers
                 if(_parsingHelperFunctions.IsLineBracket(line))
                 {
                     continue;
+                }
+
+                if(_vehiclesParser.IsVehiclesElement(line))
+                {
+                    var items = _vehiclesParser.ParseVehicleElement(inputText);
+                    item.Items = items;
                 }
 
                 var currentMatch = _itemHeaderRegex.Match(line);

@@ -13,10 +13,21 @@ namespace SQMReorderer.SqmParser
 
         public bool IsLineBracket(string line)
         {
+            return IsLineStartBracket(line) || IsLineEndBracket(line);
+        }
+
+        public bool IsLineStartBracket(string line)
+        {
             var startBracketMatch = startBracketRegex.Match(line);
+
+            return startBracketMatch.Success;
+        }
+
+        public bool IsLineEndBracket(string line)
+        {
             var endBracketMatch = endBracketRegex.Match(line);
 
-            return startBracketMatch.Success || endBracketMatch.Success;
+            return endBracketMatch.Success;
         }
 
         public BracketPositionResult GetNextBracketsPositions(string[] inputText, int currentRow)

@@ -16,6 +16,8 @@ namespace SQMReorderer.SqmParser
             var result = new BracketPositionResult();
             result.Success = false;
 
+            var foundStartBracket = false;
+
             for (int position = currentPosition; position < inputText.Count(); position++)
             {
                 var currentLine = inputText[position];
@@ -25,15 +27,22 @@ namespace SQMReorderer.SqmParser
                 if(startBracketMatch.Success)
                 {
                     result.StartBracketPosition = position;
+
+                    foundStartBracket = true;
                 }
 
                 var endBracketMatch = endBracketRegex.Match(currentLine);
 
                 if (endBracketMatch.Success)
                 {
-                    result.EndBracketPosition = position;
+                    if(foundStartBracket)
+                    {
+                        result.EndBracketPosition = position;
 
-                    result.Success = true;
+                        result.Success = true;
+
+                        return result;
+                    }
                 }
             }
 

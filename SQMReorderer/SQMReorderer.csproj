@@ -65,9 +65,15 @@
     </ApplicationDefinition>
     <Compile Include="SqmParser\HelperFunctions\BracketPositionResult.cs" />
     <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctionsTests.cs" />
+    <Compile Include="SqmParser\HelperFunctions\PropertyParser.cs" />
+    <Compile Include="SqmParser\HelperFunctions\PropertyParserTests.cs" />
     <Compile Include="SqmParser\Parsers\ClassParser.cs" />
     <Compile Include="SqmParser\Parsers\ClassParserTests.cs" />
     <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctions.cs" />
+    <Compile Include="SqmParser\Parsers\Item.cs" />
+    <Compile Include="SqmParser\Parsers\ItemParser.cs" />
+    <Compile Include="SqmParser\Parsers\ItemParserTests.cs" />
+    <Compile Include="SqmParser\SqmParsingException.cs" />
     <Compile Include="SqmParser\ResultObjects\Intel.cs" />
     <Compile Include="SqmParser\SqmParser.cs" />
     <Compile Include="SqmParser\ResultObjects\ParseResult.cs" />
@@ -102,6 +108,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

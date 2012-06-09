@@ -11,22 +11,22 @@ namespace SQMReorderer.SqmParser
         private readonly Regex startBracketRegex = new Regex(@"\s*\{\s*", RegexOptions.Compiled);
         private readonly Regex endBracketRegex = new Regex(@"\s*\}\s*", RegexOptions.Compiled);
 
-        public BracketPositionResult GetNextBracketsPositions(string[] inputText, int currentPosition)
+        public BracketPositionResult GetNextBracketsPositions(string[] inputText, int currentRow)
         {
             var result = new BracketPositionResult();
             result.Success = false;
 
             var foundStartBracket = false;
 
-            for (int position = currentPosition; position < inputText.Count(); position++)
+            for (int row = currentRow; row < inputText.Count(); row++)
             {
-                var currentLine = inputText[position];
+                var currentLine = inputText[row];
 
                 var startBracketMatch = startBracketRegex.Match(currentLine);
 
                 if(startBracketMatch.Success)
                 {
-                    result.StartBracketPosition = position;
+                    result.StartBracketPosition = row;
 
                     foundStartBracket = true;
                 }
@@ -37,7 +37,7 @@ namespace SQMReorderer.SqmParser
                 {
                     if(foundStartBracket)
                     {
-                        result.EndBracketPosition = position;
+                        result.EndBracketPosition = row;
 
                         result.Success = true;
 

@@ -6,10 +6,10 @@ namespace SQMReorderer.SqmParser
 {
     public class SqmParser
     {
-        private readonly Regex versionRegex = new Regex(@"version=(?<version>\d+)", RegexOptions.Compiled);
-        private readonly Regex classRegex = new Regex(@"class\s(?<class>\w+)", RegexOptions.Compiled);
+        private readonly Regex _versionRegex = new Regex(@"version=(?<version>\d+)", RegexOptions.Compiled);
+        private readonly Regex _classRegex = new Regex(@"class\s(?<class>\w+)", RegexOptions.Compiled);
 
-        private ClassParser _classParser = new ClassParser();
+        private readonly ClassParser _classParser = new ClassParser();
 
         public ParseResult Parse(String[] inputText)
         {
@@ -19,7 +19,7 @@ namespace SQMReorderer.SqmParser
             {
                 var currentLine = inputText[position];
 
-                var versionMatch = versionRegex.Match(currentLine);
+                var versionMatch = _versionRegex.Match(currentLine);
 
                 if (versionMatch.Success)
                 {
@@ -28,7 +28,7 @@ namespace SQMReorderer.SqmParser
                     parseResult.Version = Convert.ToInt32(versionGroup.Value);
                 }
 
-                var classMatch = classRegex.Match(currentLine);
+                var classMatch = _classRegex.Match(currentLine);
 
                 if (versionMatch.Success)
                 {

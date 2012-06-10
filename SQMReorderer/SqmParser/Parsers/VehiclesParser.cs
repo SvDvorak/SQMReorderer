@@ -12,58 +12,57 @@ namespace SQMReorderer.SqmParser.Parsers
 
         private readonly Regex _itemCountRegex = new Regex(@"items\=(?<itemCount>\d+)", RegexOptions.Compiled);
 
-        private ParsingHelperFunctions _parsingHelperFunctions = new ParsingHelperFunctions();
-        private ItemParser _itemParser = new ItemParser();
+        private int _itemCount;
 
-        public bool IsVehiclesElement(string inputLine)
+        public bool IsVehiclesElement(SqmStream stream)
         {
-            var match = _vehiclesRegex.Match(inputLine);
-
-            return match.Success;
+            return stream.IsCurrentLineMatch(_vehiclesRegex);
         }
 
-        public List<Item> ParseVehicleElement(string[] inputText)
+        public List<Item> ParseVehicleElement(SqmStream stream)
         {
-            int itemCount = 0;
+            _itemCount = 0;
 
+            var itemParser = new ItemParser();
             var itemList = new List<Item>();
 
-            foreach (var line in inputText)
+            while(!stream.IsAtEndOfContext)
             {
-                if (_parsingHelperFunctions.IsLineBracket(line))
+                if(stream.IsCurrentLineMatch(_itemCountRegex))
                 {
-                    continue;
+                    stream.MatchCurrentLine(_itemCountRegex, SetItemCount);
                 }
-
-                var currentMatch = _itemCountRegex.Match(line);
-                if (currentMatch.Success)
+                else if (itemParser.IsItemElement(stream))
                 {
-                    var itemCountGroup = currentMatch.Groups["itemCount"];
-                    itemCount = Convert.ToInt32(itemCountGroup.Value);
-                    continue;
-                }
-
-                if (_itemParser.IsItemElement(line))
-                {
-                    var item = _itemParser.ParseItemElement(inputText);
+                    stream.StepIntoInnerContext();
+                    var item = itemParser.ParseItemElement(stream);
+                    stream.StepOutOfInnerContext();
 
                     itemList.Add(item);
                 }
+
+                stream.NextLineInContext();
             }
 
-            if (itemCount != itemList.Count)
+            if (_itemCount != itemList.Count)
             {
                 throw new SqmParseException("Declared item count does not match actual item count.\n" +
-                                            "Declared: " + itemCount + "\n" +
+                                            "Declared: " + _itemCount + "\n" +
                                             "Actual: " + itemList.Count);
             }
             
-            if(itemCount == 0)
+            if(_itemCount == 0)
             {
                 throw new SqmParseException("Item list cannot be empty");
             }
 
             return itemList;
+        }
+
+        private void SetItemCount(Match match)
+        {
+            var itemCountGroup = match.Groups["itemCount"];
+            _itemCount = Convert.ToInt32(itemCountGroup.Value);
         }
     }
 }

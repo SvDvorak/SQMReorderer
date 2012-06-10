@@ -8,7 +8,7 @@ namespace SQMReorderer.SqmParser.Parsers
 {
     public class ItemParser
     {
-        private readonly Regex _itemHeaderRegex = new Regex(@"class Item(?<number>\d+)", RegexOptions.Compiled);
+        private readonly Regex _itemNumberRegex = new Regex(@"class Item(?<number>\d+)", RegexOptions.Compiled);
 
         private readonly Regex _idRegex = new Regex(@"id\=""(?<id>\d+)""", RegexOptions.Compiled);
         private readonly Regex _sideRegex = new Regex(@"side\=""(?<side>\w+)""", RegexOptions.Compiled);
@@ -16,94 +16,102 @@ namespace SQMReorderer.SqmParser.Parsers
         private readonly Regex _rankRegex = new Regex(@"rank\=""(?<rank>\w+)""", RegexOptions.Compiled);
         private readonly Regex _textRegex = new Regex(@"text\=""(?<text>\w+)""", RegexOptions.Compiled);
         private readonly Regex _descriptionRegex = new Regex(@"description\=""(?<description>[\w\s]+)""", RegexOptions.Compiled);
-        
-        private ParsingHelperFunctions _parsingHelperFunctions = new ParsingHelperFunctions();
-        private VehiclesParser _vehiclesParser = new VehiclesParser();
 
-        public bool IsItemElement(string inputLine)
+        private Item _currentItem;
+
+        public bool IsItemElement(SqmStream stream)
         {
-            var match = _itemHeaderRegex.Match(inputLine);
-
-            return match.Success;
+            return stream.IsCurrentLineMatch(_itemNumberRegex);
         }
 
-        public Item ParseItemElement(string[] inputText)
+        public Item ParseItemElement(SqmStream stream)
         {
-            var item = new Item();
+            _currentItem = new Item();
 
-            foreach (var line in inputText)
+            var vehiclesParser = new VehiclesParser();
+
+            stream.MatchHeader(_itemNumberRegex, SetItemNumber);
+
+            while(!stream.IsAtEndOfContext)
             {
-                if(_parsingHelperFunctions.IsLineBracket(line))
+                if(vehiclesParser.IsVehiclesElement(stream))
                 {
-                    continue;
+                    var items = vehiclesParser.ParseVehicleElement(stream);
+                    _currentItem.Items = items;
+                }
+                else if (stream.IsCurrentLineMatch(_idRegex))
+                {
+                    stream.MatchCurrentLine(_idRegex, SetId);
+                }
+                else if (stream.IsCurrentLineMatch(_sideRegex))
+                {
+                    stream.MatchCurrentLine(_sideRegex, SetSide);
+                }
+                else if(stream.IsCurrentLineMatch(_vehicleRegex))
+                {
+                    stream.MatchCurrentLine(_vehicleRegex, SetVehicle);
+                }
+                else if (stream.IsCurrentLineMatch(_rankRegex))
+                {
+                    stream.MatchCurrentLine(_rankRegex, SetRank);
+                }
+                else if (stream.IsCurrentLineMatch(_textRegex))
+                {
+                    stream.MatchCurrentLine(_textRegex, SetText);
+                }
+                else if (stream.IsCurrentLineMatch(_descriptionRegex))
+                {
+                    stream.MatchCurrentLine(_descriptionRegex, SetDescription);
                 }
 
-                if(_vehiclesParser.IsVehiclesElement(line))
-                {
-                    var items = _vehiclesParser.ParseVehicleElement(inputText);
-                    item.Items = items;
-                }
-
-                var currentMatch = _itemHeaderRegex.Match(line);
-                if (currentMatch.Success)
-                {
-                    var numberGroup = currentMatch.Groups["number"];
-                    item.Number = Convert.ToInt32(numberGroup.Value);
-                    continue;
-                }
-
-                currentMatch = _idRegex.Match(line);
-                if (currentMatch.Success)
-                {
-                    var idGroup = currentMatch.Groups["id"];
-                    item.Id = Convert.ToInt32(idGroup.Value);
-                    continue;
-                }
-
-                currentMatch = _sideRegex.Match(line);
-                if (currentMatch.Success)
-                {
-                    var sideGroup = currentMatch.Groups["side"];
-                    item.Side = sideGroup.Value;
-                    continue;
-                }
-
-                currentMatch = _vehicleRegex.Match(line);
-                if(currentMatch.Success)
-                {
-                    var vehicleGroup = currentMatch.Groups["vehicle"];
-                    item.Vehicle = vehicleGroup.Value;
-                    continue;
-                }
-
-                currentMatch = _rankRegex.Match(line);
-                if (currentMatch.Success)
-                {
-                    var rankGroup = currentMatch.Groups["rank"];
-                    item.Rank = rankGroup.Value;
-                    continue;
-                }
-
-                currentMatch = _textRegex.Match(line);
-                if (currentMatch.Success)
-                {
-                    var textGroup = currentMatch.Groups["text"];
-                    item.Text = textGroup.Value;
-                    continue;
-                }
-
-                currentMatch = _descriptionRegex.Match(line);
-                if (currentMatch.Success)
-                {
-                    var descriptionGroup = currentMatch.Groups["description"];
-                    item.Description = descriptionGroup.Value;
-                    continue;
-                }
+                stream.NextLineInContext();
 
                 //throw new SqmParseException("Unknown property: " + line);
             }
 
-            return item;
+            return _currentItem;
+        }
+
+        private void SetItemNumber(Match match)
+        {
+            var numberGroup = match.Groups["number"];
+            _currentItem.Number = Convert.ToInt32(numberGroup.Value);
+        }
+
+        private void SetId(Match match)
+        {
+            var idGroup = match.Groups["id"];
+            _currentItem.Id = Convert.ToInt32(idGroup.Value);
+        }
+
+        private void SetSide(Match match)
+        {
+            var sideGroup = match.Groups["side"];
+            _currentItem.Side = sideGroup.Value;
+        }
+
+        private void SetVehicle(Match match)
+        {
+            var vehicleGroup = match.Groups["vehicle"];
+            _currentItem.Vehicle = vehicleGroup.Value;
+        }
+
+        private void SetRank(Match match)
+        {
+            var rankGroup = match.Groups["rank"];
+            _currentItem.Rank = rankGroup.Value;
+        }
+
+        private void SetText(Match match)
+        {
+            var textGroup = match.Groups["text"];
+            _currentItem.Text = textGroup.Value;
+        }
+
+        private void SetDescription(Match match)
+        {
+            var descriptionGroup = match.Groups["description"];
+            _currentItem.Description = descriptionGroup.Value;
         }
     }
 }

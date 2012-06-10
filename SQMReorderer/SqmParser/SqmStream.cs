@@ -8,76 +8,113 @@ namespace SQMReorderer.SqmParser
 {
     public class SqmStream
     {
+        private readonly Regex _nonEmptyLineRegex = new Regex(@"[\w\d]+");
+
         private readonly string[] _inputText;
         private ParsingHelperFunctions _parsingHelperFunctions;
 
-        public int HeaderLineNumber { get; private set; }
-        public int CurrentLineNumber { get; private set; }
+        private int _headerLineNumber;
+        private int _currentLineNumber;
 
         public bool IsAtEndOfContext
         {
             get
             {
-                if(CurrentLineNumber >= _inputText.Count() - 1)
+                if(_currentLineNumber == _inputText.Count() - 1)
                 {
                     return true;
                 }
 
-                var nextLine = _inputText[CurrentLineNumber + 1];
-
-                return _parsingHelperFunctions.IsLineEndBracket(nextLine);
+                return _parsingHelperFunctions.IsLineEndBracket(_inputText[_currentLineNumber]);
             }
         }
 
-        public bool IsAtStartOfContext
+        private int GetNextLineNumberInContext()
+        {
+            var lineNumber = _currentLineNumber + 1;
+            var endBracketSkipCount = 0;
+
+            while(true)
+            {
+                if(lineNumber == _inputText.Count())
+                {
+                    throw new SqmParseException("Unexpected end of context at line " + lineNumber);
+                }
+
+                var currentLine = _inputText[lineNumber];
+
+                if(_parsingHelperFunctions.IsLineStartBracket(currentLine))
+                {
+                    endBracketSkipCount++;
+                }
+
+                if(IsCurrentLineMatch(_nonEmptyLineRegex) && endBracketSkipCount == 0)
+                {
+                    return lineNumber;
+                }
+
+                if (_parsingHelperFunctions.IsLineEndBracket(_inputText[lineNumber]))
+                {
+                    if(endBracketSkipCount == 0)
+                    {
+                        return lineNumber - 1;
+                    }
+                    else
+                    {
+                        endBracketSkipCount--;
+                    }
+                }
+
+                lineNumber++;
+            }
+        }
+
+        public bool CanStepIntoInnerContext
         {
             get
             {
-                if (CurrentLineNumber == 0)
+                if (_currentLineNumber == _inputText.Count() - 1)
                 {
                     return true;
                 }
 
-                var nextLine = _inputText[CurrentLineNumber - 1];
+                var nextLine = _inputText[_currentLineNumber + 1];
 
                 return _parsingHelperFunctions.IsLineStartBracket(nextLine);
             }
         }
-
-        public bool CanStepIntoNextContext { get; set; }
 
         public SqmStream(string[] inputText)
         {
             _inputText = inputText;
 
             _parsingHelperFunctions = new ParsingHelperFunctions();
-
-            StepIntoInnerContext();
         }
 
         public void StepIntoInnerContext()
         {
-            var currentLine = _inputText[CurrentLineNumber];
-
-            while (!_parsingHelperFunctions.IsLineStartBracket(currentLine))
+            if (CanStepIntoInnerContext)
             {
-                CurrentLineNumber++;
-                currentLine = _inputText[CurrentLineNumber];
+                _headerLineNumber = _currentLineNumber;
+                _currentLineNumber += 2;
             }
+        }
 
-            CurrentLineNumber++;
+        public void StepOutOfInnerContext()
+        {
+
         }
 
         public bool IsHeaderMatch(Regex headerRegex)
         {
-            var match = headerRegex.Match(_inputText[HeaderLineNumber]);
+            var match = headerRegex.Match(_inputText[_headerLineNumber]);
 
             return match.Success;
         }
 
         public void MatchHeader(Regex headerRegex, Action<Match> matchFoundAction)
         {
-            var match = headerRegex.Match(_inputText[HeaderLineNumber]);
+            var match = headerRegex.Match(_inputText[_headerLineNumber]);
 
             if (match.Success)
             {
@@ -87,14 +124,14 @@ namespace SQMReorderer.SqmParser
 
         public bool IsCurrentLineMatch(Regex currentLineRegex)
         {
-            var match = currentLineRegex.Match(_inputText[CurrentLineNumber]);
+            var match = currentLineRegex.Match(_inputText[_currentLineNumber]);
 
             return match.Success;
         }
 
         public void MatchCurrentLine(Regex currentLineRegex, Action<Match> matchFoundAction)
         {
-            var match = currentLineRegex.Match(_inputText[CurrentLineNumber]);
+            var match = currentLineRegex.Match(_inputText[_currentLineNumber]);
 
             if (match.Success)
             {
@@ -106,7 +143,7 @@ namespace SQMReorderer.SqmParser
         {
             if(!IsAtEndOfContext)
             {
-                CurrentLineNumber++;
+                _currentLineNumber = GetNextLineNumberInContext();
             }
         }
     }

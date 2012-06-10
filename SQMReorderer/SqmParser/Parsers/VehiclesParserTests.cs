@@ -20,7 +20,9 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_is_vehicles_to_be_true_on_correct_vehicles_element_syntax()
         {
-            var isVehiclesElement = _vehiclesParser.IsVehiclesElement("class Vehicles");
+            var stream = new SqmStream(new[] {"class Vehicles","{","};"});
+
+            var isVehiclesElement = _vehiclesParser.IsVehiclesElement(stream);
 
             Assert.IsTrue(isVehiclesElement);
         }
@@ -28,7 +30,9 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_is_vehicles_to_be_false_on_incorrect_vehicles_element_syntax()
         {
-            var isVehiclesElement = _vehiclesParser.IsVehiclesElement("class Item0");
+            var stream = new SqmStream(new[] { "class Item0", "{", "};" });
+
+            var isVehiclesElement = _vehiclesParser.IsVehiclesElement(stream);
 
             Assert.IsFalse(isVehiclesElement);
         }
@@ -44,7 +48,11 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};"
                 };
 
-            Assert.Throws<SqmParseException>(() => _vehiclesParser.ParseVehicleElement(inputText));
+            var stream = new SqmStream(inputText);
+
+            stream.StepIntoInnerContext();
+
+            Assert.Throws<SqmParseException>(() => _vehiclesParser.ParseVehicleElement(stream));
         }
 
         [Test]
@@ -61,7 +69,11 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};"
                 };
 
-            Assert.Throws<SqmParseException>(() => _vehiclesParser.ParseVehicleElement(inputText));
+            var stream = new SqmStream(inputText);
+
+            stream.StepIntoInnerContext();
+
+            Assert.Throws<SqmParseException>(() => _vehiclesParser.ParseVehicleElement(stream));
         }
 
         [Test]
@@ -79,7 +91,11 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};"
                 };
 
-            var items = _vehiclesParser.ParseVehicleElement(inputText);
+            var stream = new SqmStream(inputText);
+
+            stream.StepIntoInnerContext();
+
+            var items = _vehiclesParser.ParseVehicleElement(stream);
 
             Assert.AreEqual(1, items.Count);
             Assert.AreEqual("TestString", items[0].Text);
@@ -105,7 +121,11 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};"
                 };
 
-            var items = _vehiclesParser.ParseVehicleElement(inputText);
+            var stream = new SqmStream(inputText);
+
+            stream.StepIntoInnerContext();
+
+            var items = _vehiclesParser.ParseVehicleElement(stream);
 
             Assert.AreEqual(3, items.Count);
         }

@@ -11,7 +11,7 @@ namespace SQMReorderer.SqmParser.Parsers
     {
         private ItemParser _parser;
 
-        private string[] completeSimpleItemText = new[]
+        private readonly string[] completeSimpleItemText = new[]
             {
                 "class Item5",
                 "{",
@@ -31,16 +31,23 @@ namespace SQMReorderer.SqmParser.Parsers
                 "};"
             };
 
+        private SqmStream completeSimpleItemStream;
+
+
         [SetUp]
         public void Setup()
         {
             _parser = new ItemParser();
+
+            completeSimpleItemStream = new SqmStream(completeSimpleItemText);
         }
 
         [Test]
         public void Expect_is_item_to_return_true_on_correct_item_element_syntax()
         {
-            var isItemElement = _parser.IsItemElement("class Item0");
+            var stream = new SqmStream(new[] { "class Item0" });
+
+            var isItemElement = _parser.IsItemElement(stream);
 
             Assert.IsTrue(isItemElement);
         }
@@ -48,7 +55,9 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_is_item_to_return_false_on_incorrect_item_element_syntax()
         {
-            var isItemElement = _parser.IsItemElement("class Markers");
+            var stream = new SqmStream(new[] { "class Markers" });
+
+            var isItemElement = _parser.IsItemElement(stream);
 
             Assert.IsFalse(isItemElement);
         }
@@ -56,7 +65,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_parser_to_parse_all_properties()
         {
-            var itemResult = _parser.ParseItemElement(completeSimpleItemText);
+            var itemResult = _parser.ParseItemElement(completeSimpleItemStream);
 
             Assert.AreEqual(5, itemResult.Number);
             Assert.AreEqual("WEST", itemResult.Side);
@@ -80,7 +89,9 @@ namespace SQMReorderer.SqmParser.Parsers
                                   "};"
                               };
 
-            Assert.Throws<SqmParseException>(() => _parser.ParseItemElement(inputText));
+            var stream = new SqmStream(inputText);
+
+            Assert.Throws<SqmParseException>(() => _parser.ParseItemElement(stream));
         }
 
         [Test]
@@ -102,7 +113,9 @@ namespace SQMReorderer.SqmParser.Parsers
                                   "};"
                               };
 
-            var itemResult = _parser.ParseItemElement(inputText);
+            var stream = new SqmStream(inputText);
+
+            var itemResult = _parser.ParseItemElement(stream);
 
             Assert.AreEqual("SomeText", itemResult.Items[0].Text);
         }

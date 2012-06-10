@@ -24,11 +24,12 @@ namespace SQMReorderer.SqmParser
         {
             "class Item0",
             "{",
-            "text=\"OuterContextText\";",
+            "text=\"OuterContextText1\";",
             "class Item1",
             "{",
-            "text=\"InnerContextText\";",
+            "text=\"InnerContextText1\";",
             "};",
+            "text=\"OuterContextText2\";",
             "};"
         };
 
@@ -36,6 +37,8 @@ namespace SQMReorderer.SqmParser
         public void Expect_stream_to_return_correct_header()
         {
             var stream = new SqmStream(_singleContextInput);
+
+            stream.StepIntoInnerContext();
 
             var isHeaderMatch = stream.IsHeaderMatch(new Regex("class Item0"));
             Assert.IsTrue(isHeaderMatch);
@@ -50,7 +53,8 @@ namespace SQMReorderer.SqmParser
         {
             var stream = new SqmStream(_singleContextInput);
 
-            Assert.IsTrue(stream.IsAtStartOfContext);
+            stream.StepIntoInnerContext();
+
             Assert.IsFalse(stream.IsAtEndOfContext);
         }
 
@@ -59,27 +63,25 @@ namespace SQMReorderer.SqmParser
         {
             var stream = new SqmStream(_singleContextInput);
 
-            var expectedFinalRowInContext = "text=\"SomeText2\";";
+            stream.StepIntoInnerContext();
 
             stream.NextLineInContext();
+            stream.NextLineInContext();
 
-            var isCurrentLineMatch = stream.IsCurrentLineMatch(new Regex(expectedFinalRowInContext));
             Assert.IsTrue(stream.IsAtEndOfContext);
-            Assert.IsTrue(isCurrentLineMatch);
 
             stream.NextLineInContext();
             stream.NextLineInContext();
 
-            isCurrentLineMatch = stream.IsCurrentLineMatch(new Regex(expectedFinalRowInContext));
-            Assert.IsFalse(stream.IsAtStartOfContext);
             Assert.IsTrue(stream.IsAtEndOfContext);
-            Assert.IsTrue(isCurrentLineMatch);
         }
 
         [Test]
         public void Expect_stream_to_return_all_lines_in_context_with_single_context()
         {
             var stream = new SqmStream(_singleContextInput);
+
+            stream.StepIntoInnerContext();
 
             var row1Expected = "side=\"SomeText1\";";
             var row1Actual = "";
@@ -104,15 +106,34 @@ namespace SQMReorderer.SqmParser
         {
             var stream = new SqmStream(_multipleContextsInput);
 
-            var outerContextRegex = new Regex("text=\"OuterContextText\";");
-            var innerContextRegex = new Regex("text=\"InnerContextText\";");
+            stream.StepIntoInnerContext();
+
+            var outerContextRegex = new Regex("text=\"OuterContextText1\";");
+            var innerContextRegex = new Regex("text=\"InnerContextText1\";");
 
             Assert.IsTrue(stream.IsCurrentLineMatch(outerContextRegex));
-            Assert.IsTrue(stream.CanStepIntoNextContext);
+
+            stream.NextLineInContext();
+            Assert.IsTrue(stream.CanStepIntoInnerContext);
             
             stream.StepIntoInnerContext();
 
             Assert.IsTrue(stream.IsCurrentLineMatch(innerContextRegex));
+        }
+
+        [Test]
+        public void Expect_stream_to_skip_over_sub_item_when_going_to_next_line()
+        {
+            var stream = new SqmStream(_multipleContextsInput);
+
+            stream.StepIntoInnerContext();
+
+            var outerContext2Regex = new Regex("text=\"OuterContextText2\";");
+
+            stream.NextLineInContext();
+            stream.NextLineInContext();
+
+            Assert.IsTrue(stream.IsCurrentLineMatch(outerContext2Regex));
         }
     }
 }

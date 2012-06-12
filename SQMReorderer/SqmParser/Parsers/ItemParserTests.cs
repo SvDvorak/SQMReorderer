@@ -84,12 +84,12 @@ namespace SQMReorderer.SqmParser.Parsers
         public void Expect_exception_if_property_not_found()
         {
             var inputText = new[]
-                              {
-                                  "class Item0",
-                                  "{",
-                                  "derpderp=\"herpderp\"",
-                                  "};"
-                              };
+                {
+                    "class Item0",
+                    "{",
+                    "derpderp=\"herpderp\"",
+                    "};"
+                };
 
             var stream = new SqmStream(inputText);
 
@@ -100,20 +100,20 @@ namespace SQMReorderer.SqmParser.Parsers
         public void Expect_parser_to_parse_sub_items()
         {
             var inputText = new[]
-                              {
-                                  "class Item0",
-                                  "{",
-                                  "side=\"WEST\";",
-                                  "class Vehicles",
-                                  "{",
-                                  "items=1;",
-                                  "class Item0",
-                                  "{",
-                                  "text=\"SomeText\";",
-                                  "};",
-                                  "};",
-                                  "};"
-                              };
+                {
+                    "class Item0",
+                    "{",
+                    "side=\"WEST\";",
+                    "class Vehicles",
+                    "{",
+                    "items=1;",
+                    "class Item0",
+                    "{",
+                    "text=\"SomeText\";",
+                    "};",
+                    "};",
+                    "};"
+                };
 
             var stream = new SqmStream(inputText);
 

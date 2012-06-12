@@ -8,13 +8,8 @@ namespace SQMReorderer.SqmParser
 {
     public class ParsingHelperFunctions
     {
-        private readonly Regex startBracketRegex = new Regex(@"\s*\{\s*", RegexOptions.Compiled);
-        private readonly Regex endBracketRegex = new Regex(@"\s*\}\s*", RegexOptions.Compiled);
-
-        public bool IsLineBracket(string line)
-        {
-            return IsLineStartBracket(line) || IsLineEndBracket(line);
-        }
+        private readonly Regex startBracketRegex = new Regex(@"\{", RegexOptions.Compiled);
+        private readonly Regex endBracketRegex = new Regex(@"\}", RegexOptions.Compiled);
 
         public bool IsLineStartBracket(string line)
         {

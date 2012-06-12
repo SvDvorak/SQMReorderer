@@ -25,7 +25,11 @@ namespace SQMReorderer.SqmParser
                     return true;
                 }
 
-                return _parsingHelperFunctions.IsLineEndBracket(_inputText[_currentLineNumber]);
+                var currentLine = _inputText[_currentLineNumber];
+                var isSingleEndBracket = _parsingHelperFunctions.IsLineEndBracket(currentLine) &&
+                    !_parsingHelperFunctions.IsLineStartBracket(currentLine);
+
+                return isSingleEndBracket;
             }
         }
 

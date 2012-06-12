@@ -65,6 +65,8 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_parser_to_parse_all_properties()
         {
+            completeSimpleItemStream.StepIntoInnerContext();
+
             var itemResult = _parser.ParseItemElement(completeSimpleItemStream);
 
             Assert.AreEqual(5, itemResult.Number);
@@ -104,7 +106,7 @@ namespace SQMReorderer.SqmParser.Parsers
                                   "side=\"WEST\";",
                                   "class Vehicles",
                                   "{",
-                                  "items=4;",
+                                  "items=1;",
                                   "class Item0",
                                   "{",
                                   "text=\"SomeText\";",
@@ -114,6 +116,8 @@ namespace SQMReorderer.SqmParser.Parsers
                               };
 
             var stream = new SqmStream(inputText);
+
+            stream.StepIntoInnerContext();
 
             var itemResult = _parser.ParseItemElement(stream);
 

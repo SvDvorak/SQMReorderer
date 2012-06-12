@@ -36,6 +36,7 @@ namespace SQMReorderer.SqmParser.Parsers
             {
                 if(vehiclesParser.IsVehiclesElement(stream))
                 {
+                    stream.StepIntoInnerContext();
                     var items = vehiclesParser.ParseVehicleElement(stream);
                     _currentItem.Items = items;
                 }

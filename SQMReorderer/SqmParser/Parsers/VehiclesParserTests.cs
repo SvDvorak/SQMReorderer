@@ -20,7 +20,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_is_vehicles_to_be_true_on_correct_vehicles_element_syntax()
         {
-            var stream = new SqmStream(new[] {"class Vehicles","{","};"});
+            var stream = new SqmStream(new[] { "class Vehicles", "{", "};" });
 
             var isVehiclesElement = _vehiclesParser.IsVehiclesElement(stream);
 
@@ -65,6 +65,7 @@ namespace SQMReorderer.SqmParser.Parsers
                     "items=0",
                     "class Item0",
                     "{",
+                    "side=\"EAST\"",
                     "};",
                     "};"
                 };
@@ -111,12 +112,15 @@ namespace SQMReorderer.SqmParser.Parsers
                     "items=3",
                     "class Item0",
                     "{",
+                    "side=\"EAST\";",
                     "};",
                     "class Item1",
                     "{",
+                    "side=\"EAST\";",
                     "};",
                     "class Item2",
                     "{",
+                    "side=\"EAST\";",
                     "};",
                     "};"
                 };

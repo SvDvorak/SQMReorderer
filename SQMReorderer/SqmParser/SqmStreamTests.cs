@@ -59,6 +59,20 @@ namespace SQMReorderer.SqmParser
         }
 
         [Test]
+        public void Expect_stream_to_ignore_end_brackets_where_start_bracket_is_on_same_line()
+        {
+            var bracketedInput = new[]
+            {
+                @"position[]={4860.271,265.40967,6457.3115};",
+                "side=\"SomeText1\";"
+            };
+
+            var stream = new SqmStream(bracketedInput);
+
+            Assert.IsFalse(stream.IsAtEndOfContext);
+        }
+
+        [Test]
         public void Expect_stream_to_stop_at_end_of_context()
         {
             var stream = new SqmStream(_singleContextInput);
@@ -114,7 +128,6 @@ namespace SQMReorderer.SqmParser
             Assert.IsTrue(stream.IsCurrentLineMatch(outerContextRegex));
 
             stream.NextLineInContext();
-            Assert.IsTrue(stream.CanStepIntoInnerContext);
             
             stream.StepIntoInnerContext();
 

@@ -31,6 +31,7 @@ namespace SQMReorderer.SqmParser.Parsers
                 if(stream.IsCurrentLineMatch(_itemCountRegex))
                 {
                     stream.MatchCurrentLine(_itemCountRegex, SetItemCount);
+                    stream.NextLineInContext();
                 }
                 else if (itemParser.IsItemElement(stream))
                 {
@@ -40,8 +41,6 @@ namespace SQMReorderer.SqmParser.Parsers
 
                     itemList.Add(item);
                 }
-
-                stream.NextLineInContext();
             }
 
             if (_itemCount != itemList.Count)

@@ -33,47 +33,7 @@ namespace SQMReorderer.SqmParser
             }
         }
 
-        private int GetNextLineNumberInContext()
-        {
-            var lineNumber = _currentLineNumber + 1;
-            var endBracketSkipCount = 0;
-
-            while(true)
-            {
-                if(lineNumber == _inputText.Count())
-                {
-                    throw new SqmParseException("Unexpected end of context at line " + lineNumber);
-                }
-
-                var currentLine = _inputText[lineNumber];
-
-                if(_parsingHelperFunctions.IsLineStartBracket(currentLine))
-                {
-                    endBracketSkipCount++;
-                }
-
-                if(IsCurrentLineMatch(_nonEmptyLineRegex) && endBracketSkipCount == 0)
-                {
-                    return lineNumber;
-                }
-
-                if (_parsingHelperFunctions.IsLineEndBracket(_inputText[lineNumber]))
-                {
-                    if(endBracketSkipCount == 0)
-                    {
-                        return lineNumber - 1;
-                    }
-                    else
-                    {
-                        endBracketSkipCount--;
-                    }
-                }
-
-                lineNumber++;
-            }
-        }
-
-        public bool CanStepIntoInnerContext
+        private bool CanStepIntoInnerContext
         {
             get
             {
@@ -88,6 +48,16 @@ namespace SQMReorderer.SqmParser
             }
         }
 
+        private bool CanStepIntoOuterContext
+        {
+            get
+            {
+                var currentLine = _inputText[_currentLineNumber];
+
+                return _parsingHelperFunctions.IsLineEndBracket(currentLine);
+            }
+        }
+
         public SqmStream(string[] inputText)
         {
             _inputText = inputText;
@@ -97,16 +67,23 @@ namespace SQMReorderer.SqmParser
 
         public void StepIntoInnerContext()
         {
-            if (CanStepIntoInnerContext)
+            if (!CanStepIntoInnerContext)
             {
-                _headerLineNumber = _currentLineNumber;
-                _currentLineNumber += 2;
+                throw new SqmParseException("Cant step into context at line " + _currentLineNumber);
             }
+
+            _headerLineNumber = _currentLineNumber;
+            _currentLineNumber += 2;
         }
 
         public void StepOutOfInnerContext()
         {
+            if(!CanStepIntoOuterContext)
+            {
+                throw new SqmParseException("Cant step out of context at line " + _currentLineNumber);
+            }
 
+            _currentLineNumber += 1;
         }
 
         public bool IsHeaderMatch(Regex headerRegex)
@@ -148,6 +125,46 @@ namespace SQMReorderer.SqmParser
             if(!IsAtEndOfContext)
             {
                 _currentLineNumber = GetNextLineNumberInContext();
+            }
+        }
+
+        private int GetNextLineNumberInContext()
+        {
+            var lineNumber = _currentLineNumber + 1;
+            var endBracketSkipCount = 0;
+
+            while(true)
+            {
+                if(lineNumber == _inputText.Count())
+                {
+                    throw new SqmParseException("Unexpected end of context at line " + lineNumber);
+                }
+
+                var currentLine = _inputText[lineNumber];
+
+                if(_parsingHelperFunctions.IsLineStartBracket(currentLine))
+                {
+                    endBracketSkipCount++;
+                }
+
+                if(IsCurrentLineMatch(_nonEmptyLineRegex) && endBracketSkipCount == 0)
+                {
+                    return lineNumber;
+                }
+
+                if (_parsingHelperFunctions.IsLineEndBracket(_inputText[lineNumber]))
+                {
+                    if(endBracketSkipCount == 0)
+                    {
+                        return lineNumber - 1;
+                    }
+                    else
+                    {
+                        endBracketSkipCount--;
+                    }
+                }
+
+                lineNumber++;
             }
         }
     }

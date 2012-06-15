@@ -31,7 +31,35 @@ namespace SQMReorderer.SqmParser.Parsers
                 "};"
             };
 
+        private readonly string[] completeComplexItemText = new[]
+            {
+                @"class Item4",
+                @"{",
+                @"side=""WEST"";",
+			    @"class Vehicles",
+			    @"{",
+				@"items=4;",
+				@"class Item0",
+				@"{",
+				@"text=""UnitUS_Bravo_FTL"";",
+				@"};",
+				@"class Item1",
+				@"{",
+				@"text=""UnitUS_Bravo_AR"";",
+				@"};",
+				@"class Item2",
+				@"{",
+				@"text=""UnitUS_Bravo_AAR"";",
+				@"};",
+				@"class Item3",
+				@"{",
+				@"text=""UnitUS_Bravo_Eng"";",
+				@"};",
+			    @"};"
+            };
+
         private SqmStream completeSimpleItemStream;
+        private SqmStream completeComplexItemStream;
 
 
         [SetUp]
@@ -40,6 +68,7 @@ namespace SQMReorderer.SqmParser.Parsers
             _parser = new ItemParser();
 
             completeSimpleItemStream = new SqmStream(completeSimpleItemText);
+            completeComplexItemStream = new SqmStream(completeComplexItemText);
         }
 
         [Test]
@@ -122,6 +151,19 @@ namespace SQMReorderer.SqmParser.Parsers
             var itemResult = _parser.ParseItemElement(stream);
 
             Assert.AreEqual("SomeText", itemResult.Items[0].Text);
+        }
+
+        // TODO Remove?
+        [Test]
+        public void Expect_parser_to_parse_complex_item_with_sub_items()
+        {
+            completeComplexItemStream.StepIntoInnerContext();
+
+            var itemResult = _parser.ParseItemElement(completeComplexItemStream);
+
+            Assert.AreEqual(4, itemResult.Items.Count);
+            Assert.AreEqual("UnitUS_Bravo_FTL", itemResult.Items[0].Text);
+            Assert.AreEqual("UnitUS_Bravo_Eng", itemResult.Items[3].Text);
         }
     }
 }

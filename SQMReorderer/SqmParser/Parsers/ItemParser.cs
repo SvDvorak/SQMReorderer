@@ -38,9 +38,13 @@ namespace SQMReorderer.SqmParser.Parsers
                 {
                     stream.StepIntoInnerContext();
                     var items = vehiclesParser.ParseVehicleElement(stream);
+                    stream.StepOutOfInnerContext();
                     _currentItem.Items = items;
+
+                    continue;
                 }
-                else if (stream.IsCurrentLineMatch(_idRegex))
+
+                if (stream.IsCurrentLineMatch(_idRegex))
                 {
                     stream.MatchCurrentLine(_idRegex, SetId);
                 }

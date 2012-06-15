@@ -20,7 +20,7 @@ namespace SQMReorderer.SqmParser
         {
             get
             {
-                if(_currentLineNumber == _inputText.Count() - 1)
+                if(_currentLineNumber >= _inputText.Count() - 1)
                 {
                     return true;
                 }
@@ -48,7 +48,7 @@ namespace SQMReorderer.SqmParser
             }
         }
 
-        private bool CanStepIntoOuterContext
+        private bool CanStepOutOfInnerContext
         {
             get
             {
@@ -78,7 +78,7 @@ namespace SQMReorderer.SqmParser
 
         public void StepOutOfInnerContext()
         {
-            if(!CanStepIntoOuterContext)
+            if(!CanStepOutOfInnerContext)
             {
                 throw new SqmParseException("Cant step out of context at line " + _currentLineNumber);
             }

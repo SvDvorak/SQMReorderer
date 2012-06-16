@@ -70,6 +70,8 @@
     <Compile Include="SqmParser\Parsers\ClassParser.cs" />
     <Compile Include="SqmParser\Parsers\ClassParserTests.cs" />
     <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctions.cs" />
+    <Compile Include="SqmParser\Parsers\GroupsParser.cs" />
+    <Compile Include="SqmParser\Parsers\GroupsParserTests.cs" />
     <Compile Include="SqmParser\Parsers\Item.cs" />
     <Compile Include="SqmParser\Parsers\ItemParser.cs" />
     <Compile Include="SqmParser\Parsers\ItemParserTests.cs" />

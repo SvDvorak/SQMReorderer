@@ -5,12 +5,12 @@ namespace SQMReorderer.SqmParser
     [TestFixture]
     public class SqmParserTests
     {
-        private SqmParser _parser = new SqmParser();
+        private readonly SqmParser _parser = new SqmParser();
 
         [SetUp]
         public void SetUp()
         {
-            
+
         }
 
         [Test]
@@ -21,7 +21,7 @@ namespace SQMReorderer.SqmParser
                     "version=11;\n",
                     "class Mission\n",
                     "{\n",
-                    "}\n"
+                    "};\n"
                 };
 
             var sqmParseResult = _parser.Parse(inputText);
@@ -29,6 +29,38 @@ namespace SQMReorderer.SqmParser
             Assert.AreEqual(11, sqmParseResult.Version);
         }
 
+        [Test]
+        public void Expect_parser_to_parse_single_group()
+        {
+            var inputText = new[]
+                {
+                    "version=11;\n",
+                    "class Mission\n",
+                    "{\n",
+                    "class Groups\n",
+                    "{\n",
+                    "items=1;\n",
+                    "class Item0\n",
+                    "{\n",
+                    "side=\"LOGIC\";\n",
+                    "class Vehicles\n",
+                    "{\n",
+                    "items=1;\n",
+                    "class Item0\n",
+                    "{\n",
+                    "};/n",
+                    "};/n",
+                    "};/n",
+                    "};\n"
+                };
+
+            var sqmParseResult = _parser.Parse(inputText);
+
+            Assert.AreEqual(1, sqmParseResult.Groups.Count);
+            Assert.AreEqual("LOGIC", sqmParseResult.Groups[0].Side);
+        }
+
+        [Ignore]
         [Test]
         public void Expect_parser_to_parse_intel()
         {

@@ -76,7 +76,7 @@ namespace SQMReorderer.SqmParser
             _currentLineNumber += 2;
         }
 
-        public void StepOutOfInnerContext()
+        public void StepIntoOuterContext()
         {
             if(!CanStepOutOfInnerContext)
             {

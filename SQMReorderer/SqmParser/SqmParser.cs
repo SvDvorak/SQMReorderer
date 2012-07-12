@@ -7,34 +7,31 @@ namespace SQMReorderer.SqmParser
     public class SqmParser
     {
         private readonly Regex _versionRegex = new Regex(@"version=(?<version>\d+)", RegexOptions.Compiled);
-        private readonly Regex _classRegex = new Regex(@"class\s(?<class>\w+)", RegexOptions.Compiled);
+        private readonly Regex _missionRegex = new Regex(@"class\s+Mission", RegexOptions.Compiled);
 
-        private readonly ClassParser _classParser = new ClassParser();
+        private readonly MissionParser _missionParser = new MissionParser();
 
         public ParseResult Parse(String[] inputText)
         {
             var parseResult = new ParseResult();
 
-            for (int position = 0; position < inputText.Length; position++)
+            var stream = new SqmStream(inputText);
+
+            while(!stream.IsAtEndOfContext)
             {
-                var currentLine = inputText[position];
-
-                var versionMatch = _versionRegex.Match(currentLine);
-
-                if (versionMatch.Success)
+                if (stream.IsCurrentLineMatch(_versionRegex))
                 {
-                    var versionGroup = versionMatch.Groups["version"];
+                    stream.MatchCurrentLine(_versionRegex,
+                        x => parseResult.Version = Convert.ToInt32(x.Value));
 
-                    parseResult.Version = Convert.ToInt32(versionGroup.Value);
+                    stream.NextLineInContext();
                 }
 
-                var classMatch = _classRegex.Match(currentLine);
-
-                if (versionMatch.Success)
+                if (stream.IsCurrentLineMatch(_missionRegex))
                 {
-                    var className = classMatch.Groups["class"].Value;
-
-                    _classParser.ParseClass(className, inputText);
+                    stream.StepIntoInnerContext();
+                    _missionParser.ParseMission(stream);
+                    stream.StepIntoOuterContext();
                 }
             }
 

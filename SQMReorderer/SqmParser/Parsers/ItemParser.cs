@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
@@ -28,17 +29,17 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             _currentItem = new Item();
 
-            var vehiclesParser = new VehiclesParser();
+            var vehiclesParser = new ItemListParser();
 
             stream.MatchHeader(_itemNumberRegex, SetItemNumber);
 
             while(!stream.IsAtEndOfContext)
             {
-                if(vehiclesParser.IsVehiclesElement(stream))
+                if(vehiclesParser.IsListElement("Vehicles", stream))
                 {
                     stream.StepIntoInnerContext();
-                    var items = vehiclesParser.ParseVehicleElement(stream);
-                    stream.StepOutOfInnerContext();
+                    var items = vehiclesParser.ParseElementItems(stream);
+                    stream.StepIntoOuterContext();
                     _currentItem.Items = items;
 
                     continue;

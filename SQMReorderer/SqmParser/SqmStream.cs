@@ -137,7 +137,9 @@ namespace SQMReorderer.SqmParser
             {
                 if(lineNumber == _inputText.Count())
                 {
-                    throw new SqmParseException("Unexpected end of context at line " + lineNumber);
+                    // If we have passed the last line and not found a closing bracket then it must be the outer most
+                    // scope which does not have a final bracket. Might cause problems when files have unmatching brackets?
+                    return lineNumber - 1;
                 }
 
                 var currentLine = _inputText[lineNumber];

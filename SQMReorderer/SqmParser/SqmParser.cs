@@ -19,22 +19,28 @@ namespace SQMReorderer.SqmParser
 
             var stream = new SqmStream(inputText);
 
+            if(stream.IsAtEndOfContext)
+            {
+                return _parseResult;
+            }
             while(!stream.IsAtEndOfContext)
             {
-                if (stream.IsCurrentLineMatch(_versionRegex))
-                {
-                    stream.MatchCurrentLine(_versionRegex,
-                        x => SetVersion(x));
-
-                    stream.NextLineInContext();
-                }
-
                 if (stream.IsCurrentLineMatch(_missionRegex))
                 {
                     stream.StepIntoInnerContext();
                     _parseResult.Mission = _missionParser.ParseMission(stream);
                     stream.StepIntoOuterContext();
+
+                    continue;
                 }
+
+                if (stream.IsCurrentLineMatch(_versionRegex))
+                {
+                    stream.MatchCurrentLine(_versionRegex,
+                                            x => SetVersion(x));
+                }
+
+                stream.NextLineInContext();
             }
 
             return _parseResult;

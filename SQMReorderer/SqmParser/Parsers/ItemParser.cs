@@ -11,7 +11,7 @@ namespace SQMReorderer.SqmParser.Parsers
     {
         private readonly Regex _itemNumberRegex = new Regex(@"class Item(?<number>\d+)", RegexOptions.Compiled);
 
-        private readonly Regex _idRegex = new Regex(@"id\=""(?<id>\d+)""", RegexOptions.Compiled);
+        private readonly Regex _idRegex = new Regex(@"id\=(?<id>\d+)", RegexOptions.Compiled);
         private readonly Regex _sideRegex = new Regex(@"side\=""(?<side>\w+)""", RegexOptions.Compiled);
         private readonly Regex _vehicleRegex = new Regex(@"vehicle\=""(?<vehicle>\w+)""", RegexOptions.Compiled);
         private readonly Regex _rankRegex = new Regex(@"rank\=""(?<rank>\w+)""", RegexOptions.Compiled);

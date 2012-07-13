@@ -99,6 +99,7 @@ namespace SQMReorderer.SqmParser.Parsers
             var itemResult = _parser.ParseItemElement(completeSimpleItemStream);
 
             Assert.AreEqual(5, itemResult.Number);
+            Assert.AreEqual(4, itemResult.Id);
             Assert.AreEqual("WEST", itemResult.Side);
             Assert.AreEqual("US_Soldier_TL_EP1", itemResult.Vehicle);
             Assert.AreEqual("CORPORAL", itemResult.Rank);

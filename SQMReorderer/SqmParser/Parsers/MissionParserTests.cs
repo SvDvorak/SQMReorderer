@@ -23,7 +23,6 @@ namespace SQMReorderer.SqmParser.Parsers
                 };
 
             var stream = new SqmStream(inputText);
-
             stream.StepIntoInnerContext();
 
             Mission missionResult = _missionParser.ParseMission(stream);
@@ -50,7 +49,37 @@ namespace SQMReorderer.SqmParser.Parsers
                 };
 
             var stream = new SqmStream(inputText);
+            stream.StepIntoInnerContext();
 
+            var missionResult = _missionParser.ParseMission(stream);
+
+            Assert.AreEqual(1, missionResult.Groups.Count);
+        }
+
+        [Test]
+        public void Expect_groups_to_be_parsed_irregardless_of_mission_content_order()
+        {
+            var inputText = new[]
+                {
+                    "class Mission\n",
+                    "{\n",
+                    "addOns[]=\n",
+                    "{\n",
+                    "\"zargabad\",\n",
+                    "};\n",
+                    "class Groups\n",
+                    "{\n",
+                    "items=1;\n",
+                    "class Item0\n",
+                    "{\n",
+                    "side=\"LOGIC\";\n",
+                    "};\n",
+                    "};\n",
+                    @"randomSeed=4931020;\n",
+                    "};\n"
+                };
+
+            var stream = new SqmStream(inputText);
             stream.StepIntoInnerContext();
 
             var missionResult = _missionParser.ParseMission(stream);

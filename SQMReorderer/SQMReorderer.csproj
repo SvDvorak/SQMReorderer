@@ -63,11 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SqmParser\HelperFunctions\BracketPositionResult.cs" />
     <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctionsTests.cs" />
-    <Compile Include="SqmParser\HelperFunctions\PropertyParser.cs" />
-    <Compile Include="SqmParser\HelperFunctions\PropertyParserTests.cs" />
-    <Compile Include="SqmParser\ResultObjects\Group.cs" />
     <Compile Include="SqmParser\ResultObjects\Mission.cs" />
     <Compile Include="SqmParser\Parsers\MissionParser.cs" />
     <Compile Include="SqmParser\Parsers\MissionParserTests.cs" />

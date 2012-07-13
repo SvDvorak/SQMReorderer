@@ -17,13 +17,8 @@ namespace SQMReorderer.SqmParser.Parsers
             if (groupsParser.IsListElement("Groups", stream))
             {
                 stream.StepIntoInnerContext();
-                var groups = groupsParser.ParseElementItems(stream);
+                missionResult.Groups = groupsParser.ParseElementItems(stream);
                 stream.StepIntoOuterContext();
-
-                var group = new Group();
-                group.Items = groups;
-
-                missionResult.Group.Add(group);
             }
 
             return missionResult;

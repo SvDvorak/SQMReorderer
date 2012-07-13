@@ -28,7 +28,7 @@ namespace SQMReorderer.SqmParser.Parsers
 
             Mission missionResult = _missionParser.ParseMission(stream);
 
-            Assert.AreEqual(0, missionResult.Group.Count);
+            Assert.AreEqual(0, missionResult.Groups.Count);
         }
 
         [Test]
@@ -55,7 +55,7 @@ namespace SQMReorderer.SqmParser.Parsers
 
             var missionResult = _missionParser.ParseMission(stream);
 
-            Assert.AreEqual(1, missionResult.Group.Count);
+            Assert.AreEqual(1, missionResult.Groups.Count);
         }
     }
 }

@@ -11,9 +11,11 @@ namespace SQMReorderer.SqmParser
 
         private readonly MissionParser _missionParser = new MissionParser();
 
+        private ParseResult _parseResult;
+
         public ParseResult Parse(String[] inputText)
         {
-            var parseResult = new ParseResult();
+            _parseResult = new ParseResult();
 
             var stream = new SqmStream(inputText);
 
@@ -22,7 +24,7 @@ namespace SQMReorderer.SqmParser
                 if (stream.IsCurrentLineMatch(_versionRegex))
                 {
                     stream.MatchCurrentLine(_versionRegex,
-                        x => parseResult.Version = Convert.ToInt32(x.Value));
+                        x => SetVersion(x));
 
                     stream.NextLineInContext();
                 }
@@ -30,12 +32,18 @@ namespace SQMReorderer.SqmParser
                 if (stream.IsCurrentLineMatch(_missionRegex))
                 {
                     stream.StepIntoInnerContext();
-                    _missionParser.ParseMission(stream);
+                    _parseResult.Mission = _missionParser.ParseMission(stream);
                     stream.StepIntoOuterContext();
                 }
             }
 
-            return parseResult;
+            return _parseResult;
+        }
+
+        private int SetVersion(Match match)
+        {
+            var versionGroup = match.Groups["version"];
+            return _parseResult.Version = Convert.ToInt32(versionGroup.Value);
         }
     }
 }

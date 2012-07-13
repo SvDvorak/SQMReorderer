@@ -6,9 +6,9 @@ namespace SQMReorderer.SqmParser.ResultObjects
     {
         public Mission()
         {
-            Group = new List<Group>();
+            Groups = new List<Item>();
         }
 
-        public List<Group> Group { get; set; }
+        public List<Item> Groups { get; set; }
     }
 }

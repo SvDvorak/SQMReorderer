@@ -10,6 +10,6 @@ namespace SQMReorderer.SqmParser
 
         public Intel Intel { get; set; }
 
-        public List<Item> Groups { get; set; }
+        public Mission Mission { get; set; }
     }
 }

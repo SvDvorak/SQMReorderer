@@ -48,16 +48,17 @@ namespace SQMReorderer.SqmParser
                     "items=1;\n",
                     "class Item0\n",
                     "{\n",
-                    "};/n",
-                    "};/n",
-                    "};/n",
+                    "};\n",
+                    "};\n",
+                    "};\n",
+                    "};\n",
                     "};\n"
                 };
 
             var sqmParseResult = _parser.Parse(inputText);
 
-            Assert.AreEqual(1, sqmParseResult.Groups.Count);
-            Assert.AreEqual("LOGIC", sqmParseResult.Groups[0].Side);
+            Assert.AreEqual(1, sqmParseResult.Mission.Groups.Count);
+            Assert.AreEqual("LOGIC", sqmParseResult.Mission.Groups[0].Side);
         }
 
         [Ignore]

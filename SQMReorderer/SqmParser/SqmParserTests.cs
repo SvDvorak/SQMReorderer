@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace SQMReorderer.SqmParser
 {
@@ -16,7 +17,7 @@ namespace SQMReorderer.SqmParser
         [Test]
         public void Expect_parser_to_parse_version()
         {
-            var inputText = new[]
+            var inputText = new List<string>
                 {
                     "version=11;\n",
                     "class Mission\n",
@@ -32,7 +33,7 @@ namespace SQMReorderer.SqmParser
         [Test]
         public void Expect_parser_to_parse_single_group()
         {
-            var inputText = new[]
+            var inputText = new List<string>
                 {
                     "version=11;\n",
                     "class Mission\n",
@@ -65,7 +66,7 @@ namespace SQMReorderer.SqmParser
         [Test]
         public void Expect_parser_to_parse_intel()
         {
-            var inputText = new[]
+            var inputText = new List<string>
                 {
                     "class Mission\n",
                     "{\n",

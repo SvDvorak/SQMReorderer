@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using SQMReorderer.SqmParser.Parsers;
 
@@ -13,7 +14,7 @@ namespace SQMReorderer.SqmParser
 
         private ParseResult _parseResult;
 
-        public ParseResult Parse(String[] inputText)
+        public ParseResult Parse(List<string> inputText)
         {
             _parseResult = new ParseResult();
 

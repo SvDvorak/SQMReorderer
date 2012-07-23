@@ -1,27 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using SQMReorderer.SqmParser;
+using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public MainWindow()
         {
+            var sqmParser = new SqmParser.SqmParser();
+
+            var streamReader = new StreamReader("mission.sqm");
+            var missionText = new List<string>();
+
+            while(!streamReader.EndOfStream)
+            {
+                missionText.Add(streamReader.ReadLine());
+            }
+
+            var parseResult = sqmParser.Parse(missionText);
+
+            ViewModel = new MainViewModel();
+            ViewModel.Groups = parseResult.Mission.Groups;
+
             InitializeComponent();
         }
+
+        public MainViewModel ViewModel
+        {
+            get { return (MainViewModel)DataContext; }
+            set { DataContext = value; }
+        }
+    }
+
+    public class MainViewModel
+    {
+        public List<Item> Groups { get; set; }
     }
 }

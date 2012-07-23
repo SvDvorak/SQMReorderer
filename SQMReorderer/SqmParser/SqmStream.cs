@@ -10,7 +10,7 @@ namespace SQMReorderer.SqmParser
     {
         private readonly Regex _nonEmptyLineRegex = new Regex(@"[\w\d]+");
 
-        private readonly string[] _inputText;
+        private readonly List<string> _inputText;
         private ParsingHelperFunctions _parsingHelperFunctions;
 
         private int _headerLineNumber;
@@ -58,7 +58,7 @@ namespace SQMReorderer.SqmParser
             }
         }
 
-        public SqmStream(string[] inputText)
+        public SqmStream(List<string> inputText)
         {
             _inputText = inputText;
 

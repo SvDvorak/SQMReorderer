@@ -11,7 +11,7 @@ namespace SQMReorderer.SqmParser.Parsers
     {
         private ItemParser _parser;
 
-        private readonly string[] completeSimpleItemText = new[]
+        private readonly List<string> completeSimpleItemText = new List<string>
             {
                 "class Item5",
                 "{",
@@ -31,7 +31,7 @@ namespace SQMReorderer.SqmParser.Parsers
                 "};"
             };
 
-        private readonly string[] completeComplexItemText = new[]
+        private readonly List<string> completeComplexItemText = new List<string>
             {
                 @"class Item4",
                 @"{",
@@ -74,7 +74,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_is_item_to_return_true_on_correct_item_element_syntax()
         {
-            var stream = new SqmStream(new[] { "class Item0" });
+            var stream = new SqmStream(new List<string> { "class Item0" });
 
             var isItemElement = _parser.IsItemElement(stream);
 
@@ -84,7 +84,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_is_item_to_return_false_on_incorrect_item_element_syntax()
         {
-            var stream = new SqmStream(new[] { "class Markers" });
+            var stream = new SqmStream(new List<string> { "class Markers" });
 
             var isItemElement = _parser.IsItemElement(stream);
 
@@ -113,7 +113,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Ignore]
         public void Expect_exception_if_property_not_found()
         {
-            var inputText = new[]
+            var inputText = new List<string>
                 {
                     "class Item0",
                     "{",
@@ -129,7 +129,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_parser_to_parse_sub_items()
         {
-            var inputText = new[]
+            var inputText = new List<string>
                 {
                     "class Item0",
                     "{",

@@ -11,7 +11,7 @@ namespace SQMReorderer.SqmParser
     [TestFixture]
     public class SqmStreamTests
     {
-        private string[] _singleContextInput = new[]
+        private List<string> _singleContextInput = new List<string>
         {
             "class Item0",
             "{",
@@ -20,7 +20,7 @@ namespace SQMReorderer.SqmParser
             "};"
         };
 
-        private string[] _multipleContextsInput = new[]
+        private List<string> _multipleContextsInput = new List<string>
         {
             "class Item0",
             "{",
@@ -61,7 +61,7 @@ namespace SQMReorderer.SqmParser
         [Test]
         public void Expect_stream_to_ignore_end_brackets_where_start_bracket_is_on_same_line()
         {
-            var bracketedInput = new[]
+            var bracketedInput = new List<string>
             {
                 @"position[]={4860.271,265.40967,6457.3115};",
                 "side=\"SomeText1\";"

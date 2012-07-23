@@ -15,7 +15,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_empty_mission_to_return_empty_result()
         {
-            var inputText = new[]
+            var inputText = new List<string>
                 {
                     "class Mission\n",
                     "{\n",
@@ -33,7 +33,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_group_to_be_parsed_in_mission()
         {
-            var inputText = new[]
+            var inputText = new List<string>
                 {
                     "class Mission\n",
                     "{\n",
@@ -59,7 +59,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_groups_to_be_parsed_irregardless_of_mission_content_order()
         {
-            var inputText = new[]
+            var inputText = new List<string>
                 {
                     "class Mission\n",
                     "{\n",

@@ -20,7 +20,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_is_list_element_to_be_true_on_correct_element_syntax()
         {
-            var stream = new SqmStream(new[] { "class Vehicles", "{", "};" });
+            var stream = new SqmStream(new List<string> { "class Vehicles", "{", "};" });
 
             var isVehiclesElement = _itemListParser.IsListElement("Vehicles", stream);
 
@@ -30,7 +30,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_is_list_element_to_be_false_on_incorrect_element_syntax()
         {
-            var stream = new SqmStream(new[] { "class Item0", "{", "};" });
+            var stream = new SqmStream(new List<string> { "class Item0", "{", "};" });
 
             var isVehiclesElement = _itemListParser.IsListElement("Vehicles", stream);
 
@@ -40,7 +40,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_parse_exception_given_empty_list()
         {
-            var inputText = new[]
+            var inputText = new List<string>
                 {
                     "class Vehicles",
                     "{",
@@ -58,7 +58,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_parse_exception_given_incorrect_item_count()
         {
-            var inputText = new[]
+            var inputText = new List<string>
                 {
                     "class Vehicles",
                     "{",
@@ -80,7 +80,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_parser_to_return_one_item_with_correct_data_given_one_list_item()
         {
-            var inputText = new[]
+            var inputText = new List<string>
                 {
                     "class Vehicles",
                     "{",
@@ -105,7 +105,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_parser_to_return_three_items_given_three_list_items()
         {
-            var inputText = new[]
+            var inputText = new List<string>
                 {
                     "class Vehicles",
                     "{",

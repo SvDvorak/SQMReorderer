@@ -9,7 +9,7 @@ namespace SQMReorderer.SqmParser
     [TestFixture]
     public class SqmFileTests
     {
-        string[] testFileText = new[]
+        private readonly List<string> testFileText = new List<string>
         {
             @"version=11;\n",
             @"class Mission\n",

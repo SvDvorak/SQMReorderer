@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="TreeView\LeftMarginMultiplierConverter.cs" />
+    <Compile Include="TreeView\MultipleSelectionTreeView.cs" />
+    <Compile Include="TreeView\MultipleSelectionTreeViewItem.cs" />
     <Compile Include="ViewModels\MissionViewModel.cs" />
     <Compile Include="SqmViewModelCreator.cs" />
     <Compile Include="FileToStringsReader.cs" />
@@ -102,6 +105,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TreeView\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

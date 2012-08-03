@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using SQMReorderer.SqmParser.ResultObjects;
-using SQMReorderer.ViewModels;
 
-namespace SQMReorderer
+namespace SQMReorderer.ViewModels
 {
     public class MissionViewModel
     {

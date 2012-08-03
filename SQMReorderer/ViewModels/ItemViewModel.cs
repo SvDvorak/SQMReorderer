@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SQMReorderer.SqmParser.ResultObjects;
+using SQMReorderer.TreeView;
 
 namespace SQMReorderer.ViewModels
 {
-    public class ItemViewModel
+    public class ItemViewModel : MultipleSelectionTreeViewItem
     {
         private readonly Item _item;
 
@@ -17,7 +18,22 @@ namespace SQMReorderer.ViewModels
 
         public List<ItemViewModel> Items { get; set; }
 
-        public bool IsSelected { get; set; }
+        public static event Action<bool, ItemViewModel> SelectedItemChanged;
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                _isSelected = value;
+
+                if(SelectedItemChanged != null)
+                {
+                    SelectedItemChanged(_isSelected, this);
+                }
+            }
+        }
 
         public string Side
         {

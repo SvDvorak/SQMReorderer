@@ -14,9 +14,9 @@ namespace SQMReorderer
 
         public MainWindow()
         {
-            ViewModel = new MainViewModel();
-
             InitializeComponent();
+
+            ViewModel = new MainViewModel();
         }
 
         public MainViewModel ViewModel
@@ -40,7 +40,7 @@ namespace SQMReorderer
                 if (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
                     Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
                 {
-                    var treeView = sender as TreeView;
+                    //var treeView = sender as TreeView;
                     //var treeViewItem = FindAnchestor<TreeViewItem>((DependencyObject)e.OriginalSource);
 
                     //if (treeView == null || treeViewItem == null)

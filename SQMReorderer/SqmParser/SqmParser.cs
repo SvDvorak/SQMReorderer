@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using SQMReorderer.SqmParser.Parsers;
+using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer.SqmParser
 {

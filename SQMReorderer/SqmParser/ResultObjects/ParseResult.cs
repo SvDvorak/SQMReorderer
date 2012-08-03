@@ -1,8 +1,4 @@
-using System.Collections.Generic;
-using SQMReorderer.SqmParser.Parsers;
-using SQMReorderer.SqmParser.ResultObjects;
-
-namespace SQMReorderer.SqmParser
+namespace SQMReorderer.SqmParser.ResultObjects
 {
     public class ParseResult
     {

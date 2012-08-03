@@ -4,6 +4,11 @@ namespace SQMReorderer.SqmParser.ResultObjects
 {
     public class Item
     {
+        public Item()
+        {
+            Items = new List<Item>();
+        }
+
         public int Number { get; set; }
 
         public int? Id { get; set; }

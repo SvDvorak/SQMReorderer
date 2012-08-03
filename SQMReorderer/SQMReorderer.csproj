@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\MissionViewModel.cs" />
     <Compile Include="SqmViewModelCreator.cs" />
     <Compile Include="FileToStringsReader.cs" />
     <Compile Include="MainViewModel.cs" />
@@ -87,6 +88,8 @@
     <Compile Include="SqmParser\SqmStreamTests.cs" />
     <Compile Include="SqmViewModelCreatorTests.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModelTests.cs" />
+    <Compile Include="ViewModels\MissionViewModelTests.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

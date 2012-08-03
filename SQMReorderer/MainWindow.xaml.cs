@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System;
 using System.Windows;
-using SQMReorderer.SqmParser;
-using SQMReorderer.SqmParser.ResultObjects;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace SQMReorderer
 {
@@ -11,22 +10,11 @@ namespace SQMReorderer
     /// </summary>
     public partial class MainWindow
     {
+        private Point _startPoint;
+
         public MainWindow()
         {
-            var sqmParser = new SqmParser.SqmParser();
-
-            var streamReader = new StreamReader("mission.sqm");
-            var missionText = new List<string>();
-
-            while(!streamReader.EndOfStream)
-            {
-                missionText.Add(streamReader.ReadLine());
-            }
-
-            var parseResult = sqmParser.Parse(missionText);
-
             ViewModel = new MainViewModel();
-            ViewModel.Groups = parseResult.Mission.Groups;
 
             InitializeComponent();
         }
@@ -36,10 +24,36 @@ namespace SQMReorderer
             get { return (MainViewModel)DataContext; }
             set { DataContext = value; }
         }
-    }
 
-    public class MainViewModel
-    {
-        public List<Item> Groups { get; set; }
+        private void Tree_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            _startPoint = e.GetPosition(null);
+        }
+
+        private void Tree_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                var mousePos = e.GetPosition(null);
+                var diff = _startPoint - mousePos;
+
+                if (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                    Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
+                {
+                    var treeView = sender as TreeView;
+                    //var treeViewItem = FindAnchestor<TreeViewItem>((DependencyObject)e.OriginalSource);
+
+                    //if (treeView == null || treeViewItem == null)
+                    //    return;
+
+                    //var folderViewModel = treeView.SelectedItem as FolderViewModel;
+                    //if (folderViewModel == null)
+                    //    return;
+
+                    //var dragData = new DataObject(folderViewModel);
+                    //DragDrop.DoDragDrop(treeViewItem, dragData, DragDropEffects.Move);
+                }
+            }
+        }
     }
 }

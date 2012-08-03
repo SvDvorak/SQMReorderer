@@ -650,7 +650,7 @@ namespace SQMReorderer.SqmParser
         {
             var parser = new SqmParser();
 
-            var parseResult = parser.Parse(testFileText);
+            var parseResult = parser.Parse(new SqmStream(testFileText));
 
             Assert.AreEqual(11, parseResult.Version);
         }

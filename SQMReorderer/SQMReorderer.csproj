@@ -63,6 +63,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SqmViewModelCreator.cs" />
+    <Compile Include="FileToStringsReader.cs" />
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="NullToVisibilityConverter.cs" />
     <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctionsTests.cs" />
     <Compile Include="SqmParser\ResultObjects\Mission.cs" />
     <Compile Include="SqmParser\Parsers\MissionParser.cs" />
@@ -81,6 +85,8 @@
     <Compile Include="SqmParser\SqmParserTests.cs" />
     <Compile Include="SqmParser\SqmStream.cs" />
     <Compile Include="SqmParser\SqmStreamTests.cs" />
+    <Compile Include="SqmViewModelCreatorTests.cs" />
+    <Compile Include="ViewModels\ItemViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

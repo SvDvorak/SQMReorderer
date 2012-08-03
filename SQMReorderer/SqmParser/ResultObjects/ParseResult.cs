@@ -8,8 +8,6 @@ namespace SQMReorderer.SqmParser
     {
         public int Version { get; set; }
 
-        public Intel Intel { get; set; }
-
         public Mission Mission { get; set; }
     }
 }

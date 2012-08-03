@@ -25,7 +25,7 @@ namespace SQMReorderer.SqmParser
                     "};\n"
                 };
 
-            var sqmParseResult = _parser.Parse(inputText);
+            var sqmParseResult = _parser.Parse(new SqmStream(inputText));
 
             Assert.AreEqual(11, sqmParseResult.Version);
         }
@@ -56,7 +56,7 @@ namespace SQMReorderer.SqmParser
                     "};\n"
                 };
 
-            var sqmParseResult = _parser.Parse(inputText);
+            var sqmParseResult = _parser.Parse(new SqmStream(inputText));
 
             Assert.AreEqual(1, sqmParseResult.Mission.Groups.Count);
             Assert.AreEqual("LOGIC", sqmParseResult.Mission.Groups[0].Side);
@@ -73,9 +73,9 @@ namespace SQMReorderer.SqmParser
                     "}\n"
                 };
 
-            var sqmParseResult = _parser.Parse(inputText);
+            var sqmParseResult = _parser.Parse(new SqmStream(inputText));
 
-            Assert.AreEqual(11, sqmParseResult.Intel);
+            Assert.AreEqual(11, sqmParseResult.Mission.Intel);
         }
     }
 }

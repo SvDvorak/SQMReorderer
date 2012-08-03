@@ -14,11 +14,9 @@ namespace SQMReorderer.SqmParser
 
         private ParseResult _parseResult;
 
-        public ParseResult Parse(List<string> inputText)
+        public ParseResult Parse(SqmStream stream)
         {
             _parseResult = new ParseResult();
-
-            var stream = new SqmStream(inputText);
 
             if(stream.IsAtEndOfContext)
             {

@@ -9,6 +9,8 @@ namespace SQMReorderer.SqmParser.ResultObjects
             Groups = new List<Item>();
         }
 
+        public Intel Intel { get; set; }
+
         public List<Item> Groups { get; set; }
     }
 }

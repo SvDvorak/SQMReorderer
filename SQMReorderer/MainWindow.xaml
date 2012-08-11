@@ -3,26 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ResultObjects="clr-namespace:SQMReorderer.SqmParser.ResultObjects"
         xmlns:SQMReorderer="clr-namespace:SQMReorderer" xmlns:ViewModels="clr-namespace:SQMReorderer.ViewModels"
-        xmlns:TreeView="clr-namespace:SQMReorderer.TreeView" Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525">
 
     <Window.Resources>
         <SQMReorderer:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
     </Window.Resources>
 
     <Grid>
-        <TreeView:MultipleSelectionTreeView
+        <TreeView
             ItemsSource="{Binding Mission.Groups}" AllowDrop="True"
             PreviewMouseLeftButtonDown="Tree_PreviewMouseLeftButtonDown"
             PreviewMouseMove="Tree_MouseMove"
-            SelectedItems="{Binding SelectedItems}">
+            DragEnter="TreeView_DragEnter"
+            Drop="TreeView_Drop">
             
-            <!--<TreeView:MultipleSelectionTreeView.ItemContainerStyle>
+            <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="IsSelected" Value="{Binding IsSelected}" />
                 </Style>
-            </TreeView:MultipleSelectionTreeView.ItemContainerStyle>-->
+            </TreeView.ItemContainerStyle>
 
-            <TreeView:MultipleSelectionTreeView.Resources>
+            <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type ViewModels:ItemViewModel}" ItemsSource="{Binding Items}">
                     <StackPanel>
                         <TextBlock Text="{Binding Side}" Visibility="{Binding Side, Converter={StaticResource nullToVisibilityConverter}}" />
@@ -32,7 +33,7 @@
                         <TextBlock Text="{Binding Description}" Visibility="{Binding Description, Converter={StaticResource nullToVisibilityConverter}}" />
                     </StackPanel>
                 </HierarchicalDataTemplate>
-            </TreeView:MultipleSelectionTreeView.Resources>
-        </TreeView:MultipleSelectionTreeView>
+            </TreeView.Resources>
+        </TreeView>
     </Grid>
 </Window>

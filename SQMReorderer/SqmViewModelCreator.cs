@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using SQMReorderer.SqmParser.ResultObjects;
 using SQMReorderer.ViewModels;
 
@@ -13,9 +14,9 @@ namespace SQMReorderer
             return new MissionViewModel(itemViewModels);
         }
 
-        private static List<ItemViewModel> CreateItemViewModels(List<Item> items)
+        private static ObservableCollection<ItemViewModel> CreateItemViewModels(List<Item> items)
         {
-            var itemViewModels = new List<ItemViewModel>();
+            var itemViewModels = new ObservableCollection<ItemViewModel>();
 
             if(items == null)
             {

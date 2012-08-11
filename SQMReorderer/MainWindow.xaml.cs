@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using SQMReorderer.ViewModels;
 
 namespace SQMReorderer
 {
@@ -40,7 +41,7 @@ namespace SQMReorderer
                 if (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
                     Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
                 {
-                    //var treeView = sender as TreeView;
+                    var treeView = sender as TreeView;
                     //var treeViewItem = FindAnchestor<TreeViewItem>((DependencyObject)e.OriginalSource);
 
                     //if (treeView == null || treeViewItem == null)
@@ -50,10 +51,35 @@ namespace SQMReorderer
                     //if (folderViewModel == null)
                     //    return;
 
-                    //var dragData = new DataObject(folderViewModel);
-                    //DragDrop.DoDragDrop(treeViewItem, dragData, DragDropEffects.Move);
+                    var dragData = new DataObject(treeView.SelectedItem);
+                    DragDrop.DoDragDrop(treeView, dragData, DragDropEffects.Move);
                 }
             }
+        }
+
+        private void TreeView_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetType() == typeof(ItemViewModel))
+            {
+                e.Effects = DragDropEffects.Move;
+            }
+            else
+            {
+                e.Effects = DragDropEffects.None;
+            }
+        }
+
+        private void TreeView_Drop(object sender, DragEventArgs e)
+        {
+            // Trololol
+            var itemViewModels = ViewModel.Mission.Groups;
+
+            var originalSource = (TextBlock) e.OriginalSource;
+            var currentHoverIndex = itemViewModels.IndexOf((ItemViewModel)originalSource.DataContext);
+
+            var movedItem = (ItemViewModel) e.Data.GetData(typeof (ItemViewModel));
+            itemViewModels.Remove(movedItem);
+            itemViewModels.Insert(currentHoverIndex, movedItem);
         }
     }
 }

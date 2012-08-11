@@ -1,16 +1,17 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SQMReorderer.ViewModels
 {
     public class MissionViewModel
     {
-        private readonly List<ItemViewModel> _groupViewModels;
+        private readonly ObservableCollection<ItemViewModel> _groupViewModels;
 
-        public MissionViewModel(List<ItemViewModel> groupViewModels)
+        public MissionViewModel(ObservableCollection<ItemViewModel> groupViewModels)
         {
-            _groupViewModels = groupViewModels;
+            _groupViewModels = new ObservableCollection<ItemViewModel>(groupViewModels);
         }
 
-        public List<ItemViewModel> Groups { get { return _groupViewModels; } }
+        public ObservableCollection<ItemViewModel> Groups { get { return _groupViewModels; } }
     }
 }

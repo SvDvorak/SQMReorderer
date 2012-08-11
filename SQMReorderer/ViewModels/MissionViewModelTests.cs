@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
@@ -13,7 +14,7 @@ namespace SQMReorderer.ViewModels
         [Test]
         public void Expect_mission_with_empty_groups_to_have_no_groups()
         {
-            var itemViewModels = new List<ItemViewModel>();
+            var itemViewModels = new ObservableCollection<ItemViewModel>();
 
             var missionViewModel = new MissionViewModel(itemViewModels);
 

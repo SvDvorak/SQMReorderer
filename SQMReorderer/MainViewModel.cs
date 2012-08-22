@@ -1,13 +1,10 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using SQMReorderer.MultiSelectTreeView;
+using System.ComponentModel;
 using SQMReorderer.SqmParser;
-using SQMReorderer.SqmParser.ResultObjects;
 using SQMReorderer.ViewModels;
 
 namespace SQMReorderer
 {
-    public class MainViewModel
+    public class MainViewModel : INotifyPropertyChanged
     {
         public MainViewModel()
         {
@@ -23,5 +20,19 @@ namespace SQMReorderer
         }
 
         public MissionViewModel Mission { get; set; }
+
+        private ItemViewModel _selectedItem;
+        public ItemViewModel SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+
+                PropertyChanged(this, new PropertyChangedEventArgs("SelectedItem"));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

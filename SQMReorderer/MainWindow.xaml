@@ -9,9 +9,10 @@
         <SQMReorderer:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
     </Window.Resources>
 
-    <Grid>
-        <TreeView
+    <DockPanel>
+        <TreeView x:Name="groupsTreeView"
             ItemsSource="{Binding Mission.Groups}" AllowDrop="True"
+            SelectedItemChanged="TreeView_SelectedItemChanged"
             PreviewMouseLeftButtonDown="Tree_PreviewMouseLeftButtonDown"
             PreviewMouseMove="Tree_MouseMove"
             DragEnter="TreeView_DragEnter"
@@ -35,5 +36,27 @@
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
-    </Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Side:" />
+                <TextBox Text="{Binding SelectedItem.Side}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Vehicle:" />
+                <TextBox Text="{Binding SelectedItem.Vehicle}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Rank:" />
+                <TextBox Text="{Binding SelectedItem.Rank}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Text:" />
+                <TextBox Text="{Binding SelectedItem.Text}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Description:" />
+                <TextBox Text="{Binding SelectedItem.Description}" />
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
 </Window>

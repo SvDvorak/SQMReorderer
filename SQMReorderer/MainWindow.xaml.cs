@@ -81,5 +81,10 @@ namespace SQMReorderer
             itemViewModels.Remove(movedItem);
             itemViewModels.Insert(currentHoverIndex, movedItem);
         }
+
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            ViewModel.SelectedItem = (ItemViewModel)groupsTreeView.SelectedItem;
+        }
     }
 }

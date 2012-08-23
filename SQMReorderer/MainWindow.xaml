@@ -7,15 +7,28 @@
 
     <Window.Resources>
         <SQMReorderer:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
+        <Style x:Key="itemRowStackPanel" TargetType="{x:Type StackPanel}">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="Margin" Value="0 0 0 3" />
+        </Style>
+        <Style x:Key="itemInfoTextBlock" TargetType="{x:Type TextBlock}">
+            <Setter Property="Width" Value="80" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="itemInfoTextBox" TargetType="{x:Type TextBox}">
+            <Setter Property="Width" Value="200" />
+        </Style>
     </Window.Resources>
 
     <DockPanel>
         <TreeView x:Name="groupsTreeView"
-            ItemsSource="{Binding Mission.Groups}" AllowDrop="True"
+            MinWidth="180"
+            ItemsSource="{Binding Mission.Groups}"
             SelectedItemChanged="TreeView_SelectedItemChanged"
             PreviewMouseLeftButtonDown="Tree_PreviewMouseLeftButtonDown"
             PreviewMouseMove="Tree_MouseMove"
             DragEnter="TreeView_DragEnter"
+            AllowDrop="True"
             Drop="TreeView_Drop">
             
             <TreeView.ItemContainerStyle>
@@ -36,26 +49,27 @@
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
-        <StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Side:" />
-                <TextBox Text="{Binding SelectedItem.Side}" />
+        
+        <StackPanel Margin="10 0 0 0">
+            <StackPanel Style="{StaticResource itemRowStackPanel}">
+                <TextBlock Text="Side:" Style="{StaticResource itemInfoTextBlock}" />
+                <TextBox Text="{Binding SelectedItem.Side}" Style="{StaticResource itemInfoTextBox}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Vehicle:" />
-                <TextBox Text="{Binding SelectedItem.Vehicle}" />
+            <StackPanel Style="{StaticResource itemRowStackPanel}">
+                <TextBlock Text="Vehicle:" Style="{StaticResource itemInfoTextBlock}" />
+                <TextBox Text="{Binding SelectedItem.Vehicle}" Style="{StaticResource itemInfoTextBox}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Rank:" />
-                <TextBox Text="{Binding SelectedItem.Rank}" />
+            <StackPanel Style="{StaticResource itemRowStackPanel}">
+                <TextBlock Text="Rank:" Style="{StaticResource itemInfoTextBlock}" />
+                <TextBox Text="{Binding SelectedItem.Rank}" Style="{StaticResource itemInfoTextBox}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Text:" />
-                <TextBox Text="{Binding SelectedItem.Text}" />
+            <StackPanel Style="{StaticResource itemRowStackPanel}">
+                <TextBlock Text="Text:" Style="{StaticResource itemInfoTextBlock}" />
+                <TextBox Text="{Binding SelectedItem.Text}" Style="{StaticResource itemInfoTextBox}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Description:" />
-                <TextBox Text="{Binding SelectedItem.Description}" />
+            <StackPanel Style="{StaticResource itemRowStackPanel}">
+                <TextBlock Text="Description:" Style="{StaticResource itemInfoTextBlock}" />
+                <TextBox Text="{Binding SelectedItem.Description}" Style="{StaticResource itemInfoTextBox}" />
             </StackPanel>
         </StackPanel>
     </DockPanel>

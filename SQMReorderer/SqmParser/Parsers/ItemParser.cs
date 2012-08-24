@@ -10,10 +10,10 @@ namespace SQMReorderer.SqmParser.Parsers
 {
     public class ItemParser
     {
-        private readonly string decimalPattern = @"[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?";
+        private const string DoublePattern = @"[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?";
         private readonly NumberFormatInfo _doubleFormatInfo;
 
-        private readonly Regex _itemNumberRegex = new Regex(@"class Item(?<number>\d+)", RegexOptions.Compiled);
+        private readonly Regex _itemNumberRegex;
 
         private readonly Regex _positionRegex;
         private readonly Regex _azimutRegex;
@@ -37,23 +37,25 @@ namespace SQMReorderer.SqmParser.Parsers
             _doubleFormatInfo = new NumberFormatInfo();
             _doubleFormatInfo.CurrencyDecimalSeparator = ".";
 
-            _azimutRegex = new Regex(@"azimut\=(?<azimut>" + decimalPattern + @")");
+            _itemNumberRegex = new Regex(@"class Item(?<number>\d+)", RegexOptions.Compiled);
+
+            _azimutRegex = new Regex(@"azimut\=(?<azimut>" + DoublePattern + @")");
             _idRegex = new Regex(@"id\=(?<id>\d+)", RegexOptions.Compiled);
             _sideRegex = new Regex(@"side\=""(?<side>\w+)""", RegexOptions.Compiled);
             _vehicleRegex = new Regex(@"vehicle\=""(?<vehicle>\w+)""", RegexOptions.Compiled);
             _playerRegex = new Regex(@"player\=""(?<player>[\w\s]+)""", RegexOptions.Compiled);
             _leaderRegex = new Regex(@"leader\=(?<leader>\d)", RegexOptions.Compiled);
             _rankRegex = new Regex(@"rank\=""(?<rank>\w+)""", RegexOptions.Compiled);
-            _skillRegex = new Regex(@"skill\=(?<skill>" + decimalPattern + @")", RegexOptions.Compiled);
+            _skillRegex = new Regex(@"skill\=(?<skill>" + DoublePattern + @")", RegexOptions.Compiled);
             _initRegex = new Regex(@"init\=""(?<init>.+)""", RegexOptions.Compiled);
             _textRegex = new Regex(@"text\=""(?<text>\w+)""", RegexOptions.Compiled);
             _descriptionRegex = new Regex(@"description\=""(?<description>.+)""", RegexOptions.Compiled);
             _synchronizationHeaderRegex = new Regex(@"synchronizations\[\]\=", RegexOptions.Compiled);
             _synchronizationItemRegex = new Regex(@"(?<synchronization>\d+)", RegexOptions.Compiled);
 
-            var xPosPattern = string.Format(@"(?<xpos>{0})", decimalPattern);
-            var yPosPattern = string.Format(@"(?<ypos>{0})", decimalPattern);
-            var zPosPattern = string.Format(@"(?<zpos>{0})", decimalPattern);
+            var xPosPattern = string.Format(@"(?<xpos>{0})", DoublePattern);
+            var yPosPattern = string.Format(@"(?<ypos>{0})", DoublePattern);
+            var zPosPattern = string.Format(@"(?<zpos>{0})", DoublePattern);
             var positionPattern = @"position\[\]\=\{" + xPosPattern + @"\," + yPosPattern + @"\," + zPosPattern + @"}";
             _positionRegex = new Regex(positionPattern, RegexOptions.Compiled);
         }

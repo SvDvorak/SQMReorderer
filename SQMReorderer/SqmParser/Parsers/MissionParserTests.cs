@@ -75,7 +75,7 @@ namespace SQMReorderer.SqmParser.Parsers
                     "side=\"LOGIC\";\n",
                     "};\n",
                     "};\n",
-                    @"randomSeed=4931020;\n",
+                    "randomSeed=4931020;\n",
                     "};\n"
                 };
 
@@ -85,6 +85,27 @@ namespace SQMReorderer.SqmParser.Parsers
             var missionResult = _missionParser.ParseMission(stream);
 
             Assert.AreEqual(1, missionResult.Groups.Count);
+        }
+
+        [Test]
+        public void Expect_intel_to_be_parsed()
+        {
+            var inputText = new List<string>
+                {
+                    @"class Mission\n",
+                    @"{\n",
+                    @"class Intel\n",
+                    @"{\n",
+                    @"};\n",
+                    @"};\n"
+                };
+
+            var stream = new SqmStream(inputText);
+            stream.StepIntoInnerContext();
+
+            var missionResult = _missionParser.ParseMission(stream);
+
+            Assert.IsNotNull(missionResult.Intel);
         }
     }
 }

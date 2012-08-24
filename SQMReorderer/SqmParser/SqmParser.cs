@@ -19,10 +19,6 @@ namespace SQMReorderer.SqmParser
         {
             _parseResult = new ParseResult();
 
-            if(stream.IsAtEndOfContext)
-            {
-                return _parseResult;
-            }
             while(!stream.IsAtEndOfContext)
             {
                 if (stream.IsCurrentLineMatch(_missionRegex))

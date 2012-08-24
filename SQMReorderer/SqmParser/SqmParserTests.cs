@@ -31,51 +31,19 @@ namespace SQMReorderer.SqmParser
         }
 
         [Test]
-        public void Expect_parser_to_parse_single_group()
+        public void Expect_parser_to_parse_mission()
         {
             var inputText = new List<string>
                 {
                     "version=11;\n",
                     "class Mission\n",
                     "{\n",
-                    "class Groups\n",
-                    "{\n",
-                    "items=1;\n",
-                    "class Item0\n",
-                    "{\n",
-                    "side=\"LOGIC\";\n",
-                    "class Vehicles\n",
-                    "{\n",
-                    "items=1;\n",
-                    "class Item0\n",
-                    "{\n",
-                    "};\n",
-                    "};\n",
-                    "};\n",
-                    "};\n",
                     "};\n"
                 };
 
             var sqmParseResult = _parser.Parse(new SqmStream(inputText));
 
-            Assert.AreEqual(1, sqmParseResult.Mission.Groups.Count);
-            Assert.AreEqual("LOGIC", sqmParseResult.Mission.Groups[0].Side);
-        }
-
-        [Ignore]
-        [Test]
-        public void Expect_parser_to_parse_intel()
-        {
-            var inputText = new List<string>
-                {
-                    "class Mission\n",
-                    "{\n",
-                    "}\n"
-                };
-
-            var sqmParseResult = _parser.Parse(new SqmStream(inputText));
-
-            Assert.AreEqual(11, sqmParseResult.Mission.Intel);
+            Assert.IsNotNull(sqmParseResult.Mission);
         }
     }
 }

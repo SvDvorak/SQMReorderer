@@ -59,6 +59,11 @@ namespace SQMReorderer.SqmParser
             }
         }
 
+        public string CurrentLine
+        {
+            get { return _inputText[_currentLineNumber]; }
+        }
+
         public SqmStream(List<string> inputText)
         {
             _inputText = inputText;
@@ -145,7 +150,7 @@ namespace SQMReorderer.SqmParser
 
                 var currentLine = _inputText[lineNumber];
 
-                if(_parsingHelperFunctions.IsLineStartBracket(currentLine))
+                if(_parsingHelperFunctions.IsLineStartBracket(currentLine) && !_parsingHelperFunctions.IsLineEndBracket(currentLine))
                 {
                     endBracketSkipCount++;
                 }

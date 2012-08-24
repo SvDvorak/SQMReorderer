@@ -66,6 +66,8 @@
     <Compile Include="MultiSelectTreeView\LeftMarginMultiplierConverter.cs" />
     <Compile Include="MultiSelectTreeView\MultipleSelectionTreeView.cs" />
     <Compile Include="MultiSelectTreeView\MultipleSelectionTreeViewItem.cs" />
+    <Compile Include="Vector.cs" />
+    <Compile Include="VectorTests.cs" />
     <Compile Include="ViewModels\MissionViewModel.cs" />
     <Compile Include="SqmViewModelCreator.cs" />
     <Compile Include="FileToStringsReader.cs" />

@@ -128,7 +128,7 @@ namespace SQMReorderer.SqmParser
             Assert.IsTrue(stream.IsCurrentLineMatch(outerContextRegex));
 
             stream.NextLineInContext();
-            
+
             stream.StepIntoInnerContext();
 
             Assert.IsTrue(stream.IsCurrentLineMatch(innerContextRegex));
@@ -147,6 +147,29 @@ namespace SQMReorderer.SqmParser
             stream.NextLineInContext();
 
             Assert.IsTrue(stream.IsCurrentLineMatch(outerContext2Regex));
+        }
+
+        [Test]
+        public void Expect_stream_to_not_skip_property_line_with_brackets_at_end_of_item()
+        {
+            var bracketedPropertyInput = new List<string>
+            {
+                "class Item0",
+                "{",
+                "side=\"SomeText1\";",
+                "bracketProperty={116};",
+                "};"
+            };
+
+            var stream = new SqmStream(bracketedPropertyInput);
+
+            stream.StepIntoInnerContext();
+
+            var bracketPropertyLineRegex = new Regex("bracketProperty");
+
+            stream.NextLineInContext();
+
+            Assert.IsTrue(stream.IsCurrentLineMatch(bracketPropertyLineRegex));
         }
     }
 }

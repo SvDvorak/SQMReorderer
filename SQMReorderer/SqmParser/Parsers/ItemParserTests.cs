@@ -98,19 +98,26 @@ namespace SQMReorderer.SqmParser.Parsers
 
             var itemResult = _parser.ParseItemElement(completeSimpleItemStream);
 
+            Assert.AreEqual(5533.8467, itemResult.Position.X);
+            Assert.AreEqual(143.18413, itemResult.Position.Y);
+            Assert.AreEqual(6350.1045, itemResult.Position.Z);
+            Assert.AreEqual(17.206261, itemResult.Azimut);
             Assert.AreEqual(5, itemResult.Number);
             Assert.AreEqual(4, itemResult.Id);
             Assert.AreEqual("WEST", itemResult.Side);
             Assert.AreEqual("US_Soldier_TL_EP1", itemResult.Vehicle);
+            Assert.AreEqual("PLAY CDG", itemResult.Player);
+            Assert.AreEqual(1, itemResult.Leader);
             Assert.AreEqual("CORPORAL", itemResult.Rank);
+            Assert.AreEqual(0.60000002, itemResult.Skill);
             Assert.AreEqual("UnitUS_Alpha_FTL", itemResult.Text);
             Assert.AreEqual("US Army Alpha Fireteam Leader", itemResult.Description);
-            // TODO: Add rest of existing properties
+            Assert.AreEqual(@"GrpUS_Alpha = group this; nul = [""ftl"",this] execVM ""f\common\folk_assignGear.sqf"";", itemResult.Init);
+            Assert.AreEqual(116, itemResult.Synchronizations[0]);
+            Assert.AreEqual(117, itemResult.Synchronizations[1]);
         }
 
-        // TODO: Reimplement
         [Test]
-        [Ignore]
         public void Expect_exception_if_property_not_found()
         {
             var inputText = new List<string>

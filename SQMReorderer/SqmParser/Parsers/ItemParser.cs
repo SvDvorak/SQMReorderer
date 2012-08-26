@@ -10,9 +10,9 @@ namespace SQMReorderer.SqmParser.Parsers
     public class ItemParser
     {
         private readonly Regex _itemNumberRegex;
+        private readonly List<PropertySetterBase> _propertyRegexes = new List<PropertySetterBase>();
 
         private Item _currentItem;
-        private readonly List<PropertySetterBase> _propertyRegexes = new List<PropertySetterBase>();
 
         public ItemParser()
         {

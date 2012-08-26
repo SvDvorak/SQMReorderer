@@ -11,15 +11,12 @@ namespace SQMReorderer.SqmParser.Parsers
     {
         private readonly Regex _itemNumberRegex;
 
-        private readonly Regex _synchronizationHeaderRegex;
-        private readonly Regex _synchronizationItemRegex;
-
         private Item _currentItem;
         private readonly List<PropertySetterBase> _propertyRegexes = new List<PropertySetterBase>();
 
         public ItemParser()
         {
-            _itemNumberRegex = new Regex(@"class Item(?<number>\d+)", RegexOptions.Compiled);
+            _itemNumberRegex = new Regex(@"class Item(?<number>" + CommonRegexPatterns.IntegerPattern + @")", RegexOptions.Compiled);
 
             _propertyRegexes.Add(new VectorPropertySetter("position", x => _currentItem.Position = x));
             _propertyRegexes.Add(new DoublePropertySetter("azimut", x => _currentItem.Azimut = x));
@@ -33,9 +30,7 @@ namespace SQMReorderer.SqmParser.Parsers
             _propertyRegexes.Add(new StringPropertySetter("init", x => _currentItem.Init = x));
             _propertyRegexes.Add(new StringPropertySetter("text", x => _currentItem.Text = x));
             _propertyRegexes.Add(new StringPropertySetter("description", x => _currentItem.Description = x));
-
-            _synchronizationHeaderRegex = new Regex(@"synchronizations\[\]\=", RegexOptions.Compiled);
-            _synchronizationItemRegex = new Regex(@"(?<synchronization>\d+)", RegexOptions.Compiled);
+            _propertyRegexes.Add(new IntegerListPropertySetter("synchronizations", x => _currentItem.Synchronizations = x));
         }
 
         public bool IsItemElement(SqmStream stream)
@@ -63,9 +58,11 @@ namespace SQMReorderer.SqmParser.Parsers
                     continue;
                 }
 
+                Result matchResult = Result.Failure;
+
                 foreach (var propertySetter in _propertyRegexes)
                 {
-                    Result matchResult = propertySetter.SetPropertyIfMatch(stream);
+                    matchResult = propertySetter.SetPropertyIfMatch(stream);
 
                     if(matchResult == Result.Success)
                     {
@@ -73,19 +70,10 @@ namespace SQMReorderer.SqmParser.Parsers
                     }
                 }
 
-                //if (matchResult == Result.Failure)
-                //{
-                //    throw new SqmParseException("Unknown property: " + stream.CurrentLine);
-                //}
-
-                if (stream.IsCurrentLineMatch(_synchronizationHeaderRegex))
+                if (matchResult == Result.Failure)
                 {
-                    stream.MatchCurrentLine(_synchronizationItemRegex, SetSynchronizations);
+                    throw new SqmParseException("Unknown property: " + stream.CurrentLine);
                 }
-                //else
-                //{
-                //    throw new SqmParseException("Unknown property: " + stream.CurrentLine);
-                //}
 
                 stream.NextLineInContext();
             }
@@ -97,17 +85,6 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             var numberGroup = match.Groups["number"];
             _currentItem.Number = Convert.ToInt32(numberGroup.Value);
-        }
-
-        private void SetSynchronizations(Match match)
-        {
-            while(match.Success)
-            {
-                var synchronizationNumber = Convert.ToInt32(match.Value);
-                _currentItem.Synchronizations.Add(synchronizationNumber);
-
-                match = match.NextMatch();
-            }
         }
     }
 }

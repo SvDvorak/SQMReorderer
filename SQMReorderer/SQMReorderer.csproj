@@ -72,6 +72,8 @@
     <Compile Include="SqmParser\PropertySetters\DoublePropertySetterTests.cs" />
     <Compile Include="SqmParser\Parsers\IntelParser.cs" />
     <Compile Include="SqmParser\Parsers\IntelParserTests.cs" />
+    <Compile Include="SqmParser\PropertySetters\IntegerListPropertySetter.cs" />
+    <Compile Include="SqmParser\PropertySetters\IntegerListPropertySetterTests.cs" />
     <Compile Include="SqmParser\PropertySetters\IntegerPropertySetter.cs" />
     <Compile Include="SqmParser\PropertySetters\IntegerPropertySetterTests.cs" />
     <Compile Include="SqmParser\PropertySetters\MultiValuePropertySetterBase.cs" />

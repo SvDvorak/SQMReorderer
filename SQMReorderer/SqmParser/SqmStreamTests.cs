@@ -105,13 +105,13 @@ namespace SQMReorderer.SqmParser
             var row1Regex = new Regex(row1Expected);
             var row2Regex = new Regex(row2Expected);
 
-            stream.MatchCurrentLine(row1Regex, x => row1Actual = x.Value);
-            Assert.IsTrue(stream.IsCurrentLineMatch(row1Regex));
+            var matchResult = stream.MatchCurrentLine(row1Regex, x => row1Actual = x.Value);
+            Assert.AreEqual(Result.Success, matchResult);
             Assert.AreEqual(row1Expected, row1Actual);
             stream.NextLineInContext();
 
-            stream.MatchCurrentLine(row2Regex, x => row2Actual = x.Value);
-            Assert.IsTrue(stream.IsCurrentLineMatch(row2Regex));
+            matchResult = stream.MatchCurrentLine(row2Regex, x => row2Actual = x.Value);
+            Assert.AreEqual(Result.Success, matchResult);
             Assert.AreEqual(row2Expected, row2Actual);
         }
 

@@ -116,14 +116,18 @@ namespace SQMReorderer.SqmParser
             return match.Success;
         }
 
-        public void MatchCurrentLine(Regex currentLineRegex, Action<Match> matchFoundAction)
+        public Result MatchCurrentLine(Regex currentLineRegex, Action<Match> matchFoundAction)
         {
             var match = currentLineRegex.Match(_inputText[_currentLineNumber]);
 
             if (match.Success)
             {
                 matchFoundAction(match);
+
+                return Result.Success;
             }
+
+            return Result.Failure;
         }
 
         public void NextLineInContext()

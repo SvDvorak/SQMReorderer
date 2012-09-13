@@ -14,7 +14,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [SetUp]
         public void Setup()
         {
-            _itemListParser = new ItemListParser();
+            _itemListParser = new ItemListParser("Vehicles");
         }
 
         [Test]
@@ -22,7 +22,7 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             var stream = new SqmStream(new List<string> { "class Vehicles", "{", "};" });
 
-            var isVehiclesElement = _itemListParser.IsListElement("Vehicles", stream);
+            var isVehiclesElement = _itemListParser.IsListElement(stream);
 
             Assert.IsTrue(isVehiclesElement);
         }
@@ -32,7 +32,7 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             var stream = new SqmStream(new List<string> { "class Item0", "{", "};" });
 
-            var isVehiclesElement = _itemListParser.IsListElement("Vehicles", stream);
+            var isVehiclesElement = _itemListParser.IsListElement(stream);
 
             Assert.IsFalse(isVehiclesElement);
         }

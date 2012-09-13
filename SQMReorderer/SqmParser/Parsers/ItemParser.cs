@@ -42,13 +42,13 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             _currentItem = new Item();
 
-            var vehiclesParser = new ItemListParser();
+            var vehiclesParser = new ItemListParser("Vehicles");
 
             stream.MatchHeader(_itemNumberRegex, SetItemNumber);
 
             while(!stream.IsAtEndOfContext)
             {
-                if(vehiclesParser.IsListElement("Vehicles", stream))
+                if(vehiclesParser.IsListElement(stream))
                 {
                     stream.StepIntoInnerContext();
                     var items = vehiclesParser.ParseElementItems(stream);

@@ -11,5 +11,10 @@
         {
             get { return @"\d+"; }
         }
+
+        public static string NonSpacedTextPattern
+        {
+            get { return @"[\d\w_]+"; }
+        }
     }
 }

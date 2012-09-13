@@ -10,13 +10,8 @@ namespace SQMReorderer.SqmParser.HelperFunctions
     [TestFixture]
     public class CommonRegexPatternsTests
     {
-        private Regex _doubleRegex;
-
-        [SetUp]
-        public void Setup()
-        {
-            _doubleRegex = new Regex(CommonRegexPatterns.DoublePattern);
-        }
+        private Regex _doubleRegex = new Regex(CommonRegexPatterns.DoublePattern);
+        private Regex _stringRegex = new Regex(CommonRegexPatterns.NonSpacedTextPattern);
 
         [Test]
         public void Expect_non_double_value_to_not_match_double_pattern()
@@ -46,6 +41,26 @@ namespace SQMReorderer.SqmParser.HelperFunctions
         public void Expect_negative_double_to_match_double_pattern()
         {
             Assert.IsTrue(_doubleRegex.IsMatch("-1.5"));
+        }
+
+        [Test]
+        public void Expect_simple_string_without_spaces_to_match_string_pattern()
+        {
+            Assert.IsTrue(_stringRegex.IsMatch("tisIsJustAFleshwound"));
+        }
+
+        [Test]
+        public void Expect_complex_string_to_match_pattern()
+        {
+            Assert.IsTrue(_stringRegex.IsMatch("23then_have_a_nap___ZENFIREZEMISSILES11111"));
+        }
+
+        [Test]
+        public void Expect_complex_string_with_surrounding_trash_to_return_correct_string()
+        {
+            var match = _stringRegex.Match(@"##""  _hello0oo0o0_--//");
+
+            Assert.AreEqual("_hello0oo0o0_", match.Value);
         }
     }
 }

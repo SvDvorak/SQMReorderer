@@ -12,15 +12,22 @@ namespace SQMReorderer.SqmParser.Parsers
         private readonly Regex _classRegex = new Regex(@"class\s+(?<class>\w+)", RegexOptions.Compiled);
         private readonly Regex _itemCountRegex = new Regex(@"items\=(?<itemCount>\d+)", RegexOptions.Compiled);
 
+        private readonly string _listTypeName;
+
         private int _itemCount;
 
-        public bool IsListElement(string listType, SqmStream stream)
+        public ItemListParser(string listTypeName)
+        {
+            _listTypeName = listTypeName;
+        }
+
+        public bool IsListElement(SqmStream stream)
         {
             bool isCorrectListElement = false;
 
-            stream.MatchCurrentLine(_classRegex, (match) =>
+            stream.MatchCurrentLine(_classRegex, match =>
                 {
-                    isCorrectListElement = match.Groups["class"].Value == listType;
+                    isCorrectListElement = match.Groups["class"].Value == _listTypeName;
                 });
 
             return isCorrectListElement;

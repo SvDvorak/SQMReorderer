@@ -10,9 +10,11 @@ namespace SQMReorderer.SqmParser.Parsers
 {
     public class MissionStateParser
     {
+        private readonly IntelParser _intelParser = new IntelParser();
         private readonly ItemListParser _groupsParser = new ItemListParser("Groups");
         private readonly ItemListParser _vehiclesParser = new ItemListParser("Vehicles");
-        private readonly IntelParser _intelParser = new IntelParser();
+        private readonly ItemListParser _markersParser = new ItemListParser("Markers");
+        private readonly ItemListParser _sensorsParser = new ItemListParser("Sensors");
 
         private readonly Regex _missionStateHeaderRegex;
 
@@ -82,6 +84,24 @@ namespace SQMReorderer.SqmParser.Parsers
                 {
                     stream.StepIntoInnerContext();
                     _missionState.Vehicles = _vehiclesParser.ParseElementItems(stream);
+                    stream.StepIntoOuterContext();
+
+                    continue;
+                }
+
+                if (_markersParser.IsListElement(stream))
+                {
+                    stream.StepIntoInnerContext();
+                    _missionState.Markers = _markersParser.ParseElementItems(stream);
+                    stream.StepIntoOuterContext();
+
+                    continue;
+                }
+
+                if (_sensorsParser.IsListElement(stream))
+                {
+                    stream.StepIntoInnerContext();
+                    _missionState.Sensors = _sensorsParser.ParseElementItems(stream);
                     stream.StepIntoOuterContext();
 
                     continue;

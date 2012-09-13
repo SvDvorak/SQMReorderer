@@ -80,5 +80,23 @@ namespace SQMReorderer.SqmParser.PropertySetters
             Assert.AreEqual("dolphins", _values[1]);
             Assert.AreEqual("humans", _values[2]);
         }
+
+        [Test]
+        public void Expect_empty_collection_on_empty_property()
+        {
+            var inputText = new List<string>()
+                                {
+                                    @"space[]=\n",
+                                    @"{\n",
+                                    @"};\n"
+                                };
+
+            var stringListPropertySetter = new MultiLineStringListPropertySetter("space", x => _values = x);
+
+            var matchResult = stringListPropertySetter.SetPropertyIfMatch(new SqmStream(inputText));
+
+            Assert.AreEqual(Result.Success, matchResult);
+            Assert.AreEqual(0, _values.Count);
+        }
     }
 }

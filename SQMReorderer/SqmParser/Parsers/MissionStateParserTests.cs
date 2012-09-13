@@ -31,6 +31,27 @@ namespace SQMReorderer.SqmParser.Parsers
         }
 
         [Test]
+        public void Expect_intel_to_be_parsed()
+        {
+            var inputText = new List<string>
+                {
+                    @"class Mission\n",
+                    @"{\n",
+                    @"class Intel\n",
+                    @"{\n",
+                    @"};\n",
+                    @"};\n"
+                };
+
+            var stream = new SqmStream(inputText);
+            stream.StepIntoInnerContext();
+
+            var missionState = _missionStateParser.ParseMissionState(stream);
+
+            Assert.IsNotNull(missionState.Intel);
+        }
+
+        [Test]
         public void Expect_groups_to_be_parsed_in_mission()
         {
             var inputText = new List<string>
@@ -88,27 +109,6 @@ namespace SQMReorderer.SqmParser.Parsers
         }
 
         [Test]
-        public void Expect_intel_to_be_parsed()
-        {
-            var inputText = new List<string>
-                {
-                    @"class Mission\n",
-                    @"{\n",
-                    @"class Intel\n",
-                    @"{\n",
-                    @"};\n",
-                    @"};\n"
-                };
-
-            var stream = new SqmStream(inputText);
-            stream.StepIntoInnerContext();
-
-            var missionState = _missionStateParser.ParseMissionState(stream);
-
-            Assert.IsNotNull(missionState.Intel);
-        }
-
-        [Test]
         public void Expect_vehicles_to_be_parsed()
         {
             var inputText = new List<string>
@@ -144,6 +144,77 @@ namespace SQMReorderer.SqmParser.Parsers
             Assert.AreEqual("SupplyTruck", missionState.Vehicles[0].Text);
             Assert.AreEqual("AmmoBox1", missionState.Vehicles[1].Text);
             Assert.AreEqual("AmmoBox2", missionState.Vehicles[2].Text);
+        }
+
+        [Test]
+        public void Expect_markers_to_be_parsed()
+        {
+            var inputText = new List<string>
+                {
+                    @"class Mission\n",
+                    @"{\n",
+                    @"class Markers\n",
+                    @"{\n",
+                    @"items=3;\n",
+                    @"class Item0\n",
+                    @"{\n",
+                    @"a=1;\n",
+                    @"};\n",
+                    @"class Item1\n",
+                    @"{\n",
+                    @"a=2;\n",
+                    @"};\n",
+                    @"class Item2\n",
+                    @"{\n",
+                    @"a=3;\n",
+                    @"};\n",
+                    @"};\n",
+                    @"};\n"
+                };
+
+            var stream = new SqmStream(inputText);
+            stream.StepIntoInnerContext();
+
+            var missionState = _missionStateParser.ParseMissionState(stream);
+
+            Assert.AreEqual(3, missionState.Markers.Count);
+
+            Assert.AreEqual(1, missionState.Markers[0].A);
+            Assert.AreEqual(2, missionState.Markers[1].A);
+            Assert.AreEqual(3, missionState.Markers[2].A);
+        }
+
+        [Test]
+        public void Expect_sensors_to_be_parsed()
+        {
+            var inputText = new List<string>
+                {
+                    @"class Mission\n",
+                    @"{\n",
+                    @"class Sensors\n",
+                    @"{\n",
+                    @"items=2;\n",
+                    @"class Item0\n",
+                    @"{\n",
+                    @"type=""SWITCH1"";\n",
+                    @"};\n",
+                    @"class Item1\n",
+                    @"{\n",
+                    @"type=""SWITCH2"";\n",
+                    @"};\n",
+                    @"};\n",
+                    @"};\n"
+                };
+
+            var stream = new SqmStream(inputText);
+            stream.StepIntoInnerContext();
+
+            var missionState = _missionStateParser.ParseMissionState(stream);
+
+            Assert.AreEqual(2, missionState.Sensors.Count);
+
+            Assert.AreEqual("SWITCH1", missionState.Sensors[0].Type);
+            Assert.AreEqual("SWITCH2", missionState.Sensors[1].Type);
         }
 
         [Test]

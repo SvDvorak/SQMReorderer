@@ -11,6 +11,8 @@ namespace SQMReorderer.SqmParser.ResultObjects
 
             Groups = new List<Item>();
             Vehicles = new List<Item>();
+            Markers = new List<Item>();
+            Sensors = new List<Item>();
         }
 
         public List<string> AddOns { get; set; }
@@ -22,5 +24,7 @@ namespace SQMReorderer.SqmParser.ResultObjects
 
         public List<Item> Groups { get; set; }
         public List<Item> Vehicles { get; set; }
+        public List<Item> Markers { get; set; }
+        public List<Item> Sensors { get; set; }
     }
 }

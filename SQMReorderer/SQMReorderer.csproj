@@ -94,9 +94,9 @@
     <Compile Include="MainViewModel.cs" />
     <Compile Include="NullToVisibilityConverter.cs" />
     <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctionsTests.cs" />
-    <Compile Include="SqmParser\ResultObjects\Mission.cs" />
-    <Compile Include="SqmParser\Parsers\MissionParser.cs" />
-    <Compile Include="SqmParser\Parsers\MissionParserTests.cs" />
+    <Compile Include="SqmParser\ResultObjects\MissionState.cs" />
+    <Compile Include="SqmParser\Parsers\MissionStateParser.cs" />
+    <Compile Include="SqmParser\Parsers\MissionStateParserTests.cs" />
     <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctions.cs" />
     <Compile Include="SqmParser\ResultObjects\Item.cs" />
     <Compile Include="SqmParser\Parsers\ItemParser.cs" />

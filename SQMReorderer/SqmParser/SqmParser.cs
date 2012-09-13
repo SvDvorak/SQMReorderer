@@ -9,9 +9,11 @@ namespace SQMReorderer.SqmParser
     public class SqmParser
     {
         private readonly Regex _versionRegex = new Regex(@"version=(?<version>\d+)", RegexOptions.Compiled);
-        private readonly Regex _missionRegex = new Regex(@"class\s+Mission", RegexOptions.Compiled);
 
-        private readonly MissionParser _missionParser = new MissionParser();
+        private readonly MissionStateParser _missionParser = new MissionStateParser("Mission");
+        private readonly MissionStateParser _introParser = new MissionStateParser("Intro");
+        private readonly MissionStateParser _outroWinParser = new MissionStateParser("OutroWin");
+        private readonly MissionStateParser _outroLooseParser = new MissionStateParser("OutroLoose");
 
         private ParseResult _parseResult;
 
@@ -21,10 +23,37 @@ namespace SQMReorderer.SqmParser
 
             while(!stream.IsAtEndOfContext)
             {
-                if (stream.IsCurrentLineMatch(_missionRegex))
+                if (_missionParser.IsMissionStateElement(stream))
                 {
                     stream.StepIntoInnerContext();
-                    _parseResult.Mission = _missionParser.ParseMission(stream);
+                    _parseResult.Mission = _missionParser.ParseMissionState(stream);
+                    stream.StepIntoOuterContext();
+
+                    continue;
+                }
+
+                if (_introParser.IsMissionStateElement(stream))
+                {
+                    stream.StepIntoInnerContext();
+                    _parseResult.Intro = _missionParser.ParseMissionState(stream);
+                    stream.StepIntoOuterContext();
+
+                    continue;
+                }
+
+                if (_outroWinParser.IsMissionStateElement(stream))
+                {
+                    stream.StepIntoInnerContext();
+                    _parseResult.OutroWin = _outroWinParser.ParseMissionState(stream);
+                    stream.StepIntoOuterContext();
+
+                    continue;
+                }
+
+                if (_outroLooseParser.IsMissionStateElement(stream))
+                {
+                    stream.StepIntoInnerContext();
+                    _parseResult.OutroLoose = _outroLooseParser.ParseMissionState(stream);
                     stream.StepIntoOuterContext();
 
                     continue;
@@ -32,8 +61,7 @@ namespace SQMReorderer.SqmParser
 
                 if (stream.IsCurrentLineMatch(_versionRegex))
                 {
-                    stream.MatchCurrentLine(_versionRegex,
-                                            x => SetVersion(x));
+                    stream.MatchCurrentLine(_versionRegex, x => SetVersion(x));
                 }
 
                 stream.NextLineInContext();

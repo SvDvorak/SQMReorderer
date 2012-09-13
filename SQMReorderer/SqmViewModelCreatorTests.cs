@@ -13,7 +13,7 @@ namespace SQMReorderer
         [Test]
         public void Expect_single_item_to_return_single_viewmodel()
         {
-            var mission = new Mission();
+            var mission = new MissionState();
 
             var item = new Item();
             item.Text = "TEXT";
@@ -28,7 +28,7 @@ namespace SQMReorderer
         [Test]
         public void Expect_multiple_item_structure_to_return_corresponding_viewmodels()
         {
-            var mission = new Mission();
+            var mission = new MissionState();
 
             var topItem = new Item();
             var subItem1 = new Item();

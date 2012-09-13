@@ -8,9 +8,9 @@ using SQMReorderer.SqmParser.ResultObjects;
 namespace SQMReorderer.SqmParser.Parsers
 {
     [TestFixture]
-    public class MissionParserTests
+    public class MissionStateParserTests
     {
-        private MissionParser _missionParser = new MissionParser();
+        private readonly MissionStateParser _missionStateParser = new MissionStateParser("Mission");
 
         [Test]
         public void Expect_empty_mission_to_return_empty_result()
@@ -25,9 +25,9 @@ namespace SQMReorderer.SqmParser.Parsers
             var stream = new SqmStream(inputText);
             stream.StepIntoInnerContext();
 
-            Mission missionResult = _missionParser.ParseMission(stream);
+            var missionState = _missionStateParser.ParseMissionState(stream);
 
-            Assert.AreEqual(0, missionResult.Groups.Count);
+            Assert.AreEqual(0, missionState.Groups.Count);
         }
 
         [Test]
@@ -51,9 +51,9 @@ namespace SQMReorderer.SqmParser.Parsers
             var stream = new SqmStream(inputText);
             stream.StepIntoInnerContext();
 
-            var missionResult = _missionParser.ParseMission(stream);
+            var missionState = _missionStateParser.ParseMissionState(stream);
 
-            Assert.AreEqual(1, missionResult.Groups.Count);
+            Assert.AreEqual(1, missionState.Groups.Count);
         }
 
         [Test]
@@ -82,9 +82,9 @@ namespace SQMReorderer.SqmParser.Parsers
             var stream = new SqmStream(inputText);
             stream.StepIntoInnerContext();
 
-            var missionResult = _missionParser.ParseMission(stream);
+            var missionState = _missionStateParser.ParseMissionState(stream);
 
-            Assert.AreEqual(1, missionResult.Groups.Count);
+            Assert.AreEqual(1, missionState.Groups.Count);
         }
 
         [Test]
@@ -103,9 +103,9 @@ namespace SQMReorderer.SqmParser.Parsers
             var stream = new SqmStream(inputText);
             stream.StepIntoInnerContext();
 
-            var missionResult = _missionParser.ParseMission(stream);
+            var missionState = _missionStateParser.ParseMissionState(stream);
 
-            Assert.IsNotNull(missionResult.Intel);
+            Assert.IsNotNull(missionState.Intel);
         }
 
         [Test]
@@ -137,13 +137,13 @@ namespace SQMReorderer.SqmParser.Parsers
             var stream = new SqmStream(inputText);
             stream.StepIntoInnerContext();
 
-            var missionResult = _missionParser.ParseMission(stream);
+            var missionState = _missionStateParser.ParseMissionState(stream);
 
-            Assert.AreEqual(3, missionResult.Vehicles.Count);
+            Assert.AreEqual(3, missionState.Vehicles.Count);
 
-            Assert.AreEqual("SupplyTruck", missionResult.Vehicles[0].Text);
-            Assert.AreEqual("AmmoBox1", missionResult.Vehicles[1].Text);
-            Assert.AreEqual("AmmoBox2", missionResult.Vehicles[2].Text);
+            Assert.AreEqual("SupplyTruck", missionState.Vehicles[0].Text);
+            Assert.AreEqual("AmmoBox1", missionState.Vehicles[1].Text);
+            Assert.AreEqual("AmmoBox2", missionState.Vehicles[2].Text);
         }
 
         [Test]
@@ -174,22 +174,22 @@ namespace SQMReorderer.SqmParser.Parsers
             var stream = new SqmStream(inputText);
             stream.StepIntoInnerContext();
 
-            var missionResult = _missionParser.ParseMission(stream);
+            var missionState = _missionStateParser.ParseMissionState(stream);
 
-            Assert.AreEqual(5, missionResult.AddOns.Count);
-            Assert.AreEqual(3, missionResult.AddOnsAuto.Count);
+            Assert.AreEqual(5, missionState.AddOns.Count);
+            Assert.AreEqual(3, missionState.AddOnsAuto.Count);
 
-            Assert.AreEqual("cacharacters_e", missionResult.AddOns[0]);
-            Assert.AreEqual("zargabad", missionResult.AddOns[1]);
-            Assert.AreEqual("ca_highcommand", missionResult.AddOns[2]);
-            Assert.AreEqual("cacharacters2", missionResult.AddOns[3]);
-            Assert.AreEqual("CAWheeled_E", missionResult.AddOns[4]);
+            Assert.AreEqual("cacharacters_e", missionState.AddOns[0]);
+            Assert.AreEqual("zargabad", missionState.AddOns[1]);
+            Assert.AreEqual("ca_highcommand", missionState.AddOns[2]);
+            Assert.AreEqual("cacharacters2", missionState.AddOns[3]);
+            Assert.AreEqual("CAWheeled_E", missionState.AddOns[4]);
             
-            Assert.AreEqual("ca_modules_functions", missionResult.AddOnsAuto[0]);
-            Assert.AreEqual("cacharacters_e", missionResult.AddOnsAuto[1]);
-            Assert.AreEqual("CAWheeled_E", missionResult.AddOnsAuto[2]);
+            Assert.AreEqual("ca_modules_functions", missionState.AddOnsAuto[0]);
+            Assert.AreEqual("cacharacters_e", missionState.AddOnsAuto[1]);
+            Assert.AreEqual("CAWheeled_E", missionState.AddOnsAuto[2]);
 
-            Assert.AreEqual(4931020, missionResult.RandomSeed);
+            Assert.AreEqual(4931020, missionState.RandomSeed);
         }
     }
 }

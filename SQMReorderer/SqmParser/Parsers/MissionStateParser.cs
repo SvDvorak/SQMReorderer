@@ -2,34 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using SQMReorderer.SqmParser.PropertySetters;
 using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
-    public class MissionParser
+    public class MissionStateParser
     {
         private readonly ItemListParser _groupsParser = new ItemListParser("Groups");
         private readonly ItemListParser _vehiclesParser = new ItemListParser("Vehicles");
         private readonly IntelParser _intelParser = new IntelParser();
 
+        private readonly Regex _missionStateHeaderRegex;
+
         private readonly List<MultiLineStringListPropertySetter> _multiLineStringPropertySetters = new List<MultiLineStringListPropertySetter>();
 
         private readonly IntegerPropertySetter _randomSeedPropertySetter;
 
-        private Mission _mission;
+        private MissionState _missionState;
 
-        public MissionParser()
+        public MissionStateParser(string missionStateHeader)
         {
-            _multiLineStringPropertySetters.Add(new MultiLineStringListPropertySetter("addOns", x => _mission.AddOns = x));
-            _multiLineStringPropertySetters.Add(new MultiLineStringListPropertySetter("addOnsAuto", x => _mission.AddOnsAuto = x));
+            _missionStateHeaderRegex = new Regex(@"class\s+" + missionStateHeader, RegexOptions.Compiled);
 
-            _randomSeedPropertySetter = new IntegerPropertySetter("randomSeed", x => _mission.RandomSeed = x);
+            _multiLineStringPropertySetters.Add(new MultiLineStringListPropertySetter("addOns", x => _missionState.AddOns = x));
+            _multiLineStringPropertySetters.Add(new MultiLineStringListPropertySetter("addOnsAuto", x => _missionState.AddOnsAuto = x));
+
+            _randomSeedPropertySetter = new IntegerPropertySetter("randomSeed", x => _missionState.RandomSeed = x);
         }
 
-        public Mission ParseMission(SqmStream stream)
+        public bool IsMissionStateElement(SqmStream stream)
         {
-            _mission = new Mission();
+            return stream.IsCurrentLineMatch(_missionStateHeaderRegex);
+        }
+
+        public MissionState ParseMissionState(SqmStream stream)
+        {
+            _missionState = new MissionState();
 
             while (!stream.IsAtEndOfContext)
             {
@@ -55,14 +65,14 @@ namespace SQMReorderer.SqmParser.Parsers
                 if(_intelParser.IsIntelElement(stream))
                 {
                     stream.StepIntoInnerContext();
-                    _mission.Intel = _intelParser.ParseIntel(stream);
+                    _missionState.Intel = _intelParser.ParseIntel(stream);
                     stream.StepIntoOuterContext();
                 }
 
                 if (_groupsParser.IsListElement(stream))
                 {
                     stream.StepIntoInnerContext();
-                    _mission.Groups = _groupsParser.ParseElementItems(stream);
+                    _missionState.Groups = _groupsParser.ParseElementItems(stream);
                     stream.StepIntoOuterContext();
                     
                     continue;
@@ -71,7 +81,7 @@ namespace SQMReorderer.SqmParser.Parsers
                 if (_vehiclesParser.IsListElement(stream))
                 {
                     stream.StepIntoInnerContext();
-                    _mission.Vehicles = _vehiclesParser.ParseElementItems(stream);
+                    _missionState.Vehicles = _vehiclesParser.ParseElementItems(stream);
                     stream.StepIntoOuterContext();
 
                     continue;
@@ -80,7 +90,7 @@ namespace SQMReorderer.SqmParser.Parsers
                 stream.NextLineInContext();
             }
 
-            return _mission;
+            return _missionState;
         }
     }
 }

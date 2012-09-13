@@ -45,5 +45,58 @@ namespace SQMReorderer.SqmParser
 
             Assert.IsNotNull(sqmParseResult.Mission);
         }
+
+        [Test]
+        public void Expect_intro_to_be_parsed()
+        {
+            var inputText = new List<string>
+                {
+                    @"class Intro\n",
+                    @"{\n",
+                    @"randomSeed=5875250;\n",
+                    @"class Intel\n",
+                    @"{\n",
+                    @"year=2008;\n",
+                    @"};\n",
+                    @"};\n"
+                };
+
+            var parseResult = _parser.Parse(new SqmStream(inputText));
+
+            Assert.IsNotNull(parseResult.Intro);
+            Assert.AreEqual(2008, parseResult.Intro.Intel.Year);
+        }
+
+        [Test]
+        public void Expect_outro_to_be_parsed()
+        {
+            var inputText = new List<string>
+                {
+                    @"class OutroWin\n",
+                    @"{\n",
+                    @"randomSeed=5875250;\n",
+                    @"class Intel\n",
+                    @"{\n",
+                    @"year=2008;\n",
+                    @"};\n",
+                    @"};\n",
+                    @"class OutroLoose\n",
+                    @"{\n",
+                    @"randomSeed=5875250;\n",
+                    @"class Intel\n",
+                    @"{\n",
+                    @"year=2007;\n",
+                    @"};\n",
+                    @"};\n"
+                };
+
+            var parseResult = _parser.Parse(new SqmStream(inputText));
+
+            Assert.IsNotNull(parseResult.OutroWin);
+            Assert.AreEqual(2008, parseResult.OutroWin.Intel.Year);
+
+            Assert.IsNotNull(parseResult.OutroLoose);
+            Assert.AreEqual(2007, parseResult.OutroLoose.Intel.Year);
+        }
     }
 }

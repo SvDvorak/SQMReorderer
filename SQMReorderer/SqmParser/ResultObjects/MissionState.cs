@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace SQMReorderer.SqmParser.ResultObjects
 {
-    public class Mission
+    public class MissionState
     {
-        public Mission()
+        public MissionState()
         {
             AddOns = new List<string>();
             AddOnsAuto = new List<string>();

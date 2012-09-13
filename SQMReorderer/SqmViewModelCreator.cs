@@ -7,9 +7,9 @@ namespace SQMReorderer
 {
     public class SqmViewModelCreator
     {
-        public MissionViewModel CreateMissionViewModel(Mission mission)
+        public MissionViewModel CreateMissionViewModel(MissionState missionState)
         {
-            var itemViewModels = CreateItemViewModels(mission.Groups);
+            var itemViewModels = CreateItemViewModels(missionState.Groups);
 
             return new MissionViewModel(itemViewModels);
         }

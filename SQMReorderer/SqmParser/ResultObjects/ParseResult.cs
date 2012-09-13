@@ -4,6 +4,9 @@ namespace SQMReorderer.SqmParser.ResultObjects
     {
         public int Version { get; set; }
 
-        public Mission Mission { get; set; }
+        public MissionState Mission { get; set; }
+        public MissionState Intro { get; set; }
+        public MissionState OutroWin { get; set; }
+        public MissionState OutroLoose { get; set; }
     }
 }

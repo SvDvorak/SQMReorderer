@@ -40,6 +40,7 @@ namespace SQMReorderer.SqmParser.Parsers
             _propertySetters.Add(new IntegerPropertySetter("a", x => _item.A = x));
             _propertySetters.Add(new IntegerPropertySetter("b", x => _item.B = x));
             _propertySetters.Add(new IntegerPropertySetter("drawBorder", x => _item.DrawBorder = x));
+            _propertySetters.Add(new DoublePropertySetter("angle", x => _item.Angle = x));
 
             _propertySetters.Add(new StringPropertySetter("activationBy", x => _item.ActivationBy = x));
             _propertySetters.Add(new IntegerPropertySetter("interruptable", x => _item.Interruptable = x));

@@ -66,6 +66,9 @@
     <Compile Include="MultiSelectTreeView\LeftMarginMultiplierConverter.cs" />
     <Compile Include="MultiSelectTreeView\MultipleSelectionTreeView.cs" />
     <Compile Include="MultiSelectTreeView\MultipleSelectionTreeViewItem.cs" />
+    <Compile Include="ComparisonResult.cs" />
+    <Compile Include="SqmExport\SqmElementExportVisitorTests.cs" />
+    <Compile Include="StringListComparer.cs" />
     <Compile Include="SqmParser\HelperFunctions\CommonRegexPatterns.cs" />
     <Compile Include="SqmParser\HelperFunctions\CommonRegexPatternsTests.cs" />
     <Compile Include="SqmParser\PropertySetters\DoublePropertySetter.cs" />
@@ -86,6 +89,9 @@
     <Compile Include="SqmParser\PropertySetters\VectorPropertySetter.cs" />
     <Compile Include="SqmParser\PropertySetters\VectorPropertySetterTests.cs" />
     <Compile Include="SqmParser\Result.cs" />
+    <Compile Include="SqmExport\ISqmElementVisitor.cs" />
+    <Compile Include="SqmExport\SqmElementExportVisitor.cs" />
+    <Compile Include="StringListComparerTests.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="VectorTests.cs" />
     <Compile Include="ViewModels\MissionViewModel.cs" />

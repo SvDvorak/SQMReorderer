@@ -35,6 +35,7 @@ namespace SQMReorderer.SqmParser.ResultObjects
         public int? A { get; set; }
         public int? B { get; set; }
         public int? DrawBorder { get; set; }
+        public double? Angle { get; set; }
 
         public string ActivationBy { get; set; }
         public int Interruptable { get; set; }

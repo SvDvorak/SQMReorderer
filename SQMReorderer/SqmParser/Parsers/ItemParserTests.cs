@@ -45,6 +45,7 @@ namespace SQMReorderer.SqmParser.Parsers
                 @"a=40;\n",
                 @"b=30;\n",
                 @"drawBorder=1;\n",
+                @"angle=202.98199;\n",
                 @"};\n"
             };
 
@@ -180,6 +181,7 @@ namespace SQMReorderer.SqmParser.Parsers
             Assert.AreEqual(40, itemResult.A);
             Assert.AreEqual(30, itemResult.B);
             Assert.AreEqual(1, itemResult.DrawBorder);
+            Assert.AreEqual(202.98199, itemResult.Angle);
         }
 
         [Test]

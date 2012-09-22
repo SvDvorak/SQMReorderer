@@ -12,36 +12,35 @@ namespace SQMReorderer.SqmExport
         {
             var originalItemStrings = new List<string>
                 {
-                    @"class Item3\n",
-				    @"{\n",
-                    @"azimut=3.14;\n",
-                    @"position[]={10,12,14};\n",
-					@"id=4;\n",
-					@"side=""GUER"";\n",
-					@"vehicle=""TK_GUE_Soldier_2_EP1"";\n",
-                    @"player=""PLAY CDG"";\n",
-					@"leader=1;\n",
-					@"rank=""CORPORAL"";\n",
-                    @"skill=0.60000002;\n",
-                    @"text=""UnitGUE_MTR1_AG"";\n",
-                    @"init="""";\n",
-					@"init=""GrpGUE_MTR1 = group this; nul = [""mtrag"",this] execVM ""f\common\folk_assignGear.sqf"";"";\n",
-                    @"description=""TK Local Mortar Team 1 Assistant Gunner"";\n",
-                    @"synchronizations[]={1,2,3};\n",
-                    @"name=""mkrInsertion"";\n",
-                    @"markerType=""RECTANGLE"";\n",
-                    @"type=""EMPTY"";\n",
-                    @"fillName=""FDiagonal"";\n",
-                    @"a=45;\n",
-                    @"b=55;\n",
-                    @"drawBorder=1;\n",
-                    @"angle=2.42;\n",
-                    @"activationBy=""ANY"";\n",
-                    @"interruptable=1;\n",
-                    @"age=""UNKNOWN"";\n",
-                    @"expCond=""checkpoint3NrOfClearedDT == 7"";\n",
-                    @"expActiv=""end = [1] execVM ""f\server\f_mpEndBroadcast.sqf"";"";\n",
-                    @"};"
+                    "class Item3\n",
+				    "{\n",
+                    "azimut=3.14;\n",
+                    "position[]={10,12,14};\n",
+					"id=4;\n",
+					"side=\"GUER\";\n",
+					"vehicle=\"TK_GUE_Soldier_2_EP1\";\n",
+                    "player=\"PLAY CDG\";\n",
+					"leader=1;\n",
+					"rank=\"CORPORAL\";\n",
+                    "skill=0.60000002;\n",
+                    "text=\"UnitGUE_MTR1_AG\";\n",
+					"init=\"GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n",
+                    "description=\"TK Local Mortar Team 1 Assistant Gunner\";\n",
+                    "synchronizations[]={1,2,3};\n",
+                    "name=\"mkrInsertion\";\n",
+                    "markerType=\"RECTANGLE\";\n",
+                    "type=\"EMPTY\";\n",
+                    "fillName=\"FDiagonal\";\n",
+                    "a=45;\n",
+                    "b=55;\n",
+                    "drawBorder=1;\n",
+                    "angle=2.42;\n",
+                    "activationBy=\"ANY\";\n",
+                    "interruptable=1;\n",
+                    "age=\"UNKNOWN\";\n",
+                    "expCond=\"checkpoint3NrOfClearedDT == 7\";\n",
+                    "expActiv=\"end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n",
+                    "};"
                 };
 
             var exportVisitor = new SqmElementExportVisitor();
@@ -59,13 +58,13 @@ namespace SQMReorderer.SqmExport
             item.Lock = "UNLOCKED";
             item.Skill = 0.60000002;
             item.Text = "UnitGUE_MTR1_AG";
-            item.Init = @"GrpGUE_MTR1 = group this; nul = [""mtrag"",this] execVM ""f\common\folk_assignGear.sqf"";";
+            item.Init = "GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";";
             item.Description = "TK Local Mortar Team 1 Assistant Gunner";
             item.Synchronizations = new List<int> {1, 2, 3};
 
             item.Name = "mkrInsertion";
             item.MarkerType = "RECTANGLE";
-            item.Type = "Empty";
+            item.Type = "EMPTY";
             item.FillName = "FDiagonal";
             item.A = 45;
             item.B = 55;
@@ -76,7 +75,7 @@ namespace SQMReorderer.SqmExport
             item.Interruptable = 1;
             item.Age = "UNKNOWN";
             item.ExpCond = "checkpoint3NrOfClearedDT == 7";
-            item.ExpActiv = @"end = [1] execVM ""f\server\f_mpEndBroadcast.sqf";
+            item.ExpActiv = "end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";";
 
             var exportedItemStrings = exportVisitor.Visit(item);
 
@@ -86,8 +85,8 @@ namespace SQMReorderer.SqmExport
 
             if(comparisonResult.IsSame != true)
             {
-                Assert.Fail("Imported and exported strings are not the same. Error on row " + comparisonResult.ErrorRowNumber + @": """ +
-                    comparisonResult.ErrorRowInList1 + @""" vs """ + comparisonResult.ErrorRowInList2 + @"""");
+                Assert.Fail("Imported and exported strings are not the same. Error on row " + comparisonResult.ErrorRowNumber + ": \"" +
+                    comparisonResult.ErrorRowInList1 + "\" vs \"" + comparisonResult.ErrorRowInList2 + "\"");
             }
         }
     }

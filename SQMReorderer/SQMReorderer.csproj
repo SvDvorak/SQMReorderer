@@ -63,11 +63,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DoubleExtensions.cs" />
+    <Compile Include="DoubleExtensionsTests.cs" />
     <Compile Include="MultiSelectTreeView\LeftMarginMultiplierConverter.cs" />
     <Compile Include="MultiSelectTreeView\MultipleSelectionTreeView.cs" />
     <Compile Include="MultiSelectTreeView\MultipleSelectionTreeViewItem.cs" />
     <Compile Include="ComparisonResult.cs" />
     <Compile Include="SqmExport\SqmElementExportVisitorTests.cs" />
+    <Compile Include="SqmExport\SqmPropertyVisitor.cs" />
+    <Compile Include="SqmExport\SqmPropertyVisitorTests.cs" />
     <Compile Include="StringListComparer.cs" />
     <Compile Include="SqmParser\HelperFunctions\CommonRegexPatterns.cs" />
     <Compile Include="SqmParser\HelperFunctions\CommonRegexPatternsTests.cs" />

@@ -38,7 +38,7 @@ namespace SQMReorderer.SqmParser.ResultObjects
         public double? Angle { get; set; }
 
         public string ActivationBy { get; set; }
-        public int Interruptable { get; set; }
+        public int? Interruptable { get; set; }
         public string Age { get; set; }
         public string ExpCond { get; set; }
         public string ExpActiv { get; set; }

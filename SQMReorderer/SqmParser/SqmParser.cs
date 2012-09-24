@@ -53,7 +53,7 @@ namespace SQMReorderer.SqmParser
                 if (_outroLooseParser.IsMissionStateElement(stream))
                 {
                     stream.StepIntoInnerContext();
-                    _parseResult.OutroLoose = _outroLooseParser.ParseMissionState(stream);
+                    _parseResult.OutroLose = _outroLooseParser.ParseMissionState(stream);
                     stream.StepIntoOuterContext();
 
                     continue;
@@ -70,7 +70,7 @@ namespace SQMReorderer.SqmParser
             return _parseResult;
         }
 
-        private int SetVersion(Match match)
+        private int? SetVersion(Match match)
         {
             var versionGroup = match.Groups["version"];
             return _parseResult.Version = Convert.ToInt32(versionGroup.Value);

@@ -69,6 +69,7 @@
     <Compile Include="MultiSelectTreeView\MultipleSelectionTreeView.cs" />
     <Compile Include="MultiSelectTreeView\MultipleSelectionTreeViewItem.cs" />
     <Compile Include="ComparisonResult.cs" />
+    <Compile Include="SqmExport\ISqmPropertyVisitor.cs" />
     <Compile Include="SqmExport\SqmElementExportVisitorTests.cs" />
     <Compile Include="SqmExport\SqmPropertyVisitor.cs" />
     <Compile Include="SqmExport\SqmPropertyVisitorTests.cs" />

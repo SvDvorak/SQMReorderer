@@ -5,7 +5,8 @@ namespace SQMReorderer.SqmExport
 {
     interface ISqmElementVisitor
     {
-        List<string> Visit(Item item);
-        //void Visit(Item item);
+        string Visit(string elementName, ParseResult parseResult);
+        string Visit(string elementName, MissionState mission);
+        string Visit(string elementName, Item item);
     }
 }

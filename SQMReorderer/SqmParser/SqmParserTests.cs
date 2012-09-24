@@ -95,8 +95,8 @@ namespace SQMReorderer.SqmParser
             Assert.IsNotNull(parseResult.OutroWin);
             Assert.AreEqual(2008, parseResult.OutroWin.Intel.Year);
 
-            Assert.IsNotNull(parseResult.OutroLoose);
-            Assert.AreEqual(2007, parseResult.OutroLoose.Intel.Year);
+            Assert.IsNotNull(parseResult.OutroLose);
+            Assert.AreEqual(2007, parseResult.OutroLose.Intel.Year);
         }
     }
 }

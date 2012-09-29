@@ -51,14 +51,14 @@ namespace SQMReorderer.SqmParser
         {
             var inputText = new List<string>
                 {
-                    @"class Intro\n",
-                    @"{\n",
-                    @"randomSeed=5875250;\n",
-                    @"class Intel\n",
-                    @"{\n",
-                    @"year=2008;\n",
-                    @"};\n",
-                    @"};\n"
+                    "class Intro\n",
+                    "{\n",
+                    "randomSeed=5875250;\n",
+                    "class Intel\n",
+                    "{\n",
+                    "year=2008;\n",
+                    "};\n",
+                    "};\n"
                 };
 
             var parseResult = _parser.Parse(new SqmStream(inputText));
@@ -72,22 +72,22 @@ namespace SQMReorderer.SqmParser
         {
             var inputText = new List<string>
                 {
-                    @"class OutroWin\n",
-                    @"{\n",
-                    @"randomSeed=5875250;\n",
-                    @"class Intel\n",
-                    @"{\n",
-                    @"year=2008;\n",
-                    @"};\n",
-                    @"};\n",
-                    @"class OutroLoose\n",
-                    @"{\n",
-                    @"randomSeed=5875250;\n",
-                    @"class Intel\n",
-                    @"{\n",
-                    @"year=2007;\n",
-                    @"};\n",
-                    @"};\n"
+                    "class OutroWin\n",
+                    "{\n",
+                    "randomSeed=5875250;\n",
+                    "class Intel\n",
+                    "{\n",
+                    "year=2008;\n",
+                    "};\n",
+                    "};\n",
+                    "class OutroLoose\n",
+                    "{\n",
+                    "randomSeed=5875250;\n",
+                    "class Intel\n",
+                    "{\n",
+                    "year=2007;\n",
+                    "};\n",
+                    "};\n"
                 };
 
             var parseResult = _parser.Parse(new SqmStream(inputText));

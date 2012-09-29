@@ -7,84 +7,41 @@ using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
-    public class VehicleParser : IItemParser<Vehicle>
+    public class VehicleParser : ItemParserBase<Vehicle>
     {
-        private readonly Regex _itemNumberRegex;
-        private readonly List<PropertySetterBase> _propertySetters = new List<PropertySetterBase>();
-
-        private Vehicle _vehicle;
-
         public VehicleParser()
         {
-            _itemNumberRegex = new Regex(@"class Item(?<number>" + CommonRegexPatterns.IntegerPattern + @")", RegexOptions.Compiled);
-
-            _propertySetters.Add(new VectorPropertySetter("position", x => _vehicle.Position = x));
-            _propertySetters.Add(new DoublePropertySetter("azimut", x => _vehicle.Azimut = x));
-            _propertySetters.Add(new IntegerPropertySetter("id", x => _vehicle.Id = x));
-            _propertySetters.Add(new DoublePropertySetter("skill", x => _vehicle.Skill = x));
-            _propertySetters.Add(new StringPropertySetter("side", x => _vehicle.Side = x));
-            _propertySetters.Add(new StringPropertySetter("vehicle", x => _vehicle.VehicleName = x));
-            _propertySetters.Add(new StringPropertySetter("player", x => _vehicle.Player = x));
-            _propertySetters.Add(new IntegerPropertySetter("leader", x => _vehicle.Leader = x));
-            _propertySetters.Add(new StringPropertySetter("rank", x => _vehicle.Rank = x));
-            _propertySetters.Add(new StringPropertySetter("lock", x => _vehicle.Lock = x));
-            _propertySetters.Add(new StringPropertySetter("init", x => _vehicle.Init = x));
-            _propertySetters.Add(new StringPropertySetter("text", x => _vehicle.Text = x));
-            _propertySetters.Add(new StringPropertySetter("description", x => _vehicle.Description = x));
-            _propertySetters.Add(new IntegerListPropertySetter("synchronizations", x => _vehicle.Synchronizations = x));
+            PropertySetters.Add(new VectorPropertySetter("position", x => Item.Position = x));
+            PropertySetters.Add(new DoublePropertySetter("azimut", x => Item.Azimut = x));
+            PropertySetters.Add(new IntegerPropertySetter("id", x => Item.Id = x));
+            PropertySetters.Add(new StringPropertySetter("side", x => Item.Side = x));
+            PropertySetters.Add(new StringPropertySetter("vehicle", x => Item.VehicleName = x));
+            PropertySetters.Add(new StringPropertySetter("player", x => Item.Player = x));
+            PropertySetters.Add(new IntegerPropertySetter("leader", x => Item.Leader = x));
+            PropertySetters.Add(new StringPropertySetter("rank", x => Item.Rank = x));
+            PropertySetters.Add(new DoublePropertySetter("skill", x => Item.Skill = x));
+            PropertySetters.Add(new StringPropertySetter("lock", x => Item.Lock = x));
+            PropertySetters.Add(new StringPropertySetter("text", x => Item.Text = x));
+            PropertySetters.Add(new StringPropertySetter("init", x => Item.Init = x));
+            PropertySetters.Add(new StringPropertySetter("description", x => Item.Description = x));
+            PropertySetters.Add(new IntegerListPropertySetter("synchronizations", x => Item.Synchronizations = x));
         }
 
-        public bool IsItemElement(SqmStream stream)
+        protected override Result CustomParseElement(SqmStream stream)
         {
-            return stream.IsCurrentLineMatch(_itemNumberRegex);
-        }
+            var childVehiclesParser = new ItemListParser<Vehicle>(new VehicleParser(), "Vehicles");
 
-        public Vehicle ParseItemElement(SqmStream stream)
-        {
-            _vehicle = new Vehicle();
-
-            var vehiclesParser = new ItemListParser<Vehicle>(new VehicleParser(), "Vehicles");
-
-            stream.MatchHeader(_itemNumberRegex, SetItemNumber);
-
-            while(!stream.IsAtEndOfContext)
+            if (childVehiclesParser.IsListElement(stream))
             {
-                if(vehiclesParser.IsListElement(stream))
-                {
-                    stream.StepIntoInnerContext();
-                    var items = vehiclesParser.ParseElementItems(stream);
-                    stream.StepIntoOuterContext();
-                    _vehicle.Vehicles = items;
+                stream.StepIntoInnerContext();
+                var items = childVehiclesParser.ParseElementItems(stream);
+                stream.StepIntoOuterContext();
+                Item.Vehicles = items;
 
-                    continue;
-                }
-
-                Result matchResult = Result.Failure;
-                foreach (var propertySetter in _propertySetters)
-                {
-                    matchResult = propertySetter.SetPropertyIfMatch(stream);
-
-                    if(matchResult == Result.Success)
-                    {
-                        break;
-                    }
-                }
-
-                if (matchResult == Result.Failure)
-                {
-                    throw new SqmParseException("Unknown property: " + stream.CurrentLine);
-                }
-
-                stream.NextLineInContext();
+                return Result.Success;
             }
 
-            return _vehicle;
-        }
-
-        private void SetItemNumber(Match match)
-        {
-            var numberGroup = match.Groups["number"];
-            _vehicle.Number = Convert.ToInt32(numberGroup.Value);
+            return Result.Failure;
         }
     }
 }

@@ -35,12 +35,12 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             var inputText = new List<string>
                 {
-                    @"class Mission\n",
-                    @"{\n",
-                    @"class Intel\n",
-                    @"{\n",
-                    @"};\n",
-                    @"};\n"
+                    "class Mission\n",
+                    "{\n",
+                    "class Intel\n",
+                    "{\n",
+                    "};\n",
+                    "};\n"
                 };
 
             var stream = new SqmStream(inputText);
@@ -113,25 +113,25 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             var inputText = new List<string>
                 {
-                    @"class Mission\n",
-                    @"{\n",
-                    @"class Vehicles\n",
-                    @"{\n",
-                    @"items=3;\n",
-                    @"class Item0\n",
-                    @"{\n",
-                    @"text=""SupplyTruck"";\n",
-                    @"};\n",
-                    @"class Item1\n",
-                    @"{\n",
-                    @"text=""AmmoBox1"";\n",
-                    @"};\n",
-                    @"class Item2\n",
-                    @"{\n",
-                    @"text=""AmmoBox2"";\n",
-                    @"};\n",
-                    @"};\n",
-                    @"};\n"
+                    "class Mission\n",
+                    "{\n",
+                    "class Vehicles\n",
+                    "{\n",
+                    "items=3;\n",
+                    "class Item0\n",
+                    "{\n",
+                    "text=\"SupplyTruck\";\n",
+                    "};\n",
+                    "class Item1\n",
+                    "{\n",
+                    "text=\"AmmoBox1\";\n",
+                    "};\n",
+                    "class Item2\n",
+                    "{\n",
+                    "text=\"AmmoBox2\";\n",
+                    "};\n",
+                    "};\n",
+                    "};\n"
                 };
 
             var stream = new SqmStream(inputText);
@@ -151,25 +151,25 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             var inputText = new List<string>
                 {
-                    @"class Mission\n",
-                    @"{\n",
-                    @"class Markers\n",
-                    @"{\n",
-                    @"items=3;\n",
-                    @"class Item0\n",
-                    @"{\n",
-                    @"a=1;\n",
-                    @"};\n",
-                    @"class Item1\n",
-                    @"{\n",
-                    @"a=2;\n",
-                    @"};\n",
-                    @"class Item2\n",
-                    @"{\n",
-                    @"a=3;\n",
-                    @"};\n",
-                    @"};\n",
-                    @"};\n"
+                    "class Mission\n",
+                    "{\n",
+                    "class Markers\n",
+                    "{\n",
+                    "items=3;\n",
+                    "class Item0\n",
+                    "{\n",
+                    "a=1;\n",
+                    "};\n",
+                    "class Item1\n",
+                    "{\n",
+                    "a=2;\n",
+                    "};\n",
+                    "class Item2\n",
+                    "{\n",
+                    "a=3;\n",
+                    "};\n",
+                    "};\n",
+                    "};\n"
                 };
 
             var stream = new SqmStream(inputText);
@@ -189,21 +189,21 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             var inputText = new List<string>
                 {
-                    @"class Mission\n",
-                    @"{\n",
-                    @"class Sensors\n",
-                    @"{\n",
-                    @"items=2;\n",
-                    @"class Item0\n",
-                    @"{\n",
-                    @"type=""SWITCH1"";\n",
-                    @"};\n",
-                    @"class Item1\n",
-                    @"{\n",
-                    @"type=""SWITCH2"";\n",
-                    @"};\n",
-                    @"};\n",
-                    @"};\n"
+                    "class Mission\n",
+                    "{\n",
+                    "class Sensors\n",
+                    "{\n",
+                    "items=2;\n",
+                    "class Item0\n",
+                    "{\n",
+                    "type=\"SWITCH1\";\n",
+                    "};\n",
+                    "class Item1\n",
+                    "{\n",
+                    "type=\"SWITCH2\";\n",
+                    "};\n",
+                    "};\n",
+                    "};\n"
                 };
 
             var stream = new SqmStream(inputText);
@@ -222,24 +222,24 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             var inputText = new List<string>
                 {
-                    @"class Mission\n",
-                    @"{\n",
-                    @"addOns[]=\n",
-                    @"{\n",
-                    @"""cacharacters_e"",\n",
-                    @"""zargabad"",\n",
-                    @"""ca_highcommand"",\n",
-                    @"""cacharacters2"",\n",
-                    @"""CAWheeled_E""\n",
-                    @"};\n",
-                    @"addOnsAuto[]=\n",
-                    @"{\n",
-                    @"""ca_modules_functions"",\n",
-                    @"""cacharacters_e"",\n",
-                    @"""CAWheeled_E"",\n",
-                    @"};\n",
-                    @"randomSeed=4931020);\n",
-                    @"}\n"
+                    "class Mission\n",
+                    "{\n",
+                    "addOns[]=\n",
+                    "{\n",
+                    "\"cacharacters_e\",\n",
+                    "\"zargabad\",\n",
+                    "\"ca_highcommand\",\n",
+                    "\"cacharacters2\",\n",
+                    "\"CAWheeled_E\"\n",
+                    "};\n",
+                    "addOnsAuto[]=\n",
+                    "{\n",
+                    "\"ca_modules_functions\",\n",
+                    "\"cacharacters_e\",\n",
+                    "\"CAWheeled_E\",\n",
+                    "};\n",
+                    "randomSeed=4931020);\n",
+                    "}\n"
                 };
 
             var stream = new SqmStream(inputText);

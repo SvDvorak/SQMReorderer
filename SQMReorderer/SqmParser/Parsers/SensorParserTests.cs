@@ -47,10 +47,10 @@ namespace SQMReorderer.SqmParser.Parsers
 
             var sensorResult = _parser.ParseItemElement(_completeSimpleSensorItemStream);
 
+            Assert.AreEqual(0, sensorResult.Number);
             Assert.AreEqual(414, sensorResult.Position.X);
             Assert.AreEqual(16, sensorResult.Position.Y);
             Assert.AreEqual(413, sensorResult.Position.Z);
-            Assert.AreEqual(0, sensorResult.Number);
             Assert.AreEqual(40, sensorResult.A);
             Assert.AreEqual(30, sensorResult.B);
             Assert.AreEqual("ANY", sensorResult.ActivationBy);

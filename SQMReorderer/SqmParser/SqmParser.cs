@@ -28,38 +28,26 @@ namespace SQMReorderer.SqmParser
                     stream.StepIntoInnerContext();
                     _parseResult.Mission = _missionParser.ParseMissionState(stream);
                     stream.StepIntoOuterContext();
-
-                    continue;
                 }
-
-                if (_introParser.IsMissionStateElement(stream))
+                else if (_introParser.IsMissionStateElement(stream))
                 {
                     stream.StepIntoInnerContext();
                     _parseResult.Intro = _missionParser.ParseMissionState(stream);
                     stream.StepIntoOuterContext();
-
-                    continue;
                 }
-
-                if (_outroWinParser.IsMissionStateElement(stream))
+                else if (_outroWinParser.IsMissionStateElement(stream))
                 {
                     stream.StepIntoInnerContext();
                     _parseResult.OutroWin = _outroWinParser.ParseMissionState(stream);
                     stream.StepIntoOuterContext();
-
-                    continue;
                 }
-
-                if (_outroLooseParser.IsMissionStateElement(stream))
+                else if (_outroLooseParser.IsMissionStateElement(stream))
                 {
                     stream.StepIntoInnerContext();
                     _parseResult.OutroLose = _outroLooseParser.ParseMissionState(stream);
                     stream.StepIntoOuterContext();
-
-                    continue;
                 }
-
-                if (stream.IsCurrentLineMatch(_versionRegex))
+                else if (stream.IsCurrentLineMatch(_versionRegex))
                 {
                     stream.MatchCurrentLine(_versionRegex, x => SetVersion(x));
                 }

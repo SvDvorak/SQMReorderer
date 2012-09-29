@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
-    public class ItemListParser<ItemType>
+    public class ItemListParser<TItemType>
     {
         private readonly Regex _classRegex = new Regex(@"class\s+(?<class>\w+)", RegexOptions.Compiled);
         private readonly Regex _itemCountRegex = new Regex(@"items\=(?<itemCount>\d+)", RegexOptions.Compiled);
 
-        private readonly IItemParser<ItemType> _itemParser;
+        private readonly IItemParser<TItemType> _itemParser;
         private readonly string _listTypeName;
 
         private int _itemCount;
 
-        public ItemListParser(IItemParser<ItemType> itemParser, string listTypeName)
+        public ItemListParser(IItemParser<TItemType> itemParser, string listTypeName)
         {
             _itemParser = itemParser;
             _listTypeName = listTypeName;
@@ -35,18 +32,17 @@ namespace SQMReorderer.SqmParser.Parsers
             return isCorrectListElement;
         }
 
-        public List<ItemType> ParseElementItems(SqmStream stream)
+        public List<TItemType> ParseElementItems(SqmStream stream)
         {
             _itemCount = 0;
 
-            var itemList = new List<ItemType>();
+            var itemList = new List<TItemType>();
 
             while(!stream.IsAtEndOfContext)
             {
                 if(stream.IsCurrentLineMatch(_itemCountRegex))
                 {
                     stream.MatchCurrentLine(_itemCountRegex, SetItemCount);
-                    stream.NextLineInContext();
                 }
                 else if (_itemParser.IsItemElement(stream))
                 {
@@ -56,6 +52,8 @@ namespace SQMReorderer.SqmParser.Parsers
 
                     itemList.Add(item);
                 }
+
+                stream.NextLineInContext();
             }
 
             if (_itemCount != itemList.Count)

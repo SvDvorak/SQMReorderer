@@ -37,7 +37,6 @@ namespace SQMReorderer.SqmParser.Parsers
 
             while(!stream.IsAtEndOfContext)
             {
-
                 Result matchResult = Result.Failure;
 
                 foreach (var propertySetter in _propertyRegexes)

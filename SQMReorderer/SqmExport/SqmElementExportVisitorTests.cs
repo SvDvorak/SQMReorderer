@@ -189,6 +189,7 @@ namespace SQMReorderer.SqmExport
             originalVehicleText.Append("leader=1;\n");
             originalVehicleText.Append("rank=\"CORPORAL\";\n");
             originalVehicleText.Append("skill=0.60000002;\n");
+            originalVehicleText.Append("lock=\"UNLOCKED\";\n");
             originalVehicleText.Append("text=\"UnitGUE_MTR1_AG\";\n");
             originalVehicleText.Append("init=\"GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n");
             originalVehicleText.Append("description=\"TK Local Mortar Team 1 Assistant Gunner\";\n");
@@ -197,22 +198,22 @@ namespace SQMReorderer.SqmExport
 
             var vehicle = new Vehicle();
             vehicle.Number = 3;
-            vehicle.Azimut = 3.14;
             vehicle.Position = new Vector(10, 12, 14);
+            vehicle.Azimut = 3.14;
             vehicle.Id = 4;
             vehicle.Side = "GUER";
             vehicle.VehicleName = "TK_GUE_Soldier_2_EP1";
             vehicle.Player = "PLAY CDG";
             vehicle.Leader = 1;
             vehicle.Rank = "CORPORAL";
-            vehicle.Lock = "UNLOCKED";
             vehicle.Skill = 0.60000002;
+            vehicle.Lock = "UNLOCKED";
             vehicle.Text = "UnitGUE_MTR1_AG";
             vehicle.Init = "GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";";
             vehicle.Description = "TK Local Mortar Team 1 Assistant Gunner";
             vehicle.Synchronizations = new List<int> { 1, 2, 3 };
 
-            var exportedVehicle = _exportVisitor.Visit("Item" + vehicle.Number, vehicle);
+            var exportedVehicle = _exportVisitor.Visit("Item", vehicle);
 
             Assert.AreEqual(originalVehicleText.ToString(), exportedVehicle);
         }
@@ -254,7 +255,7 @@ namespace SQMReorderer.SqmExport
             item1.Vehicles.Add(item1_1);
             item1.Vehicles.Add(item1_2);
 
-            var exportedItem = exportVisitor.Visit("Item" + item1.Number, item1);
+            var exportedItem = exportVisitor.Visit("Item", item1);
 
             var originalItemsString = originalItemsText.ToString();
 
@@ -284,8 +285,8 @@ namespace SQMReorderer.SqmExport
 
             marker.Number = 4;
             marker.Position = new Vector(10, 12, 14);
-            marker.Text = "INSERTION";
             marker.Name = "mkrInsertion";
+            marker.Text = "INSERTION";
             marker.MarkerType = "RECTANGLE";
             marker.Type = "EMPTY";
             marker.FillName = "FDiagonal";
@@ -294,7 +295,7 @@ namespace SQMReorderer.SqmExport
             marker.DrawBorder = 1;
             marker.Angle = 2.42;
 
-            var exportedMarker = _exportVisitor.Visit("Item" + marker.Number, marker);
+            var exportedMarker = _exportVisitor.Visit("Item", marker);
 
             Assert.AreEqual(originalMarkerText.ToString(), exportedMarker);
         }
@@ -325,18 +326,18 @@ namespace SQMReorderer.SqmExport
 
             sensor.Number = 5;
             sensor.Position = new Vector(10, 12, 14);
-            sensor.Type = "EMPTY";
             sensor.A = 45;
             sensor.B = 55;
             sensor.ActivationBy = "ANY";
             sensor.Interruptable = 1;
+            sensor.Type = "EMPTY";
             sensor.Age = "UNKNOWN";
             sensor.ExpCond = "checkpoint3NrOfClearedDT == 7";
             sensor.ExpActiv = "end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";";
 
             //item.Effects = new List<string>() { "blur" };
 
-            var exportedSensor = _exportVisitor.Visit("Item" + sensor.Number, sensor);
+            var exportedSensor = _exportVisitor.Visit("Item", sensor);
 
             Assert.AreEqual(originalSensorText.ToString(), exportedSensor);
         }

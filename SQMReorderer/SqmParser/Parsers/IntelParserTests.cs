@@ -39,18 +39,18 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             var inputText = new List<string>
                 {
-                    @"class Intel\n",
-                    @"{\n",
-                    @"briefingName=""[co04]local_hostility_v2_oa"";\n",
-                    @"briefingDescription=""Destroy stolen ammocrates and truck"";\n",
-                    @"startWeather=0.19207704;\n",
-                    @"forecastWeather=0.25;\n",
-                    @"year=2008;\n",
-                    @"month=10;\n",
-                    @"day=11;\n",
-                    @"hour=16;\n",
-                    @"minute=0;\n",
-                    @"};\n",
+                    "class Intel\n",
+                    "{\n",
+                    "briefingName=\"[co04]local_hostility_v2_oa\";\n",
+                    "briefingDescription=\"Destroy stolen ammocrates and truck\";\n",
+                    "startWeather=0.19207704;\n",
+                    "forecastWeather=0.25;\n",
+                    "year=2008;\n",
+                    "month=10;\n",
+                    "day=11;\n",
+                    "hour=16;\n",
+                    "minute=0;\n",
+                    "};\n",
                 };
 
             var stream = new SqmStream(inputText);

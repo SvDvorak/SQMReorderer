@@ -8,7 +8,7 @@ namespace SQMReorderer.SqmExport
 {
     public class SqmElementExportVisitor : ISqmElementVisitor
     {
-        private SqmPropertyVisitor _propertyVisitor = new SqmPropertyVisitor();
+        private readonly SqmPropertyVisitor _propertyVisitor = new SqmPropertyVisitor();
 
         public string Visit(string elementName, ParseResult parseResult)
         {
@@ -93,7 +93,7 @@ namespace SQMReorderer.SqmExport
 
             foreach (var subItem in items)
             {
-                itemsString.Append(getItemString("Item" + subItem.Number, subItem));
+                itemsString.Append(getItemString("Item", subItem));
             }
 
             itemsString.Append("};\n");
@@ -101,17 +101,17 @@ namespace SQMReorderer.SqmExport
             return itemsString.ToString();
         }
 
-        private string Visit(string elementName, List<Vehicle> vehicles)
+        public string Visit(string elementName, List<Vehicle> vehicles)
         {
             return Visit(elementName, vehicles.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Vehicle) item));
         }
 
-        private string Visit(string elementName, List<Marker> markers)
+        public string Visit(string elementName, List<Marker> markers)
         {
             return Visit(elementName, markers.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Marker)item));
         }
 
-        private string Visit(string elementName, List<Sensor> sensors)
+        public string Visit(string elementName, List<Sensor> sensors)
         {
             return Visit(elementName, sensors.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Sensor)item));
         }
@@ -125,7 +125,7 @@ namespace SQMReorderer.SqmExport
 
             var vehicleString = new StringBuilder();
 
-            vehicleString.Append("class " + elementName + "\n");
+            vehicleString.Append("class " + elementName + vehicle.Number + "\n");
             vehicleString.Append("{\n");
             vehicleString.Append(_propertyVisitor.Visit("position", vehicle.Position));
             vehicleString.Append(_propertyVisitor.Visit("azimut", vehicle.Azimut));
@@ -136,6 +136,7 @@ namespace SQMReorderer.SqmExport
             vehicleString.Append(_propertyVisitor.Visit("leader", vehicle.Leader));
             vehicleString.Append(_propertyVisitor.Visit("rank", vehicle.Rank));
             vehicleString.Append(_propertyVisitor.Visit("skill", vehicle.Skill));
+            vehicleString.Append(_propertyVisitor.Visit("lock", vehicle.Lock));
             vehicleString.Append(_propertyVisitor.Visit("text", vehicle.Text));
             vehicleString.Append(_propertyVisitor.Visit("init", vehicle.Init));
             vehicleString.Append(_propertyVisitor.Visit("description", vehicle.Description));
@@ -158,7 +159,7 @@ namespace SQMReorderer.SqmExport
 
             var markerString = new StringBuilder();
 
-            markerString.Append("class " + elementName + "\n");
+            markerString.Append("class " + elementName + marker.Number + "\n");
             markerString.Append("{\n");
             markerString.Append(_propertyVisitor.Visit("position", marker.Position));
             markerString.Append(_propertyVisitor.Visit("name", marker.Name));
@@ -184,7 +185,7 @@ namespace SQMReorderer.SqmExport
 
             var sensorString = new StringBuilder();
 
-            sensorString.Append("class " + elementName + "\n");
+            sensorString.Append("class " + elementName + sensor.Number + "\n");
             sensorString.Append("{\n");
             sensorString.Append(_propertyVisitor.Visit("position", sensor.Position));
             sensorString.Append(_propertyVisitor.Visit("a", sensor.A));

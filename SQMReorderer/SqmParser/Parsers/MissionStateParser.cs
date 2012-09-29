@@ -45,21 +45,9 @@ namespace SQMReorderer.SqmParser.Parsers
 
             while (!stream.IsAtEndOfContext)
             {
-                Result matchResult = Result.Failure;
-
                 foreach (var propertySetter in _multiLineStringPropertySetters)
                 {
-                    matchResult = propertySetter.SetPropertyIfMatch(stream);
-
-                    if (matchResult == Result.Success)
-                    {
-                        break;
-                    }
-                }
-
-                if(matchResult == Result.Success)
-                {
-                    continue;
+                    propertySetter.SetPropertyIfMatch(stream);
                 }
 
                 _randomSeedPropertySetter.SetPropertyIfMatch(stream);
@@ -70,41 +58,29 @@ namespace SQMReorderer.SqmParser.Parsers
                     _missionState.Intel = _intelParser.ParseIntel(stream);
                     stream.StepIntoOuterContext();
                 }
-
-                if (_groupsParser.IsListElement(stream))
+                else if (_groupsParser.IsListElement(stream))
                 {
                     stream.StepIntoInnerContext();
                     _missionState.Groups = _groupsParser.ParseElementItems(stream);
                     stream.StepIntoOuterContext();
-                    
-                    continue;
                 }
-
-                if (_vehiclesParser.IsListElement(stream))
+                else if (_vehiclesParser.IsListElement(stream))
                 {
                     stream.StepIntoInnerContext();
                     _missionState.Vehicles = _vehiclesParser.ParseElementItems(stream);
                     stream.StepIntoOuterContext();
-
-                    continue;
                 }
-
-                if (_markersParser.IsListElement(stream))
+                else if (_markersParser.IsListElement(stream))
                 {
                     stream.StepIntoInnerContext();
                     _missionState.Markers = _markersParser.ParseElementItems(stream);
                     stream.StepIntoOuterContext();
-
-                    continue;
                 }
-
-                if (_sensorsParser.IsListElement(stream))
+                else if (_sensorsParser.IsListElement(stream))
                 {
                     stream.StepIntoInnerContext();
                     _missionState.Sensors = _sensorsParser.ParseElementItems(stream);
                     stream.StepIntoOuterContext();
-
-                    continue;
                 }
 
                 stream.NextLineInContext();

@@ -21,13 +21,11 @@ namespace SQMReorderer.SqmParser.Parsers
             _itemNumberRegex = new Regex(@"class Item(?<number>" + CommonRegexPatterns.IntegerPattern + @")", RegexOptions.Compiled);
 
             _propertySetters.Add(new VectorPropertySetter("position", x => _sensor.Position = x));
-
-            _propertySetters.Add(new StringPropertySetter("type", x => _sensor.Type = x));
             _propertySetters.Add(new IntegerPropertySetter("a", x => _sensor.A = x));
             _propertySetters.Add(new IntegerPropertySetter("b", x => _sensor.B = x));
-
             _propertySetters.Add(new StringPropertySetter("activationBy", x => _sensor.ActivationBy = x));
             _propertySetters.Add(new IntegerPropertySetter("interruptable", x => _sensor.Interruptable = x));
+            _propertySetters.Add(new StringPropertySetter("type", x => _sensor.Type = x));
             _propertySetters.Add(new StringPropertySetter("age", x => _sensor.Age = x));
             _propertySetters.Add(new StringPropertySetter("expCond", x => _sensor.ExpCond = x));
             _propertySetters.Add(new StringPropertySetter("expActiv", x => _sensor.ExpActiv = x));

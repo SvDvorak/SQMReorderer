@@ -89,7 +89,7 @@ namespace SQMReorderer.SqmParser
                 throw new SqmParseException("Cant step out of context at line " + _currentLineNumber);
             }
 
-            _currentLineNumber += 1;
+            _currentLineNumber = _headerLineNumber;
         }
 
         public bool IsHeaderMatch(Regex headerRegex)

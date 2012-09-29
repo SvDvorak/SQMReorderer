@@ -25,7 +25,10 @@ namespace SQMReorderer.SqmExport
                 return "";
             }
 
-            return propertyName + "[]={" + value.X + "," + value.Y + "," + value.Z + "};\n";
+            return propertyName + "[]={" +
+                value.X.ToStringInvariant() + "," +
+                value.Y.ToStringInvariant() + "," +
+                value.Z.ToStringInvariant() + "};\n";
         }
 
         public string Visit(string propertyName, int? nullableValue)
@@ -85,9 +88,8 @@ namespace SQMReorderer.SqmExport
 
             var stringBuilder = new StringBuilder();
 
-            stringBuilder.Append("class ");
             stringBuilder.Append(propertyName);
-            stringBuilder.Append("\n{\n");
+            stringBuilder.Append("[]=\n{\n");
 
             for (int i = 0; i < stringItems.Count; i++)
             {

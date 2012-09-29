@@ -73,6 +73,14 @@
     <Compile Include="SqmExport\SqmElementExportVisitorTests.cs" />
     <Compile Include="SqmExport\SqmPropertyVisitor.cs" />
     <Compile Include="SqmExport\SqmPropertyVisitorTests.cs" />
+    <Compile Include="SqmParser\Parsers\IItemParser.cs" />
+    <Compile Include="SqmParser\Parsers\SensorParser.cs" />
+    <Compile Include="SqmParser\Parsers\SensorParserTests.cs" />
+    <Compile Include="SqmParser\ResultObjects\ItemBase.cs" />
+    <Compile Include="SqmParser\ResultObjects\Marker.cs" />
+    <Compile Include="SqmParser\Parsers\MarkerParser.cs" />
+    <Compile Include="SqmParser\Parsers\MarkerParserTests.cs" />
+    <Compile Include="SqmParser\ResultObjects\Sensor.cs" />
     <Compile Include="StringListComparer.cs" />
     <Compile Include="SqmParser\HelperFunctions\CommonRegexPatterns.cs" />
     <Compile Include="SqmParser\HelperFunctions\CommonRegexPatternsTests.cs" />
@@ -109,8 +117,8 @@
     <Compile Include="SqmParser\Parsers\MissionStateParser.cs" />
     <Compile Include="SqmParser\Parsers\MissionStateParserTests.cs" />
     <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctions.cs" />
-    <Compile Include="SqmParser\ResultObjects\Item.cs" />
-    <Compile Include="SqmParser\Parsers\ItemParser.cs" />
+    <Compile Include="SqmParser\ResultObjects\Vehicle.cs" />
+    <Compile Include="SqmParser\Parsers\VehicleParser.cs" />
     <Compile Include="SqmParser\Parsers\ItemParserTests.cs" />
     <Compile Include="SqmParser\Parsers\ItemListParser.cs" />
     <Compile Include="SqmParser\Parsers\ItemListParserTests.cs" />

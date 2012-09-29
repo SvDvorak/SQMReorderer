@@ -19,10 +19,10 @@ namespace SQMReorderer.SqmExport
             var intPropertyText = propertyVisitor.Visit("leader", 1);
             var doublePropertyText = propertyVisitor.Visit("skill", 0.60000002);
             var intListPropertyText = propertyVisitor.Visit("synchronizations", new List<int>() { 1, 2, 3 });
-            var stringListPropertyText = propertyVisitor.Visit("Effects", new List<string>() {"brown", "blur"});
+            var stringListPropertyText = propertyVisitor.Visit("addOns", new List<string>() {"brown", "blur"});
 
             const string correctStringListText = 
-                "class Effects\n" +
+                "addOns[]=\n" +
                 "{\n" +
                 "\"brown\",\n" +
                 "\"blur\"\n" +

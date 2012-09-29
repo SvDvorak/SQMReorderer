@@ -11,10 +11,10 @@ namespace SQMReorderer.SqmParser.Parsers
     public class MissionStateParser
     {
         private readonly IntelParser _intelParser = new IntelParser();
-        private readonly ItemListParser _groupsParser = new ItemListParser("Groups");
-        private readonly ItemListParser _vehiclesParser = new ItemListParser("Vehicles");
-        private readonly ItemListParser _markersParser = new ItemListParser("Markers");
-        private readonly ItemListParser _sensorsParser = new ItemListParser("Sensors");
+        private readonly ItemListParser<Vehicle> _groupsParser = new ItemListParser<Vehicle>(new VehicleParser(), "Groups");
+        private readonly ItemListParser<Vehicle> _vehiclesParser = new ItemListParser<Vehicle>(new VehicleParser(), "Vehicles");
+        private readonly ItemListParser<Marker> _markersParser = new ItemListParser<Marker>(new MarkerParser(), "Markers");
+        private readonly ItemListParser<Sensor> _sensorsParser = new ItemListParser<Sensor>(new SensorParser(), "Sensors");
 
         private readonly Regex _missionStateHeaderRegex;
 

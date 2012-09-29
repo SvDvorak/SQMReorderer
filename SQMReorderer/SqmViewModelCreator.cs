@@ -14,7 +14,7 @@ namespace SQMReorderer
             return new MissionViewModel(itemViewModels);
         }
 
-        private static ObservableCollection<ItemViewModel> CreateItemViewModels(List<Item> items)
+        private static ObservableCollection<ItemViewModel> CreateItemViewModels(List<Vehicle> items)
         {
             var itemViewModels = new ObservableCollection<ItemViewModel>();
 
@@ -26,7 +26,7 @@ namespace SQMReorderer
             foreach (var item in items)
             {
                 var itemViewModel = new ItemViewModel(item);
-                itemViewModel.Items = CreateItemViewModels(item.Items);
+                itemViewModel.Items = CreateItemViewModels(item.Vehicles);
 
                 itemViewModels.Add(itemViewModel);
             }

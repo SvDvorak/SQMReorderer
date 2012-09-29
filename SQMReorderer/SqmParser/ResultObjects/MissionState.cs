@@ -9,10 +9,10 @@ namespace SQMReorderer.SqmParser.ResultObjects
             AddOns = new List<string>();
             AddOnsAuto = new List<string>();
 
-            Groups = new List<Item>();
-            Vehicles = new List<Item>();
-            Markers = new List<Item>();
-            Sensors = new List<Item>();
+            Groups = new List<Vehicle>();
+            Vehicles = new List<Vehicle>();
+            Markers = new List<Marker>();
+            Sensors = new List<Sensor>();
         }
 
         public List<string> AddOns { get; set; }
@@ -22,9 +22,9 @@ namespace SQMReorderer.SqmParser.ResultObjects
 
         public Intel Intel { get; set; }
 
-        public List<Item> Groups { get; set; }
-        public List<Item> Vehicles { get; set; }
-        public List<Item> Markers { get; set; }
-        public List<Item> Sensors { get; set; }
+        public List<Vehicle> Groups { get; set; }
+        public List<Vehicle> Vehicles { get; set; }
+        public List<Marker> Markers { get; set; }
+        public List<Sensor> Sensors { get; set; }
     }
 }

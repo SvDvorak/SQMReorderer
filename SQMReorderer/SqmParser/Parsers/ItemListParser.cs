@@ -7,17 +7,19 @@ using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
-    public class ItemListParser
+    public class ItemListParser<ItemType>
     {
         private readonly Regex _classRegex = new Regex(@"class\s+(?<class>\w+)", RegexOptions.Compiled);
         private readonly Regex _itemCountRegex = new Regex(@"items\=(?<itemCount>\d+)", RegexOptions.Compiled);
 
+        private readonly IItemParser<ItemType> _itemParser;
         private readonly string _listTypeName;
 
         private int _itemCount;
 
-        public ItemListParser(string listTypeName)
+        public ItemListParser(IItemParser<ItemType> itemParser, string listTypeName)
         {
+            _itemParser = itemParser;
             _listTypeName = listTypeName;
         }
 
@@ -33,12 +35,11 @@ namespace SQMReorderer.SqmParser.Parsers
             return isCorrectListElement;
         }
 
-        public List<Item> ParseElementItems(SqmStream stream)
+        public List<ItemType> ParseElementItems(SqmStream stream)
         {
             _itemCount = 0;
 
-            var itemParser = new ItemParser();
-            var itemList = new List<Item>();
+            var itemList = new List<ItemType>();
 
             while(!stream.IsAtEndOfContext)
             {
@@ -47,10 +48,10 @@ namespace SQMReorderer.SqmParser.Parsers
                     stream.MatchCurrentLine(_itemCountRegex, SetItemCount);
                     stream.NextLineInContext();
                 }
-                else if (itemParser.IsItemElement(stream))
+                else if (_itemParser.IsItemElement(stream))
                 {
                     stream.StepIntoInnerContext();
-                    var item = itemParser.ParseItemElement(stream);
+                    var item = _itemParser.ParseItemElement(stream);
                     stream.StepIntoOuterContext();
 
                     itemList.Add(item);

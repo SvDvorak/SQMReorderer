@@ -6,11 +6,11 @@ namespace SQMReorderer.ViewModels
 {
     public class ItemViewModel
     {
-        private readonly Item _item;
+        private readonly Vehicle _vehicle;
 
-        public ItemViewModel(Item item)
+        public ItemViewModel(Vehicle vehicle)
         {
-            _item = item;
+            _vehicle = vehicle;
         }
 
         public ObservableCollection<ItemViewModel> Items { get; set; }
@@ -34,32 +34,32 @@ namespace SQMReorderer.ViewModels
 
         public string Side
         {
-            get { return _item.Side; }
-            set { _item.Side = value; }
+            get { return _vehicle.Side; }
+            set { _vehicle.Side = value; }
         }
 
         public string Vehicle
         {
-            get { return _item.Vehicle; }
-            set { _item.Vehicle = value; }
+            get { return _vehicle.VehicleName; }
+            set { _vehicle.VehicleName = value; }
         }
 
         public string Rank
         {
-            get { return _item.Rank; }
-            set { _item.Rank = value; }
+            get { return _vehicle.Rank; }
+            set { _vehicle.Rank = value; }
         }
 
         public string Text
         {
-            get { return _item.Text; }
-            set { _item.Text = value; }
+            get { return _vehicle.Text; }
+            set { _vehicle.Text = value; }
         }
 
         public string Description
         {
-            get { return _item.Description; }
-            set { _item.Description = value; }
+            get { return _vehicle.Description; }
+            set { _vehicle.Description = value; }
         }
     }
 }

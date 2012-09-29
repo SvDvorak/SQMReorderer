@@ -29,14 +29,6 @@ namespace SQMReorderer.SqmExport
         [Test]
         public void Expect_exporter_to_successfully_export_complete_simple_file()
         {
-            var parseResult = new ParseResult();
-
-            parseResult.Version = 11;
-            parseResult.Mission = new MissionState();
-            parseResult.Intro = new MissionState();
-            parseResult.OutroWin = new MissionState();
-            parseResult.OutroLose = new MissionState();
-
             var originalParseResultText = new StringBuilder();
 
             originalParseResultText.Append("version=11;\n");
@@ -53,91 +45,180 @@ namespace SQMReorderer.SqmExport
             originalParseResultText.Append("{\n");
             originalParseResultText.Append("};\n");
 
+            var parseResult = new ParseResult();
+
+            parseResult.Version = 11;
+            parseResult.Mission = new MissionState();
+            parseResult.Intro = new MissionState();
+            parseResult.OutroWin = new MissionState();
+            parseResult.OutroLose = new MissionState();
+
             var exportedParseResult = _exportVisitor.Visit("file", parseResult);
 
-            Assert.AreEqual(originalParseResultText, exportedParseResult);
+            Assert.AreEqual(originalParseResultText.ToString(), exportedParseResult);
         }
 
         [Test]
-        public void Expect_exporter_to_successfully_export_complete_simple_item()
+        public void Expect_exporter_to_successfully_export_complete_simple_mission()
         {
-            var originalItemText = new StringBuilder();
+            var originalMissionText = new StringBuilder();
 
-            originalItemText.Append("class Item3\n");
-            originalItemText.Append("{\n");
-            originalItemText.Append("azimut=3.14;\n");
-            originalItemText.Append("position[]={10,12,14};\n");
-            originalItemText.Append("id=4;\n");
-            originalItemText.Append("side=\"GUER\";\n");
-            originalItemText.Append("vehicle=\"TK_GUE_Soldier_2_EP1\";\n");
-            originalItemText.Append("player=\"PLAY CDG\";\n");
-            originalItemText.Append("leader=1;\n");
-            originalItemText.Append("rank=\"CORPORAL\";\n");
-            originalItemText.Append("skill=0.60000002;\n");
-            originalItemText.Append("text=\"UnitGUE_MTR1_AG\";\n");
-            originalItemText.Append("init=\"GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n");
-            originalItemText.Append("description=\"TK Local Mortar Team 1 Assistant Gunner\";\n");
-            originalItemText.Append("synchronizations[]={1,2,3};\n");
-            originalItemText.Append("name=\"mkrInsertion\";\n");
-            originalItemText.Append("markerType=\"RECTANGLE\";\n");
-            originalItemText.Append("type=\"EMPTY\";\n");
-            originalItemText.Append("fillName=\"FDiagonal\";\n");
-            originalItemText.Append("a=45;\n");
-            originalItemText.Append("b=55;\n");
-            originalItemText.Append("drawBorder=1;\n");
-            originalItemText.Append("angle=2.42;\n");
-            originalItemText.Append("activationBy=\"ANY\";\n");
-            originalItemText.Append("interruptable=1;\n");
-            originalItemText.Append("age=\"UNKNOWN\";\n");
-            originalItemText.Append("expCond=\"checkpoint3NrOfClearedDT == 7\";\n");
-            originalItemText.Append("expActiv=\"end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n");
-            originalItemText.Append("class Effects\n");
-            originalItemText.Append("{\n");
-            originalItemText.Append("\"blur\"\n");
-            originalItemText.Append("};\n");
-            originalItemText.Append("};\n");
+            originalMissionText.Append("class Mission\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("addOns[]=\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("\"cacharacters_e\",\n");
+            originalMissionText.Append("\"Takistan\"\n");
+            originalMissionText.Append("};\n");
+            originalMissionText.Append("addOnsAuto[]=\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("\"ca_modules_functions\",\n");
+            originalMissionText.Append("\"camisc3\"\n");
+            originalMissionText.Append("};\n");
+            originalMissionText.Append("randomSeed=4931020;\n");
+            originalMissionText.Append("class Intel\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("briefingName=\"missionBriefing\";\n");
+            originalMissionText.Append("};\n");
+            originalMissionText.Append("class Groups\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("items=1;\n");
+            originalMissionText.Append("class Item0\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("side=\"itemSide\";\n");
+            originalMissionText.Append("};\n");
+            originalMissionText.Append("};\n");
+            originalMissionText.Append("class Vehicles\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("items=1;\n");
+            originalMissionText.Append("class Item0\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("id=1;\n");
+            originalMissionText.Append("};\n");
+            originalMissionText.Append("};\n");
+            originalMissionText.Append("class Markers\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("items=1;\n");
+            originalMissionText.Append("class Item0\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("a=10;\n");
+            originalMissionText.Append("};\n");
+            originalMissionText.Append("};\n");
+            originalMissionText.Append("class Sensors\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("items=1;\n");
+            originalMissionText.Append("class Item0\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("b=10;\n");
+            originalMissionText.Append("};\n");
+            originalMissionText.Append("};\n");
+            originalMissionText.Append("};\n");
 
-            var item = new Item();
-            item.Number = 3;
-            item.Azimut = 3.14;
-            item.Position = new Vector(10, 12, 14);
-            item.Id = 4;
-            item.Side = "GUER";
-            item.Vehicle = "TK_GUE_Soldier_2_EP1";
-            item.Player = "PLAY CDG";
-            item.Leader = 1;
-            item.Rank = "CORPORAL";
-            item.Lock = "UNLOCKED";
-            item.Skill = 0.60000002;
-            item.Text = "UnitGUE_MTR1_AG";
-            item.Init = "GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";";
-            item.Description = "TK Local Mortar Team 1 Assistant Gunner";
-            item.Synchronizations = new List<int> { 1, 2, 3 };
+            var mission = new MissionState();
 
-            item.Name = "mkrInsertion";
-            item.MarkerType = "RECTANGLE";
-            item.Type = "EMPTY";
-            item.FillName = "FDiagonal";
-            item.A = 45;
-            item.B = 55;
-            item.DrawBorder = 1;
-            item.Angle = 2.42;
+            mission.AddOns = new List<string>() { "cacharacters_e", "Takistan" };
+            mission.AddOnsAuto = new List<string>() { "ca_modules_functions", "camisc3" };
+            mission.RandomSeed = 4931020;
+            mission.Intel = new Intel() { BriefingName = "missionBriefing" };
 
-            item.ActivationBy = "ANY";
-            item.Interruptable = 1;
-            item.Age = "UNKNOWN";
-            item.ExpCond = "checkpoint3NrOfClearedDT == 7";
-            item.ExpActiv = "end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";";
+            var missionGroupItem = new Vehicle() { Number = 0, Side = "itemSide" };
+            mission.Groups = new List<Vehicle>() { missionGroupItem };
 
-            item.Effects = new List<string>() { "blur" };
+            var missionVehicleItem = new Vehicle() { Number = 0, Id = 1 };
+            mission.Vehicles = new List<Vehicle>() { missionVehicleItem };
 
-            var exportedItem = _exportVisitor.Visit("Item" + item.Number, item);
+            var missionMarkerItem = new Marker() { A = 10 };
+            mission.Markers = new List<Marker>() { missionMarkerItem };
 
-            Assert.AreEqual(originalItemText.ToString(), exportedItem);
+            var missionSensorItem = new Sensor() { B = 10 };
+            mission.Sensors = new List<Sensor>() { missionSensorItem };
+
+            var exportedMission = _exportVisitor.Visit("Mission", mission);
+
+            Assert.AreEqual(originalMissionText.ToString(), exportedMission);
         }
-        
+
         [Test]
-        public void Expect_exporter_to_successfully_export_complex_item()
+        public void Expect_exporter_to_successfully_export_complete_intel()
+        {
+            var originalIntelText = new StringBuilder();
+
+            originalIntelText.Append("class Intel\n");
+            originalIntelText.Append("{\n");
+            originalIntelText.Append("briefingName=\"rootbeer\";\n");
+            originalIntelText.Append("briefingDescription=\"Square cup = beer\";\n");
+            originalIntelText.Append("startWeather=0.25;\n");
+            originalIntelText.Append("forecastWeather=0.25;\n");
+            originalIntelText.Append("year=2008;\n");
+            originalIntelText.Append("month=10;\n");
+            originalIntelText.Append("day=11;\n");
+            originalIntelText.Append("hour=8;\n");
+            originalIntelText.Append("minute=1;\n");
+            originalIntelText.Append("};\n");
+
+            var intel = new Intel();
+
+            intel.BriefingName = "rootbeer";
+            intel.BriefingDescription = "Square cup = beer";
+            intel.StartWeather = 0.25;
+            intel.ForecastWeather = 0.25;
+            intel.Year = 2008;
+            intel.Month = 10;
+            intel.Day = 11;
+            intel.Hour = 8;
+            intel.Minute = 1;
+
+            var exportedIntel = _exportVisitor.Visit("Intel", intel);
+
+            Assert.AreEqual(originalIntelText.ToString(), exportedIntel);
+        }
+
+        [Test]
+        public void Expect_exporter_to_successfully_export_complete_simple_vehicle()
+        {
+            var originalVehicleText = new StringBuilder();
+
+            originalVehicleText.Append("class Item3\n");
+            originalVehicleText.Append("{\n");
+            originalVehicleText.Append("position[]={10,12,14};\n");
+            originalVehicleText.Append("azimut=3.14;\n");
+            originalVehicleText.Append("id=4;\n");
+            originalVehicleText.Append("side=\"GUER\";\n");
+            originalVehicleText.Append("vehicle=\"TK_GUE_Soldier_2_EP1\";\n");
+            originalVehicleText.Append("player=\"PLAY CDG\";\n");
+            originalVehicleText.Append("leader=1;\n");
+            originalVehicleText.Append("rank=\"CORPORAL\";\n");
+            originalVehicleText.Append("skill=0.60000002;\n");
+            originalVehicleText.Append("text=\"UnitGUE_MTR1_AG\";\n");
+            originalVehicleText.Append("init=\"GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n");
+            originalVehicleText.Append("description=\"TK Local Mortar Team 1 Assistant Gunner\";\n");
+            originalVehicleText.Append("synchronizations[]={1,2,3};\n");
+            originalVehicleText.Append("};\n");
+
+            var vehicle = new Vehicle();
+            vehicle.Number = 3;
+            vehicle.Azimut = 3.14;
+            vehicle.Position = new Vector(10, 12, 14);
+            vehicle.Id = 4;
+            vehicle.Side = "GUER";
+            vehicle.VehicleName = "TK_GUE_Soldier_2_EP1";
+            vehicle.Player = "PLAY CDG";
+            vehicle.Leader = 1;
+            vehicle.Rank = "CORPORAL";
+            vehicle.Lock = "UNLOCKED";
+            vehicle.Skill = 0.60000002;
+            vehicle.Text = "UnitGUE_MTR1_AG";
+            vehicle.Init = "GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";";
+            vehicle.Description = "TK Local Mortar Team 1 Assistant Gunner";
+            vehicle.Synchronizations = new List<int> { 1, 2, 3 };
+
+            var exportedVehicle = _exportVisitor.Visit("Item" + vehicle.Number, vehicle);
+
+            Assert.AreEqual(originalVehicleText.ToString(), exportedVehicle);
+        }
+
+        [Test]
+        public void Expect_exporter_to_successfully_export_complex_vehicle()
         {
             var originalItemsText = new StringBuilder();
             originalItemsText.Append("class Item3\n");
@@ -159,25 +240,105 @@ namespace SQMReorderer.SqmExport
 
             var exportVisitor = new SqmElementExportVisitor();
 
-            var item1 = new Item();
+            var item1 = new Vehicle();
             item1.Number = 3;
             item1.Id = 4;
 
-            var item1_1 = new Item();
+            var item1_1 = new Vehicle();
             item1_1.Number = 4;
             item1_1.Id = 5;
-            var item1_2 = new Item();
+            var item1_2 = new Vehicle();
             item1_2.Number = 5;
             item1_2.Id = 6;
 
-            item1.Items.Add(item1_1);
-            item1.Items.Add(item1_2);
+            item1.Vehicles.Add(item1_1);
+            item1.Vehicles.Add(item1_2);
 
             var exportedItem = exportVisitor.Visit("Item" + item1.Number, item1);
 
             var originalItemsString = originalItemsText.ToString();
 
             Assert.AreEqual(originalItemsString, exportedItem);
+        }
+
+        [Test]
+        public void Expect_exporter_to_successfully_export_complete_marker()
+        {
+            var originalMarkerText = new StringBuilder();
+
+            originalMarkerText.Append("class Item4\n");
+            originalMarkerText.Append("{\n");
+            originalMarkerText.Append("position[]={10,12,14};\n");
+            originalMarkerText.Append("name=\"mkrInsertion\";\n");
+            originalMarkerText.Append("text=\"INSERTION\";\n");
+            originalMarkerText.Append("markerType=\"RECTANGLE\";\n");
+            originalMarkerText.Append("type=\"EMPTY\";\n");
+            originalMarkerText.Append("fillName=\"FDiagonal\";\n");
+            originalMarkerText.Append("a=45;\n");
+            originalMarkerText.Append("b=55;\n");
+            originalMarkerText.Append("drawBorder=1;\n");
+            originalMarkerText.Append("angle=2.42;\n");
+            originalMarkerText.Append("};\n");
+
+            var marker = new Marker();
+
+            marker.Number = 4;
+            marker.Position = new Vector(10, 12, 14);
+            marker.Text = "INSERTION";
+            marker.Name = "mkrInsertion";
+            marker.MarkerType = "RECTANGLE";
+            marker.Type = "EMPTY";
+            marker.FillName = "FDiagonal";
+            marker.A = 45;
+            marker.B = 55;
+            marker.DrawBorder = 1;
+            marker.Angle = 2.42;
+
+            var exportedMarker = _exportVisitor.Visit("Item" + marker.Number, marker);
+
+            Assert.AreEqual(originalMarkerText.ToString(), exportedMarker);
+        }
+
+        [Test]
+        public void Expect_exporter_to_successfully_export_complete_sensor()
+        {
+            var originalSensorText = new StringBuilder();
+
+            originalSensorText.Append("class Item5\n");
+            originalSensorText.Append("{\n");
+            originalSensorText.Append("position[]={10,12,14};\n");
+            originalSensorText.Append("a=45;\n");
+            originalSensorText.Append("b=55;\n");
+            originalSensorText.Append("activationBy=\"ANY\";\n");
+            originalSensorText.Append("interruptable=1;\n");
+            originalSensorText.Append("type=\"EMPTY\";\n");
+            originalSensorText.Append("age=\"UNKNOWN\";\n");
+            originalSensorText.Append("expCond=\"checkpoint3NrOfClearedDT == 7\";\n");
+            originalSensorText.Append("expActiv=\"end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n");
+            originalSensorText.Append("};\n");
+            //originalItemText.Append("class Effects\n");
+            //originalItemText.Append("{\n");
+            //originalItemText.Append("\"blur\"\n");
+            //originalItemText.Append("};\n");
+
+            var sensor = new Sensor();
+
+            sensor.Number = 5;
+            sensor.Position = new Vector(10, 12, 14);
+            sensor.Type = "EMPTY";
+            sensor.A = 45;
+            sensor.B = 55;
+            sensor.ActivationBy = "ANY";
+            sensor.Interruptable = 1;
+            sensor.Age = "UNKNOWN";
+            sensor.ExpCond = "checkpoint3NrOfClearedDT == 7";
+            sensor.ExpActiv = "end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";";
+
+            //item.Effects = new List<string>() { "blur" };
+
+            var exportedSensor = _exportVisitor.Visit("Item" + sensor.Number, sensor);
+
+            Assert.AreEqual(originalSensorText.ToString(), exportedSensor);
         }
     }
 }

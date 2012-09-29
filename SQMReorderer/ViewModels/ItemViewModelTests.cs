@@ -13,15 +13,15 @@ namespace SQMReorderer.ViewModels
         [Test]
         public void Expect_working_item_viewmodel_value_properties()
         {
-            var item = new Item();
+            var vehicle = new Vehicle();
 
-            item.Side = "SIDE";
-            item.Vehicle = "VEHICLE";
-            item.Rank = "RANK";
-            item.Text = "TEXT";
-            item.Description = "DESC";
+            vehicle.Side = "SIDE";
+            vehicle.VehicleName = "VEHICLE";
+            vehicle.Rank = "RANK";
+            vehicle.Text = "TEXT";
+            vehicle.Description = "DESC";
 
-            var itemViewModel = new ItemViewModel(item);
+            var itemViewModel = new ItemViewModel(vehicle);
 
             Assert.AreEqual("SIDE", itemViewModel.Side);
             Assert.AreEqual("VEHICLE", itemViewModel.Vehicle);

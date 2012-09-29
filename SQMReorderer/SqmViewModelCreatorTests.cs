@@ -15,7 +15,7 @@ namespace SQMReorderer
         {
             var mission = new MissionState();
 
-            var item = new Item();
+            var item = new Vehicle();
             item.Text = "TEXT";
 
             mission.Groups.Add(item);
@@ -30,16 +30,16 @@ namespace SQMReorderer
         {
             var mission = new MissionState();
 
-            var topItem = new Item();
-            var subItem1 = new Item();
-            var subItem2 = new Item();
-            var subSubItem = new Item();
+            var topItem = new Vehicle();
+            var subItem1 = new Vehicle();
+            var subItem2 = new Vehicle();
+            var subSubItem = new Vehicle();
 
             subSubItem.Text = "TEXT";
 
-            topItem.Items.Add(subItem1);
-            topItem.Items.Add(subItem2);
-            subItem2.Items.Add(subSubItem);
+            topItem.Vehicles.Add(subItem1);
+            topItem.Vehicles.Add(subItem2);
+            subItem2.Vehicles.Add(subSubItem);
             mission.Groups.Add(topItem);
 
             MissionViewModel missionViewModel = _viewModelCreator.CreateMissionViewModel(mission);

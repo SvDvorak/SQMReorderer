@@ -7,6 +7,7 @@ namespace SQMReorderer.SqmExport
     {
         string Visit(string elementName, ParseResult parseResult);
         string Visit(string elementName, MissionState mission);
-        string Visit(string elementName, Item item);
+        string Visit(string elementName, Vehicle vehicle);
+        string Visit(string elementName, Intel intel);
     }
 }

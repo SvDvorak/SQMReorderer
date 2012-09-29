@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
     [TestFixture]
     public class ItemListParserTests
     {
-        private ItemListParser _itemListParser;
+        private ItemListParser<Vehicle> _itemListParser;
 
         [SetUp]
         public void Setup()
         {
-            _itemListParser = new ItemListParser("Vehicles");
+            _itemListParser = new ItemListParser<Vehicle>(new VehicleParser(), "Vehicles");
         }
 
         [Test]

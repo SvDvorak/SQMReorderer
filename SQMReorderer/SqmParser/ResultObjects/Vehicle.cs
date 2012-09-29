@@ -1,23 +1,20 @@
 using System.Collections.Generic;
-using SQMReorderer.SqmParser.Parsers;
 
 namespace SQMReorderer.SqmParser.ResultObjects
 {
-    public class Item
+    public class Vehicle : ItemBase
     {
-        public Item()
+        public Vehicle()
         {
             Synchronizations = new List<int>();
-            Items = new List<Item>();
+            Vehicles = new List<Vehicle>();
         }
-
-        public int Number { get; set; }
 
         public double? Azimut { get; set; }
         public Vector Position { get; set; }
         public int? Id { get; set; }
         public string Side { get; set; }
-        public string Vehicle { get; set; }
+        public string VehicleName { get; set; }
         public string Player { get; set; }
         public int? Leader { get; set; }
         public string Rank { get; set; }
@@ -43,8 +40,8 @@ namespace SQMReorderer.SqmParser.ResultObjects
         public string ExpCond { get; set; }
         public string ExpActiv { get; set; }
 
-        public List<string> Effects { get; set; }
+        //public List<string> Effects { get; set; }
 
-        public List<Item> Items { get; set; }
+        public List<Vehicle> Vehicles { get; set; }
     }
 }

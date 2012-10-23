@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using SQMReorderer.SqmParser.Context;
 using SQMReorderer.SqmParser.PropertySetters;
 using SQMReorderer.SqmParser.ResultObjects;
 
@@ -26,22 +27,22 @@ namespace SQMReorderer.SqmParser.Parsers
             _propertyRegexes.Add(new IntegerPropertySetter("minute", x => _intel.Minute = x));
         }
 
-        public bool IsIntelElement(SqmStream stream)
+        public bool IsIntelElement(SqmContext context)
         {
-            return stream.IsCurrentLineMatch(_intelRegex);
+            return context.IsHeaderMatch(_intelRegex);
         }
 
-        public Intel ParseIntel(SqmStream stream)
+        public Intel ParseIntel(SqmContext context)
         {
             _intel = new Intel();
 
-            while(!stream.IsAtEndOfContext)
+            foreach(var line in context.Lines)
             {
                 Result matchResult = Result.Failure;
 
                 foreach (var propertySetter in _propertyRegexes)
                 {
-                    matchResult = propertySetter.SetPropertyIfMatch(stream);
+                    matchResult = propertySetter.SetPropertyIfMatch(line);
 
                     if (matchResult == Result.Success)
                     {
@@ -51,10 +52,8 @@ namespace SQMReorderer.SqmParser.Parsers
 
                 if (matchResult == Result.Failure)
                 {
-                    throw new SqmParseException("Unknown property: " + stream.CurrentLine);
+                    throw new SqmParseException("Unknown property: " + line);
                 }
-
-                stream.NextLineInContext();
             }
 
             return _intel;

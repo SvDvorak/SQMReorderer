@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
@@ -56,25 +57,28 @@ namespace SQMReorderer.SqmParser.Parsers
 			    "};"
             };
 
-        private SqmStream _completeSimpleGroupItemStream;
-        private SqmStream _completeComplexGroupItemStream;
+        private SqmContextCreator _contextCreator;
 
+        private SqmContext _completeSimpleGroupItemContext;
+        private SqmContext _completeComplexGroupItemContext;
 
         [SetUp]
         public void Setup()
         {
             _parser = new VehicleParser();
 
-            _completeSimpleGroupItemStream = new SqmStream(completeSimpleGroupItemText);
-            _completeComplexGroupItemStream = new SqmStream(completeComplexGroupItemText);
+            _contextCreator = new SqmContextCreator();
+
+            _completeSimpleGroupItemContext = _contextCreator.CreateContext(completeSimpleGroupItemText);
+            _completeComplexGroupItemContext = _contextCreator.CreateContext(completeComplexGroupItemText);
         }
 
         [Test]
         public void Expect_is_item_to_return_true_on_correct_item_element_syntax()
         {
-            var stream = new SqmStream(new List<string> { "class Item0" });
+            var context = _contextCreator.CreateContext(new List<string> {"class Item0", "{\n", "};\n"});
 
-            var isItemElement = _parser.IsItemElement(stream);
+            var isItemElement = _parser.IsItemContext(context);
 
             Assert.IsTrue(isItemElement);
         }
@@ -82,9 +86,9 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_is_item_to_return_false_on_incorrect_item_element_syntax()
         {
-            var stream = new SqmStream(new List<string> { "class Markers" });
+            var context = _contextCreator.CreateContext(new List<string>() {"class Markers", "{\n", "};\n"});
 
-            var isItemElement = _parser.IsItemElement(stream);
+            var isItemElement = _parser.IsItemContext(context);
 
             Assert.IsFalse(isItemElement);
         }
@@ -92,9 +96,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_parser_to_parse_all_group_item_properties()
         {
-            _completeSimpleGroupItemStream.StepIntoInnerContext();
-
-            var itemResult = _parser.ParseItemElement(_completeSimpleGroupItemStream);
+            var itemResult = _parser.ParseItemContext(_completeSimpleGroupItemContext);
 
             Assert.AreEqual(5, itemResult.Number);
             Assert.AreEqual(5533.8467, itemResult.Position.X);
@@ -127,9 +129,9 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};"
                 };
 
-            var stream = new SqmStream(inputText);
+            var context = _contextCreator.CreateContext(inputText);
 
-            Assert.Throws<SqmParseException>(() => _parser.ParseItemElement(stream));
+            Assert.Throws<SqmParseException>(() => _parser.ParseItemContext(context));
         }
 
         [Test]
@@ -151,11 +153,9 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};"
                 };
 
-            var stream = new SqmStream(inputText);
+            var context = _contextCreator.CreateContext(inputText);
 
-            stream.StepIntoInnerContext();
-
-            var itemResult = _parser.ParseItemElement(stream);
+            var itemResult = _parser.ParseItemContext(context);
 
             Assert.AreEqual("SomeText", itemResult.Vehicles[0].Text);
         }
@@ -163,9 +163,7 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_parser_to_parse_complex_item_with_sub_items()
         {
-            _completeComplexGroupItemStream.StepIntoInnerContext();
-
-            var itemResult = _parser.ParseItemElement(_completeComplexGroupItemStream);
+            var itemResult = _parser.ParseItemContext(_completeComplexGroupItemContext);
 
             Assert.AreEqual(4, itemResult.Vehicles.Count);
             Assert.AreEqual("UnitUS_Bravo_FTL", itemResult.Vehicles[0].Text);

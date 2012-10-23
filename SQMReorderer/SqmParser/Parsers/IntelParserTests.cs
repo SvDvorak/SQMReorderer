@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
@@ -7,19 +8,22 @@ namespace SQMReorderer.SqmParser.Parsers
     public class IntelParserTests
     {
         private IntelParser _parser;
+        private SqmContextCreator _contextCreator;
 
         [SetUp]
         public void Setup()
         {
             _parser = new IntelParser();
+
+            _contextCreator = new SqmContextCreator();
         }
 
         [Test]
         public void Expect_is_intel_to_return_true_on_correct_intel_element_syntax()
         {
-            var stream = new SqmStream(new List<string> { "class Intel" });
+            var context = _contextCreator.CreateContext(new List<string> {"class Intel\n", "{\n", "};\n"});
 
-            var isItemElement = _parser.IsIntelElement(stream);
+            var isItemElement = _parser.IsIntelElement(context);
 
             Assert.IsTrue(isItemElement);
         }
@@ -27,9 +31,9 @@ namespace SQMReorderer.SqmParser.Parsers
         [Test]
         public void Expect_is_intel_to_return_false_on_incorrect_intel_element_syntax()
         {
-            var stream = new SqmStream(new List<string> { "class Markers" });
+            var context = _contextCreator.CreateContext(new List<string> { "class Markers", "{\n", "};\n" });
 
-            var isItemElement = _parser.IsIntelElement(stream);
+            var isItemElement = _parser.IsIntelElement(context);
 
             Assert.IsFalse(isItemElement);
         }
@@ -53,10 +57,9 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};\n",
                 };
 
-            var stream = new SqmStream(inputText);
-            stream.StepIntoInnerContext();
+            var context = _contextCreator.CreateContext(inputText);
 
-            var intelResult = _parser.ParseIntel(stream);
+            var intelResult = _parser.ParseIntel(context);
 
             Assert.AreEqual("[co04]local_hostility_v2_oa", intelResult.BriefingName);
             Assert.AreEqual("Destroy stolen ammocrates and truck", intelResult.BriefingDescription);
@@ -80,10 +83,9 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};"
                 };
 
-            var stream = new SqmStream(inputText);
-            stream.StepIntoInnerContext();
+            var context = _contextCreator.CreateContext(inputText);
 
-            Assert.Throws<SqmParseException>(() => _parser.ParseIntel(stream));
+            Assert.Throws<SqmParseException>(() => _parser.ParseIntel(context));
         }
     }
 }

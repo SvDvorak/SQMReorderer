@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using SQMReorderer.SqmParser.Context;
 using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer.SqmParser.Parsers
@@ -11,6 +12,14 @@ namespace SQMReorderer.SqmParser.Parsers
     public class MissionStateParserTests
     {
         private readonly MissionStateParser _missionStateParser = new MissionStateParser("Mission");
+
+        private SqmContextCreator _contextCreator;
+
+        [SetUp]
+        public void Setup()
+        {
+            _contextCreator = new SqmContextCreator();
+        }
 
         [Test]
         public void Expect_empty_mission_to_return_empty_result()
@@ -22,10 +31,9 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};\n"
                 };
 
-            var stream = new SqmStream(inputText);
-            stream.StepIntoInnerContext();
+            var context = _contextCreator.CreateContext(inputText);
 
-            var missionState = _missionStateParser.ParseMissionState(stream);
+            var missionState = _missionStateParser.ParseMissionState(context);
 
             Assert.AreEqual(0, missionState.Groups.Count);
         }
@@ -43,10 +51,9 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};\n"
                 };
 
-            var stream = new SqmStream(inputText);
-            stream.StepIntoInnerContext();
+            var context = _contextCreator.CreateContext(inputText);
 
-            var missionState = _missionStateParser.ParseMissionState(stream);
+            var missionState = _missionStateParser.ParseMissionState(context);
 
             Assert.IsNotNull(missionState.Intel);
         }
@@ -69,10 +76,9 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};\n"
                 };
 
-            var stream = new SqmStream(inputText);
-            stream.StepIntoInnerContext();
+            var context = _contextCreator.CreateContext(inputText);
 
-            var missionState = _missionStateParser.ParseMissionState(stream);
+            var missionState = _missionStateParser.ParseMissionState(context);
 
             Assert.AreEqual(1, missionState.Groups.Count);
         }
@@ -100,10 +106,9 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};\n"
                 };
 
-            var stream = new SqmStream(inputText);
-            stream.StepIntoInnerContext();
+            var context = _contextCreator.CreateContext(inputText);
 
-            var missionState = _missionStateParser.ParseMissionState(stream);
+            var missionState = _missionStateParser.ParseMissionState(context);
 
             Assert.AreEqual(1, missionState.Groups.Count);
         }
@@ -134,10 +139,9 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};\n"
                 };
 
-            var stream = new SqmStream(inputText);
-            stream.StepIntoInnerContext();
+            var context = _contextCreator.CreateContext(inputText);
 
-            var missionState = _missionStateParser.ParseMissionState(stream);
+            var missionState = _missionStateParser.ParseMissionState(context);
 
             Assert.AreEqual(3, missionState.Vehicles.Count);
 
@@ -172,10 +176,9 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};\n"
                 };
 
-            var stream = new SqmStream(inputText);
-            stream.StepIntoInnerContext();
+            var context = _contextCreator.CreateContext(inputText);
 
-            var missionState = _missionStateParser.ParseMissionState(stream);
+            var missionState = _missionStateParser.ParseMissionState(context);
 
             Assert.AreEqual(3, missionState.Markers.Count);
 
@@ -206,10 +209,9 @@ namespace SQMReorderer.SqmParser.Parsers
                     "};\n"
                 };
 
-            var stream = new SqmStream(inputText);
-            stream.StepIntoInnerContext();
+            var context = _contextCreator.CreateContext(inputText);
 
-            var missionState = _missionStateParser.ParseMissionState(stream);
+            var missionState = _missionStateParser.ParseMissionState(context);
 
             Assert.AreEqual(2, missionState.Sensors.Count);
 
@@ -242,10 +244,9 @@ namespace SQMReorderer.SqmParser.Parsers
                     "}\n"
                 };
 
-            var stream = new SqmStream(inputText);
-            stream.StepIntoInnerContext();
+            var context = _contextCreator.CreateContext(inputText);
 
-            var missionState = _missionStateParser.ParseMissionState(stream);
+            var missionState = _missionStateParser.ParseMissionState(context);
 
             Assert.AreEqual(5, missionState.AddOns.Count);
             Assert.AreEqual(3, missionState.AddOnsAuto.Count);

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser.PropertySetters
 {
@@ -18,9 +19,9 @@ namespace SQMReorderer.SqmParser.PropertySetters
         [Test]
         public void Expect_property_setter_to_set_property_on_match()
         {
-            var inputText = new List<string>() { @"camelot=""bravesirrobin""" };
+            var inputText = "camelot=\"bravesirrobin\"";
 
-            var matchResult = _stringPropertySetter.SetPropertyIfMatch(new SqmStream(inputText));
+            var matchResult = _stringPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Success, matchResult);
             Assert.AreEqual("bravesirrobin", _value);
@@ -29,9 +30,9 @@ namespace SQMReorderer.SqmParser.PropertySetters
         [Test]
         public void Expect_to_not_set_property_and_return_failure_on_incorrect_property()
         {
-            var inputText = new List<string>() { @"model=32.42" };
+            var inputText = "model=32.42";
 
-            var matchResult = _stringPropertySetter.SetPropertyIfMatch(new SqmStream(inputText));
+            var matchResult = _stringPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Failure, matchResult);
             Assert.AreNotEqual(32.42, _value);
@@ -40,9 +41,9 @@ namespace SQMReorderer.SqmParser.PropertySetters
         [Test]
         public void Expect_to_not_set_property_and_return_failure_on_incorrect_value()
         {
-            var inputText = new List<string>() { @"camelot=itsonlyamodel" };
+            var inputText = "camelot=itsonlyamodel";
 
-            var matchResult = _stringPropertySetter.SetPropertyIfMatch(new SqmStream(inputText));
+            var matchResult = _stringPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Failure, matchResult);
             Assert.AreNotEqual("itsonlyamodel", _value);

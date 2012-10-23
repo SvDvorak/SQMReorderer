@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser.PropertySetters
 {
@@ -11,9 +12,9 @@ namespace SQMReorderer.SqmParser.PropertySetters
             _propertyRegex = new Regex(propertyPattern);
         }
 
-        public Result SetPropertyIfMatch(SqmStream stream)
+        public Result SetPropertyIfMatch(SqmLine line)
         {
-            return stream.MatchCurrentLine(_propertyRegex, SetPropertyValue);
+            return line.Match(_propertyRegex, SetPropertyValue);
         }
 
         private void SetPropertyValue(Match match)

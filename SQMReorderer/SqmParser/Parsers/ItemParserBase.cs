@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using SQMReorderer.SqmParser.Context;
 using SQMReorderer.SqmParser.HelperFunctions;
 using SQMReorderer.SqmParser.PropertySetters;
 using SQMReorderer.SqmParser.ResultObjects;
@@ -22,51 +23,59 @@ namespace SQMReorderer.SqmParser.Parsers
             PropertySetters = new List<PropertySetterBase>();
         }
 
-        public bool IsItemElement(SqmStream stream)
+        public bool IsItemContext(SqmContext context)
         {
-            return stream.IsCurrentLineMatch(_itemNumberRegex);
+            return context.IsHeaderMatch(_itemNumberRegex);
         }
 
-        public TItemType ParseItemElement(SqmStream stream)
+        public TItemType ParseItemContext(SqmContext context)
         {
             Item = new TItemType();
 
-            stream.MatchHeader(_itemNumberRegex, SetItemNumber);
+            SetItemNumber(context.Header);
 
-            while (!stream.IsAtEndOfContext)
+            foreach (var subContext in context.SubContexts)
             {
-                CustomParseElement(stream);
+                var parseResult = CustomParseContext(subContext);
 
-                Result matchResult = Result.Failure;
+                if (parseResult == Result.Failure)
+                {
+                    throw new SqmParseException("Unknown context: " + subContext.Header);
+                }
+            }
+
+            foreach (var line in context.Lines)
+            {
+                var parseResult = new Result();
+
                 foreach (var propertySetter in PropertySetters)
                 {
-                    matchResult = propertySetter.SetPropertyIfMatch(stream);
+                    parseResult = propertySetter.SetPropertyIfMatch(line);
 
-                    if (matchResult == Result.Success)
+                    if (parseResult == Result.Success)
                     {
                         break;
                     }
                 }
 
-                if (matchResult == Result.Failure)
+                if (parseResult == Result.Failure)
                 {
-                    throw new SqmParseException("Unknown property: " + stream.CurrentLine);
+                    throw new SqmParseException("Unknown property: " + line);
                 }
-
-                stream.NextLineInContext();
             }
 
             return Item;
         }
 
-        protected virtual Result CustomParseElement(SqmStream stream)
+        protected virtual Result CustomParseContext(SqmContext context)
         {
             return Result.Failure;
         }
 
-        private void SetItemNumber(Match match)
+        private void SetItemNumber(string itemHeader)
         {
-            var numberGroup = match.Groups["number"];
+            var itemNumberMatch = _itemNumberRegex.Match(itemHeader);
+            var numberGroup = itemNumberMatch.Groups["number"];
             Item.Number = Convert.ToInt32(numberGroup.Value);
         }
     }

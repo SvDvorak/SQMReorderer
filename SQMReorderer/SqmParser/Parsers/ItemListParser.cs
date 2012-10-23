@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
@@ -20,11 +21,11 @@ namespace SQMReorderer.SqmParser.Parsers
             _listTypeName = listTypeName;
         }
 
-        public bool IsListElement(SqmStream stream)
+        public bool IsListElement(SqmContext context)
         {
             bool isCorrectListElement = false;
 
-            stream.MatchCurrentLine(_classRegex, match =>
+            context.MatchHeader(_classRegex, match =>
                 {
                     isCorrectListElement = match.Groups["class"].Value == _listTypeName;
                 });
@@ -32,28 +33,28 @@ namespace SQMReorderer.SqmParser.Parsers
             return isCorrectListElement;
         }
 
-        public List<TItemType> ParseElementItems(SqmStream stream)
+        public List<TItemType> ParseElementItems(SqmContext context)
         {
             _itemCount = 0;
 
             var itemList = new List<TItemType>();
 
-            while(!stream.IsAtEndOfContext)
+            foreach (var line in context.Lines)
             {
-                if(stream.IsCurrentLineMatch(_itemCountRegex))
+                if (line.IsMatch(_itemCountRegex))
                 {
-                    stream.MatchCurrentLine(_itemCountRegex, SetItemCount);
+                    line.Match(_itemCountRegex, SetItemCount);
                 }
-                else if (_itemParser.IsItemElement(stream))
+            }
+
+            foreach (var subContext in context.SubContexts)
+            {
+                if (_itemParser.IsItemContext(subContext))
                 {
-                    stream.StepIntoInnerContext();
-                    var item = _itemParser.ParseItemElement(stream);
-                    stream.StepIntoOuterContext();
+                    var item = _itemParser.ParseItemContext(subContext);
 
                     itemList.Add(item);
                 }
-
-                stream.NextLineInContext();
             }
 
             if (_itemCount != itemList.Count)

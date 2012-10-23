@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
@@ -25,22 +26,22 @@ namespace SQMReorderer.SqmParser.Parsers
                 "};\n"
             };
 
-        private SqmStream _completeSimpleMarkerStream;
+        private SqmContext _completeSimpleMarkerContext;
 
         [SetUp]
         public void Setup()
         {
             _parser = new MarkerParser();
 
-            _completeSimpleMarkerStream = new SqmStream(completeSimpleMarkerItemText);
+            var contextCreator = new SqmContextCreator();
+
+            _completeSimpleMarkerContext = contextCreator.CreateContext(completeSimpleMarkerItemText);
         }
 
         [Test]
         public void Expect_parser_to_parse_all_marker_item_properties()
         {
-            _completeSimpleMarkerStream.StepIntoInnerContext();
-
-            var markerResult = _parser.ParseItemElement(_completeSimpleMarkerStream);
+            var markerResult = _parser.ParseItemContext(_completeSimpleMarkerContext);
 
             Assert.AreEqual(0, markerResult.Number);
             Assert.AreEqual(414, markerResult.Position.X);

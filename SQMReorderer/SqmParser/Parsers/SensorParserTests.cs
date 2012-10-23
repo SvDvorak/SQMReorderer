@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
@@ -30,22 +31,22 @@ namespace SQMReorderer.SqmParser.Parsers
                 "};"
             };
 
-        private SqmStream _completeSimpleSensorItemStream;
+        private SqmContext _completeSimpleSensorItemContext;
 
         [SetUp]
         public void Setup()
         {
             _parser = new SensorParser();
 
-            _completeSimpleSensorItemStream = new SqmStream(completeSimpleSensorItemText);
+            var contextCreator = new SqmContextCreator();
+
+            _completeSimpleSensorItemContext = contextCreator.CreateContext(completeSimpleSensorItemText);
         }
 
         [Test]
         public void Expect_parser_to_parse_all_sensor_item_properties()
         {
-            _completeSimpleSensorItemStream.StepIntoInnerContext();
-
-            var sensorResult = _parser.ParseItemElement(_completeSimpleSensorItemStream);
+            var sensorResult = _parser.ParseItemContext(_completeSimpleSensorItemContext);
 
             Assert.AreEqual(0, sensorResult.Number);
             Assert.AreEqual(414, sensorResult.Position.X);

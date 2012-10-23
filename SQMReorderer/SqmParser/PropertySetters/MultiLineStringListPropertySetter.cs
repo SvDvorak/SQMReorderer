@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
+using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser.PropertySetters
 {
-    class MultiLineStringListPropertySetter
+    public class MultiLineStringListPropertySetter
     {
         private readonly Regex _propertyNameRegex;
         private readonly Regex _listStringRegex;
@@ -21,25 +20,20 @@ namespace SQMReorderer.SqmParser.PropertySetters
             _propertySetter = propertySetter;
         }
 
-        public Result SetPropertyIfMatch(SqmStream stream)
+        public Result SetPropertyIfMatch(SqmContext context)
         {
-            var isCurrentLineCorrectProperty = stream.IsCurrentLineMatch(_propertyNameRegex);
+            var isHeaderCorrectName = context.IsHeaderMatch(_propertyNameRegex);
 
-            if(isCurrentLineCorrectProperty)
+            if(isHeaderCorrectName)
             {
                 var propertyStrings = new List<string>();
 
-                stream.StepIntoInnerContext();
-
-                while (!stream.IsAtEndOfContext)
+                foreach (var line in context.Lines)
                 {
-                    stream.MatchCurrentLine(_listStringRegex, x => propertyStrings.Add(x.Value));
-                    stream.NextLineInContext();
+                    line.Match(_listStringRegex, x => propertyStrings.Add(x.Value));
                 }
 
                 _propertySetter(propertyStrings);
-
-                stream.StepIntoOuterContext();
 
                 return Result.Success;
             }

@@ -4,19 +4,19 @@ namespace SQMReorderer.SqmParser.HelperFunctions
 {
     public class ParsingHelperFunctions
     {
-        private readonly Regex startBracketRegex = new Regex(@"\{", RegexOptions.Compiled);
-        private readonly Regex endBracketRegex = new Regex(@"\}", RegexOptions.Compiled);
+        private readonly Regex _startBracketRegex = new Regex(@"^\s*\{\s*$", RegexOptions.Compiled);
+        private readonly Regex _endBracketRegex = new Regex(@"^\s*\};\s*$", RegexOptions.Compiled);
 
-        public bool IsLineStartBracket(string line)
+        public bool IsLineStartOfContext(string line)
         {
-            var startBracketMatch = startBracketRegex.Match(line);
+            var startBracketMatch = _startBracketRegex.Match(line);
 
             return startBracketMatch.Success;
         }
 
-        public bool IsLineEndBracket(string line)
+        public bool IsLineEndOfContext(string line)
         {
-            var endBracketMatch = endBracketRegex.Match(line);
+            var endBracketMatch = _endBracketRegex.Match(line);
 
             return endBracketMatch.Success;
         }

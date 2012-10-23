@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser
 {
@@ -25,9 +26,10 @@ namespace SQMReorderer.SqmParser
                     "};\n"
                 };
 
-            var sqmParseResult = _parser.Parse(new SqmStream(inputText));
+            var contextCreator = new SqmContextCreator();
+            var parseResult = _parser.Parse(contextCreator.CreateRootContext(inputText));
 
-            Assert.AreEqual(11, sqmParseResult.Version);
+            Assert.AreEqual(11, parseResult.Version);
         }
 
         [Test]
@@ -35,15 +37,15 @@ namespace SQMReorderer.SqmParser
         {
             var inputText = new List<string>
                 {
-                    "version=11;\n",
                     "class Mission\n",
                     "{\n",
                     "};\n"
                 };
 
-            var sqmParseResult = _parser.Parse(new SqmStream(inputText));
+            var contextCreator = new SqmContextCreator();
+            var parseResult = _parser.Parse(contextCreator.CreateRootContext(inputText));
 
-            Assert.IsNotNull(sqmParseResult.Mission);
+            Assert.IsNotNull(parseResult.Mission);
         }
 
         [Test]
@@ -61,7 +63,8 @@ namespace SQMReorderer.SqmParser
                     "};\n"
                 };
 
-            var parseResult = _parser.Parse(new SqmStream(inputText));
+            var contextCreator = new SqmContextCreator();
+            var parseResult = _parser.Parse(contextCreator.CreateRootContext(inputText));
 
             Assert.IsNotNull(parseResult.Intro);
             Assert.AreEqual(2008, parseResult.Intro.Intel.Year);
@@ -90,7 +93,8 @@ namespace SQMReorderer.SqmParser
                     "};\n"
                 };
 
-            var parseResult = _parser.Parse(new SqmStream(inputText));
+            var contextCreator = new SqmContextCreator();
+            var parseResult = _parser.Parse(contextCreator.CreateRootContext(inputText));
 
             Assert.IsNotNull(parseResult.OutroWin);
             Assert.AreEqual(2008, parseResult.OutroWin.Intel.Year);

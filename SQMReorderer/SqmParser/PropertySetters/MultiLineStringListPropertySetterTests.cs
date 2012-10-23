@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser.PropertySetters
 {
@@ -10,11 +11,14 @@ namespace SQMReorderer.SqmParser.PropertySetters
     public class MultiLineStringListPropertySetterTests
     {
         private List<string> _values;
+        private SqmContextCreator _contextCreator;
 
         [SetUp]
         public void Setup()
         {
             _values = null;
+
+            _contextCreator = new SqmContextCreator();
         }
 
         [Test]
@@ -22,17 +26,19 @@ namespace SQMReorderer.SqmParser.PropertySetters
         {
             var inputText = new List<string>()
                 {
-                    @"thedarkknight[]=\n",
-                    @"{\n",
-                    @"""IMBATMAN"",\n",
-                    @"""NOIAM"",\n",
-                    @"""SHUTUPSPARTACUS""\n",
-                    @"};\n"
+                    "thedarkknight[]=\n",
+                    "{\n",
+                    "\"IMBATMAN\",\n",
+                    "\"NOIAM\",\n",
+                    "\"SHUTUPSPARTACUS\"\n",
+                    "};\n"
                 };
 
             var stringListPropertySetter = new MultiLineStringListPropertySetter("shrubberies", x => _values = x);
 
-            var matchResult = stringListPropertySetter.SetPropertyIfMatch(new SqmStream(inputText));
+            var context = _contextCreator.CreateContext(inputText);
+
+            var matchResult = stringListPropertySetter.SetPropertyIfMatch(context);
 
             Assert.AreEqual(Result.Failure, matchResult);
         }
@@ -42,15 +48,17 @@ namespace SQMReorderer.SqmParser.PropertySetters
         {
             var inputText = new List<string>()
                                 {
-                                    @"brave[]=\n",
-                                    @"{\n",
-                                    @"""sirRobin""\n",
-                                    @"};\n"
+                                    "brave[]=\n",
+                                    "{\n",
+                                    "\"sirRobin\"\n",
+                                    "};\n"
                                 };
 
             var stringListPropertySetter = new MultiLineStringListPropertySetter("brave", x => _values = x);
 
-            var matchResult = stringListPropertySetter.SetPropertyIfMatch(new SqmStream(inputText));
+            var context = _contextCreator.CreateContext(inputText);
+
+            var matchResult = stringListPropertySetter.SetPropertyIfMatch(context);
 
             Assert.AreEqual(Result.Success, matchResult);
             Assert.AreEqual(1, _values.Count);
@@ -62,17 +70,19 @@ namespace SQMReorderer.SqmParser.PropertySetters
         {
             var inputText = new List<string>()
                                 {
-                                    @"smartCreatures[]=\n",
-                                    @"{\n",
-                                    @"""mice""\n",
-                                    @"""dolphins""\n",
-                                    @"""humans""\n",
-                                    @"};\n"
+                                    "smartCreatures[]=\n",
+                                    "{\n",
+                                    "\"mice\"\n",
+                                    "\"dolphins\"\n",
+                                    "\"humans\"\n",
+                                    "};\n"
                                 };
 
             var stringListPropertySetter = new MultiLineStringListPropertySetter("smartCreatures", x => _values = x);
 
-            var matchResult = stringListPropertySetter.SetPropertyIfMatch(new SqmStream(inputText));
+            var context = _contextCreator.CreateContext(inputText);
+
+            var matchResult = stringListPropertySetter.SetPropertyIfMatch(context);
 
             Assert.AreEqual(Result.Success, matchResult);
             Assert.AreEqual(3, _values.Count);
@@ -86,14 +96,16 @@ namespace SQMReorderer.SqmParser.PropertySetters
         {
             var inputText = new List<string>()
                                 {
-                                    @"space[]=\n",
-                                    @"{\n",
-                                    @"};\n"
+                                    "space[]=\n",
+                                    "{\n",
+                                    "};\n"
                                 };
 
             var stringListPropertySetter = new MultiLineStringListPropertySetter("space", x => _values = x);
 
-            var matchResult = stringListPropertySetter.SetPropertyIfMatch(new SqmStream(inputText));
+            var context = _contextCreator.CreateContext(inputText);
+
+            var matchResult = stringListPropertySetter.SetPropertyIfMatch(context);
 
             Assert.AreEqual(Result.Success, matchResult);
             Assert.AreEqual(0, _values.Count);

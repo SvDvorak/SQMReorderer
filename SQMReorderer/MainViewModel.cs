@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using SQMReorderer.SqmParser;
+using SQMReorderer.SqmParser.Context;
 using SQMReorderer.ViewModels;
 
 namespace SQMReorderer
@@ -8,12 +9,14 @@ namespace SQMReorderer
     {
         public MainViewModel()
         {
-            var missionReader = new FileToStringsReader();
-            var missionText = missionReader.Read("mission.sqm");
-            SqmStream stream = new SqmStream(missionText);
+            var fileReader = new FileToStringsReader();
+            var fileText = fileReader.Read("mission.sqm");
+
+            var contextCreator = new SqmContextCreator();
+            var fileContext = contextCreator.CreateContext(fileText);
 
             var sqmParser = new SqmParser.SqmParser();
-            var parseResult = sqmParser.Parse(stream);
+            var parseResult = sqmParser.Parse(fileContext);
 
             var sqmViewModelCreator = new SqmViewModelCreator();
             Mission = sqmViewModelCreator.CreateMissionViewModel(parseResult.Mission);

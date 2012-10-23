@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace SQMReorderer.SqmParser.HelperFunctions
 {
@@ -18,19 +14,35 @@ namespace SQMReorderer.SqmParser.HelperFunctions
         }
 
         [Test]
-        public void Expect_line_to_be_start_bracket_given_start_bracket()
+        public void Expect_line_to_be_start_of_context_given_start_bracket()
         {
-            var isLineStartBracket = _parsingHelperFunctions.IsLineStartBracket("  {  ");
+            var isLineStartOfContext = _parsingHelperFunctions.IsLineStartOfContext("{\n");
 
-            Assert.IsTrue(isLineStartBracket);
+            Assert.IsTrue(isLineStartOfContext);
         }
 
         [Test]
-        public void Expect_line_to_be_end_bracket_given_end_bracket()
+        public void Expect_line_to_be_end_of_context_given_end_bracket()
         {
-            var isLineEndBracket = _parsingHelperFunctions.IsLineEndBracket("  }  ");
+            var isLineEndOfContext = _parsingHelperFunctions.IsLineEndOfContext("};\n");
 
-            Assert.IsTrue(isLineEndBracket);
+            Assert.IsTrue(isLineEndOfContext);
+        }
+
+        [Test]
+        public void Expect_line_to_be_start_of_context_given_start_bracket_with_whitespace_noise()
+        {
+            var isLineStartOfContext = _parsingHelperFunctions.IsLineStartOfContext("       {\n             ");
+
+            Assert.IsTrue(isLineStartOfContext);
+        }
+
+        [Test]
+        public void Expect_line_to_be_start_of_context_given_end_bracket_with_whitespace_noise()
+        {
+            var isLineStartOfContext = _parsingHelperFunctions.IsLineEndOfContext("       };\n             ");
+
+            Assert.IsTrue(isLineStartOfContext);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using SQMReorderer.SqmParser.Context;
 using SQMReorderer.SqmParser.Parsers;
 using SQMReorderer.SqmParser.ResultObjects;
 
@@ -17,42 +18,44 @@ namespace SQMReorderer.SqmParser
 
         private ParseResult _parseResult;
 
-        public ParseResult Parse(SqmStream stream)
+        public ParseResult Parse(SqmContext context)
         {
             _parseResult = new ParseResult();
 
-            while(!stream.IsAtEndOfContext)
+            foreach (var subContext in context.SubContexts)
             {
-                if (_missionParser.IsMissionStateElement(stream))
+                if (_missionParser.IsMissionStateElement(subContext))
                 {
-                    stream.StepIntoInnerContext();
-                    _parseResult.Mission = _missionParser.ParseMissionState(stream);
-                    stream.StepIntoOuterContext();
+                    _parseResult.Mission = _missionParser.ParseMissionState(subContext);
                 }
-                else if (_introParser.IsMissionStateElement(stream))
+                else if (_introParser.IsMissionStateElement(subContext))
                 {
-                    stream.StepIntoInnerContext();
-                    _parseResult.Intro = _missionParser.ParseMissionState(stream);
-                    stream.StepIntoOuterContext();
+                    _parseResult.Intro = _missionParser.ParseMissionState(subContext);
                 }
-                else if (_outroWinParser.IsMissionStateElement(stream))
+                else if (_outroWinParser.IsMissionStateElement(subContext))
                 {
-                    stream.StepIntoInnerContext();
-                    _parseResult.OutroWin = _outroWinParser.ParseMissionState(stream);
-                    stream.StepIntoOuterContext();
+                    _parseResult.OutroWin = _outroWinParser.ParseMissionState(subContext);
                 }
-                else if (_outroLooseParser.IsMissionStateElement(stream))
+                else if (_outroLooseParser.IsMissionStateElement(subContext))
                 {
-                    stream.StepIntoInnerContext();
-                    _parseResult.OutroLose = _outroLooseParser.ParseMissionState(stream);
-                    stream.StepIntoOuterContext();
+                    _parseResult.OutroLose = _outroLooseParser.ParseMissionState(subContext);
                 }
-                else if (stream.IsCurrentLineMatch(_versionRegex))
+                else
                 {
-                    stream.MatchCurrentLine(_versionRegex, x => SetVersion(x));
+                    throw new SqmParseException("Unknown context: " + subContext.Header);
                 }
+            }
 
-                stream.NextLineInContext();
+            foreach (var line in context.Lines)
+            {
+                if (line.IsMatch(_versionRegex))
+                {
+                    line.Match(_versionRegex, x => SetVersion(x));
+                }
+                else
+                {
+                    throw new SqmParseException("Unknown property: " + line);
+                }
             }
 
             return _parseResult;

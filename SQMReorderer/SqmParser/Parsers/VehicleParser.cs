@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using SQMReorderer.SqmParser.Context;
 using SQMReorderer.SqmParser.HelperFunctions;
 using SQMReorderer.SqmParser.PropertySetters;
 using SQMReorderer.SqmParser.ResultObjects;
@@ -27,15 +28,13 @@ namespace SQMReorderer.SqmParser.Parsers
             PropertySetters.Add(new IntegerListPropertySetter("synchronizations", x => Item.Synchronizations = x));
         }
 
-        protected override Result CustomParseElement(SqmStream stream)
+        protected override Result CustomParseContext(SqmContext context)
         {
             var childVehiclesParser = new ItemListParser<Vehicle>(new VehicleParser(), "Vehicles");
 
-            if (childVehiclesParser.IsListElement(stream))
+            if (childVehiclesParser.IsListElement(context))
             {
-                stream.StepIntoInnerContext();
-                var items = childVehiclesParser.ParseElementItems(stream);
-                stream.StepIntoOuterContext();
+                var items = childVehiclesParser.ParseElementItems(context);
                 Item.Vehicles = items;
 
                 return Result.Success;

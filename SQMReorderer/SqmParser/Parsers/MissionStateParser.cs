@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using SQMReorderer.SqmParser.Context;
 using SQMReorderer.SqmParser.PropertySetters;
 using SQMReorderer.SqmParser.ResultObjects;
 
@@ -34,56 +35,68 @@ namespace SQMReorderer.SqmParser.Parsers
             _randomSeedPropertySetter = new IntegerPropertySetter("randomSeed", x => _missionState.RandomSeed = x);
         }
 
-        public bool IsMissionStateElement(SqmStream stream)
+        public bool IsMissionStateElement(SqmContext context)
         {
-            return stream.IsCurrentLineMatch(_missionStateHeaderRegex);
+            return context.IsHeaderMatch(_missionStateHeaderRegex);
         }
 
-        public MissionState ParseMissionState(SqmStream stream)
+        public MissionState ParseMissionState(SqmContext context)
         {
             _missionState = new MissionState();
 
-            while (!stream.IsAtEndOfContext)
+            foreach (var subContext in context.SubContexts)
             {
+                var setResult = Result.Failure;
+
                 foreach (var propertySetter in _multiLineStringPropertySetters)
                 {
-                    propertySetter.SetPropertyIfMatch(stream);
+                    setResult = propertySetter.SetPropertyIfMatch(subContext);
+
+                    if(setResult == Result.Success)
+                    {
+                        break;
+                    }
                 }
 
-                _randomSeedPropertySetter.SetPropertyIfMatch(stream);
-
-                if(_intelParser.IsIntelElement(stream))
+                if(setResult == Result.Success)
                 {
-                    stream.StepIntoInnerContext();
-                    _missionState.Intel = _intelParser.ParseIntel(stream);
-                    stream.StepIntoOuterContext();
-                }
-                else if (_groupsParser.IsListElement(stream))
-                {
-                    stream.StepIntoInnerContext();
-                    _missionState.Groups = _groupsParser.ParseElementItems(stream);
-                    stream.StepIntoOuterContext();
-                }
-                else if (_vehiclesParser.IsListElement(stream))
-                {
-                    stream.StepIntoInnerContext();
-                    _missionState.Vehicles = _vehiclesParser.ParseElementItems(stream);
-                    stream.StepIntoOuterContext();
-                }
-                else if (_markersParser.IsListElement(stream))
-                {
-                    stream.StepIntoInnerContext();
-                    _missionState.Markers = _markersParser.ParseElementItems(stream);
-                    stream.StepIntoOuterContext();
-                }
-                else if (_sensorsParser.IsListElement(stream))
-                {
-                    stream.StepIntoInnerContext();
-                    _missionState.Sensors = _sensorsParser.ParseElementItems(stream);
-                    stream.StepIntoOuterContext();
+                    continue;
                 }
 
-                stream.NextLineInContext();
+                if (_intelParser.IsIntelElement(subContext))
+                {
+                    _missionState.Intel = _intelParser.ParseIntel(subContext);
+                }
+                else if (_groupsParser.IsListElement(subContext))
+                {
+                    _missionState.Groups = _groupsParser.ParseElementItems(subContext);
+                }
+                else if (_vehiclesParser.IsListElement(subContext))
+                {
+                    _missionState.Vehicles = _vehiclesParser.ParseElementItems(subContext);
+                }
+                else if (_markersParser.IsListElement(subContext))
+                {
+                    _missionState.Markers = _markersParser.ParseElementItems(subContext);
+                }
+                else if (_sensorsParser.IsListElement(subContext))
+                {
+                    _missionState.Sensors = _sensorsParser.ParseElementItems(subContext);
+                }
+                else
+                {
+                    throw new SqmParseException("Unknown context: " + subContext.Header);
+                }
+            }
+
+            foreach (var line in context.Lines)
+            {
+                var parseResult = _randomSeedPropertySetter.SetPropertyIfMatch(line);
+
+                if (parseResult == Result.Failure)
+                {
+                    throw new SqmParseException("Unknown property: " + line);
+                }
             }
 
             return _missionState;

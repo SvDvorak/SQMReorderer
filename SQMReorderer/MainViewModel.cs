@@ -16,7 +16,7 @@ namespace SQMReorderer
             var fileContext = contextCreator.CreateContext(fileText);
 
             var sqmParser = new SqmParser.SqmParser();
-            var parseResult = sqmParser.Parse(fileContext);
+            var parseResult = sqmParser.ParseContext(fileContext);
 
             var sqmViewModelCreator = new SqmViewModelCreator();
             Mission = sqmViewModelCreator.CreateMissionViewModel(parseResult.Mission);

@@ -27,7 +27,7 @@ namespace SQMReorderer.SqmParser
                 };
 
             var contextCreator = new SqmContextCreator();
-            var parseResult = _parser.Parse(contextCreator.CreateRootContext(inputText));
+            var parseResult = _parser.ParseContext(contextCreator.CreateRootContext(inputText));
 
             Assert.AreEqual(11, parseResult.Version);
         }
@@ -43,7 +43,7 @@ namespace SQMReorderer.SqmParser
                 };
 
             var contextCreator = new SqmContextCreator();
-            var parseResult = _parser.Parse(contextCreator.CreateRootContext(inputText));
+            var parseResult = _parser.ParseContext(contextCreator.CreateRootContext(inputText));
 
             Assert.IsNotNull(parseResult.Mission);
         }
@@ -64,7 +64,7 @@ namespace SQMReorderer.SqmParser
                 };
 
             var contextCreator = new SqmContextCreator();
-            var parseResult = _parser.Parse(contextCreator.CreateRootContext(inputText));
+            var parseResult = _parser.ParseContext(contextCreator.CreateRootContext(inputText));
 
             Assert.IsNotNull(parseResult.Intro);
             Assert.AreEqual(2008, parseResult.Intro.Intel.Year);
@@ -94,7 +94,7 @@ namespace SQMReorderer.SqmParser
                 };
 
             var contextCreator = new SqmContextCreator();
-            var parseResult = _parser.Parse(contextCreator.CreateRootContext(inputText));
+            var parseResult = _parser.ParseContext(contextCreator.CreateRootContext(inputText));
 
             Assert.IsNotNull(parseResult.OutroWin);
             Assert.AreEqual(2008, parseResult.OutroWin.Intel.Year);

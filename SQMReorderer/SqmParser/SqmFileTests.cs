@@ -655,7 +655,7 @@ namespace SQMReorderer.SqmParser
             var contextCreator = new SqmContextCreator();
 
             var context = contextCreator.CreateRootContext(testFileText);
-            var parseResult = parser.Parse(context);
+            var parseResult = parser.ParseContext(context);
 
             var exportVisitor = new SqmElementExportVisitor();
             var exportedTestFile = exportVisitor.Visit("file", parseResult);

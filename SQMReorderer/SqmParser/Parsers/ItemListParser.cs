@@ -5,23 +5,23 @@ using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
-    public class ItemListParser<TItemType>
+    public class ItemListParser<TItemType> : IParser<List<TItemType>>
     {
         private readonly Regex _classRegex = new Regex(@"class\s+(?<class>\w+)", RegexOptions.Compiled);
         private readonly Regex _itemCountRegex = new Regex(@"items\=(?<itemCount>\d+)", RegexOptions.Compiled);
 
-        private readonly IItemParser<TItemType> _itemParser;
+        private readonly IItemParserFactory<TItemType> _itemParserFactory;
         private readonly string _listTypeName;
 
         private int _itemCount;
 
-        public ItemListParser(IItemParser<TItemType> itemParser, string listTypeName)
+        public ItemListParser(IItemParserFactory<TItemType> itemParserFactory, string listTypeName)
         {
-            _itemParser = itemParser;
+            _itemParserFactory = itemParserFactory;
             _listTypeName = listTypeName;
         }
 
-        public bool IsListElement(SqmContext context)
+        public bool IsCorrectContext(SqmContext context)
         {
             bool isCorrectListElement = false;
 
@@ -33,9 +33,10 @@ namespace SQMReorderer.SqmParser.Parsers
             return isCorrectListElement;
         }
 
-        public List<TItemType> ParseElementItems(SqmContext context)
+        public List<TItemType> ParseContext(SqmContext context)
         {
             _itemCount = 0;
+            var itemParser = _itemParserFactory.CreateParser();
 
             var itemList = new List<TItemType>();
 
@@ -49,9 +50,9 @@ namespace SQMReorderer.SqmParser.Parsers
 
             foreach (var subContext in context.SubContexts)
             {
-                if (_itemParser.IsItemContext(subContext))
+                if (itemParser.IsCorrectContext(subContext))
                 {
-                    var item = _itemParser.ParseItemContext(subContext);
+                    var item = itemParser.ParseContext(subContext);
 
                     itemList.Add(item);
                 }

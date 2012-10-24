@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMReorderer.SqmParser.Context;
-using SQMReorderer.SqmParser.ResultObjects;
+using SQMReorderer.SqmParser.Parsers.Vehicle;
 
 namespace SQMReorderer.SqmParser.Parsers
 {
     [TestFixture]
     public class ItemListParserTests
     {
-        private ItemListParser<Vehicle> _itemListParser;
+        private ItemListParser<ResultObjects.Vehicle> _itemListParser;
 
         private SqmContextCreator _contextCreator;
 
         [SetUp]
         public void Setup()
         {
-            _itemListParser = new ItemListParser<Vehicle>(new VehicleParser(), "Vehicles");
+            _itemListParser = new ItemListParser<ResultObjects.Vehicle>(new VehicleItemParserFactory(), "Vehicles");
 
             _contextCreator = new SqmContextCreator();
         }
@@ -28,7 +25,7 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             var context = _contextCreator.CreateContext(new List<string> {"class Vehicles\n", "{\n", "};\n"});
 
-            var isVehiclesElement = _itemListParser.IsListElement(context);
+            var isVehiclesElement = _itemListParser.IsCorrectContext(context);
 
             Assert.IsTrue(isVehiclesElement);
         }
@@ -38,7 +35,7 @@ namespace SQMReorderer.SqmParser.Parsers
         {
             var context = _contextCreator.CreateContext(new List<string> {"class Item0", "{", "};"});
 
-            var isVehiclesElement = _itemListParser.IsListElement(context);
+            var isVehiclesElement = _itemListParser.IsCorrectContext(context);
 
             Assert.IsFalse(isVehiclesElement);
         }
@@ -56,7 +53,7 @@ namespace SQMReorderer.SqmParser.Parsers
 
             var context = _contextCreator.CreateContext(inputText);
 
-            Assert.Throws<SqmParseException>(() => _itemListParser.ParseElementItems(context));
+            Assert.Throws<SqmParseException>(() => _itemListParser.ParseContext(context));
         }
 
         [Test]
@@ -76,7 +73,7 @@ namespace SQMReorderer.SqmParser.Parsers
 
             var context = _contextCreator.CreateContext(inputText);
 
-            Assert.Throws<SqmParseException>(() => _itemListParser.ParseElementItems(context));
+            Assert.Throws<SqmParseException>(() => _itemListParser.ParseContext(context));
         }
 
         [Test]
@@ -96,7 +93,7 @@ namespace SQMReorderer.SqmParser.Parsers
 
             var context = _contextCreator.CreateContext(inputText);
 
-            var items = _itemListParser.ParseElementItems(context);
+            var items = _itemListParser.ParseContext(context);
 
             Assert.AreEqual(1, items.Count);
             Assert.AreEqual("TestString", items[0].Text);
@@ -127,7 +124,7 @@ namespace SQMReorderer.SqmParser.Parsers
 
             var context = _contextCreator.CreateContext(inputText);
 
-            var items = _itemListParser.ParseElementItems(context);
+            var items = _itemListParser.ParseContext(context);
 
             Assert.AreEqual(3, items.Count);
         }

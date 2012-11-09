@@ -119,6 +119,7 @@
     <Compile Include="SqmExport\ISqmElementVisitor.cs" />
     <Compile Include="SqmExport\SqmElementExportVisitor.cs" />
     <Compile Include="StringListComparerTests.cs" />
+    <Compile Include="Structure\StructureView.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="VectorTests.cs" />
     <Compile Include="ViewModels\MissionViewModel.cs" />
@@ -161,6 +162,10 @@
     <Page Include="MultiSelectTreeView\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Structure\StructureStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

@@ -13,7 +13,7 @@ namespace SQMReorderer
             var fileText = fileReader.Read("mission.sqm");
 
             var contextCreator = new SqmContextCreator();
-            var fileContext = contextCreator.CreateContext(fileText);
+            var fileContext = contextCreator.CreateRootContext(fileText);
 
             var sqmParser = new SqmParser.SqmParser();
             var parseResult = sqmParser.ParseContext(fileContext);

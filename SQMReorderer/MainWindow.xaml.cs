@@ -51,8 +51,8 @@ namespace SQMReorderer
                     //if (folderViewModel == null)
                     //    return;
 
-                    var dragData = new DataObject(treeView.SelectedItem);
-                    DragDrop.DoDragDrop(treeView, dragData, DragDropEffects.Move);
+                    //var dragData = new DataObject(treeView.SelectedItem);
+                    //DragDrop.DoDragDrop(treeView, dragData, DragDropEffects.Move);
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace SQMReorderer
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            ViewModel.SelectedItem = (ItemViewModel)groupsTreeView.SelectedItem;
+            //ViewModel.SelectedItem = (ItemViewModel)groupsTreeView.SelectedItem;
         }
     }
 }

@@ -9,23 +9,38 @@ namespace SQMReorderer
     {
         public MissionViewModel CreateMissionViewModel(MissionState missionState)
         {
-            var itemViewModels = CreateItemViewModels(missionState.Groups);
+            var groupViewModels = CreateItemViewModels(missionState.Groups);
+            var markerViewModels = CreateItemViewModels(missionState.Markers);
 
-            return new MissionViewModel(itemViewModels);
+            var missionViewModel = new MissionViewModel();
+            missionViewModel.Groups = groupViewModels;
+            missionViewModel.Markers = markerViewModels;
+
+            return missionViewModel;
         }
 
-        private static ObservableCollection<ItemViewModel> CreateItemViewModels(List<Vehicle> items)
+        private ObservableCollection<MarkerViewModel> CreateItemViewModels(List<Marker> markers)
         {
-            var itemViewModels = new ObservableCollection<ItemViewModel>();
+            var markerViewModels = new ObservableCollection<MarkerViewModel>();
 
-            if(items == null)
+            markerViewModels.Add(new MarkerViewModel(new Marker() { Text = "Text1", Name = "Marker1" }));
+            markerViewModels.Add(new MarkerViewModel(new Marker() { Text = "Text2", Name = "Marker2" }));
+
+            return markerViewModels;
+        }
+
+        private ObservableCollection<StructureItemViewModelBase> CreateItemViewModels(List<Vehicle> items)
+        {
+            var itemViewModels = new ObservableCollection<StructureItemViewModelBase>();
+
+            if (items == null)
             {
                 return itemViewModels;
             }
 
             foreach (var item in items)
             {
-                var itemViewModel = new ItemViewModel(item);
+                var itemViewModel = new VehicleViewModel(item);
                 itemViewModel.Items = CreateItemViewModels(item.Vehicles);
 
                 itemViewModels.Add(itemViewModel);

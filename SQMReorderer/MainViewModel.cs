@@ -24,8 +24,8 @@ namespace SQMReorderer
 
         public MissionViewModel Mission { get; set; }
 
-        private ItemViewModel _selectedItem;
-        public ItemViewModel SelectedItem
+        private VehicleViewModel _selectedItem;
+        public VehicleViewModel SelectedItem
         {
             get { return _selectedItem; }
             set

@@ -3,12 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:SQMReorderer="clr-namespace:SQMReorderer"
         xmlns:ViewModels="clr-namespace:SQMReorderer.ViewModels" xmlns:Structure="clr-namespace:SQMReorderer.Structure"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:Interactivity="windows"
+        Title="MainWindow" Height="600" Width="800">
 
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Structure\StructureStyle.xaml" />
+                <ResourceDictionary Source="Structure\Themes\Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <SQMReorderer:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
             <Style x:Key="itemRowStackPanel" TargetType="{x:Type StackPanel}">
@@ -22,25 +23,47 @@
             <Style x:Key="itemInfoTextBox" TargetType="{x:Type TextBox}">
                 <Setter Property="Width" Value="200" />
             </Style>
+            
+            <Style x:Key="itemTextStyle" TargetType="{x:Type TextBlock}">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                        <Setter Value="CornflowerBlue" Property="Background" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding IsSelected}" Value="False">
+                        <Setter Value="Transparent" Property="Background" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            
+            <BooleanToVisibilityConverter x:Key="boolToVisibilityConverter" />
         </ResourceDictionary>
     </Window.Resources>
 
-    <DockPanel>
-        <Structure:StructureView ItemsSource="{Binding Mission.Groups}">
-            <Structure:StructureView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type ViewModels:ItemViewModel}" ItemsSource="{Binding Items}">
-                    <StackPanel Margin="0 0 0 5">
-                        <TextBlock Text="{Binding Side}" Visibility="{Binding Side, Converter={StaticResource nullToVisibilityConverter}}" />
-                        <TextBlock Text="{Binding Vehicle}" Visibility="{Binding Vehicle, Converter={StaticResource nullToVisibilityConverter}}" />
-                        <TextBlock Text="{Binding Rank}" Visibility="{Binding Rank, Converter={StaticResource nullToVisibilityConverter}}" />
-                        <TextBlock Text="{Binding Text}" Visibility="{Binding Text, Converter={StaticResource nullToVisibilityConverter}}" />
-                        <TextBlock Text="{Binding Description}" Visibility="{Binding Description, Converter={StaticResource nullToVisibilityConverter}}" />
-                        <ItemsControl ItemsSource="{Binding Items}" Margin="10 0 0 0"/>
-                    </StackPanel>
-                </HierarchicalDataTemplate>
-            </Structure:StructureView.Resources>
-        </Structure:StructureView>
-        
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.Column="0">
+            <TabItem Header="Groups">
+                <Structure:StructureView ItemsSource="{Binding Mission.Groups}">
+                    <Structure:StructureView.Resources>
+                        <HierarchicalDataTemplate DataType="{x:Type ViewModels:StructureItemViewModelBase}" ItemsSource="{Binding Items}">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Side}" Visibility="{Binding Side, Converter={StaticResource nullToVisibilityConverter}}" />
+                                <TextBlock Text="{Binding Vehicle}" Visibility="{Binding Vehicle, Converter={StaticResource nullToVisibilityConverter}}" />
+                                <TextBlock Text="{Binding Rank}" Visibility="{Binding Rank, Converter={StaticResource nullToVisibilityConverter}}" />
+                                <TextBlock Text="{Binding Text}" Visibility="{Binding Text, Converter={StaticResource nullToVisibilityConverter}}" />
+                                <TextBlock Text="{Binding Description}" Visibility="{Binding Description, Converter={StaticResource nullToVisibilityConverter}}" />
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </Structure:StructureView.Resources>
+                </Structure:StructureView>
+            </TabItem>
+        </TabControl>
+
+        <GridSplitter Width="5" />
+
         <!--<TreeView x:Name="groupsTreeView"
             MinWidth="180"
             ItemsSource="{Binding Mission.Groups}"
@@ -70,7 +93,7 @@
             </TreeView.Resources>
         </TreeView>-->
 
-        <StackPanel Margin="10 0 0 0">
+        <StackPanel Margin="10 0 0 0" Grid.Column="1">
             <StackPanel Style="{StaticResource itemRowStackPanel}">
                 <TextBlock Text="Side:" Style="{StaticResource itemInfoTextBlock}" />
                 <TextBox Text="{Binding SelectedItem.Side}" Style="{StaticResource itemInfoTextBox}" />
@@ -92,5 +115,5 @@
                 <TextBox Text="{Binding SelectedItem.Description}" Style="{StaticResource itemInfoTextBox}" />
             </StackPanel>
         </StackPanel>
-    </DockPanel>
+    </Grid>
 </Window>

@@ -14,9 +14,9 @@ namespace SQMReorderer.ViewModels
         [Test]
         public void Expect_mission_with_empty_groups_to_have_no_groups()
         {
-            var itemViewModels = new ObservableCollection<ItemViewModel>();
+            var itemViewModels = new ObservableCollection<VehicleViewModel>();
 
-            var missionViewModel = new MissionViewModel(itemViewModels);
+            var missionViewModel = new MissionViewModel();
 
             Assert.AreEqual(0, missionViewModel.Groups.Count);
         }

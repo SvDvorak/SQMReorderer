@@ -63,8 +63,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\ActionCanNotBeNullException.cs" />
+    <Compile Include="Command\DelegateCommandTests.cs" />
     <Compile Include="DoubleExtensions.cs" />
     <Compile Include="DoubleExtensionsTests.cs" />
+    <Compile Include="Command\DelegateCommand.cs" />
+    <Compile Include="ViewModels\MarkerViewModel.cs" />
     <Compile Include="MultiSelectTreeView\LeftMarginMultiplierConverter.cs" />
     <Compile Include="MultiSelectTreeView\MultipleSelectionTreeView.cs" />
     <Compile Include="MultiSelectTreeView\MultipleSelectionTreeViewItem.cs" />
@@ -144,9 +148,14 @@
     <Compile Include="SqmParser\ResultObjects\ParseResult.cs" />
     <Compile Include="SqmParser\SqmParserTests.cs" />
     <Compile Include="SqmViewModelCreatorTests.cs" />
-    <Compile Include="ViewModels\ItemViewModel.cs" />
-    <Compile Include="ViewModels\ItemViewModelTests.cs" />
+    <Compile Include="MultiLineTextBuilder.cs" />
+    <Compile Include="MultiLineTextBuilderTests.cs" />
+    <Compile Include="ViewModels\StructureItemViewModelBase.cs" />
+    <Compile Include="ViewModels\VehicleViewModel.cs" />
+    <Compile Include="ViewModels\VehicleViewModelTests.cs" />
     <Compile Include="ViewModels\MissionViewModelTests.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\ViewModelBaseTests.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -163,7 +172,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Structure\StructureStyle.xaml">
+    <Page Include="Structure\Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

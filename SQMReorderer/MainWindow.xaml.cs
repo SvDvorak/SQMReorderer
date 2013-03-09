@@ -59,7 +59,7 @@ namespace SQMReorderer
 
         private void TreeView_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetType() == typeof(ItemViewModel))
+            if (e.Data.GetType() == typeof(VehicleViewModel))
             {
                 e.Effects = DragDropEffects.Move;
             }
@@ -75,9 +75,9 @@ namespace SQMReorderer
             var itemViewModels = ViewModel.Mission.Groups;
 
             var originalSource = (TextBlock) e.OriginalSource;
-            var currentHoverIndex = itemViewModels.IndexOf((ItemViewModel)originalSource.DataContext);
+            var currentHoverIndex = itemViewModels.IndexOf((VehicleViewModel)originalSource.DataContext);
 
-            var movedItem = (ItemViewModel) e.Data.GetData(typeof (ItemViewModel));
+            var movedItem = (VehicleViewModel) e.Data.GetData(typeof (VehicleViewModel));
             itemViewModels.Remove(movedItem);
             itemViewModels.Insert(currentHoverIndex, movedItem);
         }
@@ -85,6 +85,13 @@ namespace SQMReorderer
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             //ViewModel.SelectedItem = (ItemViewModel)groupsTreeView.SelectedItem;
+        }
+
+        private void ExpandItem_MouseUp(object sender, MouseButtonEventArgs mouseButtonEventArgs)
+        {
+            int i = 0;
+            var textBlock = (TextBlock) sender;
+            Console.WriteLine(textBlock.Tag);
         }
     }
 }

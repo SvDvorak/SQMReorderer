@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace SQMReorderer.MultiSelectTreeView
+namespace MultiSelectionTreeView
 {
     public enum SelectionModalities
     {
@@ -11,6 +11,8 @@ namespace SQMReorderer.MultiSelectTreeView
         MultipleSelectionOnly,
         KeyboardModifiersMode
     }
+
+    public class SelectedItemsCollection : ObservableCollection<MultipleSelectionTreeViewItem> { }
 
     public class MultipleSelectionTreeView : ItemsControl
     {
@@ -23,22 +25,13 @@ namespace SQMReorderer.MultiSelectTreeView
             set { SetValue(SelectionModeProperty, value); }
         }
         public static readonly DependencyProperty SelectionModeProperty =
-            DependencyProperty.Register("SelectionMode",
-            typeof(SelectionModalities),
-            typeof(MultipleSelectionTreeView),
-            new UIPropertyMetadata(SelectionModalities.SingleSelectionOnly));
+            DependencyProperty.Register("SelectionMode", typeof(SelectionModalities), typeof(MultipleSelectionTreeView), new UIPropertyMetadata(SelectionModalities.SingleSelectionOnly));
 
-        private ObservableCollection<MultipleSelectionTreeViewItem> _selectedItems = new ObservableCollection<MultipleSelectionTreeViewItem>();
-        public ObservableCollection<MultipleSelectionTreeViewItem> SelectedItems
+        private SelectedItemsCollection _selectedItems = new SelectedItemsCollection();
+        public SelectedItemsCollection SelectedItems
         {
             get { return _selectedItems; }
-            set { _selectedItems = value; }
         }
-        public static readonly DependencyProperty SelectedItemsProperty =
-            DependencyProperty.Register("SelectedItems",
-            typeof(ObservableCollection<MultipleSelectionTreeViewItem>),
-            typeof(MultipleSelectionTreeView),
-            new UIPropertyMetadata(new ObservableCollection<MultipleSelectionTreeViewItem>()));
         #endregion
 
         #region Constructors

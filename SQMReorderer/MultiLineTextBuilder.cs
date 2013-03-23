@@ -1,8 +1,10 @@
+using System.Text;
+
 namespace SQMReorderer
 {
     public class MultiLineTextBuilder
     {
-        private string _text = "";
+        private readonly StringBuilder _text = new StringBuilder();
 
         public void AddLine(string line)
         {
@@ -11,17 +13,17 @@ namespace SQMReorderer
                 return;
             }
 
-            if (!string.IsNullOrEmpty(_text))
+            if (_text.Length != 0)
             {
-                _text += "\n";
+                _text.Append("\n");
             }
 
-            _text += line;
+            _text.Append(line);
         }
 
         public override string ToString()
         {
-            return _text;
+            return _text.ToString();
         }
     }
 }

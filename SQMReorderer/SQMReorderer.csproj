@@ -69,9 +69,6 @@
     <Compile Include="DoubleExtensionsTests.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
     <Compile Include="ViewModels\MarkerViewModel.cs" />
-    <Compile Include="MultiSelectTreeView\LeftMarginMultiplierConverter.cs" />
-    <Compile Include="MultiSelectTreeView\MultipleSelectionTreeView.cs" />
-    <Compile Include="MultiSelectTreeView\MultipleSelectionTreeViewItem.cs" />
     <Compile Include="ComparisonResult.cs" />
     <Compile Include="SqmExport\ISqmPropertyVisitor.cs" />
     <Compile Include="SqmExport\SqmElementExportVisitorTests.cs" />
@@ -168,10 +165,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MultiSelectTreeView\Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Structure\Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -205,6 +198,12 @@
   <ItemGroup>
     <Folder Include="Gui\" />
     <Folder Include="obj\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MultiSelectionTreeView\MultiSelectionTreeView.csproj">
+      <Project>{20D00BCA-1981-4A2F-815B-79F05EDF6277}</Project>
+      <Name>MultiSelectionTreeView</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

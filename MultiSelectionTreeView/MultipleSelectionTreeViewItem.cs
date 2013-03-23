@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System;
 
-namespace SQMReorderer.MultiSelectTreeView
+namespace MultiSelectionTreeView
 {
     public class MultipleSelectionTreeViewItem : TreeViewItem
     {

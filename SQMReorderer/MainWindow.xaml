@@ -46,8 +46,8 @@
         <TabControl Grid.Column="0">
             <TabItem Header="Groups">
                 <TabItem.Resources>
-                    <HierarchicalDataTemplate x:Key="ItemTemplate" ItemsSource="{Binding Items}">
-                        <TextBlock Text="{Binding}" />
+                    <HierarchicalDataTemplate x:Key="ItemTemplate" ItemsSource="{Binding}">
+                        <TextBlock Text="{Binding Header}" />
                     </HierarchicalDataTemplate>
                 </TabItem.Resources>
                 <!--<Structure:StructureView ItemsSource="{Binding Mission.Groups}">

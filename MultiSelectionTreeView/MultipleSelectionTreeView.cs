@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -39,6 +41,7 @@ namespace MultiSelectionTreeView
         {
             DefaultStyleKeyProperty.OverrideMetadata(
                     typeof(MultipleSelectionTreeView), new FrameworkPropertyMetadata(typeof(MultipleSelectionTreeView)));
+
         }
         #endregion
 
@@ -99,6 +102,17 @@ namespace MultiSelectionTreeView
             }
 
             _lastClickedItem = viewItem.IsSelected ? viewItem : null;
+        }
+
+        public void OnItemDrop(MultipleSelectionTreeViewItem sourceItem, MultipleSelectionTreeViewItem targetItem)
+        {
+            //targetItem.ParentMultipleSelectionTreeViewItem
+            var sourceParentItemList = (IList)sourceItem.ParentMultipleSelectionTreeViewItem.DataContext;
+
+            var targetItemList = (IList)targetItem.DataContext;
+            targetItemList.Add(sourceItem.DataContext);
+
+            sourceParentItemList.Remove(sourceItem.DataContext);
         }
 
         #region Methods
@@ -246,6 +260,5 @@ namespace MultiSelectionTreeView
         {
         }
         #endregion
-
     }
 }

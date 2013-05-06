@@ -7,8 +7,9 @@ namespace MultiSelectionTreeView
 {
     public class MultipleSelectionTreeViewItem : TreeViewItem
     {
-
         #region Properties
+        private Point _leftClickPosition;
+
         /// <summary>
         /// Get the UI Parent Control of this node.
         /// </summary>
@@ -63,7 +64,11 @@ namespace MultiSelectionTreeView
 
         public MultipleSelectionTreeViewItem()
         {
-            this.ItemContainerGenerator.ItemsChanged += new System.Windows.Controls.Primitives.ItemsChangedEventHandler(ItemContainerGenerator_ItemsChanged);
+            ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
+
+            AllowDrop = true;
+            DragOver += OnDragOver;
+            Drop += OnDrop;
         }
 
         void ItemContainerGenerator_ItemsChanged(object sender, System.Windows.Controls.Primitives.ItemsChangedEventArgs e)
@@ -71,6 +76,22 @@ namespace MultiSelectionTreeView
             //throw new NotImplementedException();
         }
         #endregion
+
+        private void OnDragOver(object sender, DragEventArgs dragEventArgs)
+        {
+            dragEventArgs.Effects = DragDropEffects.None;
+
+            var dragItem = dragEventArgs.Data as MultipleSelectionTreeViewItem;
+            if (dragItem != null)
+            {
+                dragEventArgs.Effects = DragDropEffects.Copy | DragDropEffects.Move;
+            }
+        }
+
+        private void OnDrop(object sender, DragEventArgs dragEventArgs)
+        {
+            ParentMultipleSelectionTreeView.OnItemDrop((MultipleSelectionTreeViewItem) dragEventArgs.Data.GetData(typeof(MultipleSelectionTreeViewItem)), this);
+        }
 
         #region Overrides
         protected override DependencyObject GetContainerForItemOverride()
@@ -92,12 +113,26 @@ namespace MultiSelectionTreeView
                 e.RightButton == MouseButtonState.Pressed)
                 return;
 
-            if (this.IsSelected)
-                this.IsSelected = false;
-            else
-                this.IsSelected = true;
+            IsSelected = !IsSelected;
+            _leftClickPosition = e.GetPosition(null);
 
             ParentMultipleSelectionTreeView.OnViewItemMouseDown(this);
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                var mousePosition = e.GetPosition(null);
+                var diff = _leftClickPosition - mousePosition;
+
+                if (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                    Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
+                {
+                    var dragData = new DataObject(this);
+                    DragDrop.DoDragDrop(ParentMultipleSelectionTreeView, dragData, DragDropEffects.Move);
+                }
+            }
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
@@ -108,11 +143,11 @@ namespace MultiSelectionTreeView
 
                 if (e.Key == Key.Left)
                 {
-                    this.IsExpanded = false;
+                    IsExpanded = false;
                 }
                 else if (e.Key == Key.Right)
                 {
-                    this.IsExpanded = true;
+                    IsExpanded = true;
                 }
                 else if (e.Key == Key.Up)
                 {
@@ -120,17 +155,16 @@ namespace MultiSelectionTreeView
                     // - the previous at the same level (if this index node is NOT 0)
                     // - the parent node (if this index node is 0)
 
-                    int currentNodeIndex = this.ParentItemsControl.ItemContainerGenerator.IndexFromContainer(this);
+                    int currentNodeIndex = ParentItemsControl.ItemContainerGenerator.IndexFromContainer(this);
 
                     if (currentNodeIndex == 0)
                     {
-                        itemToSelect = this.ParentMultipleSelectionTreeViewItem;
+                        itemToSelect = ParentMultipleSelectionTreeViewItem;
                     }
                     else
                     {
-                        MultipleSelectionTreeViewItem tmp = null;
-                        tmp = GetPreviousNodeAtSameLevel(this);
-                        itemToSelect = GetLastVisibleChildNodeOf(tmp);
+                        var previousNodeAtSameLevel = GetPreviousNodeAtSameLevel(this);
+                        itemToSelect = GetLastVisibleChildNodeOf(previousNodeAtSameLevel);
                     }
                 }
                 else if (e.Key == Key.Down)
@@ -140,9 +174,9 @@ namespace MultiSelectionTreeView
                     // - the next at the same level (if this not the last child)
                     // - the next at the same level of the parent node (if this is the last child)
 
-                    if (this.IsExpanded && this.Items.Count > 0)
+                    if (IsExpanded && Items.Count > 0)
                     { // Select first Child
-                        itemToSelect = this.ItemContainerGenerator.ContainerFromIndex(0) as MultipleSelectionTreeViewItem;
+                        itemToSelect = ItemContainerGenerator.ContainerFromIndex(0) as MultipleSelectionTreeViewItem;
                     }
                     else
                     {
@@ -150,7 +184,7 @@ namespace MultiSelectionTreeView
 
                         if (itemToSelect == null) // current node has no subsequent node at the same level
                         {
-                            MultipleSelectionTreeViewItem tmp = this.ParentMultipleSelectionTreeViewItem;
+                            MultipleSelectionTreeViewItem tmp = ParentMultipleSelectionTreeViewItem;
 
                             while (itemToSelect == null && tmp != null) // searhing for the first parent that has a subsequent node at the same level
                             {

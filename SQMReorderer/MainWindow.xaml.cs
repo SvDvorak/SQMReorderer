@@ -72,14 +72,14 @@ namespace SQMReorderer
         private void TreeView_Drop(object sender, DragEventArgs e)
         {
             // Trololol
-            var itemViewModels = ViewModel.Mission.Groups;
+            //var itemViewModels = ViewModel.Mission.Groups;
 
-            var originalSource = (TextBlock) e.OriginalSource;
-            var currentHoverIndex = itemViewModels.IndexOf((VehicleViewModel)originalSource.DataContext);
+            //var originalSource = (TextBlock) e.OriginalSource;
+            //var currentHoverIndex = itemViewModels.IndexOf((VehicleViewModel)originalSource.DataContext);
 
-            var movedItem = (VehicleViewModel) e.Data.GetData(typeof (VehicleViewModel));
-            itemViewModels.Remove(movedItem);
-            itemViewModels.Insert(currentHoverIndex, movedItem);
+            //var movedItem = (VehicleViewModel) e.Data.GetData(typeof (VehicleViewModel));
+            //itemViewModels.Remove(movedItem);
+            //itemViewModels.Insert(currentHoverIndex, movedItem);
         }
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)

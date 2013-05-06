@@ -13,7 +13,7 @@ namespace SQMReorderer
             var markerViewModels = CreateItemViewModels(missionState.Markers);
 
             var missionViewModel = new MissionViewModel();
-            missionViewModel.Groups = groupViewModels;
+            missionViewModel.Groups = new ObservableCollection<VehicleViewModel>(groupViewModels);
             missionViewModel.Markers = markerViewModels;
 
             return missionViewModel;
@@ -29,9 +29,9 @@ namespace SQMReorderer
             return markerViewModels;
         }
 
-        private ObservableCollection<StructureItemViewModelBase> CreateItemViewModels(List<Vehicle> items)
+        private List<VehicleViewModel> CreateItemViewModels(List<Vehicle> items)
         {
-            var itemViewModels = new ObservableCollection<StructureItemViewModelBase>();
+            var itemViewModels = new List<VehicleViewModel>();
 
             if (items == null)
             {
@@ -40,8 +40,8 @@ namespace SQMReorderer
 
             foreach (var item in items)
             {
-                var itemViewModel = new VehicleViewModel(item);
-                itemViewModel.Items = CreateItemViewModels(item.Vehicles);
+                var childItemViewModels = CreateItemViewModels(item.Vehicles);
+                var itemViewModel = new VehicleViewModel(item, childItemViewModels);
 
                 itemViewModels.Add(itemViewModel);
             }

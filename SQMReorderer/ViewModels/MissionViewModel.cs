@@ -6,11 +6,11 @@ namespace SQMReorderer.ViewModels
     {
         public MissionViewModel()
         {
-            Groups = new ObservableCollection<StructureItemViewModelBase>();
+            Groups = new ObservableCollection<VehicleViewModel>();
             Markers = new ObservableCollection<MarkerViewModel>();
         }
 
-        public ObservableCollection<StructureItemViewModelBase> Groups { get; set; }
+        public ObservableCollection<VehicleViewModel> Groups { get; set; }
         public ObservableCollection<MarkerViewModel> Markers { get; set; }
     }
 }

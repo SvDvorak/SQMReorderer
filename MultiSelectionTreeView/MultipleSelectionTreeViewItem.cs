@@ -113,7 +113,6 @@ namespace MultiSelectionTreeView
                 e.RightButton == MouseButtonState.Pressed)
                 return;
 
-            IsSelected = !IsSelected;
             _leftClickPosition = e.GetPosition(null);
 
             ParentMultipleSelectionTreeView.OnViewItemMouseDown(this);
@@ -130,7 +129,7 @@ namespace MultiSelectionTreeView
                     Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
                 {
                     var dragData = new DataObject(this);
-                    DragDrop.DoDragDrop(ParentMultipleSelectionTreeView, dragData, DragDropEffects.Move);
+                    //DragDrop.DoDragDrop(ParentMultipleSelectionTreeView, dragData, DragDropEffects.Move);
                 }
             }
         }

@@ -106,13 +106,7 @@ namespace MultiSelectionTreeView
 
         public void OnItemDrop(MultipleSelectionTreeViewItem sourceItem, MultipleSelectionTreeViewItem targetItem)
         {
-            //targetItem.ParentMultipleSelectionTreeViewItem
-            var sourceParentItemList = (IList)sourceItem.ParentMultipleSelectionTreeViewItem.DataContext;
-
-            var targetItemList = (IList)targetItem.DataContext;
-            targetItemList.Add(sourceItem.DataContext);
-
-            sourceParentItemList.Remove(sourceItem.DataContext);
+            sourceItem.ParentMultipleSelectionTreeViewItem.Items.Remove(sourceItem);
         }
 
         #region Methods
@@ -174,25 +168,20 @@ namespace MultiSelectionTreeView
 
         private void ManageCtrlSelection(MultipleSelectionTreeViewItem viewItem)
         {
-            bool isViewItemMultipleSelected = viewItem.IsSelected;
-
-            if (isViewItemMultipleSelected)
+            if (viewItem.IsSelected)
                 AddItemToSelection(viewItem);
-            else if (!isViewItemMultipleSelected)
+            else if (!viewItem.IsSelected)
                 RemoveItemFromSelection(viewItem);
+
+            viewItem.IsSelected = !viewItem.IsSelected;
         }
 
         private void ManageSingleSelection(MultipleSelectionTreeViewItem viewItem)
         {
-            bool isViewItemMultipleSelected = viewItem.IsSelected;
-
             UnselectAll();
 
-            if (isViewItemMultipleSelected)
-            {
-                viewItem.IsSelected = isViewItemMultipleSelected;
-                AddItemToSelection(viewItem);
-            }
+            viewItem.IsSelected = true;
+            AddItemToSelection(viewItem);
         }
 
         /// <summary>

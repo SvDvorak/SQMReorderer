@@ -106,7 +106,11 @@ namespace MultiSelectionTreeView
 
         public void OnItemDrop(MultipleSelectionTreeViewItem sourceItem, MultipleSelectionTreeViewItem targetItem)
         {
-            sourceItem.ParentMultipleSelectionTreeViewItem.Items.Remove(sourceItem);
+            var targetParentItems = (IList)targetItem.ItemsSource;
+            targetParentItems.Add(sourceItem.DataContext);
+
+            var sourceParentItems = (IList) sourceItem.ParentMultipleSelectionTreeViewItem.ItemsSource;
+            sourceParentItems.Remove(sourceItem.DataContext);
         }
 
         #region Methods

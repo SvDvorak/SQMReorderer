@@ -91,6 +91,8 @@ namespace MultiSelectionTreeView
         private void OnDrop(object sender, DragEventArgs dragEventArgs)
         {
             ParentMultipleSelectionTreeView.OnItemDrop((MultipleSelectionTreeViewItem) dragEventArgs.Data.GetData(typeof(MultipleSelectionTreeViewItem)), this);
+
+            dragEventArgs.Handled = true;
         }
 
         #region Overrides
@@ -120,7 +122,7 @@ namespace MultiSelectionTreeView
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
+            if(IsSelected && e.LeftButton == MouseButtonState.Pressed)
             {
                 var mousePosition = e.GetPosition(null);
                 var diff = _leftClickPosition - mousePosition;
@@ -129,7 +131,7 @@ namespace MultiSelectionTreeView
                     Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
                 {
                     var dragData = new DataObject(this);
-                    //DragDrop.DoDragDrop(ParentMultipleSelectionTreeView, dragData, DragDropEffects.Move);
+                    DragDrop.DoDragDrop(ParentMultipleSelectionTreeView, dragData, DragDropEffects.Move);
                 }
             }
         }

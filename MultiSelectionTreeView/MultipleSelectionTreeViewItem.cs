@@ -106,7 +106,7 @@ namespace MultiSelectionTreeView
             return item is MultipleSelectionTreeViewItem;
         }
 
-        protected override void OnMouseDown(MouseButtonEventArgs e)
+        protected override void OnMouseUp(MouseButtonEventArgs e)
         {
             if (ParentMultipleSelectionTreeView == null)
                 return;
@@ -118,6 +118,8 @@ namespace MultiSelectionTreeView
             _leftClickPosition = e.GetPosition(null);
 
             ParentMultipleSelectionTreeView.OnViewItemMouseDown(this);
+
+            e.Handled = true;
         }
 
         protected override void OnMouseMove(MouseEventArgs e)

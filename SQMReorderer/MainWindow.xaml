@@ -46,7 +46,10 @@
         <TabControl Grid.Column="0">
             <TabItem Header="Groups">
                 <TabItem.Resources>
-                    <HierarchicalDataTemplate x:Key="ItemTemplate" ItemsSource="{Binding}">
+                    <HierarchicalDataTemplate x:Key="ElementTemplate">
+                        <TextBlock Text="{Binding Text}" />
+                    </HierarchicalDataTemplate>
+                    <HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding}" ItemTemplate="{StaticResource ElementTemplate}">
                         <TextBlock Text="{Binding Header}" />
                     </HierarchicalDataTemplate>
                 </TabItem.Resources>
@@ -64,9 +67,10 @@
                     </Structure:StructureView.Resources>
                 </Structure:StructureView>-->
                 <MultiSelectionTreeView:MultipleSelectionTreeView
+                    x:Name="GroupsTreeView"
                     SelectionMode="KeyboardModifiersMode"
                     ItemsSource="{Binding Mission.Groups}"
-                    ItemTemplate="{StaticResource ItemTemplate}">
+                    ItemTemplate="{StaticResource GroupTemplate}">
                     
                 </MultiSelectionTreeView:MultipleSelectionTreeView>
             </TabItem>

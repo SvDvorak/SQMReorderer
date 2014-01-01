@@ -46,5 +46,20 @@ namespace SQMReorderer
 
             Assert.AreEqual("TEXT", ((VehicleViewModel)missionViewModel.Groups[0][1][0]).ToString());
         }
+
+        [Test]
+        public void Does_not_create_view_models_for_logic_groups()
+        {
+            var mission = new MissionState();
+
+            var item = new Vehicle();
+            item.Side = "LOGIC";
+
+            mission.Groups.Add(item);
+
+            var itemViewModel = _viewModelCreator.CreateMissionViewModel(mission);
+
+            Assert.IsEmpty(itemViewModel.Groups);
+        }
     }
 }

@@ -40,6 +40,11 @@ namespace SQMReorderer
 
             foreach (var item in items)
             {
+                if (item.Side == "LOGIC")
+                {
+                    continue;
+                }
+
                 var childItemViewModels = CreateItemViewModels(item.Vehicles);
                 var itemViewModel = new VehicleViewModel(item, childItemViewModels);
 

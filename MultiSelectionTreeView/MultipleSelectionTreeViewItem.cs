@@ -124,7 +124,9 @@ namespace MultiSelectionTreeView
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            if(IsSelected && e.LeftButton == MouseButtonState.Pressed)
+            var isNotGroupNode = ParentMultipleSelectionTreeViewItem != null;
+
+            if(isNotGroupNode && IsSelected && e.LeftButton == MouseButtonState.Pressed)
             {
                 var mousePosition = e.GetPosition(null);
                 var diff = _leftClickPosition - mousePosition;

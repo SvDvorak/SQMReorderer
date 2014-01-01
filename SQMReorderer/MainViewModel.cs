@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using SQMReorderer.SqmParser;
 using SQMReorderer.SqmParser.Context;
 using SQMReorderer.ViewModels;
@@ -24,8 +27,20 @@ namespace SQMReorderer
 
         public MissionViewModel Mission { get; set; }
 
-        private VehicleViewModel _selectedItem;
-        public VehicleViewModel SelectedItem
+        private IEnumerable<object> _selectedItems;
+        public IEnumerable<object> SelectedItems
+        {
+            get { return _selectedItems; }
+            set
+            {
+                _selectedItems = value;
+                SelectedItem = _selectedItems.FirstOrDefault();
+                //PropertyChanged(this, new PropertyChangedEventArgs("SelectedItems"));
+            }
+        }
+
+        private object _selectedItem;
+        public object SelectedItem
         {
             get { return _selectedItem; }
             set

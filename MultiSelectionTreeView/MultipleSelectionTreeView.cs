@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -20,6 +22,7 @@ namespace MultiSelectionTreeView
     {
         #region Properties
         private MultipleSelectionTreeViewItem _lastClickedItem = null;
+        private SelectedItemsCollection _selectedItemsViewModels;
 
         public SelectionModalities SelectionMode
         {
@@ -29,10 +32,25 @@ namespace MultiSelectionTreeView
         public static readonly DependencyProperty SelectionModeProperty =
             DependencyProperty.Register("SelectionMode", typeof(SelectionModalities), typeof(MultipleSelectionTreeView), new UIPropertyMetadata(SelectionModalities.SingleSelectionOnly));
 
-        private SelectedItemsCollection _selectedItems = new SelectedItemsCollection();
-        public SelectedItemsCollection SelectedItems
+        public SelectedItemsCollection SelectedItemsViewModels
         {
-            get { return _selectedItems; }
+            get { return _selectedItemsViewModels; }
+            set
+            {
+                _selectedItemsViewModels = value;
+                UpdateSelectedItems();
+            }
+        }
+
+        private static readonly DependencyPropertyKey SelectedItemsPropertyKey =
+            DependencyProperty.RegisterReadOnly("SelectedItems", typeof(ObservableCollection<object>), typeof(MultipleSelectionTreeView), new PropertyMetadata(new ObservableCollection<object>()));
+
+        public static readonly DependencyProperty SelectedItemsProperty = SelectedItemsPropertyKey.DependencyProperty;
+
+        public ObservableCollection<object> SelectedItems
+        {
+            get { return (ObservableCollection<object>)GetValue(SelectedItemsProperty); }
+            set { SetValue(SelectedItemsProperty, value); }
         }
         #endregion
 
@@ -41,9 +59,24 @@ namespace MultiSelectionTreeView
         {
             DefaultStyleKeyProperty.OverrideMetadata(
                     typeof(MultipleSelectionTreeView), new FrameworkPropertyMetadata(typeof(MultipleSelectionTreeView)));
+        }
 
+        public MultipleSelectionTreeView()
+        {
+            SelectedItemsViewModels = new SelectedItemsCollection();
+            SelectedItemsViewModels.CollectionChanged += (sender, args) => UpdateSelectedItems();
         }
         #endregion
+
+        private void UpdateSelectedItems()
+        {
+            SelectedItems.Clear();
+
+            foreach (var selectedItemData in SelectedItemsViewModels.Select(x => x.DataContext))
+            {
+                SelectedItems.Add(selectedItemData);
+            }
+        }
 
         protected override DependencyObject GetContainerForItemOverride()
         {
@@ -106,7 +139,7 @@ namespace MultiSelectionTreeView
 
         public void OnItemDrop(MultipleSelectionTreeViewItem sourceItem, MultipleSelectionTreeViewItem targetItem)
         {
-            foreach (var selectedItem in SelectedItems)
+            foreach (var selectedItem in SelectedItemsViewModels)
             {
                 var targetParentItems = (IList)targetItem.ItemsSource;
                 targetParentItems.Add(selectedItem.DataContext);
@@ -115,7 +148,7 @@ namespace MultiSelectionTreeView
                 sourceParentItems.Remove(selectedItem.DataContext);
             }
 
-            SelectedItems.Clear();
+            SelectedItemsViewModels.Clear();
         }
 
         #region Methods
@@ -165,14 +198,14 @@ namespace MultiSelectionTreeView
         #region Helper Methods
         private void AddItemToSelection(MultipleSelectionTreeViewItem newItem)
         {
-            if (!_selectedItems.Contains(newItem))
-                _selectedItems.Add(newItem);
+            if (!SelectedItemsViewModels.Contains(newItem))
+                SelectedItemsViewModels.Add(newItem);
         }
 
         private void RemoveItemFromSelection(MultipleSelectionTreeViewItem newItem)
         {
-            if (_selectedItems.Contains(newItem))
-                _selectedItems.Remove(newItem);
+            if (SelectedItemsViewModels.Contains(newItem))
+                SelectedItemsViewModels.Remove(newItem);
         }
 
         private void ManageCtrlSelection(MultipleSelectionTreeViewItem viewItem)

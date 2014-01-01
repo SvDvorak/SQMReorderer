@@ -67,6 +67,7 @@ namespace MultiSelectionTreeView
             ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
 
             AllowDrop = true;
+            IsExpanded = true;
             DragOver += OnDragOver;
             Drop += OnDrop;
         }

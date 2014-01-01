@@ -22,7 +22,7 @@
             <Style x:Key="itemInfoTextBox" TargetType="{x:Type TextBox}">
                 <Setter Property="Width" Value="200" />
             </Style>
-            
+
             <Style x:Key="itemTextStyle" TargetType="{x:Type TextBlock}">
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding IsSelected}" Value="True">
@@ -33,27 +33,35 @@
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
-            
+
             <BooleanToVisibilityConverter x:Key="boolToVisibilityConverter" />
         </ResourceDictionary>
     </Window.Resources>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <TabControl Grid.Column="0">
-            <TabItem Header="Groups">
-                <TabItem.Resources>
-                    <HierarchicalDataTemplate x:Key="ElementTemplate">
-                        <TextBlock Text="{Binding Description}" />
-                    </HierarchicalDataTemplate>
-                    <HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding}" ItemTemplate="{StaticResource ElementTemplate}">
-                        <TextBlock Text="{Binding Header}" />
-                    </HierarchicalDataTemplate>
-                </TabItem.Resources>
-                <!--<Structure:StructureView ItemsSource="{Binding Mission.Groups}">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save"/>
+                <MenuItem Header="_Save As..."/>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TabControl Grid.Column="0">
+                <TabItem Header="Groups">
+                    <TabItem.Resources>
+                        <HierarchicalDataTemplate x:Key="ElementTemplate">
+                            <TextBlock Text="{Binding Description}" />
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding}" ItemTemplate="{StaticResource ElementTemplate}">
+                            <TextBlock Text="{Binding Header}" />
+                        </HierarchicalDataTemplate>
+                    </TabItem.Resources>
+                    <!--<Structure:StructureView ItemsSource="{Binding Mission.Groups}">
                     <Structure:StructureView.Resources>
                         <HierarchicalDataTemplate DataType="{x:Type ViewModels:StructureItemViewModelBase}" ItemsSource="{Binding Items}">
                             <StackPanel>
@@ -66,19 +74,19 @@
                         </HierarchicalDataTemplate>
                     </Structure:StructureView.Resources>
                 </Structure:StructureView>-->
-                <MultiSelectionTreeView:MultipleSelectionTreeView
+                    <MultiSelectionTreeView:MultipleSelectionTreeView
                     x:Name="GroupsTreeView"
                     SelectionMode="KeyboardModifiersMode"
                     ItemsSource="{Binding Mission.Groups}"
                     ItemTemplate="{StaticResource GroupTemplate}">
-                    
-                </MultiSelectionTreeView:MultipleSelectionTreeView>
-            </TabItem>
-        </TabControl>
 
-        <GridSplitter Width="5" />
+                    </MultiSelectionTreeView:MultipleSelectionTreeView>
+                </TabItem>
+            </TabControl>
 
-        <!--<TreeView x:Name="groupsTreeView"
+            <GridSplitter Width="5" />
+
+            <!--<TreeView x:Name="groupsTreeView"
             MinWidth="180"
             ItemsSource="{Binding Mission.Groups}"
             SelectedItemChanged="TreeView_SelectedItemChanged"
@@ -107,27 +115,28 @@
             </TreeView.Resources>
         </TreeView>-->
 
-        <StackPanel Margin="10 0 0 0" Grid.Column="1">
-            <StackPanel Style="{StaticResource itemRowStackPanel}">
-                <TextBlock Text="Side:" Style="{StaticResource itemInfoTextBlock}" />
-                <TextBox Text="{Binding SelectedItem.Side}" Style="{StaticResource itemInfoTextBox}" />
+            <StackPanel Margin="10 0 0 0" Grid.Column="1">
+                <StackPanel Style="{StaticResource itemRowStackPanel}">
+                    <TextBlock Text="Side:" Style="{StaticResource itemInfoTextBlock}" />
+                    <TextBox Text="{Binding SelectedItem.Side}" Style="{StaticResource itemInfoTextBox}" />
+                </StackPanel>
+                <StackPanel Style="{StaticResource itemRowStackPanel}">
+                    <TextBlock Text="Vehicle:" Style="{StaticResource itemInfoTextBlock}" />
+                    <TextBox Text="{Binding SelectedItem.Vehicle}" Style="{StaticResource itemInfoTextBox}" />
+                </StackPanel>
+                <StackPanel Style="{StaticResource itemRowStackPanel}">
+                    <TextBlock Text="Rank:" Style="{StaticResource itemInfoTextBlock}" />
+                    <TextBox Text="{Binding SelectedItem.Rank}" Style="{StaticResource itemInfoTextBox}" />
+                </StackPanel>
+                <StackPanel Style="{StaticResource itemRowStackPanel}">
+                    <TextBlock Text="Text:" Style="{StaticResource itemInfoTextBlock}" />
+                    <TextBox Text="{Binding SelectedItem.Text}" Style="{StaticResource itemInfoTextBox}" />
+                </StackPanel>
+                <StackPanel Style="{StaticResource itemRowStackPanel}">
+                    <TextBlock Text="Description:" Style="{StaticResource itemInfoTextBlock}" />
+                    <TextBox Text="{Binding SelectedItem.Description}" Style="{StaticResource itemInfoTextBox}" />
+                </StackPanel>
             </StackPanel>
-            <StackPanel Style="{StaticResource itemRowStackPanel}">
-                <TextBlock Text="Vehicle:" Style="{StaticResource itemInfoTextBlock}" />
-                <TextBox Text="{Binding SelectedItem.Vehicle}" Style="{StaticResource itemInfoTextBox}" />
-            </StackPanel>
-            <StackPanel Style="{StaticResource itemRowStackPanel}">
-                <TextBlock Text="Rank:" Style="{StaticResource itemInfoTextBlock}" />
-                <TextBox Text="{Binding SelectedItem.Rank}" Style="{StaticResource itemInfoTextBox}" />
-            </StackPanel>
-            <StackPanel Style="{StaticResource itemRowStackPanel}">
-                <TextBlock Text="Text:" Style="{StaticResource itemInfoTextBlock}" />
-                <TextBox Text="{Binding SelectedItem.Text}" Style="{StaticResource itemInfoTextBox}" />
-            </StackPanel>
-            <StackPanel Style="{StaticResource itemRowStackPanel}">
-                <TextBlock Text="Description:" Style="{StaticResource itemInfoTextBlock}" />
-                <TextBox Text="{Binding SelectedItem.Description}" Style="{StaticResource itemInfoTextBox}" />
-            </StackPanel>
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </DockPanel>
 </Window>

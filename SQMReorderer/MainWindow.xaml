@@ -47,7 +47,7 @@
             <TabItem Header="Groups">
                 <TabItem.Resources>
                     <HierarchicalDataTemplate x:Key="ElementTemplate">
-                        <TextBlock Text="{Binding Text}" />
+                        <TextBlock Text="{Binding Description}" />
                     </HierarchicalDataTemplate>
                     <HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding}" ItemTemplate="{StaticResource ElementTemplate}">
                         <TextBlock Text="{Binding Header}" />

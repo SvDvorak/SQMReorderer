@@ -82,11 +82,13 @@ namespace MultiSelectionTreeView
         {
             dragEventArgs.Effects = DragDropEffects.None;
 
-            var dragItem = dragEventArgs.Data as MultipleSelectionTreeViewItem;
-            if (dragItem != null)
+            var dragItem = dragEventArgs.Data.GetData(typeof(MultipleSelectionTreeViewItem)) as MultipleSelectionTreeViewItem;
+            if (Items.Count > 0 && dragItem != null)
             {
                 dragEventArgs.Effects = DragDropEffects.Copy | DragDropEffects.Move;
             }
+
+            dragEventArgs.Handled = true;
         }
 
         private void OnDrop(object sender, DragEventArgs dragEventArgs)

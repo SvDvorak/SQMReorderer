@@ -25,7 +25,7 @@ namespace SQMReorderer
 
         private void OpenFile()
         {
-            var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(), new FileToStringsReader(), new SqmContextCreator(), new SqmParser.SqmParser());
+            var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(), new SqmFileImporter(new FileToStringsReader(), new SqmContextCreator(), new SqmParser.SqmParser()));
 
             var parseResult = openSqmFileDialog.ShowDialog();
 

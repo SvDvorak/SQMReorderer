@@ -73,9 +73,12 @@
     <Compile Include="Command\DelegateCommand.cs" />
     <Compile Include="IFileToStringsReader.cs" />
     <Compile Include="IOpenFileDialogAdapter.cs" />
+    <Compile Include="ISqmFileImporter.cs" />
     <Compile Include="OpenFileDialogAdapter.cs" />
     <Compile Include="OpenSqmFileDialog.cs" />
     <Compile Include="OpenSqmFileDialogTests.cs" />
+    <Compile Include="SqmFileImporter.cs" />
+    <Compile Include="SqmFileImporterTests.cs" />
     <Compile Include="SqmParser\Context\ISqmContextCreator.cs" />
     <Compile Include="SqmParser\ISqmParser.cs" />
     <Compile Include="ViewModels\MarkerViewModel.cs" />

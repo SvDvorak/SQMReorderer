@@ -71,7 +71,7 @@
     <Compile Include="DoubleExtensions.cs" />
     <Compile Include="DoubleExtensionsTests.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
-    <Compile Include="IFileToStringsReader.cs" />
+    <Compile Include="IStreamToStringsReader.cs" />
     <Compile Include="IOpenFileDialogAdapter.cs" />
     <Compile Include="ISqmFileImporter.cs" />
     <Compile Include="OpenFileDialogAdapter.cs" />
@@ -138,7 +138,7 @@
     <Compile Include="VectorTests.cs" />
     <Compile Include="ViewModels\MissionViewModel.cs" />
     <Compile Include="SqmViewModelCreator.cs" />
-    <Compile Include="FileToStringsReader.cs" />
+    <Compile Include="StreamToStringsReader.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="NullToVisibilityConverter.cs" />
     <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctionsTests.cs" />

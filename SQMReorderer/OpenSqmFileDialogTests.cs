@@ -35,6 +35,14 @@ namespace SQMReorderer
         {
             _openSqmFileDialog.ShowDialog();
 
+            _openFileDialogAdapter.Received().ShowDialog();
+        }
+
+        [Test]
+        public void Opens_selected_path()
+        {
+            _openSqmFileDialog.ShowDialog();
+
             _openFileDialogAdapter.Received().OpenFile();
         }
 

@@ -1,3 +1,4 @@
+using System;
 using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer
@@ -17,6 +18,8 @@ namespace SQMReorderer
 
         public SqmContents ShowDialog()
         {
+            _openFileDialog.ShowDialog();
+
             var fileStream = _openFileDialog.OpenFile();
 
             return _sqmFileImporter.Import(fileStream);

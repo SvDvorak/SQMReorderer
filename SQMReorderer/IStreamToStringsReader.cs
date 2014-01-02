@@ -3,9 +3,8 @@ using System.IO;
 
 namespace SQMReorderer
 {
-    public interface IFileToStringsReader
+    public interface IStreamToStringsReader
     {
-        List<string> Read(string fileName);
         List<string> Read(Stream stream);
     }
 }

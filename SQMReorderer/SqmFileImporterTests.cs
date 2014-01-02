@@ -13,7 +13,7 @@ namespace SQMReorderer
     {
         private SqmFileImporter _importer;
 
-        private IFileToStringsReader _fileToStringsReader;
+        private IStreamToStringsReader _streamToStringsReader;
         private ISqmContextCreator _sqmContextCreator;
         private ISqmParser _sqmParser;
 
@@ -25,16 +25,16 @@ namespace SQMReorderer
         [SetUp]
         public void Setup()
         {
-            _fileToStringsReader = Substitute.For<IFileToStringsReader>();
+            _streamToStringsReader = Substitute.For<IStreamToStringsReader>();
             _sqmContextCreator = Substitute.For<ISqmContextCreator>();
             _sqmParser = Substitute.For<ISqmParser>();
 
-            _importer = new SqmFileImporter(_fileToStringsReader, _sqmContextCreator, _sqmParser);
+            _importer = new SqmFileImporter(_streamToStringsReader, _sqmContextCreator, _sqmParser);
 
             _memoryStream = new MemoryStream();
 
             _textLinesInStream = new List<string>();
-            _fileToStringsReader.Read(_memoryStream).Returns(_textLinesInStream);
+            _streamToStringsReader.Read(_memoryStream).Returns(_textLinesInStream);
 
             _sqmFileContext = new SqmContext();
             _sqmContextCreator.CreateRootContext(_textLinesInStream).Returns(_sqmFileContext);
@@ -48,7 +48,7 @@ namespace SQMReorderer
         {
             _importer.Import(_memoryStream);
 
-            _fileToStringsReader.Received().Read(_memoryStream);
+            _streamToStringsReader.Received().Read(_memoryStream);
         }
 
         [Test]

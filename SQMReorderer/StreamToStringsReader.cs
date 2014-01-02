@@ -3,11 +3,11 @@ using System.IO;
 
 namespace SQMReorderer
 {
-    public class FileToStringsReader : IFileToStringsReader
+    public class StreamToStringsReader : IStreamToStringsReader
     {
-        public List<string> Read(string fileName)
+        public List<string> Read(Stream stream)
         {
-            var streamReader = new StreamReader("mission.sqm");
+            var streamReader = new StreamReader(stream);
             var missionText = new List<string>();
 
             while (!streamReader.EndOfStream)
@@ -16,11 +16,6 @@ namespace SQMReorderer
             }
 
             return missionText;
-        }
-
-        public List<string> Read(Stream stream)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

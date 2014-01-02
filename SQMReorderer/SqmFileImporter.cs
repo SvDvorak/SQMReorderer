@@ -7,20 +7,20 @@ namespace SQMReorderer
 {
     public class SqmFileImporter : ISqmFileImporter
     {
-        private readonly IFileToStringsReader _fileToStringsReader;
+        private readonly IStreamToStringsReader _streamToStringsReader;
         private readonly ISqmContextCreator _sqmContextCreator;
         private readonly ISqmParser _sqmParser;
 
-        public SqmFileImporter(IFileToStringsReader fileToStringsReader, ISqmContextCreator sqmContextCreator, ISqmParser sqmParser)
+        public SqmFileImporter(IStreamToStringsReader streamToStringsReader, ISqmContextCreator sqmContextCreator, ISqmParser sqmParser)
         {
-            _fileToStringsReader = fileToStringsReader;
+            _streamToStringsReader = streamToStringsReader;
             _sqmContextCreator = sqmContextCreator;
             _sqmParser = sqmParser;
         }
 
         public SqmContents Import(Stream fileStream)
         {
-            var linesInFile = _fileToStringsReader.Read(fileStream);
+            var linesInFile = _streamToStringsReader.Read(fileStream);
 
             var rootContext = _sqmContextCreator.CreateRootContext(linesInFile);
 

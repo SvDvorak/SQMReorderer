@@ -11,21 +11,12 @@ namespace SQMReorderer
     {
         public MainViewModel()
         {
-            var fileReader = new FileToStringsReader();
-            var fileText = fileReader.Read("mission.sqm");
-
-            var contextCreator = new SqmContextCreator();
-            var fileContext = contextCreator.CreateRootContext(fileText);
-
-            var sqmParser = new SqmParser.SqmParser();
-            var parseResult = sqmParser.ParseContext(fileContext);
-
             OpenCommand = new DelegateCommand(OpenFile);
         }
 
         private void OpenFile()
         {
-            var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(), new SqmFileImporter(new FileToStringsReader(), new SqmContextCreator(), new SqmParser.SqmParser()));
+            var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(), new SqmFileImporter(new StreamToStringsReader(), new SqmContextCreator(), new SqmParser.SqmParser()));
 
             var parseResult = openSqmFileDialog.ShowDialog();
 
@@ -33,7 +24,16 @@ namespace SQMReorderer
             Mission = sqmViewModelCreator.CreateMissionViewModel(parseResult.Mission);
         }
 
-        public MissionViewModel Mission { get; set; }
+        private MissionViewModel _mission;
+        public MissionViewModel Mission
+        {
+            get { return _mission; }
+            set
+            {
+                _mission = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Mission"));
+            }
+        }
 
         public DelegateCommand OpenCommand { get; private set; }
 
@@ -45,7 +45,7 @@ namespace SQMReorderer
             {
                 _selectedItems = value;
                 SelectedItem = _selectedItems.FirstOrDefault();
-                //PropertyChanged(this, new PropertyChangedEventArgs("SelectedItems"));
+                PropertyChanged(this, new PropertyChangedEventArgs("SelectedItems"));
             }
         }
 

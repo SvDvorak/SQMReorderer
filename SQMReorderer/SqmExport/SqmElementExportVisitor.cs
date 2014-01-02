@@ -10,16 +10,16 @@ namespace SQMReorderer.SqmExport
     {
         private readonly SqmPropertyVisitor _propertyVisitor = new SqmPropertyVisitor();
 
-        public string Visit(string elementName, ParseResult parseResult)
+        public string Visit(string elementName, SqmContents sqmContents)
         {
             var fileString = new StringBuilder();
 
-            fileString.Append(_propertyVisitor.Visit("version", parseResult.Version));
+            fileString.Append(_propertyVisitor.Visit("version", sqmContents.Version));
 
-            fileString.Append(Visit("Mission", parseResult.Mission));
-            fileString.Append(Visit("Intro", parseResult.Intro));
-            fileString.Append(Visit("OutroWin", parseResult.OutroWin));
-            fileString.Append(Visit("OutroLoose", parseResult.OutroLose));
+            fileString.Append(Visit("Mission", sqmContents.Mission));
+            fileString.Append(Visit("Intro", sqmContents.Intro));
+            fileString.Append(Visit("OutroWin", sqmContents.OutroWin));
+            fileString.Append(Visit("OutroLoose", sqmContents.OutroLose));
 
             return fileString.ToString();
         }

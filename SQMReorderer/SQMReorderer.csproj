@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.6.1.0\lib\NET40\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\NUnit 2.6\bin\framework\nunit.framework.dll</HintPath>
@@ -68,6 +71,13 @@
     <Compile Include="DoubleExtensions.cs" />
     <Compile Include="DoubleExtensionsTests.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
+    <Compile Include="IFileToStringsReader.cs" />
+    <Compile Include="IOpenFileDialogAdapter.cs" />
+    <Compile Include="OpenFileDialogAdapter.cs" />
+    <Compile Include="OpenSqmFileDialog.cs" />
+    <Compile Include="OpenSqmFileDialogTests.cs" />
+    <Compile Include="SqmParser\Context\ISqmContextCreator.cs" />
+    <Compile Include="SqmParser\ISqmParser.cs" />
     <Compile Include="ViewModels\MarkerViewModel.cs" />
     <Compile Include="ComparisonResult.cs" />
     <Compile Include="SqmExport\ISqmPropertyVisitor.cs" />
@@ -142,7 +152,7 @@
     <Compile Include="SqmParser\SqmParseException.cs" />
     <Compile Include="SqmParser\ResultObjects\Intel.cs" />
     <Compile Include="SqmParser\SqmParser.cs" />
-    <Compile Include="SqmParser\ResultObjects\ParseResult.cs" />
+    <Compile Include="SqmParser\ResultObjects\SqmContents.cs" />
     <Compile Include="SqmParser\SqmParserTests.cs" />
     <Compile Include="SqmViewModelCreatorTests.cs" />
     <Compile Include="MultiLineTextBuilder.cs" />
@@ -189,6 +199,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

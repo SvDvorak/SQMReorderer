@@ -19,9 +19,9 @@ namespace SQMReorderer.SqmExport
         [Test]
         public void Expect_empty_string_on_empty_file()
         {
-            var parseResult = new ParseResult();
+            var sqmContents = new SqmContents();
 
-            var exportedParseResult = _exportVisitor.Visit("file", parseResult);
+            var exportedParseResult = _exportVisitor.Visit("file", sqmContents);
 
             Assert.AreEqual("", exportedParseResult);
         }
@@ -45,15 +45,15 @@ namespace SQMReorderer.SqmExport
             originalParseResultText.Append("{\n");
             originalParseResultText.Append("};\n");
 
-            var parseResult = new ParseResult();
+            var sqmContents = new SqmContents();
 
-            parseResult.Version = 11;
-            parseResult.Mission = new MissionState();
-            parseResult.Intro = new MissionState();
-            parseResult.OutroWin = new MissionState();
-            parseResult.OutroLose = new MissionState();
+            sqmContents.Version = 11;
+            sqmContents.Mission = new MissionState();
+            sqmContents.Intro = new MissionState();
+            sqmContents.OutroWin = new MissionState();
+            sqmContents.OutroLose = new MissionState();
 
-            var exportedParseResult = _exportVisitor.Visit("file", parseResult);
+            var exportedParseResult = _exportVisitor.Visit("file", sqmContents);
 
             Assert.AreEqual(originalParseResultText.ToString(), exportedParseResult);
         }

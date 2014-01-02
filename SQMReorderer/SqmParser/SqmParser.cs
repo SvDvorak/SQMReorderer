@@ -7,7 +7,7 @@ using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer.SqmParser
 {
-    public class SqmParser : ParserBase<ParseResult>
+    public class SqmParser : ParserBase<SqmContents>, ISqmParser
     {
         public SqmParser()
         {

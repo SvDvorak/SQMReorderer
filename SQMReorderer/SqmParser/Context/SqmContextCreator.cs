@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace SQMReorderer.SqmParser.Context
 {
-    public class SqmContextCreator
+    public class SqmContextCreator : ISqmContextCreator
     {
         private readonly ParsingHelperFunctions _parsingHelperFunctions;
 

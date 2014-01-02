@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
-using SQMReorderer.SqmParser;
 
 namespace SQMReorderer
 {
-    public class FileToStringsReader
+    public class FileToStringsReader : IFileToStringsReader
     {
         public List<string> Read(string fileName)
         {
@@ -17,6 +16,11 @@ namespace SQMReorderer
             }
 
             return missionText;
+        }
+
+        public List<string> Read(Stream stream)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

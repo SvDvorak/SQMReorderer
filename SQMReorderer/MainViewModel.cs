@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using SQMReorderer.SqmParser;
+using SQMReorderer.Command;
 using SQMReorderer.SqmParser.Context;
 using SQMReorderer.ViewModels;
 
@@ -21,11 +20,22 @@ namespace SQMReorderer
             var sqmParser = new SqmParser.SqmParser();
             var parseResult = sqmParser.ParseContext(fileContext);
 
+            OpenCommand = new DelegateCommand(OpenFile);
+        }
+
+        private void OpenFile()
+        {
+            var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(), new FileToStringsReader(), new SqmContextCreator(), new SqmParser.SqmParser());
+
+            var parseResult = openSqmFileDialog.ShowDialog();
+
             var sqmViewModelCreator = new SqmViewModelCreator();
             Mission = sqmViewModelCreator.CreateMissionViewModel(parseResult.Mission);
         }
 
         public MissionViewModel Mission { get; set; }
+
+        public DelegateCommand OpenCommand { get; private set; }
 
         private IEnumerable<object> _selectedItems;
         public IEnumerable<object> SelectedItems

@@ -5,7 +5,7 @@ namespace SQMReorderer.SqmExport
 {
     interface ISqmElementVisitor
     {
-        string Visit(string elementName, ParseResult parseResult);
+        string Visit(string elementName, SqmContents sqmContents);
         string Visit(string elementName, MissionState mission);
         string Visit(string elementName, Intel intel);
         string Visit(string elementName, List<Vehicle> vehicles);

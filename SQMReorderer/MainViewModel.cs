@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using SQMReorderer.Command;
 using SQMReorderer.SqmParser.Context;
+using SQMReorderer.SqmParser.ResultObjects;
 using SQMReorderer.ViewModels;
 
 namespace SQMReorderer
@@ -12,17 +13,13 @@ namespace SQMReorderer
         public MainViewModel()
         {
             OpenCommand = new DelegateCommand(OpenFile);
+            SaveAsCommand = new DelegateCommand(SaveFileAs);
         }
 
-        private void OpenFile()
-        {
-            var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(), new SqmFileImporter(new StreamToStringsReader(), new SqmContextCreator(), new SqmParser.SqmParser()));
+        public event PropertyChangedEventHandler PropertyChanged;
 
-            var parseResult = openSqmFileDialog.ShowDialog();
-
-            var sqmViewModelCreator = new SqmViewModelCreator();
-            Mission = sqmViewModelCreator.CreateMissionViewModel(parseResult.Mission);
-        }
+        public DelegateCommand OpenCommand { get; private set; }
+        public DelegateCommand SaveAsCommand { get; private set; }
 
         private MissionViewModel _mission;
         public MissionViewModel Mission
@@ -34,8 +31,6 @@ namespace SQMReorderer
                 PropertyChanged(this, new PropertyChangedEventArgs("Mission"));
             }
         }
-
-        public DelegateCommand OpenCommand { get; private set; }
 
         private IEnumerable<object> _selectedItems;
         public IEnumerable<object> SelectedItems
@@ -61,6 +56,21 @@ namespace SQMReorderer
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        private void OpenFile()
+        {
+            var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(), new SqmFileImporter(new StreamToStringsReader(), new SqmContextCreator(), new SqmParser.SqmParser()));
+
+            var parseResult = openSqmFileDialog.ShowDialog();
+
+            var sqmViewModelCreator = new SqmViewModelCreator();
+            Mission = sqmViewModelCreator.CreateMissionViewModel(parseResult.Mission);
+        }
+
+        private void SaveFileAs()
+        {
+            var saveSqmFileDialog = new SaveSqmFileDialog();
+
+            saveSqmFileDialog.ShowDialog(new SqmContents());
+        }
     }
 }

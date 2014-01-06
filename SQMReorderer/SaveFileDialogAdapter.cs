@@ -1,17 +1,25 @@
 using System.IO;
+using Microsoft.Win32;
 
 namespace SQMReorderer
 {
     public class SaveFileDialogAdapter : ISaveFileDialogAdapter
     {
-        public void ShowDialog()
+        private readonly SaveFileDialog _saveFileDialog;
+
+        public SaveFileDialogAdapter()
         {
-            throw new System.NotImplementedException();
+            _saveFileDialog = new SaveFileDialog();
+        }
+
+        public bool? ShowDialog()
+        {
+            return _saveFileDialog.ShowDialog();
         }
 
         public Stream OpenFile()
         {
-            throw new System.NotImplementedException();
+            return _saveFileDialog.OpenFile();
         }
     }
 }

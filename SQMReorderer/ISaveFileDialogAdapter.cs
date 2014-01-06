@@ -4,7 +4,7 @@ namespace SQMReorderer
 {
     public interface ISaveFileDialogAdapter
     {
-        void ShowDialog();
+        bool? ShowDialog();
         Stream OpenFile();
     }
 }

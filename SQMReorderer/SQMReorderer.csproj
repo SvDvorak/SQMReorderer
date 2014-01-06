@@ -80,6 +80,7 @@
     <Compile Include="OpenSqmFileDialogTests.cs" />
     <Compile Include="SaveFileDialogAdapter.cs" />
     <Compile Include="SaveSqmFileDialog.cs" />
+    <Compile Include="SaveSqmFileDialogTests.cs" />
     <Compile Include="SqmFileExporter.cs" />
     <Compile Include="SqmFileImporter.cs" />
     <Compile Include="SqmFileImporterTests.cs" />

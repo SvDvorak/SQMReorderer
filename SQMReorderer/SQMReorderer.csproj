@@ -53,7 +53,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -71,13 +70,17 @@
     <Compile Include="DoubleExtensions.cs" />
     <Compile Include="DoubleExtensionsTests.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
+    <Compile Include="ISaveFileDialogAdapter.cs" />
+    <Compile Include="ISqmFileExporter.cs" />
     <Compile Include="IStreamToStringsReader.cs" />
     <Compile Include="IOpenFileDialogAdapter.cs" />
     <Compile Include="ISqmFileImporter.cs" />
     <Compile Include="OpenFileDialogAdapter.cs" />
     <Compile Include="OpenSqmFileDialog.cs" />
     <Compile Include="OpenSqmFileDialogTests.cs" />
+    <Compile Include="SaveFileDialogAdapter.cs" />
     <Compile Include="SaveSqmFileDialog.cs" />
+    <Compile Include="SqmFileExporter.cs" />
     <Compile Include="SqmFileImporter.cs" />
     <Compile Include="SqmFileImporterTests.cs" />
     <Compile Include="SqmParser\Context\ISqmContextCreator.cs" />

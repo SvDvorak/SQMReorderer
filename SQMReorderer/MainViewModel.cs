@@ -68,7 +68,7 @@ namespace SQMReorderer
 
         private void SaveFileAs()
         {
-            var saveSqmFileDialog = new SaveSqmFileDialog();
+            var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), new SqmFileExporter());
 
             saveSqmFileDialog.ShowDialog(new SqmContents());
         }

@@ -6,7 +6,7 @@ namespace SQMReorderer
     {
         public IStreamWriterAdapter Create(Stream stream)
         {
-            throw new System.NotImplementedException();
+            return new StreamWriterAdapter(stream);
         }
     }
 }

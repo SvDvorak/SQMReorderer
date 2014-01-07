@@ -89,6 +89,7 @@
     <Compile Include="SqmFileImporterTests.cs" />
     <Compile Include="SqmParser\Context\ISqmContextCreator.cs" />
     <Compile Include="SqmParser\ISqmParser.cs" />
+    <Compile Include="StreamWriterAdapter.cs" />
     <Compile Include="StreamWriterFactory.cs" />
     <Compile Include="ViewModels\MarkerViewModel.cs" />
     <Compile Include="ComparisonResult.cs" />

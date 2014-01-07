@@ -3,7 +3,7 @@ using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer.SqmExport
 {
-    interface ISqmElementVisitor
+    public interface ISqmElementVisitor
     {
         string Visit(string elementName, SqmContents sqmContents);
         string Visit(string elementName, MissionState mission);

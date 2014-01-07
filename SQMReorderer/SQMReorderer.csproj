@@ -75,6 +75,8 @@
     <Compile Include="IStreamToStringsReader.cs" />
     <Compile Include="IOpenFileDialogAdapter.cs" />
     <Compile Include="ISqmFileImporter.cs" />
+    <Compile Include="IStreamWriterAdapter.cs" />
+    <Compile Include="IStreamWriterFactory.cs" />
     <Compile Include="OpenFileDialogAdapter.cs" />
     <Compile Include="OpenSqmFileDialog.cs" />
     <Compile Include="OpenSqmFileDialogTests.cs" />
@@ -82,10 +84,12 @@
     <Compile Include="SaveSqmFileDialog.cs" />
     <Compile Include="SaveSqmFileDialogTests.cs" />
     <Compile Include="SqmFileExporter.cs" />
+    <Compile Include="SqmFileExporterTests.cs" />
     <Compile Include="SqmFileImporter.cs" />
     <Compile Include="SqmFileImporterTests.cs" />
     <Compile Include="SqmParser\Context\ISqmContextCreator.cs" />
     <Compile Include="SqmParser\ISqmParser.cs" />
+    <Compile Include="StreamWriterFactory.cs" />
     <Compile Include="ViewModels\MarkerViewModel.cs" />
     <Compile Include="ComparisonResult.cs" />
     <Compile Include="SqmExport\ISqmPropertyVisitor.cs" />

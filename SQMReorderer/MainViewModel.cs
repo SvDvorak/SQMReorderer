@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using SQMReorderer.Command;
+using SQMReorderer.SqmExport;
 using SQMReorderer.SqmParser.Context;
 using SQMReorderer.SqmParser.ResultObjects;
 using SQMReorderer.ViewModels;
@@ -60,15 +61,15 @@ namespace SQMReorderer
         {
             var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(), new SqmFileImporter(new StreamToStringsReader(), new SqmContextCreator(), new SqmParser.SqmParser()));
 
-            var parseResult = openSqmFileDialog.ShowDialog();
+            var sqmContents = openSqmFileDialog.ShowDialog();
 
             var sqmViewModelCreator = new SqmViewModelCreator();
-            Mission = sqmViewModelCreator.CreateMissionViewModel(parseResult.Mission);
+            Mission = sqmViewModelCreator.CreateMissionViewModel(sqmContents.Mission);
         }
 
         private void SaveFileAs()
         {
-            var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), new SqmFileExporter());
+            var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), new SqmFileExporter(new SqmElementExportVisitor(), new StreamWriterFactory()));
 
             saveSqmFileDialog.ShowDialog(new SqmContents());
         }

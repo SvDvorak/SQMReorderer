@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMReorderer.Core.SqmParser.Context;
-using SQMReorderer.SqmParser.Context;
 
-namespace SQMReorderer.SqmParser
+namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class SqmParserTests

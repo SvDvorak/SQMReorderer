@@ -4,10 +4,9 @@ using NUnit.Framework;
 using SQMReorderer.Core.SqmExport;
 using SQMReorderer.Core.SqmParser.ResultObjects;
 using SQMReorderer.Core.Streams;
-using SQMReorderer.Dialogs;
-using SQMReorderer.SqmExport;
+using SQMReorderer.Gui.Dialogs;
 
-namespace SQMReorderer
+namespace SQMReorderer.Tests.Export
 {
     [TestFixture]
     public class SqmFileExporterTests

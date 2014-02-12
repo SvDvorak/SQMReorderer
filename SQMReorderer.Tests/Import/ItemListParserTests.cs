@@ -4,10 +4,8 @@ using SQMReorderer.Core.SqmParser;
 using SQMReorderer.Core.SqmParser.Context;
 using SQMReorderer.Core.SqmParser.Parsers;
 using SQMReorderer.Core.SqmParser.Parsers.Vehicle;
-using SQMReorderer.SqmParser.Context;
-using SQMReorderer.SqmParser.Parsers.Vehicle;
 
-namespace SQMReorderer.SqmParser.Parsers
+namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class ItemListParserTests

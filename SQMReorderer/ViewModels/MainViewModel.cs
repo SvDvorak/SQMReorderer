@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using SQMReorderer.Command;
 using SQMReorderer.Core.SqmExport;
 using SQMReorderer.Core.SqmParser;
 using SQMReorderer.Core.SqmParser.Context;
 using SQMReorderer.Core.SqmParser.ResultObjects;
 using SQMReorderer.Core.Streams;
-using SQMReorderer.Dialogs;
+using SQMReorderer.Gui.Command;
+using SQMReorderer.Gui.Dialogs;
 
-namespace SQMReorderer.ViewModels
+namespace SQMReorderer.Gui.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {

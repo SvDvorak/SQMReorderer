@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace SQMReorderer.Structure
+namespace SQMReorderer.Gui.Structure
 {
     public class StructureView : ItemsControl
     {

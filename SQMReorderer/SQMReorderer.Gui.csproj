@@ -8,8 +8,8 @@
     <ProjectGuid>{C7D24ED6-684A-4772-8D10-FA2684D54FF5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SQMReorderer</RootNamespace>
-    <AssemblyName>SQMReorderer</AssemblyName>
+    <RootNamespace>SQMReorderer.Gui</RootNamespace>
+    <AssemblyName>SQMReorderer.Gui</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>

@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using SQMReorderer.Core.SqmExport;
 
-namespace SQMReorderer.SqmExport
+namespace SQMReorderer.Tests.Export
 {
     [TestFixture]
     public class ContextIndenterTests

@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using SQMReorderer.Core.SqmParser.HelperFunctions;
 
-namespace SQMReorderer.SqmParser.HelperFunctions
+namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class ParsingHelperFunctionsTests

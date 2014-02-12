@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
 using SQMReorderer.Core.SqmExport;
 using SQMReorderer.Core.SqmParser.Context;
-using SQMReorderer.SqmExport;
-using SQMReorderer.SqmParser.Context;
 
-namespace SQMReorderer.SqmParser
+namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class SqmFileTests

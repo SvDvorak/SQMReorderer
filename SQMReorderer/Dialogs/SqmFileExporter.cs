@@ -3,7 +3,7 @@ using SQMReorderer.Core.SqmExport;
 using SQMReorderer.Core.SqmParser.ResultObjects;
 using SQMReorderer.Core.Streams;
 
-namespace SQMReorderer.Dialogs
+namespace SQMReorderer.Gui.Dialogs
 {
     public class SqmFileExporter : ISqmFileExporter
     {

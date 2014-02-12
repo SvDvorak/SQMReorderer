@@ -2,9 +2,9 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using SQMReorderer.ViewModels;
+using SQMReorderer.Gui.ViewModels;
 
-namespace SQMReorderer
+namespace SQMReorderer.Gui
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

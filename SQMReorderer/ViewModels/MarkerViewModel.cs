@@ -1,6 +1,6 @@
 using SQMReorderer.Core.SqmParser.ResultObjects;
 
-namespace SQMReorderer.ViewModels
+namespace SQMReorderer.Gui.ViewModels
 {
     public class MarkerViewModel
     {

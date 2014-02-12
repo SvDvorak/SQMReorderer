@@ -1,6 +1,6 @@
 using System;
 
-namespace SQMReorderer.Command
+namespace SQMReorderer.Gui.Command
 {
     public class ActionCanNotBeNullException : Exception
     {

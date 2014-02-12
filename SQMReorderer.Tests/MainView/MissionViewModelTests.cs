@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using NUnit.Framework;
+using SQMReorderer.Gui.ViewModels;
 
-namespace SQMReorderer.ViewModels
+namespace SQMReorderer.Tests.MainView
 {
     [TestFixture]
     class MissionViewModelTests

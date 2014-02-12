@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace SQMReorderer.SqmParser.Context
+namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class SqmContextTests

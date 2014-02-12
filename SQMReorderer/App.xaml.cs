@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SQMReorderer
+namespace SQMReorderer.Gui
 {
     /// <summary>
     /// Interaction logic for App.xaml

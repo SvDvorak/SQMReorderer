@@ -5,7 +5,7 @@ using SQMReorderer.Core;
 using SQMReorderer.Core.SqmExport;
 using SQMReorderer.Core.SqmParser.ResultObjects;
 
-namespace SQMReorderer.SqmExport
+namespace SQMReorderer.Tests.Export
 {
     [TestFixture]
     public class SqmElementExportVisitorTests

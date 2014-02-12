@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMReorderer.Core;
 using SQMReorderer.Core.SqmExport;
 
-namespace SQMReorderer.SqmExport
+namespace SQMReorderer.Tests.Export
 {
     [TestFixture]
     public class SqmPropertyVisitorTests

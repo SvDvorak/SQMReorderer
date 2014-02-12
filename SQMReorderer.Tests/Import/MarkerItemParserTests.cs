@@ -2,9 +2,8 @@
 using NUnit.Framework;
 using SQMReorderer.Core.SqmParser.Context;
 using SQMReorderer.Core.SqmParser.Parsers.Marker;
-using SQMReorderer.SqmParser.Context;
 
-namespace SQMReorderer.SqmParser.Parsers.Marker
+namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class MarkerItemParserTests

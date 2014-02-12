@@ -2,9 +2,8 @@
 using SQMReorderer.Core.SqmParser;
 using SQMReorderer.Core.SqmParser.Context;
 using SQMReorderer.Core.SqmParser.DataSetters;
-using SQMReorderer.SqmParser.Context;
 
-namespace SQMReorderer.SqmParser.DataSetters
+namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class DoublePropertySetterTests

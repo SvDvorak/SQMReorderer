@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using SQMReorderer.Command;
+using SQMReorderer.Gui.Command;
 
-namespace SQMReorderer.ViewModels
+namespace SQMReorderer.Gui.ViewModels
 {
     public abstract class StructureItemViewModelBase : ViewModelBase
     {

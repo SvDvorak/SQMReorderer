@@ -1,7 +1,7 @@
 using System.IO;
 using Microsoft.Win32;
 
-namespace SQMReorderer.Dialogs
+namespace SQMReorderer.Gui.Dialogs
 {
     public class OpenFileDialogAdapter : IOpenFileDialogAdapter
     {

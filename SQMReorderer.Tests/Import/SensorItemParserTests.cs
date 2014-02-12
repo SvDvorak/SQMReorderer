@@ -2,9 +2,8 @@
 using NUnit.Framework;
 using SQMReorderer.Core.SqmParser.Context;
 using SQMReorderer.Core.SqmParser.Parsers.Sensor;
-using SQMReorderer.SqmParser.Context;
 
-namespace SQMReorderer.SqmParser.Parsers.Sensor
+namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class SensorItemParserTests

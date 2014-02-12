@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace SQMReorderer.ViewModels
+namespace SQMReorderer.Gui.ViewModels
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {

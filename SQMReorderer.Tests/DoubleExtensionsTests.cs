@@ -3,7 +3,7 @@ using System.Threading;
 using NUnit.Framework;
 using SQMReorderer.Core;
 
-namespace SQMReorderer
+namespace SQMReorderer.Tests
 {
     [TestFixture]
     public class DoubleExtensionsTests

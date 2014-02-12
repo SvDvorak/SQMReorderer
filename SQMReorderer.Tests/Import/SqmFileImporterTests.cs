@@ -6,11 +6,9 @@ using SQMReorderer.Core.SqmParser;
 using SQMReorderer.Core.SqmParser.Context;
 using SQMReorderer.Core.SqmParser.ResultObjects;
 using SQMReorderer.Core.Streams;
-using SQMReorderer.Dialogs;
-using SQMReorderer.SqmParser;
-using SQMReorderer.SqmParser.Context;
+using SQMReorderer.Gui.Dialogs;
 
-namespace SQMReorderer
+namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class SqmFileImporterTests

@@ -1,7 +1,8 @@
 using System;
 using NUnit.Framework;
+using SQMReorderer.Gui.ViewModels;
 
-namespace SQMReorderer.ViewModels
+namespace SQMReorderer.Tests.MainView
 {
     [TestFixture]
     public class ViewModelBaseTests

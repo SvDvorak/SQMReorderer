@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using SQMReorderer.Core.SqmParser.ResultObjects;
 
-namespace SQMReorderer.ViewModels
+namespace SQMReorderer.Gui.ViewModels
 {
     public class VehicleViewModel : ObservableCollection<VehicleViewModel>
     {

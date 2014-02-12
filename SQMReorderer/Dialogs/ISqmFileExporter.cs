@@ -1,7 +1,7 @@
 using System.IO;
 using SQMReorderer.Core.SqmParser.ResultObjects;
 
-namespace SQMReorderer.Dialogs
+namespace SQMReorderer.Gui.Dialogs
 {
     public interface ISqmFileExporter
     {

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMReorderer.Core.SqmParser.ResultObjects;
+using SQMReorderer.Gui.ViewModels;
 
-namespace SQMReorderer.ViewModels
+namespace SQMReorderer.Tests.MainView
 {
     [TestFixture]
     public class VehicleViewModelTests

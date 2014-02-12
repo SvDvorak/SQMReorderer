@@ -1,6 +1,7 @@
 using NUnit.Framework;
+using SQMReorderer.Gui.Command;
 
-namespace SQMReorderer.Command
+namespace SQMReorderer.Tests
 {
     [TestFixture]
     public class DelegateCommandTests

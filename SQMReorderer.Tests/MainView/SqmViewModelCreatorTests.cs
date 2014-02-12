@@ -1,9 +1,8 @@
 ﻿using NUnit.Framework;
 using SQMReorderer.Core.SqmParser.ResultObjects;
-using SQMReorderer.SqmParser;
-using SQMReorderer.ViewModels;
+using SQMReorderer.Gui.ViewModels;
 
-namespace SQMReorderer
+namespace SQMReorderer.Tests.MainView
 {
     [TestFixture]
     public class SqmViewModelCreatorTests

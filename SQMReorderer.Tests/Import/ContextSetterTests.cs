@@ -5,10 +5,8 @@ using SQMReorderer.Core.SqmParser.Context;
 using SQMReorderer.Core.SqmParser.DataSetters;
 using SQMReorderer.Core.SqmParser.Parsers.Intel;
 using SQMReorderer.Core.SqmParser.ResultObjects;
-using SQMReorderer.SqmParser.Context;
-using SQMReorderer.SqmParser.Parsers.Intel;
 
-namespace SQMReorderer.SqmParser.DataSetters
+namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class ContextSetterTests

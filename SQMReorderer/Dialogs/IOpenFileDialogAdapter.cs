@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace SQMReorderer.Dialogs
+namespace SQMReorderer.Gui.Dialogs
 {
     public interface IOpenFileDialogAdapter
     {

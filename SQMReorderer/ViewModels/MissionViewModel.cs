@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace SQMReorderer.ViewModels
+namespace SQMReorderer.Gui.ViewModels
 {
     public class MissionViewModel
     {

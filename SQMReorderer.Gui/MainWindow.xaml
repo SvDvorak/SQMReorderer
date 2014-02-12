@@ -64,7 +64,8 @@
                         x:Name="GroupsTreeView"
                         SelectionMode="KeyboardModifiersMode"
                         ItemsSource="{Binding Mission.Groups}"
-                        ItemTemplate="{StaticResource GroupTemplate}" />
+                        ItemTemplate="{StaticResource GroupTemplate}"
+                        MultiSelectionTreeView:DragDropExtension.ScrollOnDragDrop="True"/>
                 </TabItem>
             </TabControl>
 

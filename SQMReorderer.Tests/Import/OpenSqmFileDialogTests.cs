@@ -40,8 +40,10 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        public void Opens_selected_path()
+        public void Opens_selected_path_when_user_selects_folder()
         {
+            _openFileDialogAdapter.ShowDialog().Returns(true);
+
             _openSqmFileDialog.ShowDialog();
 
             _openFileDialogAdapter.Received().OpenFile();
@@ -53,6 +55,17 @@ namespace SQMReorderer.Tests.Import
             var actualContents = _sqmFileImporter.Import(_memoryStream);
 
             Assert.AreEqual(_expectedContents, actualContents);
+        }
+
+        [Test]
+        public void Does_nothing_if_user_presses_cancel()
+        {
+            _openFileDialogAdapter.ShowDialog().Returns(false);
+
+            var sqmContents = _openSqmFileDialog.ShowDialog();
+
+            _openFileDialogAdapter.DidNotReceive().OpenFile();
+            Assert.AreEqual(null, sqmContents);
         }
     }
 }

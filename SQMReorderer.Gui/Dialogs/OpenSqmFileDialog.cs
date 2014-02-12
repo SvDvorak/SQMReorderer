@@ -17,11 +17,16 @@ namespace SQMReorderer.Gui.Dialogs
 
         public SqmContents ShowDialog()
         {
-            _openFileDialog.ShowDialog();
+            var shouldSave = _openFileDialog.ShowDialog();
 
-            var fileStream = _openFileDialog.OpenFile();
+            if (shouldSave.HasValue && shouldSave.Value)
+            {
+                var fileStream = _openFileDialog.OpenFile();
 
-            return _sqmFileImporter.Import(fileStream);
+                return _sqmFileImporter.Import(fileStream);
+            }
+
+            return null;
         }
     }
 }

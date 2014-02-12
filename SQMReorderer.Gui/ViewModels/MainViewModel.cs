@@ -67,8 +67,12 @@ namespace SQMReorderer.Gui.ViewModels
 
             _sqmContents = openSqmFileDialog.ShowDialog();
 
-            var sqmViewModelCreator = new SqmViewModelCreator();
-            Mission = sqmViewModelCreator.CreateMissionViewModel(_sqmContents.Mission);
+            if(_sqmContents != null)
+            {
+                var sqmViewModelCreator = new SqmViewModelCreator();
+                Mission = sqmViewModelCreator.CreateMissionViewModel(_sqmContents.Mission);
+                
+            }
         }
 
         private void SaveFileAs()

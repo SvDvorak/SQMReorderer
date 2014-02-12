@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQMReorderer", "SQMReorderer\SQMReorderer.csproj", "{C7D24ED6-684A-4772-8D10-FA2684D54FF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQMReorderer.Gui", "SQMReorderer\SQMReorderer.Gui.csproj", "{C7D24ED6-684A-4772-8D10-FA2684D54FF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiSelectionTreeView", "MultiSelectionTreeView\MultiSelectionTreeView.csproj", "{20D00BCA-1981-4A2F-815B-79F05EDF6277}"
 EndProject

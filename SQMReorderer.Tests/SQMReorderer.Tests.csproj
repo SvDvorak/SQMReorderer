@@ -96,9 +96,9 @@
       <Project>{2a3d6bf9-d17a-43bd-bea5-ebb73eb6e569}</Project>
       <Name>SQMReorderer.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SQMReorderer\SQMReorderer.csproj">
+    <ProjectReference Include="..\SQMReorderer\SQMReorderer.Gui.csproj">
       <Project>{c7d24ed6-684a-4772-8d10-fa2684d54ff5}</Project>
-      <Name>SQMReorderer</Name>
+      <Name>SQMReorderer.Gui</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

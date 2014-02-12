@@ -59,59 +59,16 @@
                             <TextBlock Text="{Binding Header}" />
                         </HierarchicalDataTemplate>
                     </TabItem.Resources>
-                    <!--<Structure:StructureView ItemsSource="{Binding Mission.Groups}">
-                    <Structure:StructureView.Resources>
-                        <HierarchicalDataTemplate DataType="{x:Type ViewModels:StructureItemViewModelBase}" ItemsSource="{Binding Items}">
-                            <StackPanel>
-                                <TextBlock Text="{Binding Side}" Visibility="{Binding Side, Converter={StaticResource nullToVisibilityConverter}}" />
-                                <TextBlock Text="{Binding Vehicle}" Visibility="{Binding Vehicle, Converter={StaticResource nullToVisibilityConverter}}" />
-                                <TextBlock Text="{Binding Rank}" Visibility="{Binding Rank, Converter={StaticResource nullToVisibilityConverter}}" />
-                                <TextBlock Text="{Binding Text}" Visibility="{Binding Text, Converter={StaticResource nullToVisibilityConverter}}" />
-                                <TextBlock Text="{Binding Description}" Visibility="{Binding Description, Converter={StaticResource nullToVisibilityConverter}}" />
-                            </StackPanel>
-                        </HierarchicalDataTemplate>
-                    </Structure:StructureView.Resources>
-                </Structure:StructureView>-->
-                    <MultiSelectionTreeView:MultipleSelectionTreeView
-                    x:Name="GroupsTreeView"
-                    SelectionMode="KeyboardModifiersMode"
-                    ItemsSource="{Binding Mission.Groups}"
-                    ItemTemplate="{StaticResource GroupTemplate}">
 
-                    </MultiSelectionTreeView:MultipleSelectionTreeView>
+                    <MultiSelectionTreeView:MultipleSelectionTreeView
+                        x:Name="GroupsTreeView"
+                        SelectionMode="KeyboardModifiersMode"
+                        ItemsSource="{Binding Mission.Groups}"
+                        ItemTemplate="{StaticResource GroupTemplate}" />
                 </TabItem>
             </TabControl>
 
             <GridSplitter Width="5" />
-
-            <!--<TreeView x:Name="groupsTreeView"
-            MinWidth="180"
-            ItemsSource="{Binding Mission.Groups}"
-            SelectedItemChanged="TreeView_SelectedItemChanged"
-            PreviewMouseLeftButtonDown="Tree_PreviewMouseLeftButtonDown"
-            PreviewMouseMove="Tree_MouseMove"
-            DragEnter="TreeView_DragEnter"
-            AllowDrop="True"
-            Drop="TreeView_Drop">
-            
-            <TreeView.ItemContainerStyle>
-                <Style TargetType="{x:Type TreeViewItem}">
-                    <Setter Property="IsSelected" Value="{Binding IsSelected}" />
-                </Style>
-            </TreeView.ItemContainerStyle>
-
-            <TreeView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type ViewModels:ItemViewModel}" ItemsSource="{Binding Items}">
-                    <StackPanel>
-                        <TextBlock Text="{Binding Side}" Visibility="{Binding Side, Converter={StaticResource nullToVisibilityConverter}}" />
-                        <TextBlock Text="{Binding Vehicle}" Visibility="{Binding Vehicle, Converter={StaticResource nullToVisibilityConverter}}" />
-                        <TextBlock Text="{Binding Rank}" Visibility="{Binding Rank, Converter={StaticResource nullToVisibilityConverter}}" />
-                        <TextBlock Text="{Binding Text}" Visibility="{Binding Text, Converter={StaticResource nullToVisibilityConverter}}" />
-                        <TextBlock Text="{Binding Description}" Visibility="{Binding Description, Converter={StaticResource nullToVisibilityConverter}}" />
-                    </StackPanel>
-                </HierarchicalDataTemplate>
-            </TreeView.Resources>
-        </TreeView>-->
 
             <StackPanel Margin="10 0 0 0" Grid.Column="1">
                 <StackPanel Style="{StaticResource itemRowStackPanel}">

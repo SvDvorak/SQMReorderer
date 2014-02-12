@@ -74,5 +74,12 @@ namespace SQMReorderer.Tests.Export
 
             _saveFileDialogAdapter.DidNotReceive().OpenFile();
         }
+
+        [Test]
+        public void Automatically_appends_sqm_file_ending()
+        {
+            Assert.AreEqual(true, _saveFileDialogAdapter.AddExtension);
+            Assert.AreEqual("SQM File (*.sqm)|*.sqm", _saveFileDialogAdapter.Filter);
+        }
     }
 }

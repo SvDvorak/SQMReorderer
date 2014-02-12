@@ -35,8 +35,10 @@ namespace SQMReorderer.Tests.Export
         }
 
         [Test]
-        public void Opens_selected_path()
+        public void Opens_selected_path_when_user_selects_file_path()
         {
+            _saveFileDialogAdapter.ShowDialog().Returns(true);
+
             _saveSqmFileDialog.ShowDialog(new SqmContents());
 
             _saveFileDialogAdapter.Received().OpenFile();
@@ -46,6 +48,7 @@ namespace SQMReorderer.Tests.Export
         public void Exports_sqm_contents_using_stream()
         {
             var sqmContents = new SqmContents();
+            _saveFileDialogAdapter.ShowDialog().Returns(true);
 
             _saveSqmFileDialog.ShowDialog(sqmContents);
 
@@ -55,9 +58,21 @@ namespace SQMReorderer.Tests.Export
         [Test]
         public void Closes_stream_after_exporting()
         {
+            _saveFileDialogAdapter.ShowDialog().Returns(true);
+
             _saveSqmFileDialog.ShowDialog(new SqmContents());
 
             _memoryStream.Received().Close();
+        }
+
+        [Test]
+        public void Does_nothing_if_user_presses_cancel()
+        {
+            _saveFileDialogAdapter.ShowDialog().Returns(false);
+
+            _saveSqmFileDialog.ShowDialog(new SqmContents());
+
+            _saveFileDialogAdapter.DidNotReceive().OpenFile();
         }
     }
 }

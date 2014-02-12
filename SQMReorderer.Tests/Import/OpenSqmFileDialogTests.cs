@@ -40,7 +40,7 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        public void Opens_selected_path_when_user_selects_folder()
+        public void Opens_selected_path_when_user_selects_file_path()
         {
             _openFileDialogAdapter.ShowDialog().Returns(true);
 

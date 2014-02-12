@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace SQMReorderer
+namespace SQMReorderer.Core.Streams
 {
     public interface IStreamWriterFactory
     {

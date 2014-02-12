@@ -1,8 +1,8 @@
 using System.IO;
 
-namespace SQMReorderer
+namespace SQMReorderer.Core.Streams
 {
-    internal class StreamWriterFactory : IStreamWriterFactory
+    public class StreamWriterFactory : IStreamWriterFactory
     {
         public IStreamWriterAdapter Create(Stream stream)
         {

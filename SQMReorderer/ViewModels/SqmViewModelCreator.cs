@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using SQMReorderer.Core.SqmParser.ResultObjects;
-using SQMReorderer.ViewModels;
 
-namespace SQMReorderer
+namespace SQMReorderer.ViewModels
 {
     public class SqmViewModelCreator
     {

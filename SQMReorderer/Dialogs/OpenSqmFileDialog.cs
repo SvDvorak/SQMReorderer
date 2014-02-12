@@ -1,7 +1,6 @@
-using System;
 using SQMReorderer.Core.SqmParser.ResultObjects;
 
-namespace SQMReorderer
+namespace SQMReorderer.Dialogs
 {
     public class OpenSqmFileDialog
     {

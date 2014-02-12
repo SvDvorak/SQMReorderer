@@ -2,8 +2,9 @@ using System.IO;
 using SQMReorderer.Core.SqmParser;
 using SQMReorderer.Core.SqmParser.Context;
 using SQMReorderer.Core.SqmParser.ResultObjects;
+using SQMReorderer.Core.Streams;
 
-namespace SQMReorderer
+namespace SQMReorderer.Dialogs
 {
     public class SqmFileImporter : ISqmFileImporter
     {

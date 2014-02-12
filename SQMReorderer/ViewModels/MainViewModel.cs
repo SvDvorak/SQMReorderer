@@ -6,9 +6,10 @@ using SQMReorderer.Core.SqmExport;
 using SQMReorderer.Core.SqmParser;
 using SQMReorderer.Core.SqmParser.Context;
 using SQMReorderer.Core.SqmParser.ResultObjects;
-using SQMReorderer.ViewModels;
+using SQMReorderer.Core.Streams;
+using SQMReorderer.Dialogs;
 
-namespace SQMReorderer
+namespace SQMReorderer.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {

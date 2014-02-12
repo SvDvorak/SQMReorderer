@@ -1,7 +1,7 @@
 using System.IO;
 using Microsoft.Win32;
 
-namespace SQMReorderer
+namespace SQMReorderer.Dialogs
 {
     public class SaveFileDialogAdapter : ISaveFileDialogAdapter
     {

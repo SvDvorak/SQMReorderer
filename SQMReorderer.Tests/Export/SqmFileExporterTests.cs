@@ -3,6 +3,8 @@ using NSubstitute;
 using NUnit.Framework;
 using SQMReorderer.Core.SqmExport;
 using SQMReorderer.Core.SqmParser.ResultObjects;
+using SQMReorderer.Core.Streams;
+using SQMReorderer.Dialogs;
 using SQMReorderer.SqmExport;
 
 namespace SQMReorderer

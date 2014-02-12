@@ -1,7 +1,7 @@
 using System.IO;
 using SQMReorderer.Core.SqmParser.ResultObjects;
 
-namespace SQMReorderer
+namespace SQMReorderer.Dialogs
 {
     public interface ISqmFileImporter
     {

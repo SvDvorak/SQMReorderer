@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace SQMReorderer
+namespace SQMReorderer.Dialogs
 {
     public interface ISaveFileDialogAdapter
     {

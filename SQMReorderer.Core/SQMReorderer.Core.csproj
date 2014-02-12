@@ -104,6 +104,12 @@
     <Compile Include="SqmParser\ResultObjects\Vehicle.cs" />
     <Compile Include="SqmParser\SqmParseException.cs" />
     <Compile Include="SqmParser\SqmParser.cs" />
+    <Compile Include="Streams\IStreamToStringsReader.cs" />
+    <Compile Include="Streams\IStreamWriterAdapter.cs" />
+    <Compile Include="Streams\IStreamWriterFactory.cs" />
+    <Compile Include="Streams\StreamToStringsReader.cs" />
+    <Compile Include="Streams\StreamWriterAdapter.cs" />
+    <Compile Include="Streams\StreamWriterFactory.cs" />
     <Compile Include="Vector.cs" />
   </ItemGroup>
   <ItemGroup>

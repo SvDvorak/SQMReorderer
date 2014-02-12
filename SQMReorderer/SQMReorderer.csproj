@@ -52,30 +52,21 @@
     </ApplicationDefinition>
     <Compile Include="Command\ActionCanNotBeNullException.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
-    <Compile Include="ISaveFileDialogAdapter.cs" />
-    <Compile Include="ISqmFileExporter.cs" />
-    <Compile Include="IStreamToStringsReader.cs" />
-    <Compile Include="IOpenFileDialogAdapter.cs" />
-    <Compile Include="ISqmFileImporter.cs" />
-    <Compile Include="IStreamWriterAdapter.cs" />
-    <Compile Include="IStreamWriterFactory.cs" />
-    <Compile Include="OpenFileDialogAdapter.cs" />
-    <Compile Include="OpenSqmFileDialog.cs" />
-    <Compile Include="SaveFileDialogAdapter.cs" />
-    <Compile Include="SaveSqmFileDialog.cs" />
-    <Compile Include="SqmFileExporter.cs" />
-    <Compile Include="SqmFileImporter.cs" />
-    <Compile Include="SqmViewModelToMissionConverter.cs" />
-    <Compile Include="StreamWriterAdapter.cs" />
-    <Compile Include="StreamWriterFactory.cs" />
+    <Compile Include="Dialogs\ISaveFileDialogAdapter.cs" />
+    <Compile Include="Dialogs\ISqmFileExporter.cs" />
+    <Compile Include="Dialogs\IOpenFileDialogAdapter.cs" />
+    <Compile Include="Dialogs\ISqmFileImporter.cs" />
+    <Compile Include="Dialogs\OpenFileDialogAdapter.cs" />
+    <Compile Include="Dialogs\OpenSqmFileDialog.cs" />
+    <Compile Include="Dialogs\SaveFileDialogAdapter.cs" />
+    <Compile Include="Dialogs\SaveSqmFileDialog.cs" />
+    <Compile Include="Dialogs\SqmFileExporter.cs" />
+    <Compile Include="Dialogs\SqmFileImporter.cs" />
     <Compile Include="ViewModels\MarkerViewModel.cs" />
-    <Compile Include="ComparisonResult.cs" />
-    <Compile Include="StringListComparer.cs" />
     <Compile Include="Structure\StructureView.cs" />
     <Compile Include="ViewModels\MissionViewModel.cs" />
-    <Compile Include="SqmViewModelCreator.cs" />
-    <Compile Include="StreamToStringsReader.cs" />
-    <Compile Include="MainViewModel.cs" />
+    <Compile Include="ViewModels\SqmViewModelCreator.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="NullToVisibilityConverter.cs" />
     <Compile Include="ViewModels\StructureItemViewModelBase.cs" />
     <Compile Include="ViewModels\VehicleViewModel.cs" />
@@ -122,10 +113,7 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Gui\" />
-    <Folder Include="obj\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MultiSelectionTreeView\MultiSelectionTreeView.csproj">
       <Project>{20D00BCA-1981-4A2F-815B-79F05EDF6277}</Project>

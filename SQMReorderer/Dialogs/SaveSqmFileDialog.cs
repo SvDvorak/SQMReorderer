@@ -1,6 +1,6 @@
 using SQMReorderer.Core.SqmParser.ResultObjects;
 
-namespace SQMReorderer
+namespace SQMReorderer.Dialogs
 {
     public class SaveSqmFileDialog
     {

@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace SQMReorderer
+namespace SQMReorderer.Core.Streams
 {
     internal class StreamWriterAdapter : IStreamWriterAdapter, IDisposable
     {

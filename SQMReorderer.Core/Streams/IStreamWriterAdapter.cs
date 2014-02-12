@@ -1,4 +1,4 @@
-namespace SQMReorderer
+namespace SQMReorderer.Core.Streams
 {
     public interface IStreamWriterAdapter
     {

@@ -89,8 +89,6 @@
     <Compile Include="Export\SqmFileExporterTests.cs" />
     <Compile Include="Import\SqmFileImporterTests.cs" />
     <Compile Include="MainView\SqmViewModelCreatorTests.cs" />
-    <Compile Include="MainView\SqmViewModelToMissionConverterTests.cs" />
-    <Compile Include="StringListComparerTests.cs" />
     <Compile Include="VectorTests.cs" />
   </ItemGroup>
   <ItemGroup>

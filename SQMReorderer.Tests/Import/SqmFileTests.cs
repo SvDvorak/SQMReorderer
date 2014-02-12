@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
-using SQMReorderer.Core.SqmExport;
-using SQMReorderer.Core.SqmParser.Context;
+using SQMReorderer.Core.Export;
+using SQMReorderer.Core.Import;
+using SQMReorderer.Core.Import.Context;
 
 namespace SQMReorderer.Tests.Import
 {
@@ -649,7 +650,7 @@ namespace SQMReorderer.Tests.Import
         [Test]
         public void Expect_SqmParser_to_successfully_parse_testFile()
         {
-            var parser = new Core.SqmParser.SqmParser();
+            var parser = new SqmParser();
             var contextCreator = new SqmContextCreator();
 
             var context = contextCreator.CreateRootContext(testFileText);

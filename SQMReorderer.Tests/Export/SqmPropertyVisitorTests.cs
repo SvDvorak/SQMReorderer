@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMReorderer.Core;
-using SQMReorderer.Core.SqmExport;
+using SQMReorderer.Core.Export;
 
 namespace SQMReorderer.Tests.Export
 {

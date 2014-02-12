@@ -1,7 +1,7 @@
 using System.IO;
-using SQMReorderer.Core.SqmExport;
-using SQMReorderer.Core.SqmParser.ResultObjects;
-using SQMReorderer.Core.Streams;
+using SQMReorderer.Core.Export;
+using SQMReorderer.Core.Import.ResultObjects;
+using SQMReorderer.Core.StreamHelpers;
 
 namespace SQMReorderer.Gui.Dialogs
 {

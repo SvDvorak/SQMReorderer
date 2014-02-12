@@ -2,8 +2,8 @@
 using System.Text;
 using NUnit.Framework;
 using SQMReorderer.Core;
-using SQMReorderer.Core.SqmExport;
-using SQMReorderer.Core.SqmParser.ResultObjects;
+using SQMReorderer.Core.Export;
+using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Tests.Export
 {

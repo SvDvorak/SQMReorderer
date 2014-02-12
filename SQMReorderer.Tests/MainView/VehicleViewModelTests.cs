@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMReorderer.Core.SqmParser.ResultObjects;
+using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Gui.ViewModels;
 
 namespace SQMReorderer.Tests.MainView

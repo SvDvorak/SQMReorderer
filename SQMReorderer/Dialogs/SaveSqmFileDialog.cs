@@ -1,4 +1,4 @@
-using SQMReorderer.Core.SqmParser.ResultObjects;
+using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Gui.Dialogs
 {

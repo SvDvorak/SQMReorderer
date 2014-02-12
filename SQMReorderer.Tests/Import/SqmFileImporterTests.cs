@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
-using SQMReorderer.Core.SqmParser;
-using SQMReorderer.Core.SqmParser.Context;
-using SQMReorderer.Core.SqmParser.ResultObjects;
-using SQMReorderer.Core.Streams;
+using SQMReorderer.Core.Import;
+using SQMReorderer.Core.Import.Context;
+using SQMReorderer.Core.Import.ResultObjects;
+using SQMReorderer.Core.StreamHelpers;
 using SQMReorderer.Gui.Dialogs;
 
 namespace SQMReorderer.Tests.Import

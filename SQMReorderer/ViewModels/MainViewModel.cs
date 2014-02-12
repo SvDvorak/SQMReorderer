@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using SQMReorderer.Core.SqmExport;
-using SQMReorderer.Core.SqmParser;
-using SQMReorderer.Core.SqmParser.Context;
-using SQMReorderer.Core.SqmParser.ResultObjects;
-using SQMReorderer.Core.Streams;
+using SQMReorderer.Core.Export;
+using SQMReorderer.Core.Import;
+using SQMReorderer.Core.Import.Context;
+using SQMReorderer.Core.Import.ResultObjects;
+using SQMReorderer.Core.StreamHelpers;
 using SQMReorderer.Gui.Command;
 using SQMReorderer.Gui.Dialogs;
 

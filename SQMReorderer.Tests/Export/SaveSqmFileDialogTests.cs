@@ -1,7 +1,7 @@
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
-using SQMReorderer.Core.SqmParser.ResultObjects;
+using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Gui.Dialogs;
 
 namespace SQMReorderer.Tests.Export

@@ -1,23 +1,24 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMReorderer.Core.SqmParser;
-using SQMReorderer.Core.SqmParser.Context;
-using SQMReorderer.Core.SqmParser.Parsers;
-using SQMReorderer.Core.SqmParser.Parsers.Vehicle;
+using SQMReorderer.Core.Import;
+using SQMReorderer.Core.Import.Context;
+using SQMReorderer.Core.Import.Parsers;
+using SQMReorderer.Core.Import.Parsers.Vehicle;
+using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class ItemListParserTests
     {
-        private ItemListParser<Core.SqmParser.ResultObjects.Vehicle> _itemListParser;
+        private ItemListParser<Vehicle> _itemListParser;
 
         private SqmContextCreator _contextCreator;
 
         [SetUp]
         public void Setup()
         {
-            _itemListParser = new ItemListParser<Core.SqmParser.ResultObjects.Vehicle>(new VehicleItemParserFactory(), "Vehicles");
+            _itemListParser = new ItemListParser<Vehicle>(new VehicleItemParserFactory(), "Vehicles");
 
             _contextCreator = new SqmContextCreator();
         }

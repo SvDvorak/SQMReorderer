@@ -1,9 +1,9 @@
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
-using SQMReorderer.Core.SqmExport;
-using SQMReorderer.Core.SqmParser.ResultObjects;
-using SQMReorderer.Core.Streams;
+using SQMReorderer.Core.Export;
+using SQMReorderer.Core.Import.ResultObjects;
+using SQMReorderer.Core.StreamHelpers;
 using SQMReorderer.Gui.Dialogs;
 
 namespace SQMReorderer.Tests.Export

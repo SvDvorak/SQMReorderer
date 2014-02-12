@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 using SQMReorderer.Core;
-using SQMReorderer.Core.SqmParser;
-using SQMReorderer.Core.SqmParser.Context;
-using SQMReorderer.Core.SqmParser.DataSetters;
+using SQMReorderer.Core.Import;
+using SQMReorderer.Core.Import.Context;
+using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Tests.Import
 {

@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMReorderer.Core.SqmParser.Context;
+using SQMReorderer.Core.Import;
+using SQMReorderer.Core.Import.Context;
 
 namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class SqmParserTests
     {
-        private readonly Core.SqmParser.SqmParser _parser = new Core.SqmParser.SqmParser();
+        private readonly SqmParser _parser = new SqmParser();
 
         [SetUp]
         public void SetUp()

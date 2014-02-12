@@ -74,7 +74,6 @@
     <Compile Include="Import\ParsingHelperFunctionsTests.cs" />
     <Compile Include="Import\SensorItemParserTests.cs" />
     <Compile Include="Import\SqmContextCreatorTests.cs" />
-    <Compile Include="Import\SqmContextTests.cs" />
     <Compile Include="Import\SqmFileTests.cs" />
     <Compile Include="Import\SqmParserTests.cs" />
     <Compile Include="Import\StringPropertySetterTests.cs" />

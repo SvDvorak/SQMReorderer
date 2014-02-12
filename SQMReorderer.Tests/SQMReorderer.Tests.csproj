@@ -88,6 +88,7 @@
     <Compile Include="Export\SqmFileExporterTests.cs" />
     <Compile Include="Import\SqmFileImporterTests.cs" />
     <Compile Include="MainView\SqmViewModelCreatorTests.cs" />
+    <Compile Include="MainView\ViewModelToContentReordererTests.cs" />
     <Compile Include="VectorTests.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -75,6 +75,10 @@ namespace SQMReorderer.Gui.ViewModels
         {
             var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), new SqmFileExporter(new SqmElementExportVisitor(), new ContextIndenter(), new StreamWriterFactory()));
 
+            var reorderer = new ViewModelToContentReorderer();
+
+            reorderer.Reorder(_sqmContents.Mission, Mission);
+
             saveSqmFileDialog.ShowDialog(_sqmContents);
         }
     }

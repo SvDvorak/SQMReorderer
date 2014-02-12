@@ -20,9 +20,9 @@ namespace SQMReorderer.Gui.ViewModels
         {
             foreach (var vehicle in vehicles)
             {
-                _parentChildDictionary.Add(vehicle.Vehicle, vehicle.Select(x => x.Vehicle).ToList());
+                _parentChildDictionary.Add(vehicle.Vehicle, vehicle.Children.Select(x => x.Vehicle).ToList());
 
-                AddToDictionary(vehicle.ToList());
+                AddToDictionary(vehicle.Children.ToList());
             }
         }
 

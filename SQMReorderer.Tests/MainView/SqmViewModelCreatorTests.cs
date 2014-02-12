@@ -43,7 +43,7 @@ namespace SQMReorderer.Tests.MainView
 
             MissionViewModel missionViewModel = _viewModelCreator.CreateMissionViewModel(mission);
 
-            Assert.AreEqual("TEXT", missionViewModel.Groups[0][1][0].Text);
+            Assert.AreEqual("TEXT", missionViewModel.Groups[0].Children[1].Children[0].Text);
         }
 
         [Test]

@@ -55,7 +55,7 @@
                         <HierarchicalDataTemplate x:Key="ElementTemplate">
                             <TextBlock Text="{Binding Description}" />
                         </HierarchicalDataTemplate>
-                        <HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding}" ItemTemplate="{StaticResource ElementTemplate}">
+                        <HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding Children}" ItemTemplate="{StaticResource ElementTemplate}">
                             <TextBlock Text="{Binding Header}" />
                         </HierarchicalDataTemplate>
                     </TabItem.Resources>

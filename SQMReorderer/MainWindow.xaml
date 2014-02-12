@@ -8,10 +8,7 @@
 
     <Window.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Structure\Themes\Generic.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-            <SQMReorderer:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
+            <gui:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
             <Style x:Key="itemRowStackPanel" TargetType="{x:Type StackPanel}">
                 <Setter Property="Orientation" Value="Horizontal" />
                 <Setter Property="Margin" Value="0 0 0 3" />

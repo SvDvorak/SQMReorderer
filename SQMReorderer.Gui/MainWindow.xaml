@@ -73,10 +73,6 @@
 
             <StackPanel Margin="10 0 0 0" Grid.Column="1">
                 <StackPanel Style="{StaticResource itemRowStackPanel}">
-                    <TextBlock Text="Side:" Style="{StaticResource itemInfoTextBlock}" />
-                    <TextBox Text="{Binding SelectedItem.Side}" Style="{StaticResource itemInfoTextBox}" />
-                </StackPanel>
-                <StackPanel Style="{StaticResource itemRowStackPanel}">
                     <TextBlock Text="Vehicle:" Style="{StaticResource itemInfoTextBlock}" />
                     <TextBox Text="{Binding SelectedItem.VehicleName}" Style="{StaticResource itemInfoTextBox}" />
                 </StackPanel>

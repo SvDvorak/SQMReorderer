@@ -24,7 +24,7 @@ namespace SQMReorderer.Tests.Import
 
             _openSqmFileDialog = new OpenSqmFileDialog(_openFileDialogAdapter, _sqmFileImporter);
 
-            _memoryStream = new MemoryStream();
+            _memoryStream = Substitute.For<MemoryStream>();
             _openFileDialogAdapter.OpenFile().Returns(_memoryStream);
 
             _expectedContents = new SqmContents();
@@ -55,6 +55,16 @@ namespace SQMReorderer.Tests.Import
             var actualContents = _sqmFileImporter.Import(_memoryStream);
 
             Assert.AreEqual(_expectedContents, actualContents);
+        }
+
+        [Test]
+        public void Closes_stream_after_file_is_imported()
+        {
+            _openFileDialogAdapter.ShowDialog().Returns(true);
+
+            _openSqmFileDialog.ShowDialog();
+
+            _memoryStream.Received().Close();
         }
 
         [Test]

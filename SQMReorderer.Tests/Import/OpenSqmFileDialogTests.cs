@@ -67,5 +67,11 @@ namespace SQMReorderer.Tests.Import
             _openFileDialogAdapter.DidNotReceive().OpenFile();
             Assert.AreEqual(null, sqmContents);
         }
+
+        [Test]
+        public void Filters_on_only_opening_sqm_files()
+        {
+            Assert.AreEqual("SQM Files (*.sqm)|*.sqm", _openFileDialogAdapter.Filter);
+        }
     }
 }

@@ -13,6 +13,8 @@ namespace SQMReorderer.Gui.Dialogs
         {
             _openFileDialog = openFileDialog;
             _sqmFileImporter = sqmFileImporter;
+
+            _openFileDialog.Filter = "SQM Files (*.sqm)|*.sqm";
         }
 
         public SqmContents ShowDialog()

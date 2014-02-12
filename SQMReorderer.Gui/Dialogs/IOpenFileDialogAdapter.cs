@@ -6,6 +6,7 @@ namespace SQMReorderer.Gui.Dialogs
     {
         Stream OpenFile();
         string FileName { get; set; }
+        string Filter { get; set; }
         bool? ShowDialog();
     }
 }

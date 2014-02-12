@@ -12,15 +12,21 @@ namespace SQMReorderer.Gui.Dialogs
             _openFileDialog = new OpenFileDialog();
         }
 
-        public Stream OpenFile()
-        {
-            return _openFileDialog.OpenFile();
-        }
-
         public string FileName
         {
             get { return _openFileDialog.FileName; }
             set { _openFileDialog.FileName = value; }
+        }
+
+        public string Filter
+        {
+            get { return _openFileDialog.Filter; }
+            set { _openFileDialog.Filter = value; }
+        }
+
+        public Stream OpenFile()
+        {
+            return _openFileDialog.OpenFile();
         }
 
         public bool? ShowDialog()

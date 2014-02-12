@@ -1,4 +1,4 @@
-using SQMReorderer.SqmParser.ResultObjects;
+using SQMReorderer.Core.SqmParser.ResultObjects;
 
 namespace SQMReorderer
 {

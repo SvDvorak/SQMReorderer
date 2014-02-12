@@ -1,8 +1,9 @@
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
+using SQMReorderer.Core.SqmExport;
+using SQMReorderer.Core.SqmParser.ResultObjects;
 using SQMReorderer.SqmExport;
-using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer
 {

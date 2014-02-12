@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2A3D6BF9-D17A-43BD-BEA5-EBB73EB6E569}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SQMReorderer.Core</RootNamespace>
+    <AssemblyName>SQMReorderer.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DoubleExtensions.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="SqmExport\ContextIndenter.cs" />
+    <Compile Include="SqmExport\ISqmElementVisitor.cs" />
+    <Compile Include="SqmExport\ISqmPropertyVisitor.cs" />
+    <Compile Include="SqmExport\SqmElementExportVisitor.cs" />
+    <Compile Include="SqmExport\SqmPropertyVisitor.cs" />
+    <Compile Include="SqmParser\Context\ISqmContextCreator.cs" />
+    <Compile Include="SqmParser\Context\SqmContext.cs" />
+    <Compile Include="SqmParser\Context\SqmContextCreator.cs" />
+    <Compile Include="SqmParser\Context\SqmLine.cs" />
+    <Compile Include="SqmParser\DataSetters\ContextSetter.cs" />
+    <Compile Include="SqmParser\DataSetters\DoublePropertySetter.cs" />
+    <Compile Include="SqmParser\DataSetters\IContextSetter.cs" />
+    <Compile Include="SqmParser\DataSetters\IntegerListPropertySetter.cs" />
+    <Compile Include="SqmParser\DataSetters\IntegerPropertySetter.cs" />
+    <Compile Include="SqmParser\DataSetters\MultiLineStringListPropertySetter.cs" />
+    <Compile Include="SqmParser\DataSetters\MultiValuePropertySetterBase.cs" />
+    <Compile Include="SqmParser\DataSetters\PropertySetterBase.cs" />
+    <Compile Include="SqmParser\DataSetters\SingleValuePropertySetterBase.cs" />
+    <Compile Include="SqmParser\DataSetters\StringPropertySetter.cs" />
+    <Compile Include="SqmParser\DataSetters\VectorPropertySetter.cs" />
+    <Compile Include="SqmParser\HelperFunctions\CommonRegexPatterns.cs" />
+    <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctions.cs" />
+    <Compile Include="SqmParser\ISqmParser.cs" />
+    <Compile Include="SqmParser\Parsers\IItemParserFactory.cs" />
+    <Compile Include="SqmParser\Parsers\Intel\IntelParser.cs" />
+    <Compile Include="SqmParser\Parsers\IParser.cs" />
+    <Compile Include="SqmParser\Parsers\ItemListParser.cs" />
+    <Compile Include="SqmParser\Parsers\ItemParserBase.cs" />
+    <Compile Include="SqmParser\Parsers\Marker\MarkerItemParser.cs" />
+    <Compile Include="SqmParser\Parsers\Marker\MarkerItemParserFactory.cs" />
+    <Compile Include="SqmParser\Parsers\MissionState\MissionStateParser.cs" />
+    <Compile Include="SqmParser\Parsers\ParserBase.cs" />
+    <Compile Include="SqmParser\Parsers\Sensor\SensorItemParser.cs" />
+    <Compile Include="SqmParser\Parsers\Sensor\SensorItemParserFactory.cs" />
+    <Compile Include="SqmParser\Parsers\Vehicle\VehicleItemParser.cs" />
+    <Compile Include="SqmParser\Parsers\Vehicle\VehicleItemParserFactory.cs" />
+    <Compile Include="SqmParser\Result.cs" />
+    <Compile Include="SqmParser\ResultObjects\Intel.cs" />
+    <Compile Include="SqmParser\ResultObjects\ItemBase.cs" />
+    <Compile Include="SqmParser\ResultObjects\Marker.cs" />
+    <Compile Include="SqmParser\ResultObjects\MissionState.cs" />
+    <Compile Include="SqmParser\ResultObjects\Sensor.cs" />
+    <Compile Include="SqmParser\ResultObjects\SqmContents.cs" />
+    <Compile Include="SqmParser\ResultObjects\Vehicle.cs" />
+    <Compile Include="SqmParser\SqmParseException.cs" />
+    <Compile Include="SqmParser\SqmParser.cs" />
+    <Compile Include="Vector.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

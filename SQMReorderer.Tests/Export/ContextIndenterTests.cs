@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using SQMReorderer.Core.SqmExport;
 
 namespace SQMReorderer.SqmExport
 {

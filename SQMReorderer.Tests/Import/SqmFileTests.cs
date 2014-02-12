@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using SQMReorderer.Core.SqmExport;
+using SQMReorderer.Core.SqmParser.Context;
 using SQMReorderer.SqmExport;
 using SQMReorderer.SqmParser.Context;
 
@@ -651,7 +653,7 @@ namespace SQMReorderer.SqmParser
         [Test]
         public void Expect_SqmParser_to_successfully_parse_testFile()
         {
-            var parser = new SqmParser();
+            var parser = new Core.SqmParser.SqmParser();
             var contextCreator = new SqmContextCreator();
 
             var context = contextCreator.CreateRootContext(testFileText);

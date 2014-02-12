@@ -1,7 +1,7 @@
 using System.IO;
-using SQMReorderer.SqmParser;
-using SQMReorderer.SqmParser.Context;
-using SQMReorderer.SqmParser.ResultObjects;
+using SQMReorderer.Core.SqmParser;
+using SQMReorderer.Core.SqmParser.Context;
+using SQMReorderer.Core.SqmParser.ResultObjects;
 
 namespace SQMReorderer
 {

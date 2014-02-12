@@ -1,4 +1,7 @@
 ﻿using NUnit.Framework;
+using SQMReorderer.Core.SqmParser;
+using SQMReorderer.Core.SqmParser.Context;
+using SQMReorderer.Core.SqmParser.DataSetters;
 using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser.DataSetters

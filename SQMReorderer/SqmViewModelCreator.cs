@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using SQMReorderer.SqmParser.ResultObjects;
+using SQMReorderer.Core.SqmParser.ResultObjects;
 using SQMReorderer.ViewModels;
 
 namespace SQMReorderer

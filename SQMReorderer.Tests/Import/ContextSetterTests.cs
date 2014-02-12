@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMReorderer.Core.SqmParser;
+using SQMReorderer.Core.SqmParser.Context;
+using SQMReorderer.Core.SqmParser.DataSetters;
+using SQMReorderer.Core.SqmParser.Parsers.Intel;
+using SQMReorderer.Core.SqmParser.ResultObjects;
 using SQMReorderer.SqmParser.Context;
 using SQMReorderer.SqmParser.Parsers.Intel;
-using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer.SqmParser.DataSetters
 {

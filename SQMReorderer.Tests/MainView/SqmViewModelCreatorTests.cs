@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
+using SQMReorderer.Core.SqmParser.ResultObjects;
 using SQMReorderer.SqmParser;
-using SQMReorderer.SqmParser.ResultObjects;
 using SQMReorderer.ViewModels;
 
 namespace SQMReorderer

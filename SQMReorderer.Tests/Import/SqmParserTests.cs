@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMReorderer.Core.SqmParser.Context;
 using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser
@@ -7,7 +8,7 @@ namespace SQMReorderer.SqmParser
     [TestFixture]
     public class SqmParserTests
     {
-        private readonly SqmParser _parser = new SqmParser();
+        private readonly Core.SqmParser.SqmParser _parser = new Core.SqmParser.SqmParser();
 
         [SetUp]
         public void SetUp()

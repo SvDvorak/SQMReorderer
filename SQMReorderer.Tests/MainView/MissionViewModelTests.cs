@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer.ViewModels
 {

@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
+using SQMReorderer.Core.SqmParser;
+using SQMReorderer.Core.SqmParser.Context;
+using SQMReorderer.Core.SqmParser.ResultObjects;
 using SQMReorderer.SqmParser;
 using SQMReorderer.SqmParser.Context;
-using SQMReorderer.SqmParser.ResultObjects;
 
 namespace SQMReorderer
 {

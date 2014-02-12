@@ -1,6 +1,6 @@
 using System.IO;
-using SQMReorderer.SqmExport;
-using SQMReorderer.SqmParser.ResultObjects;
+using SQMReorderer.Core.SqmExport;
+using SQMReorderer.Core.SqmParser.ResultObjects;
 
 namespace SQMReorderer
 {

@@ -51,7 +51,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\ActionCanNotBeNullException.cs" />
-    <Compile Include="DoubleExtensions.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
     <Compile Include="ISaveFileDialogAdapter.cs" />
     <Compile Include="ISqmFileExporter.cs" />
@@ -64,68 +63,20 @@
     <Compile Include="OpenSqmFileDialog.cs" />
     <Compile Include="SaveFileDialogAdapter.cs" />
     <Compile Include="SaveSqmFileDialog.cs" />
-    <Compile Include="SqmExport\ContextIndenter.cs" />
     <Compile Include="SqmFileExporter.cs" />
     <Compile Include="SqmFileImporter.cs" />
-    <Compile Include="SqmParser\Context\ISqmContextCreator.cs" />
-    <Compile Include="SqmParser\ISqmParser.cs" />
     <Compile Include="SqmViewModelToMissionConverter.cs" />
     <Compile Include="StreamWriterAdapter.cs" />
     <Compile Include="StreamWriterFactory.cs" />
     <Compile Include="ViewModels\MarkerViewModel.cs" />
     <Compile Include="ComparisonResult.cs" />
-    <Compile Include="SqmExport\ISqmPropertyVisitor.cs" />
-    <Compile Include="SqmExport\SqmPropertyVisitor.cs" />
-    <Compile Include="SqmParser\Parsers\IParser.cs" />
-    <Compile Include="SqmParser\Parsers\ItemParserBase.cs" />
-    <Compile Include="SqmParser\Parsers\Marker\MarkerItemParserFactory.cs" />
-    <Compile Include="SqmParser\Parsers\ParserBase.cs" />
-    <Compile Include="SqmParser\Parsers\IItemParserFactory.cs" />
-    <Compile Include="SqmParser\Parsers\Sensor\SensorItemParserFactory.cs" />
-    <Compile Include="SqmParser\Parsers\Sensor\SensorItemParser.cs" />
-    <Compile Include="SqmParser\Context\SqmContextCreator.cs" />
-    <Compile Include="SqmParser\DataSetters\ContextSetter.cs" />
-    <Compile Include="SqmParser\DataSetters\IContextSetter.cs" />
-    <Compile Include="SqmParser\Parsers\Vehicle\VehicleItemParserFactory.cs" />
-    <Compile Include="SqmParser\ResultObjects\ItemBase.cs" />
-    <Compile Include="SqmParser\ResultObjects\Marker.cs" />
-    <Compile Include="SqmParser\Parsers\Marker\MarkerItemParser.cs" />
-    <Compile Include="SqmParser\ResultObjects\Sensor.cs" />
-    <Compile Include="SqmParser\Context\SqmContext.cs" />
-    <Compile Include="SqmParser\Context\SqmLine.cs" />
     <Compile Include="StringListComparer.cs" />
-    <Compile Include="SqmParser\HelperFunctions\CommonRegexPatterns.cs" />
-    <Compile Include="SqmParser\DataSetters\DoublePropertySetter.cs" />
-    <Compile Include="SqmParser\Parsers\Intel\IntelParser.cs" />
-    <Compile Include="SqmParser\DataSetters\IntegerListPropertySetter.cs" />
-    <Compile Include="SqmParser\DataSetters\IntegerPropertySetter.cs" />
-    <Compile Include="SqmParser\DataSetters\MultiLineStringListPropertySetter.cs" />
-    <Compile Include="SqmParser\DataSetters\MultiValuePropertySetterBase.cs" />
-    <Compile Include="SqmParser\DataSetters\PropertySetterBase.cs" />
-    <Compile Include="SqmParser\DataSetters\SingleValuePropertySetterBase.cs" />
-    <Compile Include="SqmParser\DataSetters\StringPropertySetter.cs" />
-    <Compile Include="SqmParser\DataSetters\VectorPropertySetter.cs" />
-    <Compile Include="SqmParser\Result.cs" />
-    <Compile Include="SqmExport\ISqmElementVisitor.cs" />
-    <Compile Include="SqmExport\SqmElementExportVisitor.cs" />
     <Compile Include="Structure\StructureView.cs" />
-    <Compile Include="Vector.cs" />
     <Compile Include="ViewModels\MissionViewModel.cs" />
     <Compile Include="SqmViewModelCreator.cs" />
     <Compile Include="StreamToStringsReader.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="NullToVisibilityConverter.cs" />
-    <Compile Include="SqmParser\ResultObjects\MissionState.cs" />
-    <Compile Include="SqmParser\Parsers\MissionState\MissionStateParser.cs" />
-    <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctions.cs" />
-    <Compile Include="SqmParser\ResultObjects\Vehicle.cs" />
-    <Compile Include="SqmParser\Parsers\Vehicle\VehicleItemParser.cs" />
-    <Compile Include="SqmParser\Parsers\ItemListParser.cs" />
-    <Compile Include="SqmParser\SqmParseException.cs" />
-    <Compile Include="SqmParser\ResultObjects\Intel.cs" />
-    <Compile Include="SqmParser\SqmParser.cs" />
-    <Compile Include="SqmParser\ResultObjects\SqmContents.cs" />
-    <Compile Include="MultiLineTextBuilder.cs" />
     <Compile Include="ViewModels\StructureItemViewModelBase.cs" />
     <Compile Include="ViewModels\VehicleViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -179,6 +130,10 @@
     <ProjectReference Include="..\MultiSelectionTreeView\MultiSelectionTreeView.csproj">
       <Project>{20D00BCA-1981-4A2F-815B-79F05EDF6277}</Project>
       <Name>MultiSelectionTreeView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQMReorderer.Core\SQMReorderer.Core.csproj">
+      <Project>{2a3d6bf9-d17a-43bd-bea5-ebb73eb6e569}</Project>
+      <Name>SQMReorderer.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

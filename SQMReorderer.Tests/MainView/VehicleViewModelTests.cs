@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
-using SQMReorderer.SqmParser.ResultObjects;
+using SQMReorderer.Core.SqmParser.ResultObjects;
 
 namespace SQMReorderer.ViewModels
 {

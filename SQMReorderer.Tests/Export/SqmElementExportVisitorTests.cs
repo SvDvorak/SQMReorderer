@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
-using SQMReorderer.SqmParser.ResultObjects;
+using SQMReorderer.Core;
+using SQMReorderer.Core.SqmExport;
+using SQMReorderer.Core.SqmParser.ResultObjects;
 
 namespace SQMReorderer.SqmExport
 {

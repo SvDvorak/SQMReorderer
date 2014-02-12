@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMReorderer.Core.SqmParser;
+using SQMReorderer.Core.SqmParser.Context;
+using SQMReorderer.Core.SqmParser.Parsers.Intel;
 using SQMReorderer.SqmParser.Context;
 
 namespace SQMReorderer.SqmParser.Parsers.Intel

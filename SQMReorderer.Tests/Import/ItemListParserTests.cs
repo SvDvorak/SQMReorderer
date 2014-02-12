@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMReorderer.Core.SqmParser;
+using SQMReorderer.Core.SqmParser.Context;
+using SQMReorderer.Core.SqmParser.Parsers;
+using SQMReorderer.Core.SqmParser.Parsers.Vehicle;
 using SQMReorderer.SqmParser.Context;
 using SQMReorderer.SqmParser.Parsers.Vehicle;
 
@@ -8,14 +12,14 @@ namespace SQMReorderer.SqmParser.Parsers
     [TestFixture]
     public class ItemListParserTests
     {
-        private ItemListParser<ResultObjects.Vehicle> _itemListParser;
+        private ItemListParser<Core.SqmParser.ResultObjects.Vehicle> _itemListParser;
 
         private SqmContextCreator _contextCreator;
 
         [SetUp]
         public void Setup()
         {
-            _itemListParser = new ItemListParser<ResultObjects.Vehicle>(new VehicleItemParserFactory(), "Vehicles");
+            _itemListParser = new ItemListParser<Core.SqmParser.ResultObjects.Vehicle>(new VehicleItemParserFactory(), "Vehicles");
 
             _contextCreator = new SqmContextCreator();
         }

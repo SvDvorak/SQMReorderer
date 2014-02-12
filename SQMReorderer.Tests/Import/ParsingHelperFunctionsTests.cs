@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using SQMReorderer.Core.SqmParser.HelperFunctions;
 
 namespace SQMReorderer.SqmParser.HelperFunctions
 {

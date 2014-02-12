@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using SQMReorderer.SqmParser.ResultObjects;
 using SQMReorderer.ViewModels;
 
 namespace SQMReorderer

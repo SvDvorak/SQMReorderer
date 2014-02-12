@@ -11,10 +11,10 @@ namespace SQMReorderer.ViewModels
         public ICommand ExpandChildrenCommand { get; private set; }
         public ICommand SelectCommand { get; private set; }
 
-        public StructureItemViewModelBase()
+        protected StructureItemViewModelBase()
         {
             ShowChildItems = false;
-
+            
             ExpandChildrenCommand = new DelegateCommand(() => ShowChildItems = !ShowChildItems);
             SelectCommand = new DelegateCommand(() => IsSelected = !IsSelected);
         }

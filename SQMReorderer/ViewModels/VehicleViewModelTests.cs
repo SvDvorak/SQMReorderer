@@ -20,7 +20,7 @@ namespace SQMReorderer.ViewModels
 
             var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModel>());
 
-            Assert.AreEqual("VEHICLE", itemViewModel.Vehicle);
+            Assert.AreEqual("VEHICLE", itemViewModel.VehicleName);
             Assert.AreEqual("RANK", itemViewModel.Rank);
             Assert.AreEqual("TEXT", itemViewModel.Text);
             Assert.AreEqual("DESC", itemViewModel.Description);

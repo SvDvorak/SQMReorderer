@@ -11,6 +11,8 @@ namespace SQMReorderer
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        private SqmContents _sqmContents;
+
         public MainViewModel()
         {
             OpenCommand = new DelegateCommand(OpenFile);
@@ -61,17 +63,17 @@ namespace SQMReorderer
         {
             var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(), new SqmFileImporter(new StreamToStringsReader(), new SqmContextCreator(), new SqmParser.SqmParser()));
 
-            var sqmContents = openSqmFileDialog.ShowDialog();
+            _sqmContents = openSqmFileDialog.ShowDialog();
 
             var sqmViewModelCreator = new SqmViewModelCreator();
-            Mission = sqmViewModelCreator.CreateMissionViewModel(sqmContents.Mission);
+            Mission = sqmViewModelCreator.CreateMissionViewModel(_sqmContents.Mission);
         }
 
         private void SaveFileAs()
         {
-            var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), new SqmFileExporter(new SqmElementExportVisitor(), new StreamWriterFactory()));
+            var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), new SqmFileExporter(new SqmElementExportVisitor(), new ContextIndenter(), new StreamWriterFactory()));
 
-            saveSqmFileDialog.ShowDialog(new SqmContents());
+            saveSqmFileDialog.ShowDialog(_sqmContents);
         }
     }
 }

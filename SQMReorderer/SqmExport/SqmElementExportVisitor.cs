@@ -108,12 +108,12 @@ namespace SQMReorderer.SqmExport
 
         public string Visit(string elementName, List<Marker> markers)
         {
-            return Visit(elementName, markers.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Marker)item));
+            return Visit(elementName, markers.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Marker) item));
         }
 
         public string Visit(string elementName, List<Sensor> sensors)
         {
-            return Visit(elementName, sensors.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Sensor)item));
+            return Visit(elementName, sensors.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Sensor) item));
         }
 
         public string Visit(string elementName, Vehicle vehicle)
@@ -123,31 +123,30 @@ namespace SQMReorderer.SqmExport
                 return "";
             }
 
-            var vehicleString = new StringBuilder();
+            var stringBuilder = new StringBuilder();
 
-            vehicleString.Append("class " + elementName + vehicle.Number + "\n");
-            vehicleString.Append("{\n");
-            vehicleString.Append(_propertyVisitor.Visit("position", vehicle.Position));
-            vehicleString.Append(_propertyVisitor.Visit("azimut", vehicle.Azimut));
-            vehicleString.Append(_propertyVisitor.Visit("id", vehicle.Id));
-            vehicleString.Append(_propertyVisitor.Visit("side", vehicle.Side));
-            vehicleString.Append(_propertyVisitor.Visit("vehicle", vehicle.VehicleName));
-            vehicleString.Append(_propertyVisitor.Visit("player", vehicle.Player));
-            vehicleString.Append(_propertyVisitor.Visit("leader", vehicle.Leader));
-            vehicleString.Append(_propertyVisitor.Visit("rank", vehicle.Rank));
-            vehicleString.Append(_propertyVisitor.Visit("skill", vehicle.Skill));
-            vehicleString.Append(_propertyVisitor.Visit("lock", vehicle.Lock));
-            vehicleString.Append(_propertyVisitor.Visit("text", vehicle.Text));
-            vehicleString.Append(_propertyVisitor.Visit("init", vehicle.Init));
-            vehicleString.Append(_propertyVisitor.Visit("description", vehicle.Description));
-            vehicleString.Append(_propertyVisitor.Visit("synchronizations", vehicle.Synchronizations));
+            stringBuilder.Append("class " + elementName + vehicle.Number + "\n");
+            stringBuilder.Append("{\n");
+            stringBuilder.Append(_propertyVisitor.Visit("position", vehicle.Position));
+            stringBuilder.Append(_propertyVisitor.Visit("azimut", vehicle.Azimut));
+            stringBuilder.Append(_propertyVisitor.Visit("id", vehicle.Id));
+            stringBuilder.Append(_propertyVisitor.Visit("side", vehicle.Side));
+            stringBuilder.Append(_propertyVisitor.Visit("vehicle", vehicle.VehicleName));
+            stringBuilder.Append(_propertyVisitor.Visit("player", vehicle.Player));
+            stringBuilder.Append(_propertyVisitor.Visit("leader", vehicle.Leader));
+            stringBuilder.Append(_propertyVisitor.Visit("rank", vehicle.Rank));
+            stringBuilder.Append(_propertyVisitor.Visit("skill", vehicle.Skill));
+            stringBuilder.Append(_propertyVisitor.Visit("lock", vehicle.Lock));
+            stringBuilder.Append(_propertyVisitor.Visit("text", vehicle.Text));
+            stringBuilder.Append(_propertyVisitor.Visit("init", vehicle.Init));
+            stringBuilder.Append(_propertyVisitor.Visit("description", vehicle.Description));
+            stringBuilder.Append(_propertyVisitor.Visit("synchronizations", vehicle.Synchronizations));
 
-            vehicleString.Append(Visit("Vehicles", vehicle.Vehicles));
+            stringBuilder.Append(Visit("Vehicles", vehicle.Vehicles));
 
-            vehicleString.Append("};\n");
+            stringBuilder.Append("};\n");
 
-
-            return vehicleString.ToString();
+            return stringBuilder.ToString();
         }
 
         public string Visit(string elementName, Marker marker)
@@ -157,23 +156,23 @@ namespace SQMReorderer.SqmExport
                 return "";
             }
 
-            var markerString = new StringBuilder();
+            var stringBuilder = new StringBuilder();
 
-            markerString.Append("class " + elementName + marker.Number + "\n");
-            markerString.Append("{\n");
-            markerString.Append(_propertyVisitor.Visit("position", marker.Position));
-            markerString.Append(_propertyVisitor.Visit("name", marker.Name));
-            markerString.Append(_propertyVisitor.Visit("text", marker.Text));
-            markerString.Append(_propertyVisitor.Visit("markerType", marker.MarkerType));
-            markerString.Append(_propertyVisitor.Visit("type", marker.Type));
-            markerString.Append(_propertyVisitor.Visit("fillName", marker.FillName));
-            markerString.Append(_propertyVisitor.Visit("a", marker.A));
-            markerString.Append(_propertyVisitor.Visit("b", marker.B));
-            markerString.Append(_propertyVisitor.Visit("drawBorder", marker.DrawBorder));
-            markerString.Append(_propertyVisitor.Visit("angle", marker.Angle));
-            markerString.Append("};\n");
+            stringBuilder.Append("class " + elementName + marker.Number + "\n");
+            stringBuilder.Append("{\n");
+            stringBuilder.Append(_propertyVisitor.Visit("position", marker.Position));
+            stringBuilder.Append(_propertyVisitor.Visit("name", marker.Name));
+            stringBuilder.Append(_propertyVisitor.Visit("text", marker.Text));
+            stringBuilder.Append(_propertyVisitor.Visit("markerType", marker.MarkerType));
+            stringBuilder.Append(_propertyVisitor.Visit("type", marker.Type));
+            stringBuilder.Append(_propertyVisitor.Visit("fillName", marker.FillName));
+            stringBuilder.Append(_propertyVisitor.Visit("a", marker.A));
+            stringBuilder.Append(_propertyVisitor.Visit("b", marker.B));
+            stringBuilder.Append(_propertyVisitor.Visit("drawBorder", marker.DrawBorder));
+            stringBuilder.Append(_propertyVisitor.Visit("angle", marker.Angle));
+            stringBuilder.Append("};\n");
 
-            return markerString.ToString();
+            return stringBuilder.ToString();
         }
 
         public string Visit(string elementName, Sensor sensor)
@@ -183,23 +182,23 @@ namespace SQMReorderer.SqmExport
                 return "";
             }
 
-            var sensorString = new StringBuilder();
+            var stringBuilder = new StringBuilder();
 
-            sensorString.Append("class " + elementName + sensor.Number + "\n");
-            sensorString.Append("{\n");
-            sensorString.Append(_propertyVisitor.Visit("position", sensor.Position));
-            sensorString.Append(_propertyVisitor.Visit("a", sensor.A));
-            sensorString.Append(_propertyVisitor.Visit("b", sensor.B));
-            sensorString.Append(_propertyVisitor.Visit("activationBy", sensor.ActivationBy));
-            sensorString.Append(_propertyVisitor.Visit("interruptable", sensor.Interruptable));
-            sensorString.Append(_propertyVisitor.Visit("type", sensor.Type));
-            sensorString.Append(_propertyVisitor.Visit("age", sensor.Age));
-            sensorString.Append(_propertyVisitor.Visit("expCond", sensor.ExpCond));
-            sensorString.Append(_propertyVisitor.Visit("expActiv", sensor.ExpActiv));
+            stringBuilder.Append("class " + elementName + sensor.Number + "\n");
+            stringBuilder.Append("{\n");
+            stringBuilder.Append(_propertyVisitor.Visit("position", sensor.Position));
+            stringBuilder.Append(_propertyVisitor.Visit("a", sensor.A));
+            stringBuilder.Append(_propertyVisitor.Visit("b", sensor.B));
+            stringBuilder.Append(_propertyVisitor.Visit("activationBy", sensor.ActivationBy));
+            stringBuilder.Append(_propertyVisitor.Visit("interruptable", sensor.Interruptable));
+            stringBuilder.Append(_propertyVisitor.Visit("type", sensor.Type));
+            stringBuilder.Append(_propertyVisitor.Visit("age", sensor.Age));
+            stringBuilder.Append(_propertyVisitor.Visit("expCond", sensor.ExpCond));
+            stringBuilder.Append(_propertyVisitor.Visit("expActiv", sensor.ExpActiv));
             //itemString.Append(Visit("Effects", item.Effects));
-            sensorString.Append("};\n");
+            stringBuilder.Append("};\n");
 
-            return sensorString.ToString();
+            return stringBuilder.ToString();
         }
     }
 }

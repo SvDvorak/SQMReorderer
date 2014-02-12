@@ -22,7 +22,7 @@ namespace SQMReorderer
 
             var itemViewModel = _viewModelCreator.CreateMissionViewModel(mission);
 
-            Assert.AreEqual("TEXT", ((VehicleViewModel)itemViewModel.Groups[0]).ToString());
+            Assert.AreEqual("TEXT", itemViewModel.Groups[0].Text);
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace SQMReorderer
 
             MissionViewModel missionViewModel = _viewModelCreator.CreateMissionViewModel(mission);
 
-            Assert.AreEqual("TEXT", ((VehicleViewModel)missionViewModel.Groups[0][1][0]).ToString());
+            Assert.AreEqual("TEXT", missionViewModel.Groups[0][1][0].Text);
         }
 
         [Test]

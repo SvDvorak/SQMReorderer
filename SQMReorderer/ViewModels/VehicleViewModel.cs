@@ -7,18 +7,19 @@ namespace SQMReorderer.ViewModels
 {
     public class VehicleViewModel : ObservableCollection<VehicleViewModel>
     {
-        private readonly Vehicle _vehicle;
-
         public VehicleViewModel(Vehicle vehicle, List<VehicleViewModel> childItemViewModels) : base(childItemViewModels)
         {
-            _vehicle = vehicle;
+            Vehicle = vehicle;
         }
 
-        public string Header { get { return _vehicle.Side; } }
+        public Vehicle Vehicle { get; private set; }
 
-        public string Vehicle { get { return _vehicle.VehicleName; } set { _vehicle.VehicleName = value; } }
-        public string Rank { get { return _vehicle.Rank; } set { _vehicle.Rank = value; } }
-        public string Text { get { return _vehicle.Text; } set { _vehicle.Text = value; } }
-        public string Description { get { return _vehicle.Description; } set { _vehicle.Description = value; } }
+        public string Header { get { return Vehicle.Side; } }
+
+        public string VehicleName { get { return Vehicle.VehicleName; } set { Vehicle.VehicleName = value; } }
+        public string Rank { get { return Vehicle.Rank; } set { Vehicle.Rank = value; } }
+        public string Text { get { return Vehicle.Text; } set { Vehicle.Text = value; } }
+        public string Description { get { return Vehicle.Description; } set { Vehicle.Description = value; } }
+
     }
 }

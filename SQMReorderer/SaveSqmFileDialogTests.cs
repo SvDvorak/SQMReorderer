@@ -21,7 +21,8 @@ namespace SQMReorderer
             _sqmFileExporter = Substitute.For<ISqmFileExporter>();
             _saveSqmFileDialog = new SaveSqmFileDialog(_saveFileDialogAdapter, _sqmFileExporter);
 
-            _memoryStream = new MemoryStream();
+            _memoryStream = Substitute.For<MemoryStream>();
+            _saveFileDialogAdapter.OpenFile().Returns(_memoryStream);
         }
 
         [Test]
@@ -43,12 +44,19 @@ namespace SQMReorderer
         [Test]
         public void Exports_sqm_contents_using_stream()
         {
-            _saveFileDialogAdapter.OpenFile().Returns(_memoryStream);
             var sqmContents = new SqmContents();
 
             _saveSqmFileDialog.ShowDialog(sqmContents);
 
             _sqmFileExporter.Received().Export(_memoryStream, sqmContents);
+        }
+
+        [Test]
+        public void Closes_stream_after_exporting()
+        {
+            _saveSqmFileDialog.ShowDialog(new SqmContents());
+
+            _memoryStream.Received().Close();
         }
     }
 }

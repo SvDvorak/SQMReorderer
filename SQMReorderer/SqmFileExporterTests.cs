@@ -9,16 +9,18 @@ namespace SQMReorderer
     [TestFixture]
     public class SqmFileExporterTests
     {
-        private ISqmElementVisitor _sqmElementVisitor;
         private SqmFileExporter _exporter;
+        private ISqmElementVisitor _sqmElementVisitor;
         private IStreamWriterFactory _streamWriterFactory;
+        private IContextIndenter _contextIndenter;
 
         [SetUp]
         public void Setup()
         {
             _sqmElementVisitor = Substitute.For<ISqmElementVisitor>();
             _streamWriterFactory = Substitute.For<IStreamWriterFactory>();
-            _exporter = new SqmFileExporter(_sqmElementVisitor, _streamWriterFactory);
+            _contextIndenter = Substitute.For<IContextIndenter>();
+            _exporter = new SqmFileExporter(_sqmElementVisitor, _contextIndenter, _streamWriterFactory);
         }
 
         [Test]
@@ -31,19 +33,35 @@ namespace SQMReorderer
         }
 
         [Test]
-        public void Writes_converted_string_to_stream_using_stream_writer()
+        public void Writes_converted_and_indented_string_to_stream_using_stream_writer()
         {
             var contents = new SqmContents();
             var stream = Substitute.For<Stream>();
             var streamWriter = Substitute.For<IStreamWriterAdapter>();
             const string convertedString = "Text!";
+            const string indentedString = "Indented Text!";
 
             _sqmElementVisitor.Visit("", contents).Returns(convertedString);
+            _contextIndenter.Indent(convertedString).Returns(indentedString);
             _streamWriterFactory.Create(stream).Returns(streamWriter);
 
             _exporter.Export(stream, contents);
 
-            streamWriter.Received().Write(convertedString);
+            streamWriter.Received().Write(indentedString);
+        }
+
+        [Test]
+        public void Flushes_stream_writer_when_finished()
+        {
+            var contents = new SqmContents();
+            var stream = Substitute.For<Stream>();
+            var streamWriter = Substitute.For<IStreamWriterAdapter>();
+
+            _streamWriterFactory.Create(stream).Returns(streamWriter);
+
+            _exporter.Export(stream, contents);
+
+            streamWriter.Received().Flush();
         }
     }
 }

@@ -17,6 +17,11 @@ namespace SQMReorderer
             _streamWriter.Write(text);
         }
 
+        public void Flush()
+        {
+            _streamWriter.Flush();
+        }
+
         public void Dispose()
         {
             _streamWriter.Dispose();

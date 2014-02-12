@@ -122,7 +122,7 @@
                 </StackPanel>
                 <StackPanel Style="{StaticResource itemRowStackPanel}">
                     <TextBlock Text="Vehicle:" Style="{StaticResource itemInfoTextBlock}" />
-                    <TextBox Text="{Binding SelectedItem.Vehicle}" Style="{StaticResource itemInfoTextBox}" />
+                    <TextBox Text="{Binding SelectedItem.VehicleName}" Style="{StaticResource itemInfoTextBox}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource itemRowStackPanel}">
                     <TextBlock Text="Rank:" Style="{StaticResource itemInfoTextBlock}" />

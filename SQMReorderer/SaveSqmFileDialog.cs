@@ -20,6 +20,8 @@ namespace SQMReorderer
             var fileStream = _saveFileDialogAdapter.OpenFile();
 
             _sqmFileExporter.Export(fileStream, sqmContents);
+
+            fileStream.Close();
         }
     }
 }

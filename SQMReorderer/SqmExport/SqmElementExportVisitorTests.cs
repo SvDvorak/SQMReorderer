@@ -213,9 +213,9 @@ namespace SQMReorderer.SqmExport
             vehicle.Description = "TK Local Mortar Team 1 Assistant Gunner";
             vehicle.Synchronizations = new List<int> { 1, 2, 3 };
 
-            var exportedVehicle = _exportVisitor.Visit("Item", vehicle);
+            var actualVehicleText = _exportVisitor.Visit("Item", vehicle);
 
-            Assert.AreEqual(originalVehicleText.ToString(), exportedVehicle);
+            Assert.AreEqual(originalVehicleText.ToString(), actualVehicleText);
         }
 
         [Test]
@@ -255,11 +255,9 @@ namespace SQMReorderer.SqmExport
             item1.Vehicles.Add(item1_1);
             item1.Vehicles.Add(item1_2);
 
-            var exportedItem = exportVisitor.Visit("Item", item1);
+            var actualItemsText = exportVisitor.Visit("Item", item1);
 
-            var originalItemsString = originalItemsText.ToString();
-
-            Assert.AreEqual(originalItemsString, exportedItem);
+            Assert.AreEqual(originalItemsText.ToString(), actualItemsText);
         }
 
         [Test]
@@ -295,9 +293,9 @@ namespace SQMReorderer.SqmExport
             marker.DrawBorder = 1;
             marker.Angle = 2.42;
 
-            var exportedMarker = _exportVisitor.Visit("Item", marker);
+            var actualMarkerText = _exportVisitor.Visit("Item", marker);
 
-            Assert.AreEqual(originalMarkerText.ToString(), exportedMarker);
+            Assert.AreEqual(originalMarkerText.ToString(), actualMarkerText);
         }
 
         [Test]
@@ -337,9 +335,9 @@ namespace SQMReorderer.SqmExport
 
             //item.Effects = new List<string>() { "blur" };
 
-            var exportedSensor = _exportVisitor.Visit("Item", sensor);
+            var actualSensorText = _exportVisitor.Visit("Item", sensor);
 
-            Assert.AreEqual(originalSensorText.ToString(), exportedSensor);
+            Assert.AreEqual(originalSensorText.ToString(), actualSensorText);
         }
     }
 }

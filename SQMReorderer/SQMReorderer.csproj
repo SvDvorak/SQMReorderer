@@ -83,12 +83,16 @@
     <Compile Include="SaveFileDialogAdapter.cs" />
     <Compile Include="SaveSqmFileDialog.cs" />
     <Compile Include="SaveSqmFileDialogTests.cs" />
+    <Compile Include="SqmExport\ContextIndenter.cs" />
+    <Compile Include="SqmExport\ContextIndenterTests.cs" />
     <Compile Include="SqmFileExporter.cs" />
     <Compile Include="SqmFileExporterTests.cs" />
     <Compile Include="SqmFileImporter.cs" />
     <Compile Include="SqmFileImporterTests.cs" />
     <Compile Include="SqmParser\Context\ISqmContextCreator.cs" />
     <Compile Include="SqmParser\ISqmParser.cs" />
+    <Compile Include="SqmViewModelToMissionConverter.cs" />
+    <Compile Include="SqmViewModelToMissionConverterTests.cs" />
     <Compile Include="StreamWriterAdapter.cs" />
     <Compile Include="StreamWriterFactory.cs" />
     <Compile Include="ViewModels\MarkerViewModel.cs" />

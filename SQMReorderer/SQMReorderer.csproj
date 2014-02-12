@@ -36,23 +36,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NSubstitute">
-      <HintPath>..\packages\NSubstitute.1.6.1.0\lib\NET40\NSubstitute.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\NUnit 2.6\bin\framework\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.mocks, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\NUnit 2.6\bin\framework\nunit.mocks.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -66,9 +51,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\ActionCanNotBeNullException.cs" />
-    <Compile Include="Command\DelegateCommandTests.cs" />
     <Compile Include="DoubleExtensions.cs" />
-    <Compile Include="DoubleExtensionsTests.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
     <Compile Include="ISaveFileDialogAdapter.cs" />
     <Compile Include="ISqmFileExporter.cs" />
@@ -79,29 +62,20 @@
     <Compile Include="IStreamWriterFactory.cs" />
     <Compile Include="OpenFileDialogAdapter.cs" />
     <Compile Include="OpenSqmFileDialog.cs" />
-    <Compile Include="OpenSqmFileDialogTests.cs" />
     <Compile Include="SaveFileDialogAdapter.cs" />
     <Compile Include="SaveSqmFileDialog.cs" />
-    <Compile Include="SaveSqmFileDialogTests.cs" />
     <Compile Include="SqmExport\ContextIndenter.cs" />
-    <Compile Include="SqmExport\ContextIndenterTests.cs" />
     <Compile Include="SqmFileExporter.cs" />
-    <Compile Include="SqmFileExporterTests.cs" />
     <Compile Include="SqmFileImporter.cs" />
-    <Compile Include="SqmFileImporterTests.cs" />
     <Compile Include="SqmParser\Context\ISqmContextCreator.cs" />
     <Compile Include="SqmParser\ISqmParser.cs" />
     <Compile Include="SqmViewModelToMissionConverter.cs" />
-    <Compile Include="SqmViewModelToMissionConverterTests.cs" />
     <Compile Include="StreamWriterAdapter.cs" />
     <Compile Include="StreamWriterFactory.cs" />
     <Compile Include="ViewModels\MarkerViewModel.cs" />
     <Compile Include="ComparisonResult.cs" />
     <Compile Include="SqmExport\ISqmPropertyVisitor.cs" />
-    <Compile Include="SqmExport\SqmElementExportVisitorTests.cs" />
     <Compile Include="SqmExport\SqmPropertyVisitor.cs" />
-    <Compile Include="SqmExport\SqmPropertyVisitorTests.cs" />
-    <Compile Include="SqmParser\DataSetters\ContextSetterTests.cs" />
     <Compile Include="SqmParser\Parsers\IParser.cs" />
     <Compile Include="SqmParser\Parsers\ItemParserBase.cs" />
     <Compile Include="SqmParser\Parsers\Marker\MarkerItemParserFactory.cs" />
@@ -109,7 +83,6 @@
     <Compile Include="SqmParser\Parsers\IItemParserFactory.cs" />
     <Compile Include="SqmParser\Parsers\Sensor\SensorItemParserFactory.cs" />
     <Compile Include="SqmParser\Parsers\Sensor\SensorItemParser.cs" />
-    <Compile Include="SqmParser\Parsers\Sensor\SensorItemParserTests.cs" />
     <Compile Include="SqmParser\Context\SqmContextCreator.cs" />
     <Compile Include="SqmParser\DataSetters\ContextSetter.cs" />
     <Compile Include="SqmParser\DataSetters\IContextSetter.cs" />
@@ -117,69 +90,45 @@
     <Compile Include="SqmParser\ResultObjects\ItemBase.cs" />
     <Compile Include="SqmParser\ResultObjects\Marker.cs" />
     <Compile Include="SqmParser\Parsers\Marker\MarkerItemParser.cs" />
-    <Compile Include="SqmParser\Parsers\Marker\MarkerItemParserTests.cs" />
     <Compile Include="SqmParser\ResultObjects\Sensor.cs" />
     <Compile Include="SqmParser\Context\SqmContext.cs" />
-    <Compile Include="SqmParser\Context\SqmContextCreatorTests.cs" />
-    <Compile Include="SqmParser\Context\SqmContextTests.cs" />
     <Compile Include="SqmParser\Context\SqmLine.cs" />
     <Compile Include="StringListComparer.cs" />
     <Compile Include="SqmParser\HelperFunctions\CommonRegexPatterns.cs" />
-    <Compile Include="SqmParser\HelperFunctions\CommonRegexPatternsTests.cs" />
     <Compile Include="SqmParser\DataSetters\DoublePropertySetter.cs" />
-    <Compile Include="SqmParser\DataSetters\DoublePropertySetterTests.cs" />
     <Compile Include="SqmParser\Parsers\Intel\IntelParser.cs" />
-    <Compile Include="SqmParser\Parsers\Intel\IntelParserTests.cs" />
     <Compile Include="SqmParser\DataSetters\IntegerListPropertySetter.cs" />
-    <Compile Include="SqmParser\DataSetters\IntegerListPropertySetterTests.cs" />
     <Compile Include="SqmParser\DataSetters\IntegerPropertySetter.cs" />
-    <Compile Include="SqmParser\DataSetters\IntegerPropertySetterTests.cs" />
     <Compile Include="SqmParser\DataSetters\MultiLineStringListPropertySetter.cs" />
-    <Compile Include="SqmParser\DataSetters\MultiLineStringListPropertySetterTests.cs" />
     <Compile Include="SqmParser\DataSetters\MultiValuePropertySetterBase.cs" />
     <Compile Include="SqmParser\DataSetters\PropertySetterBase.cs" />
     <Compile Include="SqmParser\DataSetters\SingleValuePropertySetterBase.cs" />
     <Compile Include="SqmParser\DataSetters\StringPropertySetter.cs" />
-    <Compile Include="SqmParser\DataSetters\StringPropertySetterTests.cs" />
     <Compile Include="SqmParser\DataSetters\VectorPropertySetter.cs" />
-    <Compile Include="SqmParser\DataSetters\VectorPropertySetterTests.cs" />
     <Compile Include="SqmParser\Result.cs" />
     <Compile Include="SqmExport\ISqmElementVisitor.cs" />
     <Compile Include="SqmExport\SqmElementExportVisitor.cs" />
-    <Compile Include="StringListComparerTests.cs" />
     <Compile Include="Structure\StructureView.cs" />
     <Compile Include="Vector.cs" />
-    <Compile Include="VectorTests.cs" />
     <Compile Include="ViewModels\MissionViewModel.cs" />
     <Compile Include="SqmViewModelCreator.cs" />
     <Compile Include="StreamToStringsReader.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="NullToVisibilityConverter.cs" />
-    <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctionsTests.cs" />
     <Compile Include="SqmParser\ResultObjects\MissionState.cs" />
     <Compile Include="SqmParser\Parsers\MissionState\MissionStateParser.cs" />
-    <Compile Include="SqmParser\Parsers\MissionState\MissionStateParserTests.cs" />
     <Compile Include="SqmParser\HelperFunctions\ParsingHelperFunctions.cs" />
     <Compile Include="SqmParser\ResultObjects\Vehicle.cs" />
     <Compile Include="SqmParser\Parsers\Vehicle\VehicleItemParser.cs" />
-    <Compile Include="SqmParser\Parsers\Vehicle\VehicleItemParserTests.cs" />
     <Compile Include="SqmParser\Parsers\ItemListParser.cs" />
-    <Compile Include="SqmParser\Parsers\ItemListParserTests.cs" />
-    <Compile Include="SqmParser\SqmFileTests.cs" />
     <Compile Include="SqmParser\SqmParseException.cs" />
     <Compile Include="SqmParser\ResultObjects\Intel.cs" />
     <Compile Include="SqmParser\SqmParser.cs" />
     <Compile Include="SqmParser\ResultObjects\SqmContents.cs" />
-    <Compile Include="SqmParser\SqmParserTests.cs" />
-    <Compile Include="SqmViewModelCreatorTests.cs" />
     <Compile Include="MultiLineTextBuilder.cs" />
-    <Compile Include="MultiLineTextBuilderTests.cs" />
     <Compile Include="ViewModels\StructureItemViewModelBase.cs" />
     <Compile Include="ViewModels\VehicleViewModel.cs" />
-    <Compile Include="ViewModels\VehicleViewModelTests.cs" />
-    <Compile Include="ViewModels\MissionViewModelTests.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="ViewModels\ViewModelBaseTests.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -216,7 +165,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

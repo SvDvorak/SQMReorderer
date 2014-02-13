@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using SQMReorderer.Core.Export;
@@ -11,7 +12,7 @@ using SQMReorderer.Gui.Dialogs;
 
 namespace SQMReorderer.Gui.ViewModels
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : ViewModelBase
     {
         private SqmContents _sqmContents;
 
@@ -20,8 +21,6 @@ namespace SQMReorderer.Gui.ViewModels
             OpenCommand = new DelegateCommand(OpenFile);
             SaveAsCommand = new DelegateCommand(SaveFileAs);
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public DelegateCommand OpenCommand { get; private set; }
         public DelegateCommand SaveAsCommand { get; private set; }
@@ -32,8 +31,7 @@ namespace SQMReorderer.Gui.ViewModels
             get { return _mission; }
             set
             {
-                _mission = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Mission"));
+                Set(value, () => Mission, () => _mission = value);
             }
         }
 
@@ -43,9 +41,8 @@ namespace SQMReorderer.Gui.ViewModels
             get { return _selectedItems; }
             set
             {
-                _selectedItems = value;
+                Set(value, () => SelectedItem, () => _selectedItems = value);
                 SelectedItem = _selectedItems.FirstOrDefault();
-                PropertyChanged(this, new PropertyChangedEventArgs("SelectedItems"));
             }
         }
 
@@ -55,9 +52,7 @@ namespace SQMReorderer.Gui.ViewModels
             get { return _selectedItem; }
             set
             {
-                _selectedItem = value;
-
-                PropertyChanged(this, new PropertyChangedEventArgs("SelectedItem"));
+                Set(value, () => SelectedItem, () => _selectedItem = value);
             }
         }
 
@@ -71,7 +66,6 @@ namespace SQMReorderer.Gui.ViewModels
             {
                 var sqmViewModelCreator = new SqmViewModelCreator();
                 Mission = sqmViewModelCreator.CreateMissionViewModel(_sqmContents.Mission);
-                
             }
         }
 
@@ -80,7 +74,6 @@ namespace SQMReorderer.Gui.ViewModels
             var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), new SqmFileExporter(new SqmElementExportVisitor(), new ContextIndenter(), new StreamWriterFactory()));
 
             var reorderer = new ViewModelToContentReorderer();
-
             reorderer.Reorder(_sqmContents.Mission, Mission);
 
             saveSqmFileDialog.ShowDialog(_sqmContents);

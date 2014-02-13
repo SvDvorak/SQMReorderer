@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -65,6 +66,16 @@ namespace MultiSelectionTreeView
         {
             SelectedItemsViewModels = new SelectedItemsCollection();
             SelectedItemsViewModels.CollectionChanged += (sender, args) => UpdateSelectedItems();
+
+            DependencyPropertyDescriptor
+                .FromProperty(ItemsSourceProperty, typeof(ItemsControl))
+                .AddValueChanged(this, (s, e) => ClearSelectedItems());
+        }
+
+        private void ClearSelectedItems()
+        {
+            SelectedItems.Clear();
+            SelectedItemsViewModels.Clear();
         }
         #endregion
 

@@ -14,7 +14,7 @@ namespace SQMReorderer.Gui.ViewModels
 
         public Vehicle Vehicle { get; private set; }
 
-        public string Header { get { return Vehicle.Side; } }
+        public string Header { get { return GetPropertyWithData(); } }
 
         public string VehicleName
         {
@@ -41,5 +41,19 @@ namespace SQMReorderer.Gui.ViewModels
         }
 
         public ObservableCollection<VehicleViewModel> Children { get; set; }
+
+        private string GetPropertyWithData()
+        {
+            if (!string.IsNullOrWhiteSpace(Description))
+            {
+                return Description;
+            }
+            if (!string.IsNullOrWhiteSpace(VehicleName))
+            {
+                return VehicleName;
+            }
+
+            return Vehicle.Side;
+        }
     }
 }

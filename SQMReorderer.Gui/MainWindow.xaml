@@ -9,8 +9,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <gui:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
-            <Style x:Key="itemRowStackPanel" TargetType="{x:Type StackPanel}">
-                <Setter Property="Orientation" Value="Horizontal" />
+            <Style x:Key="itemRowStackPanel" TargetType="{x:Type DockPanel}">
                 <Setter Property="Margin" Value="0 0 0 3" />
             </Style>
             <Style x:Key="itemInfoTextBlock" TargetType="{x:Type TextBlock}">
@@ -18,7 +17,7 @@
                 <Setter Property="VerticalAlignment" Value="Center" />
             </Style>
             <Style x:Key="itemInfoTextBox" TargetType="{x:Type TextBox}">
-                <Setter Property="Width" Value="200" />
+                <Setter Property="Margin" Value="0 0 10 0"/>
             </Style>
 
             <Style x:Key="itemTextStyle" TargetType="{x:Type TextBlock}">
@@ -72,22 +71,22 @@
             <GridSplitter Width="5" />
 
             <StackPanel Margin="10 0 0 0" Grid.Column="1">
-                <StackPanel Style="{StaticResource itemRowStackPanel}">
+                <DockPanel Style="{StaticResource itemRowStackPanel}">
                     <TextBlock Text="Vehicle:" Style="{StaticResource itemInfoTextBlock}" />
                     <TextBox Text="{Binding SelectedItem.VehicleName}" Style="{StaticResource itemInfoTextBox}" />
-                </StackPanel>
-                <StackPanel Style="{StaticResource itemRowStackPanel}">
+                </DockPanel>
+                <DockPanel Style="{StaticResource itemRowStackPanel}">
                     <TextBlock Text="Rank:" Style="{StaticResource itemInfoTextBlock}" />
                     <TextBox Text="{Binding SelectedItem.Rank}" Style="{StaticResource itemInfoTextBox}" />
-                </StackPanel>
-                <StackPanel Style="{StaticResource itemRowStackPanel}">
+                </DockPanel>
+                <DockPanel Style="{StaticResource itemRowStackPanel}">
                     <TextBlock Text="Text:" Style="{StaticResource itemInfoTextBlock}" />
                     <TextBox Text="{Binding SelectedItem.Text}" Style="{StaticResource itemInfoTextBox}" />
-                </StackPanel>
-                <StackPanel Style="{StaticResource itemRowStackPanel}">
+                </DockPanel>
+                <DockPanel Style="{StaticResource itemRowStackPanel}">
                     <TextBlock Text="Description:" Style="{StaticResource itemInfoTextBlock}" />
                     <TextBox Text="{Binding SelectedItem.Description}" Style="{StaticResource itemInfoTextBox}" />
-                </StackPanel>
+                </DockPanel>
             </StackPanel>
         </Grid>
     </DockPanel>

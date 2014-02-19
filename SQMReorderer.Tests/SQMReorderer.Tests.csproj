@@ -82,7 +82,6 @@
     <Compile Include="Main.cs" />
     <Compile Include="MainView\CombinedVehicleViewModelTests.cs" />
     <Compile Include="MainView\GroupViewModelsFactoryTests.cs" />
-    <Compile Include="MainView\MissionViewModelTests.cs" />
     <Compile Include="MainView\TeamViewModelsFactoryTests.cs" />
     <Compile Include="MainView\VehicleViewModelFactoryTests.cs" />
     <Compile Include="MainView\VehicleViewModelTests.cs" />
@@ -91,7 +90,6 @@
     <Compile Include="Export\SaveSqmFileDialogTests.cs" />
     <Compile Include="Export\SqmFileExporterTests.cs" />
     <Compile Include="Import\SqmFileImporterTests.cs" />
-    <Compile Include="MainView\SqmViewModelCreatorTests.cs" />
     <Compile Include="MainView\ViewModelToContentReordererTests.cs" />
     <Compile Include="VectorTests.cs" />
   </ItemGroup>

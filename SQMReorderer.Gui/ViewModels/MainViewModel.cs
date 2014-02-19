@@ -35,6 +35,13 @@ namespace SQMReorderer.Gui.ViewModels
             }
         }
 
+        private IEnumerable<TeamViewModel> _teams;
+        public IEnumerable<TeamViewModel> Teams
+        {
+            get { return _teams; }
+            set { Set(value, () => Teams, () => _teams = value); }
+        }
+
         private IEnumerable<object> _selectedItems;
         public IEnumerable<object> SelectedItems
         {

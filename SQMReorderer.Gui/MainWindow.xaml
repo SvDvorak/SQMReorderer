@@ -1,9 +1,12 @@
 ﻿<Window x:Class="SQMReorderer.Gui.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:SQMReorderer="clr-namespace:SQMReorderer"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:MultiSelectionTreeView="clr-namespace:MultiSelectionTreeView;assembly=MultiSelectionTreeView"
         xmlns:gui="clr-namespace:SQMReorderer.Gui"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=gui:TestMainViewModel}"
         Title="MainWindow" Height="600" Width="800">
 
     <Window.Resources>
@@ -51,19 +54,22 @@
             <TabControl Grid.Column="0">
                 <TabItem Header="Groups">
                     <TabItem.Resources>
-                        <HierarchicalDataTemplate x:Key="ElementTemplate">
+                        <HierarchicalDataTemplate x:Key="UnitTemplate">
                             <TextBlock Text="{Binding Header}" />
                         </HierarchicalDataTemplate>
-                        <HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding Children}" ItemTemplate="{StaticResource ElementTemplate}">
-                            <TextBlock Text="{Binding Header}" />
+                        <HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding Units}" ItemTemplate="{StaticResource UnitTemplate}">
+                            <TextBlock Text="{Binding Name}" />
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="TeamTemplate" ItemsSource="{Binding Groups}" ItemTemplate="{StaticResource GroupTemplate}">
+                            <TextBlock Text="{Binding Side}" />
                         </HierarchicalDataTemplate>
                     </TabItem.Resources>
 
                     <MultiSelectionTreeView:MultipleSelectionTreeView
                         x:Name="GroupsTreeView"
                         SelectionMode="KeyboardModifiersMode"
-                        ItemsSource="{Binding Mission.Groups}"
-                        ItemTemplate="{StaticResource GroupTemplate}"
+                        ItemsSource="{Binding Teams}"
+                        ItemTemplate="{StaticResource TeamTemplate}"
                         MultiSelectionTreeView:DragDropExtension.ScrollOnDragDrop="True"/>
                 </TabItem>
             </TabControl>

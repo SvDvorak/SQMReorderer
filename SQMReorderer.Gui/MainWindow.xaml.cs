@@ -17,7 +17,7 @@ namespace SQMReorderer.Gui
         {
             InitializeComponent();
 
-            ViewModel = new MainViewModel();
+            ViewModel = new TestMainViewModel();
 
             GroupsTreeView.SelectedItems.CollectionChanged +=
                 (sender, args) => ViewModel.SelectedItems = GroupsTreeView.SelectedItems;

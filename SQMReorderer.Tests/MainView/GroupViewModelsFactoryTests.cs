@@ -10,15 +10,15 @@ namespace SQMReorderer.Tests.MainView
     public class GroupViewModelsFactoryTests
     {
         private GroupViewModelsFactory _sut;
-        private IVehicleViewModelFactory _vehicleViewModelFactory;
+        private IVehicleViewModelsFactory _vehicleViewModelsFactory;
 
         [SetUp]
         public void Setup()
         {
-            _vehicleViewModelFactory = Substitute.For<IVehicleViewModelFactory>();
-            _vehicleViewModelFactory.Create(Arg.Any<List<Vehicle>>()).Returns(new List<VehicleViewModel>());
+            _vehicleViewModelsFactory = Substitute.For<IVehicleViewModelsFactory>();
+            _vehicleViewModelsFactory.Create(Arg.Any<List<Vehicle>>()).Returns(new List<VehicleViewModel>());
 
-            _sut = new GroupViewModelsFactory(_vehicleViewModelFactory);
+            _sut = new GroupViewModelsFactory(_vehicleViewModelsFactory);
         }
 
         [Test]
@@ -64,13 +64,13 @@ namespace SQMReorderer.Tests.MainView
                         }
                 };
 
-            _vehicleViewModelFactory.Create(vehicles[0].Vehicles).Returns(new List<VehicleViewModel>
+            _vehicleViewModelsFactory.Create(vehicles[0].Vehicles).Returns(new List<VehicleViewModel>
                 {
                     new VehicleViewModel(vehicle1, new List<VehicleViewModel>()),
                     new VehicleViewModel(vehicle2, new List<VehicleViewModel>())
                 });
 
-            _vehicleViewModelFactory.Create(vehicles[1].Vehicles).Returns(new List<VehicleViewModel>
+            _vehicleViewModelsFactory.Create(vehicles[1].Vehicles).Returns(new List<VehicleViewModel>
                 {
                     new VehicleViewModel(vehicle3, new List<VehicleViewModel>()),
                     new VehicleViewModel(vehicle4, new List<VehicleViewModel>())

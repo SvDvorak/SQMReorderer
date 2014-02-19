@@ -66,7 +66,7 @@
     <Compile Include="ViewModels\CombinedVehicleViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModelFactory.cs" />
     <Compile Include="ViewModels\IGroupViewModelsFactory.cs" />
-    <Compile Include="ViewModels\IVehicleViewModelFactory.cs" />
+    <Compile Include="ViewModels\IVehicleViewModelsFactory.cs" />
     <Compile Include="ViewModels\TeamViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\MarkerViewModel.cs" />
@@ -77,6 +77,7 @@
     <Compile Include="ViewModels\StructureItemViewModelBase.cs" />
     <Compile Include="ViewModels\TeamViewModelsFactory.cs" />
     <Compile Include="ViewModels\VehicleViewModel.cs" />
+    <Compile Include="ViewModels\VehicleViewModelsFactory.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelToContentReorderer.cs" />
     <Page Include="MainWindow.xaml">

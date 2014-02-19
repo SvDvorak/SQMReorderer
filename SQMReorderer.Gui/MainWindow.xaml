@@ -57,7 +57,7 @@
                         <HierarchicalDataTemplate x:Key="UnitTemplate">
                             <TextBlock Text="{Binding Header}" />
                         </HierarchicalDataTemplate>
-                        <HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding Units}" ItemTemplate="{StaticResource UnitTemplate}">
+                        <HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding Vehicles}" ItemTemplate="{StaticResource UnitTemplate}">
                             <TextBlock Text="{Binding Name}" />
                         </HierarchicalDataTemplate>
                         <HierarchicalDataTemplate x:Key="TeamTemplate" ItemsSource="{Binding Groups}" ItemTemplate="{StaticResource GroupTemplate}">

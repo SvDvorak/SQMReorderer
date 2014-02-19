@@ -13,47 +13,49 @@ namespace SQMReorderer.Tests.MainView
         public void Returns_contents_unchanged_if_view_model_is_unchanged()
         {
             var mission = new MissionState
-            {
-                Groups = new List<Vehicle>
                 {
-                    new Vehicle
-                    {
-                        Vehicles = new List<Vehicle>
+                    Groups = new List<Vehicle>
                         {
                             new Vehicle
-                            {
-                                Id = 1
-                            }
-                        }
-                    },
-                    new Vehicle
-                    {
-                        Vehicles = new List<Vehicle>
-                        {
-                            new Vehicle
-                            {
-                                Id = 2
-                            }
-                        }
-                    }
-                }
-            };
-
-            var teamViewModel = new TeamViewModel()
-                {
-                    Groups = new ObservableCollection<GroupViewModel>()
-                        {
-                            new GroupViewModel()
                                 {
-                                    Vehicles = new ObservableCollection<VehicleViewModel>()
+                                    Vehicles = new List<Vehicle>
+                                        {
+                                            new Vehicle
+                                                {
+                                                    Id = 1
+                                                }
+                                        }
+                                },
+                            new Vehicle
+                                {
+                                    Vehicles = new List<Vehicle>
+                                        {
+                                            new Vehicle
+                                                {
+                                                    Id = 2
+                                                }
+                                        }
+                                }
+                        }
+                };
+
+            var teamViewModel = new TeamViewModel
+                {
+                    Groups = new ObservableCollection<GroupViewModel>
+                        {
+                            new GroupViewModel
+                                {
+                                    Vehicle = mission.Groups[0],
+                                    Vehicles = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(mission.Groups[0].Vehicles[0],
                                                 new List<VehicleViewModel>())
                                         }
                                 },
-                            new GroupViewModel()
+                            new GroupViewModel
                                 {
-                                    Vehicles = new ObservableCollection<VehicleViewModel>()
+                                    Vehicle = mission.Groups[1],
+                                    Vehicles = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(mission.Groups[1].Vehicles[0],
                                                 new List<VehicleViewModel>())
@@ -61,24 +63,10 @@ namespace SQMReorderer.Tests.MainView
                                 }
                         }
                 };
-            //var missionViewModel = new MissionViewModel
-            //{
-            //    Groups = new ObservableCollection<VehicleViewModel>
-            //    {
-            //        new VehicleViewModel(mission.Groups[0], new List<VehicleViewModel>
-            //        {
-            //            new VehicleViewModel(mission.Groups[0].Vehicles[0], new List<VehicleViewModel>())
-            //        }),
-            //        new VehicleViewModel(mission.Groups[1], new List<VehicleViewModel>
-            //        {
-            //            new VehicleViewModel(mission.Groups[1].Vehicles[0], new List<VehicleViewModel>())
-            //        })
-            //    }
-            //};
 
             var sut = new ViewModelToContentReorderer();
 
-            sut.Reorder(mission, teamViewModel);
+            sut.Reorder(mission, new List<TeamViewModel> { teamViewModel });
 
             Assert.AreEqual(1, mission.Groups[0].Vehicles[0].Id);
             Assert.AreEqual(2, mission.Groups[1].Vehicles[0].Id);
@@ -88,160 +76,203 @@ namespace SQMReorderer.Tests.MainView
         public void Moves_vehicle_if_it_has_been_moved_in_view_model()
         {
             var mission = new MissionState
-            {
-                Groups = new List<Vehicle>
                 {
-                    new Vehicle
-                    {
-                        Vehicles = new List<Vehicle>
+                    Groups = new List<Vehicle>
                         {
                             new Vehicle
-                            {
-                                Id = 1
-                            }
-                        }
-                    },
-                    new Vehicle
-                    {
-                        Vehicles = new List<Vehicle>
-                        {
+                                {
+                                    Vehicles = new List<Vehicle>
+                                        {
+                                            new Vehicle
+                                                {
+                                                    Id = 1
+                                                }
+                                        }
+                                },
                             new Vehicle
-                            {
-                                Id = 2
-                            }
+                                {
+                                    Vehicles = new List<Vehicle>
+                                        {
+                                            new Vehicle
+                                                {
+                                                    Id = 2
+                                                }
+                                        }
+                                }
                         }
-                    }
-                }
-            };
+                };
 
-            var missionViewModel = new MissionViewModel
-            {
-                Groups = new ObservableCollection<VehicleViewModel>
+            var teamViewModel = new TeamViewModel
                 {
-                    new VehicleViewModel(mission.Groups[0], new List<VehicleViewModel>
-                    {
-                        new VehicleViewModel(mission.Groups[1].Vehicles[0], new List<VehicleViewModel>())
-                    }),
-                    new VehicleViewModel(mission.Groups[1], new List<VehicleViewModel>
-                    {
-                        new VehicleViewModel(mission.Groups[0].Vehicles[0], new List<VehicleViewModel>())
-                    })
-                }
-            };
+                    Groups = new ObservableCollection<GroupViewModel>
+                        {
+                            new GroupViewModel
+                                {
+                                    Vehicle = mission.Groups[0],
+                                    Vehicles = new ObservableCollection<VehicleViewModel>
+                                        {
+                                            new VehicleViewModel(mission.Groups[1].Vehicles[0],
+                                                new List<VehicleViewModel>())
+                                        }
+                                },
+                            new GroupViewModel
+                                {
+                                    Vehicle = mission.Groups[1],
+                                    Vehicles = new ObservableCollection<VehicleViewModel>
+                                        {
+                                            new VehicleViewModel(mission.Groups[0].Vehicles[0],
+                                                new List<VehicleViewModel>())
+                                        }
+                                }
+                        }
+                };
 
             var sut = new ViewModelToContentReorderer();
 
-            sut.Reorder(mission, missionViewModel);
+            sut.Reorder(mission, new List<TeamViewModel> { teamViewModel });
 
             Assert.AreEqual(2, mission.Groups[0].Vehicles[0].Id);
             Assert.AreEqual(1, mission.Groups[1].Vehicles[0].Id);
         }
 
         [Test]
-        public void Moves_vehicle_with_children_if_it_has_been_moved_in_view_model()
+        public void Moves_vehicles_in_all_team_view_models()
         {
             var mission = new MissionState
-            {
-                Groups = new List<Vehicle>
                 {
-                    new Vehicle
-                    {
-                        Vehicles = new List<Vehicle>
+                    Groups = new List<Vehicle>
                         {
                             new Vehicle
-                            {
-                                Id = 1,
-                                Vehicles = new List<Vehicle>
                                 {
-                                    new Vehicle
-                                    {
-                                        Id = 3
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    new Vehicle
-                    {
-                        Vehicles = new List<Vehicle>
-                        {
+                                    Vehicles = new List<Vehicle>
+                                        {
+                                            new Vehicle
+                                                {
+                                                    Id = 1
+                                                }
+                                        }
+                                },
                             new Vehicle
-                            {
-                                Id = 2,
-                                Vehicles = new List<Vehicle>
                                 {
-                                    new Vehicle
-                                    {
-                                        Id = 4
-                                    }
+                                    Vehicles = new List<Vehicle>
+                                        {
+                                            new Vehicle
+                                                {
+                                                    Id = 2
+                                                }
+                                        }
+                                },
+                            new Vehicle
+                                {
+                                    Vehicles = new List<Vehicle>
+                                        {
+                                            new Vehicle
+                                                {
+                                                    Id = 3
+                                                }
+                                        }
+                                },
+                            new Vehicle
+                                {
+                                    Vehicles = new List<Vehicle>
+                                        {
+                                            new Vehicle
+                                                {
+                                                    Id = 4
+                                                }
+                                        }
                                 }
-                            }
                         }
-                    }
-                }
-            };
+                };
 
-            var missionViewModel = new MissionViewModel
-            {
-                Groups = new ObservableCollection<VehicleViewModel>
+            var teamViewModels = new List<TeamViewModel>
                 {
-                    new VehicleViewModel(mission.Groups[0], new List<VehicleViewModel>
-                    {
-                        new VehicleViewModel(mission.Groups[1].Vehicles[0],
-                            new List<VehicleViewModel>
-                            {
-                                new VehicleViewModel(mission.Groups[1].Vehicles[0].Vehicles[0],
-                                    new List<VehicleViewModel>())
-                            })
-                    }),
-                    new VehicleViewModel(mission.Groups[1], new List<VehicleViewModel>
-                    {
-                        new VehicleViewModel(mission.Groups[0].Vehicles[0],
-                            new List<VehicleViewModel>
-                            {
-                                new VehicleViewModel(mission.Groups[0].Vehicles[0].Vehicles[0],
-                                    new List<VehicleViewModel>())
-                            })
-                    })
-                }
-            };
+                    new TeamViewModel
+                        {
+                            Groups = new ObservableCollection<GroupViewModel>
+                                {
+                                    new GroupViewModel
+                                        {
+                                            Vehicle = mission.Groups[0],
+                                            Vehicles = new ObservableCollection<VehicleViewModel>
+                                                {
+                                                    new VehicleViewModel(mission.Groups[1].Vehicles[0],
+                                                        new List<VehicleViewModel>())
+                                                }
+                                        },
+                                    new GroupViewModel
+                                        {
+                                            Vehicle = mission.Groups[1],
+                                            Vehicles = new ObservableCollection<VehicleViewModel>
+                                                {
+                                                    new VehicleViewModel(mission.Groups[0].Vehicles[0],
+                                                        new List<VehicleViewModel>())
+                                                }
+                                        }
+                                }
+                        },
+                    new TeamViewModel
+                        {
+                            Groups = new ObservableCollection<GroupViewModel>
+                                {
+                                    new GroupViewModel
+                                        {
+                                            Vehicle = mission.Groups[2],
+                                            Vehicles = new ObservableCollection<VehicleViewModel>
+                                                {
+                                                    new VehicleViewModel(mission.Groups[3].Vehicles[0],
+                                                        new List<VehicleViewModel>())
+                                                }
+                                        },
+                                    new GroupViewModel
+                                        {
+                                            Vehicle = mission.Groups[3],
+                                            Vehicles = new ObservableCollection<VehicleViewModel>
+                                                {
+                                                    new VehicleViewModel(mission.Groups[2].Vehicles[0],
+                                                        new List<VehicleViewModel>())
+                                                }
+                                        }
+                                }
+                        },
+                };
 
             var sut = new ViewModelToContentReorderer();
 
-            sut.Reorder(mission, missionViewModel);
+            sut.Reorder(mission, teamViewModels);
 
-            Assert.AreEqual(4, mission.Groups[0].Vehicles[0].Vehicles[0].Id);
-            Assert.AreEqual(3, mission.Groups[1].Vehicles[0].Vehicles[0].Id);
+            Assert.AreEqual(2, mission.Groups[0].Vehicles[0].Id);
+            Assert.AreEqual(1, mission.Groups[1].Vehicles[0].Id);
+            Assert.AreEqual(4, mission.Groups[2].Vehicles[0].Id);
+            Assert.AreEqual(3, mission.Groups[3].Vehicles[0].Id);
+
         }
 
         [Test]
         public void Vehicle_without_matching_view_model_item_is_not_updated()
         {
             var mission = new MissionState
-            {
-                Groups = new List<Vehicle>
                 {
-                    new Vehicle
-                    {
-                        Vehicles = new List<Vehicle>
+                    Groups = new List<Vehicle>
                         {
                             new Vehicle
-                            {
-                                Id = 1,
-                            }
+                                {
+                                    Vehicles = new List<Vehicle>
+                                        {
+                                            new Vehicle
+                                                {
+                                                    Id = 1,
+                                                }
+                                        }
+                                }
                         }
-                    }
-                }
-            };
+                };
 
-            var missionViewModel = new MissionViewModel
-            {
-                Groups = new ObservableCollection<VehicleViewModel>()
-            };
+            var teamViewModel = new TeamViewModel();
 
             var sut = new ViewModelToContentReorderer();
 
-            sut.Reorder(mission, missionViewModel);
+            sut.Reorder(mission, new List<TeamViewModel> { teamViewModel });
 
             Assert.AreEqual(1, mission.Groups[0].Vehicles[0].Id);
         }

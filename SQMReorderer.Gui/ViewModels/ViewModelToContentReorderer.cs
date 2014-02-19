@@ -8,21 +8,23 @@ namespace SQMReorderer.Gui.ViewModels
     {
         private Dictionary<Vehicle, List<Vehicle>> _parentChildDictionary;
 
-        public void Reorder(MissionState mission, MissionViewModel viewModel)
+        public void Reorder(MissionState mission, List<TeamViewModel> teamViewModels)
         {
             _parentChildDictionary = new Dictionary<Vehicle, List<Vehicle>>();
-            AddToDictionary(viewModel.Groups.ToList());
+
+            foreach (var teamViewModel in teamViewModels)
+            {
+                AddToDictionary(teamViewModel.Groups.ToList());
+            }
 
             UpdateOrder(mission.Groups);
         }
 
-        private void AddToDictionary(IEnumerable<VehicleViewModel> vehicles)
+        private void AddToDictionary(IEnumerable<GroupViewModel> groups)
         {
-            foreach (var vehicle in vehicles)
+            foreach (var group in groups)
             {
-                _parentChildDictionary.Add(vehicle.Vehicle, vehicle.Children.Select(x => x.Vehicle).ToList());
-
-                AddToDictionary(vehicle.Children.ToList());
+                _parentChildDictionary.Add(group.Vehicle, group.Vehicles.Select(x => x.Vehicle).ToList());
             }
         }
 

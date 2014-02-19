@@ -16,21 +16,19 @@ namespace SQMReorderer.Gui.ViewModels
 
         public List<TeamViewModel> Create(List<Vehicle> vehicles)
         {
-            var teamViewModels = new List<TeamViewModel>();
             var teamGroups = vehicles.GroupBy(x => x.Side);
 
-            foreach (var teamGroup in teamGroups)
-            {
-                var teamViewModel = new TeamViewModel();
-                teamViewModel.Side = GetTeamName(teamGroup.First().Side);
+            return teamGroups
+                .Select(teamGroup => CreateTeamViewModel(teamGroup.ToList())).ToList();
+        }
 
-                teamViewModel.Groups = new ObservableCollection<GroupViewModel>(
-                    _groupViewModelsFactory.Create(teamGroup.ToList()));
-
-                teamViewModels.Add(teamViewModel);
-            }
-
-            return teamViewModels;
+        private TeamViewModel CreateTeamViewModel(List<Vehicle> teamGroups)
+        {
+            return new TeamViewModel
+                {
+                    Side = GetTeamName(teamGroups.First().Side),
+                    Groups = CreateGroups(teamGroups)
+                };
         }
 
         private string GetTeamName(string side)
@@ -49,6 +47,11 @@ namespace SQMReorderer.Gui.ViewModels
             }
 
             return "CIVILIAN";
+        }
+
+        private ObservableCollection<GroupViewModel> CreateGroups(List<Vehicle> teamGroups)
+        {
+            return new ObservableCollection<GroupViewModel>(_groupViewModelsFactory.Create(teamGroups));
         }
     }
 }

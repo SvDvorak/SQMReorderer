@@ -80,6 +80,7 @@
     <Compile Include="Import\VectorPropertySetterTests.cs" />
     <Compile Include="Import\VehicleItemParserTests.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="MainView\CombinedVehicleViewModelTests.cs" />
     <Compile Include="MainView\MissionViewModelTests.cs" />
     <Compile Include="MainView\VehicleViewModelTests.cs" />
     <Compile Include="MainView\ViewModelBaseTests.cs" />

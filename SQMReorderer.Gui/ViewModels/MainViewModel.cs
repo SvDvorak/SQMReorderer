@@ -41,18 +41,21 @@ namespace SQMReorderer.Gui.ViewModels
             get { return _selectedItems; }
             set
             {
-                Set(value, () => SelectedItem, () => _selectedItems = value);
-                SelectedItem = _selectedItems.FirstOrDefault();
+                Set(value, () => SelectedItems, () => _selectedItems = value);
+                SelectedItemsViewModel =
+                    new CombinedVehicleViewModel(_selectedItems
+                        .Cast<VehicleViewModel>()
+                        .ToList());
             }
         }
 
-        private object _selectedItem;
-        public object SelectedItem
+        private CombinedVehicleViewModel _selectedItemsViewModel;
+        public CombinedVehicleViewModel SelectedItemsViewModel
         {
-            get { return _selectedItem; }
+            get { return _selectedItemsViewModel; }
             set
             {
-                Set(value, () => SelectedItem, () => _selectedItem = value);
+                Set(value, () => SelectedItemsViewModel, () => _selectedItemsViewModel = value);
             }
         }
 

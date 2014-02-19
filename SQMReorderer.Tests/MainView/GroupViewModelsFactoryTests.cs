@@ -10,15 +10,15 @@ namespace SQMReorderer.Tests.MainView
     public class GroupViewModelsFactoryTests
     {
         private GroupViewModelsFactory _sut;
-        private IUnitViewModelFactory _unitViewModelFactory;
+        private IVehicleViewModelFactory _vehicleViewModelFactory;
 
         [SetUp]
         public void Setup()
         {
-            _unitViewModelFactory = Substitute.For<IUnitViewModelFactory>();
-            _unitViewModelFactory.Create(Arg.Any<List<Vehicle>>()).Returns(new List<VehicleViewModel>());
+            _vehicleViewModelFactory = Substitute.For<IVehicleViewModelFactory>();
+            _vehicleViewModelFactory.Create(Arg.Any<List<Vehicle>>()).Returns(new List<VehicleViewModel>());
 
-            _sut = new GroupViewModelsFactory(_unitViewModelFactory);
+            _sut = new GroupViewModelsFactory(_vehicleViewModelFactory);
         }
 
         [Test]
@@ -37,7 +37,7 @@ namespace SQMReorderer.Tests.MainView
         }
 
         [Test]
-        public void Creates_unit_view_models_for_multiple_groups()
+        public void Creates_vehicle_view_models_for_multiple_groups()
         {
             var vehicle1 = new Vehicle();
             var vehicle2 = new Vehicle();
@@ -64,13 +64,13 @@ namespace SQMReorderer.Tests.MainView
                         }
                 };
 
-            _unitViewModelFactory.Create(vehicles[0].Vehicles).Returns(new List<VehicleViewModel>
+            _vehicleViewModelFactory.Create(vehicles[0].Vehicles).Returns(new List<VehicleViewModel>
                 {
                     new VehicleViewModel(vehicle1, new List<VehicleViewModel>()),
                     new VehicleViewModel(vehicle2, new List<VehicleViewModel>())
                 });
 
-            _unitViewModelFactory.Create(vehicles[1].Vehicles).Returns(new List<VehicleViewModel>
+            _vehicleViewModelFactory.Create(vehicles[1].Vehicles).Returns(new List<VehicleViewModel>
                 {
                     new VehicleViewModel(vehicle3, new List<VehicleViewModel>()),
                     new VehicleViewModel(vehicle4, new List<VehicleViewModel>())
@@ -78,17 +78,17 @@ namespace SQMReorderer.Tests.MainView
 
             var groupViewModels = _sut.Create(vehicles);
 
-            Assert.AreEqual(2, groupViewModels[0].Units.Count);
-            Assert.AreEqual(vehicle1, groupViewModels[0].Units[0].Vehicle);
-            Assert.AreEqual(vehicle2, groupViewModels[0].Units[1].Vehicle);
+            Assert.AreEqual(2, groupViewModels[0].Vehicles.Count);
+            Assert.AreEqual(vehicle1, groupViewModels[0].Vehicles[0].Vehicle);
+            Assert.AreEqual(vehicle2, groupViewModels[0].Vehicles[1].Vehicle);
 
-            Assert.AreEqual(2, groupViewModels[1].Units.Count);
-            Assert.AreEqual(vehicle3, groupViewModels[1].Units[0].Vehicle);
-            Assert.AreEqual(vehicle4, groupViewModels[1].Units[1].Vehicle);
+            Assert.AreEqual(2, groupViewModels[1].Vehicles.Count);
+            Assert.AreEqual(vehicle3, groupViewModels[1].Vehicles[0].Vehicle);
+            Assert.AreEqual(vehicle4, groupViewModels[1].Vehicles[1].Vehicle);
         }
 
         [Test]
-        public void Uses_enumerated_group_names_when_multiple_groups_are_missing_units()
+        public void Uses_enumerated_group_names_when_multiple_groups_are_missing_vehicles()
         {
             var vehicles = new List<Vehicle>
                 {

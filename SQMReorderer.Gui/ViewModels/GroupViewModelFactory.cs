@@ -7,13 +7,13 @@ namespace SQMReorderer.Gui.ViewModels
 {
     public class GroupViewModelsFactory : IGroupViewModelsFactory
     {
-        private readonly IUnitViewModelFactory _unitViewModelFactory;
+        private readonly IVehicleViewModelFactory _vehicleViewModelFactory;
 
         private int _groupEnumerator = 0;
 
-        public GroupViewModelsFactory(IUnitViewModelFactory unitViewModelFactory)
+        public GroupViewModelsFactory(IVehicleViewModelFactory vehicleViewModelFactory)
         {
-            _unitViewModelFactory = unitViewModelFactory;
+            _vehicleViewModelFactory = vehicleViewModelFactory;
         }
 
         public List<GroupViewModel> Create(List<Vehicle> vehicles)
@@ -24,8 +24,8 @@ namespace SQMReorderer.Gui.ViewModels
                 .Select(vehicle => new GroupViewModel
                     {
                         Name = GetGroupName(),
-                        Units = new ObservableCollection<VehicleViewModel>(
-                            _unitViewModelFactory.Create(vehicle.Vehicles))
+                        Vehicles = new ObservableCollection<VehicleViewModel>(
+                            _vehicleViewModelFactory.Create(vehicle.Vehicles))
                     })
                 .ToList();
         }

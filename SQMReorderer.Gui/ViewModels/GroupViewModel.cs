@@ -6,6 +6,6 @@ namespace SQMReorderer.Gui.ViewModels
     {
         public string Name { get; set; }
 
-        public ObservableCollection<VehicleViewModel> Units { get; set; } 
+        public ObservableCollection<VehicleViewModel> Vehicles { get; set; } 
     }
 }

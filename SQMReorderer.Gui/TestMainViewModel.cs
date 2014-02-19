@@ -19,7 +19,7 @@ namespace SQMReorderer.Gui
                             new GroupViewModel
                                 {
                                     Name = "Alpha",
-                                    Units = new ObservableCollection<VehicleViewModel>
+                                    Vehicles = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(new Vehicle {VehicleName = "Alpha FTL"},
                                                 new List<VehicleViewModel>()),
@@ -32,7 +32,7 @@ namespace SQMReorderer.Gui
                             new GroupViewModel
                                 {
                                     Name = "Bravo",
-                                    Units = new ObservableCollection<VehicleViewModel>
+                                    Vehicles = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(new Vehicle {VehicleName = "Bravo FTL"},
                                                 new List<VehicleViewModel>()),
@@ -53,7 +53,7 @@ namespace SQMReorderer.Gui
                             new GroupViewModel
                                 {
                                     Name = "Alpha",
-                                    Units = new ObservableCollection<VehicleViewModel>
+                                    Vehicles = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(new Vehicle {VehicleName = "Alpha FTL"},
                                                 new List<VehicleViewModel>()),
@@ -66,7 +66,7 @@ namespace SQMReorderer.Gui
                             new GroupViewModel
                                 {
                                     Name = "Bravo",
-                                    Units = new ObservableCollection<VehicleViewModel>
+                                    Vehicles = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(new Vehicle {VehicleName = "Bravo FTL"},
                                                 new List<VehicleViewModel>()),

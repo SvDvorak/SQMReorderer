@@ -45,7 +45,7 @@ namespace SQMReorderer.Tests.MainView
                         {
                             new GroupViewModel
                                 {
-                                    Vehicle = mission.Groups[0],
+                                    ConnectedVehicle = mission.Groups[0],
                                     Vehicles = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(mission.Groups[0].Vehicles[0],
@@ -54,7 +54,7 @@ namespace SQMReorderer.Tests.MainView
                                 },
                             new GroupViewModel
                                 {
-                                    Vehicle = mission.Groups[1],
+                                    ConnectedVehicle = mission.Groups[1],
                                     Vehicles = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(mission.Groups[1].Vehicles[0],
@@ -108,7 +108,7 @@ namespace SQMReorderer.Tests.MainView
                         {
                             new GroupViewModel
                                 {
-                                    Vehicle = mission.Groups[0],
+                                    ConnectedVehicle = mission.Groups[0],
                                     Vehicles = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(mission.Groups[1].Vehicles[0],
@@ -117,7 +117,7 @@ namespace SQMReorderer.Tests.MainView
                                 },
                             new GroupViewModel
                                 {
-                                    Vehicle = mission.Groups[1],
+                                    ConnectedVehicle = mission.Groups[1],
                                     Vehicles = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(mission.Groups[0].Vehicles[0],
@@ -193,7 +193,7 @@ namespace SQMReorderer.Tests.MainView
                                 {
                                     new GroupViewModel
                                         {
-                                            Vehicle = mission.Groups[0],
+                                            ConnectedVehicle = mission.Groups[0],
                                             Vehicles = new ObservableCollection<VehicleViewModel>
                                                 {
                                                     new VehicleViewModel(mission.Groups[1].Vehicles[0],
@@ -202,7 +202,7 @@ namespace SQMReorderer.Tests.MainView
                                         },
                                     new GroupViewModel
                                         {
-                                            Vehicle = mission.Groups[1],
+                                            ConnectedVehicle = mission.Groups[1],
                                             Vehicles = new ObservableCollection<VehicleViewModel>
                                                 {
                                                     new VehicleViewModel(mission.Groups[0].Vehicles[0],
@@ -217,7 +217,7 @@ namespace SQMReorderer.Tests.MainView
                                 {
                                     new GroupViewModel
                                         {
-                                            Vehicle = mission.Groups[2],
+                                            ConnectedVehicle = mission.Groups[2],
                                             Vehicles = new ObservableCollection<VehicleViewModel>
                                                 {
                                                     new VehicleViewModel(mission.Groups[3].Vehicles[0],
@@ -226,7 +226,7 @@ namespace SQMReorderer.Tests.MainView
                                         },
                                     new GroupViewModel
                                         {
-                                            Vehicle = mission.Groups[3],
+                                            ConnectedVehicle = mission.Groups[3],
                                             Vehicles = new ObservableCollection<VehicleViewModel>
                                                 {
                                                     new VehicleViewModel(mission.Groups[2].Vehicles[0],

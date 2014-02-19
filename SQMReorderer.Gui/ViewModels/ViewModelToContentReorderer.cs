@@ -24,7 +24,7 @@ namespace SQMReorderer.Gui.ViewModels
         {
             foreach (var group in groups)
             {
-                _parentChildDictionary.Add(group.Vehicle, group.Vehicles.Select(x => x.Vehicle).ToList());
+                _parentChildDictionary.Add(group.ConnectedVehicle, group.Vehicles.Select(x => x.Vehicle).ToList());
             }
         }
 

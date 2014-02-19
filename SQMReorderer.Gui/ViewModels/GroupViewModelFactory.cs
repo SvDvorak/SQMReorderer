@@ -30,7 +30,7 @@ namespace SQMReorderer.Gui.ViewModels
             return new GroupViewModel
                 {
                     Name = GetGroupName(),
-                    Vehicle = vehicle,
+                    ConnectedVehicle = vehicle,
                     Vehicles = CreateVehicles(vehicle)
                 };
         }

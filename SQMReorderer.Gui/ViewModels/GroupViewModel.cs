@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SQMReorderer.Gui.ViewModels
 {
@@ -6,6 +6,6 @@ namespace SQMReorderer.Gui.ViewModels
     {
         public string Name { get; set; }
 
-        public IEnumerable<VehicleViewModel> Units { get; set; } 
+        public ObservableCollection<VehicleViewModel> Units { get; set; } 
     }
 }

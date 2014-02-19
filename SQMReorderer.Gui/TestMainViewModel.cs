@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Gui.ViewModels;
 
@@ -13,12 +14,12 @@ namespace SQMReorderer.Gui
             teams.Add(new TeamViewModel
                 {
                     Side = "BLUFOR",
-                    Groups = new List<GroupViewModel>
+                    Groups = new ObservableCollection<GroupViewModel>
                         {
                             new GroupViewModel
                                 {
                                     Name = "Alpha",
-                                    Units = new List<VehicleViewModel>
+                                    Units = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(new Vehicle {VehicleName = "Alpha FTL"},
                                                 new List<VehicleViewModel>()),
@@ -31,7 +32,7 @@ namespace SQMReorderer.Gui
                             new GroupViewModel
                                 {
                                     Name = "Bravo",
-                                    Units = new List<VehicleViewModel>
+                                    Units = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(new Vehicle {VehicleName = "Bravo FTL"},
                                                 new List<VehicleViewModel>()),
@@ -47,12 +48,12 @@ namespace SQMReorderer.Gui
             teams.Add(new TeamViewModel
                 {
                     Side = "OPFOR",
-                    Groups = new List<GroupViewModel>
+                    Groups = new ObservableCollection<GroupViewModel>
                         {
                             new GroupViewModel
                                 {
                                     Name = "Alpha",
-                                    Units = new List<VehicleViewModel>
+                                    Units = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(new Vehicle {VehicleName = "Alpha FTL"},
                                                 new List<VehicleViewModel>()),
@@ -65,7 +66,7 @@ namespace SQMReorderer.Gui
                             new GroupViewModel
                                 {
                                     Name = "Bravo",
-                                    Units = new List<VehicleViewModel>
+                                    Units = new ObservableCollection<VehicleViewModel>
                                         {
                                             new VehicleViewModel(new Vehicle {VehicleName = "Bravo FTL"},
                                                 new List<VehicleViewModel>()),

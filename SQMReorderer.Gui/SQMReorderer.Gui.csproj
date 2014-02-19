@@ -64,6 +64,7 @@
     <Compile Include="Dialogs\SqmFileImporter.cs" />
     <Compile Include="TestMainViewModel.cs" />
     <Compile Include="ViewModels\CombinedVehicleViewModel.cs" />
+    <Compile Include="ViewModels\GroupViewModelFactory.cs" />
     <Compile Include="ViewModels\TeamViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\MarkerViewModel.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="NullToVisibilityConverter.cs" />
     <Compile Include="ViewModels\StructureItemViewModelBase.cs" />
+    <Compile Include="ViewModels\TeamViewModelsFactory.cs" />
     <Compile Include="ViewModels\VehicleViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelToContentReorderer.cs" />

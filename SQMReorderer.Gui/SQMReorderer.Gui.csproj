@@ -65,6 +65,8 @@
     <Compile Include="TestMainViewModel.cs" />
     <Compile Include="ViewModels\CombinedVehicleViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModelFactory.cs" />
+    <Compile Include="ViewModels\IGroupViewModelsFactory.cs" />
+    <Compile Include="ViewModels\IUnitViewModelFactory.cs" />
     <Compile Include="ViewModels\TeamViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\MarkerViewModel.cs" />

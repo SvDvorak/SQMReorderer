@@ -105,9 +105,7 @@ namespace MultiSelectionTreeView
             if (newItem == null)
                 return;
 
-            bool isNewItemMultipleSelected = viewItem.IsSelected;
-
-            if (isNewItemMultipleSelected)
+            if (viewItem.IsSelectable && viewItem.IsSelected)
                 AddItemToSelection(viewItem);
             else
                 RemoveItemFromSelection(viewItem);
@@ -221,20 +219,27 @@ namespace MultiSelectionTreeView
 
         private void ManageCtrlSelection(MultipleSelectionTreeViewItem viewItem)
         {
-            viewItem.IsSelected = !viewItem.IsSelected;
+            if(viewItem.IsSelectable)
+            {
+                viewItem.IsSelected = !viewItem.IsSelected;
 
-            if (viewItem.IsSelected)
-                AddItemToSelection(viewItem);
-            else if (!viewItem.IsSelected)
-                RemoveItemFromSelection(viewItem);
+                if (viewItem.IsSelected)
+                    AddItemToSelection(viewItem);
+                else if (!viewItem.IsSelected)
+                    RemoveItemFromSelection(viewItem);
+                
+            }
         }
 
         private void ManageSingleSelection(MultipleSelectionTreeViewItem viewItem)
         {
-            UnselectAll();
+            if(viewItem.IsSelectable)
+            {
+                UnselectAll();
 
-            viewItem.IsSelected = true;
-            AddItemToSelection(viewItem);
+                viewItem.IsSelected = true;
+                AddItemToSelection(viewItem);
+            }
         }
 
         /// <summary>
@@ -243,8 +248,6 @@ namespace MultiSelectionTreeView
         /// <param name="viewItem"></param>
         private void ManageShiftSelection(MultipleSelectionTreeViewItem viewItem)
         {
-            bool isViewItemMultipleSelected = viewItem.IsSelected;
-
             if (_lastClickedItem != null)
             {
                 // BEGIN TODO
@@ -252,7 +255,7 @@ namespace MultiSelectionTreeView
                 // END TODO
             }
 
-            if (isViewItemMultipleSelected)
+            if (viewItem.IsSelectable && viewItem.IsSelected)
             {
                 viewItem.SelectAllExpandedChildren();
                 //viewItem.IsExpanded = true; // TO BE CLARIFY: this expand only item children, does not expand children of children

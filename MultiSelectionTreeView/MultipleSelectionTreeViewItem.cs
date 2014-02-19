@@ -53,6 +53,15 @@ namespace MultiSelectionTreeView
                 return (this.ParentItemsControl as MultipleSelectionTreeViewItem);
             }
         }
+
+        private static readonly DependencyProperty IsSelectableProperty =
+            DependencyProperty.Register("IsSelectable", typeof(bool), typeof(MultipleSelectionTreeViewItem), new PropertyMetadata(true));
+
+        public bool IsSelectable
+        {
+            get { return (bool)GetValue(IsSelectableProperty); }
+            set { SetValue(IsSelectableProperty, value); }
+        }
         #endregion
 
         #region Constructors

@@ -54,13 +54,30 @@
             <TabControl Grid.Column="0">
                 <TabItem Header="Groups">
                     <TabItem.Resources>
-                        <HierarchicalDataTemplate x:Key="UnitTemplate">
+                        <Style x:Key="NonSelectableStyle"  TargetType="MultiSelectionTreeView:MultipleSelectionTreeViewItem">
+                            <Setter Property="IsSelectable" Value="False" />
+                        </Style>
+                        <Style x:Key="SelectableStyle"  TargetType="MultiSelectionTreeView:MultipleSelectionTreeViewItem">
+                            <Setter Property="IsSelectable" Value="True" />
+                        </Style>
+
+                        <DataTemplate x:Key="UnitTemplate">
                             <TextBlock Text="{Binding Header}" />
-                        </HierarchicalDataTemplate>
-                        <HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding Vehicles}" ItemTemplate="{StaticResource UnitTemplate}">
+                        </DataTemplate>
+                        <HierarchicalDataTemplate
+                            x:Key="GroupTemplate"
+                            ItemsSource="{Binding Vehicles}"
+                            ItemTemplate="{StaticResource UnitTemplate}"
+                            ItemContainerStyle="{StaticResource SelectableStyle}">
+
                             <TextBlock Text="{Binding Name}" />
                         </HierarchicalDataTemplate>
-                        <HierarchicalDataTemplate x:Key="TeamTemplate" ItemsSource="{Binding Groups}" ItemTemplate="{StaticResource GroupTemplate}">
+                        <HierarchicalDataTemplate 
+                            x:Key="TeamTemplate"
+                            ItemsSource="{Binding Groups}"
+                            ItemTemplate="{StaticResource GroupTemplate}"
+                            ItemContainerStyle="{StaticResource NonSelectableStyle}">
+
                             <TextBlock Text="{Binding Side}" />
                         </HierarchicalDataTemplate>
                     </TabItem.Resources>
@@ -70,6 +87,7 @@
                         SelectionMode="KeyboardModifiersMode"
                         ItemsSource="{Binding Teams}"
                         ItemTemplate="{StaticResource TeamTemplate}"
+                        ItemContainerStyle="{StaticResource NonSelectableStyle}"
                         MultiSelectionTreeView:DragDropExtension.ScrollOnDragDrop="True"/>
                 </TabItem>
             </TabControl>

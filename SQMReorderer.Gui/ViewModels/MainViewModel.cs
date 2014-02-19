@@ -74,8 +74,10 @@ namespace SQMReorderer.Gui.ViewModels
 
             if(_sqmContents != null)
             {
-                var sqmViewModelCreator = new SqmViewModelCreator();
-                Mission = sqmViewModelCreator.CreateMissionViewModel(_sqmContents.Mission);
+                //var sqmViewModelCreator = new SqmViewModelCreator();
+                //Mission = sqmViewModelCreator.CreateMissionViewModel(_sqmContents.Mission);
+                var teamViewModelsFactory = new TeamViewModelsFactory(new GroupViewModelsFactory(new VehicleViewModelsFactory()));
+                Teams = teamViewModelsFactory.Create(_sqmContents.Mission.Groups);
             }
         }
 

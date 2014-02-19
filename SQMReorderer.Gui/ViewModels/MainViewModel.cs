@@ -25,16 +25,6 @@ namespace SQMReorderer.Gui.ViewModels
         public DelegateCommand OpenCommand { get; private set; }
         public DelegateCommand SaveAsCommand { get; private set; }
 
-        private MissionViewModel _mission;
-        public MissionViewModel Mission
-        {
-            get { return _mission; }
-            set
-            {
-                Set(value, () => Mission, () => _mission = value);
-            }
-        }
-
         private IEnumerable<TeamViewModel> _teams;
         public IEnumerable<TeamViewModel> Teams
         {
@@ -84,7 +74,7 @@ namespace SQMReorderer.Gui.ViewModels
             var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), new SqmFileExporter(new SqmElementExportVisitor(), new ContextIndenter(), new StreamWriterFactory()));
 
             var reorderer = new ViewModelToContentReorderer();
-            //reorderer.Reorder(_sqmContents.Mission, Mission);
+            reorderer.Reorder(_sqmContents.Mission, Teams.ToList());
 
             saveSqmFileDialog.ShowDialog(_sqmContents);
         }

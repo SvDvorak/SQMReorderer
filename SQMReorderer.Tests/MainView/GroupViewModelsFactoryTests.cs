@@ -103,5 +103,22 @@ namespace SQMReorderer.Tests.MainView
             Assert.AreEqual("Group 2", groupViewModels[1].Name);
             Assert.AreEqual("Group 3", groupViewModels[2].Name);
         }
+
+        [Test]
+        public void Sets_connected_vehicle_for_group()
+        {
+            var vehicles = new List<Vehicle>
+                {
+                    new Vehicle(),
+                    new Vehicle(),
+                    new Vehicle()
+                };
+
+            var groupViewModels = _sut.Create(vehicles);
+
+            Assert.AreEqual(vehicles[0], groupViewModels[0].Vehicle);
+            Assert.AreEqual(vehicles[1], groupViewModels[1].Vehicle);
+            Assert.AreEqual(vehicles[2], groupViewModels[2].Vehicle);
+        }
     }
 }

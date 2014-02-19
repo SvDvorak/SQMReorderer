@@ -39,24 +39,46 @@ namespace SQMReorderer.Tests.MainView
                 }
             };
 
-            var missionViewModel = new MissionViewModel
-            {
-                Groups = new ObservableCollection<VehicleViewModel>
+            var teamViewModel = new TeamViewModel()
                 {
-                    new VehicleViewModel(mission.Groups[0], new List<VehicleViewModel>
-                    {
-                        new VehicleViewModel(mission.Groups[0].Vehicles[0], new List<VehicleViewModel>())
-                    }),
-                    new VehicleViewModel(mission.Groups[1], new List<VehicleViewModel>
-                    {
-                        new VehicleViewModel(mission.Groups[1].Vehicles[0], new List<VehicleViewModel>())
-                    })
-                }
-            };
+                    Groups = new ObservableCollection<GroupViewModel>()
+                        {
+                            new GroupViewModel()
+                                {
+                                    Vehicles = new ObservableCollection<VehicleViewModel>()
+                                        {
+                                            new VehicleViewModel(mission.Groups[0].Vehicles[0],
+                                                new List<VehicleViewModel>())
+                                        }
+                                },
+                            new GroupViewModel()
+                                {
+                                    Vehicles = new ObservableCollection<VehicleViewModel>()
+                                        {
+                                            new VehicleViewModel(mission.Groups[1].Vehicles[0],
+                                                new List<VehicleViewModel>())
+                                        }
+                                }
+                        }
+                };
+            //var missionViewModel = new MissionViewModel
+            //{
+            //    Groups = new ObservableCollection<VehicleViewModel>
+            //    {
+            //        new VehicleViewModel(mission.Groups[0], new List<VehicleViewModel>
+            //        {
+            //            new VehicleViewModel(mission.Groups[0].Vehicles[0], new List<VehicleViewModel>())
+            //        }),
+            //        new VehicleViewModel(mission.Groups[1], new List<VehicleViewModel>
+            //        {
+            //            new VehicleViewModel(mission.Groups[1].Vehicles[0], new List<VehicleViewModel>())
+            //        })
+            //    }
+            //};
 
             var sut = new ViewModelToContentReorderer();
 
-            sut.Reorder(mission, missionViewModel);
+            sut.Reorder(mission, teamViewModel);
 
             Assert.AreEqual(1, mission.Groups[0].Vehicles[0].Id);
             Assert.AreEqual(2, mission.Groups[1].Vehicles[0].Id);

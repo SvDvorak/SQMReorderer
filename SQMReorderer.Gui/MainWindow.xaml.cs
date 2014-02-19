@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿using System.Windows;
 using SQMReorderer.Gui.ViewModels;
 
 namespace SQMReorderer.Gui

@@ -73,19 +73,19 @@
             <StackPanel Margin="10 0 0 0" Grid.Column="1">
                 <DockPanel Style="{StaticResource itemRowStackPanel}">
                     <TextBlock Text="Vehicle:" Style="{StaticResource itemInfoTextBlock}" />
-                    <TextBox Text="{Binding SelectedItemsViewModel.VehicleName}" Style="{StaticResource itemInfoTextBox}" />
+                    <TextBox Text="{Binding SelectedItemsViewModel.VehicleName, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource itemInfoTextBox}" />
                 </DockPanel>
                 <DockPanel Style="{StaticResource itemRowStackPanel}">
                     <TextBlock Text="Rank:" Style="{StaticResource itemInfoTextBlock}" />
-                    <TextBox Text="{Binding SelectedItemsViewModel.Rank}" Style="{StaticResource itemInfoTextBox}" />
+                    <TextBox Text="{Binding SelectedItemsViewModel.Rank, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource itemInfoTextBox}" />
                 </DockPanel>
                 <DockPanel Style="{StaticResource itemRowStackPanel}">
                     <TextBlock Text="Text:" Style="{StaticResource itemInfoTextBlock}" />
-                    <TextBox Text="{Binding SelectedItemsViewModel.Text}" Style="{StaticResource itemInfoTextBox}" />
+                    <TextBox Text="{Binding SelectedItemsViewModel.Text, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource itemInfoTextBox}" />
                 </DockPanel>
                 <DockPanel Style="{StaticResource itemRowStackPanel}">
                     <TextBlock Text="Description:" Style="{StaticResource itemInfoTextBlock}" />
-                    <TextBox Text="{Binding SelectedItemsViewModel.Description}" Style="{StaticResource itemInfoTextBox}" />
+                    <TextBox Text="{Binding SelectedItemsViewModel.Description, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource itemInfoTextBox}" />
                 </DockPanel>
             </StackPanel>
         </Grid>

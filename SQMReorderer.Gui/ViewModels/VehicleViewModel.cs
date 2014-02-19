@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using SQMReorderer.Core.Import.ResultObjects;
 
@@ -19,25 +20,41 @@ namespace SQMReorderer.Gui.ViewModels
         public string VehicleName
         {
             get { return Vehicle.VehicleName; }
-            set { Set(value, () => VehicleName, () => Vehicle.VehicleName = value); }
+            set
+            {
+                Set(value, () => VehicleName, () => Vehicle.VehicleName = value);
+                UpdateHeader();
+            }
         }
 
         public string Rank
         {
             get { return Vehicle.Rank; }
-            set { Set(value, () => Rank, () => Vehicle.Rank = value); }
+            set
+            {
+                Set(value, () => Rank, () => Vehicle.Rank = value);
+                UpdateHeader();
+            }
         }
 
         public string Text
         {
             get { return Vehicle.Text; }
-            set { Set(value, () => Text, () => Vehicle.Text = value); }
+            set
+            {
+                Set(value, () => Text, () => Vehicle.Text = value);
+                UpdateHeader();
+            }
         }
 
         public string Description
         {
             get { return Vehicle.Description; }
-            set { Set(value, () => Description, () => Vehicle.Description = value); }
+            set
+            {
+                Set(value, () => Description, () => Vehicle.Description = value);
+                UpdateHeader();
+            }
         }
 
         public ObservableCollection<VehicleViewModel> Children { get; set; }
@@ -54,6 +71,11 @@ namespace SQMReorderer.Gui.ViewModels
             }
 
             return Vehicle.Side;
+        }
+
+        private void UpdateHeader()
+        {
+            FirePropertyChanged(() => Header);
         }
     }
 }

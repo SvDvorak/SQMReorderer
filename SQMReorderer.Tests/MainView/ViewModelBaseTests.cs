@@ -30,10 +30,16 @@ namespace SQMReorderer.Tests.MainView
             {
                 throw new NotImplementedException();
             }
+
+            public int PropertyChangedFiringProperty
+            {
+                get { return 0; }
+                set { FirePropertyChanged(() => PropertyChangedFiringProperty); }
+            }
         }
 
         [Test]
-        public void ValueIsSetWhenCallingSet()
+        public void Value_is_set_when_calling_set()
         {
             var viewModel = new TestViewModel();
 
@@ -43,7 +49,7 @@ namespace SQMReorderer.Tests.MainView
         }
 
         [Test]
-        public void PropertyChangedIsCalledWhenUsingSet()
+        public void Property_changed_is_called_when_using_set()
         {
             var viewModel = new TestViewModel();
             var propertyChangedCalled = false;
@@ -55,7 +61,7 @@ namespace SQMReorderer.Tests.MainView
         }
 
         [Test]
-        public void PropertyChangedIsCalledWithCorrectPropertyName()
+        public void Property_changed_is_called_with_correct_property_name()
         {
             var viewModel = new TestViewModel();
             string propertyName = "";
@@ -67,7 +73,7 @@ namespace SQMReorderer.Tests.MainView
         }
 
         [Test]
-        public void ExceptionWhenCallingSetWithAMethod()
+        public void Exception_when_calling_set_with_a_method()
         {
             var viewModel = new TestViewModel();
 
@@ -75,7 +81,35 @@ namespace SQMReorderer.Tests.MainView
         }
 
         [Test]
-        public void ExceptionWhenCallingSetWithAField()
+        public void Exception_when_calling_set_with_a_field()
+        {
+            var viewModel = new TestViewModel();
+
+            Assert.Throws<ArgumentException>(() => viewModel.PassingSetAField = 42);
+        }
+
+        [Test]
+        public void Property_changed_on_property_named_is_called_when_firing_property_changed()
+        {
+            var viewModel = new TestViewModel();
+            bool wasPropertyChangedFired = false;
+            viewModel.PropertyChanged += (sender, args) => wasPropertyChangedFired = true;
+
+            viewModel.PropertyChangedFiringProperty = 1;
+
+	        Assert.IsTrue(wasPropertyChangedFired);
+        }
+
+        [Test]
+        public void Exception_when_calling_fire_property_changed_with_a_method()
+        {
+            var viewModel = new TestViewModel();
+
+            Assert.Throws<ArgumentException>(() => viewModel.PassingSetAMethod = 42);
+        }
+
+        [Test]
+        public void Exception_when_calling_fire_property_changed_with_a_field()
         {
             var viewModel = new TestViewModel();
 

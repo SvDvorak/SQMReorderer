@@ -29,7 +29,7 @@ namespace SQMReorderer.Tests.MainView
         [Test]
         public void Description_is_header_when_it_is_not_null_or_whitespace()
         {
-            var vehicle = new Vehicle()
+            var vehicle = new Vehicle
                 {
                     Description = "desc",
                     VehicleName = "vehicleName",
@@ -44,7 +44,7 @@ namespace SQMReorderer.Tests.MainView
         [Test]
         public void Vehicle_name_is_header_when_description_is_empty_or_null_and_vehicle_name_is_not_null_or_whitespace()
         {
-            var vehicle = new Vehicle()
+            var vehicle = new Vehicle
                 {
                     VehicleName = "vehicleName",
                     Side = "Side"
@@ -58,7 +58,7 @@ namespace SQMReorderer.Tests.MainView
         [Test]
         public void Side_is_header_when_vehicle_name_is_empty_or_null_and_side_is_not_null_or_whitespace()
         {
-            var vehicle = new Vehicle()
+            var vehicle = new Vehicle
                 {
                     Side = "side"
                 };
@@ -66,6 +66,28 @@ namespace SQMReorderer.Tests.MainView
             var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModel>());
 
             Assert.AreEqual("side", itemViewModel.Header);
+        }
+
+        [Test]
+        public void Fires_property_changed_for_header_when_property_is_changed()
+        {
+            var itemViewModel = new VehicleViewModel(new Vehicle(), new List<VehicleViewModel>());
+            int headerChangedCount = 0;
+
+            itemViewModel.PropertyChanged += (sender, args) =>
+                {
+                    if (args.PropertyName == "Header")
+                    {
+                        headerChangedCount += 1;
+                    }
+                };
+
+            itemViewModel.VehicleName = "text";
+            itemViewModel.Rank = "text";
+            itemViewModel.Text = "text";
+            itemViewModel.Description = "text";
+
+            Assert.AreEqual(4, headerChangedCount);
         }
     }
 }

@@ -39,5 +39,10 @@ namespace SQMReorderer.Gui.ViewModels
 
             return propertyInfo.Name;
         }
+
+        protected void FirePropertyChanged<TProperty>(Expression<Func<TProperty>> propertyLambda)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(GetPropertyName(propertyLambda)));
+        }
     }
 }

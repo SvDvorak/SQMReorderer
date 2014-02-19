@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System;
@@ -62,6 +63,15 @@ namespace MultiSelectionTreeView
             get { return (bool)GetValue(IsSelectableProperty); }
             set { SetValue(IsSelectableProperty, value); }
         }
+
+        private static readonly DependencyProperty CanTakeDropProperty =
+            DependencyProperty.Register("CanTakeDrop", typeof(bool), typeof(MultipleSelectionTreeViewItem), new PropertyMetadata(true));
+
+        public bool CanTakeDrop
+        {
+            get { return (bool)GetValue(CanTakeDropProperty); }
+            set { SetValue(CanTakeDropProperty, value); }
+        }
         #endregion
 
         #region Constructors
@@ -91,13 +101,19 @@ namespace MultiSelectionTreeView
         {
             dragEventArgs.Effects = DragDropEffects.None;
 
+            var draggedOverItem = sender as MultipleSelectionTreeViewItem;
             var dragItem = dragEventArgs.Data.GetData(typeof(MultipleSelectionTreeViewItem)) as MultipleSelectionTreeViewItem;
-            if (Items.Count > 0 && dragItem != null)
+
+            if (draggedOverItem.CanTakeDrop && dragItem != null)
             {
                 dragEventArgs.Effects = DragDropEffects.Copy | DragDropEffects.Move;
+                dragEventArgs.Handled = true;
             }
-
-            dragEventArgs.Handled = true;
+            else
+            {
+                dragEventArgs.Effects = DragDropEffects.None;
+                dragEventArgs.Handled = true;
+            }
         }
 
         private void OnDrop(object sender, DragEventArgs dragEventArgs)

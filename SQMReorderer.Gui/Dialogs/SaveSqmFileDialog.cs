@@ -1,5 +1,6 @@
 using SQMReorderer.Core.Export;
-using SQMReorderer.Core.Import.ResultObjects;
+using SQMReorderer.Core.Export.ArmA2;
+using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 
 namespace SQMReorderer.Gui.Dialogs
 {

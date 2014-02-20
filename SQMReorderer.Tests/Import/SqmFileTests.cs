@@ -2,8 +2,10 @@
 using System.Text;
 using NUnit.Framework;
 using SQMReorderer.Core.Export;
+using SQMReorderer.Core.Export.ArmA2;
 using SQMReorderer.Core.Import;
-using SQMReorderer.Core.Import.Context;
+using SQMReorderer.Core.Import.ArmA2;
+using SQMReorderer.Core.Import.ArmA2.Context;
 
 namespace SQMReorderer.Tests.Import
 {

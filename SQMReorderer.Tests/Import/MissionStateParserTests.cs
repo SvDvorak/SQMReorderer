@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMReorderer.Core.Import.Context;
-using SQMReorderer.Core.Import.Parsers.MissionState;
+using SQMReorderer.Core.Import.ArmA2.Context;
+using SQMReorderer.Core.Import.ArmA2.Parsers.MissionState;
 
 namespace SQMReorderer.Tests.Import
 {

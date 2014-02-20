@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using SQMReorderer.Core.Import.HelperFunctions;
+using SQMReorderer.Core.Import.ArmA2.HelperFunctions;
 
 namespace SQMReorderer.Tests.Import
 {

@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using SQMReorderer.Core;
 using SQMReorderer.Core.Export;
+using SQMReorderer.Core.Export.ArmA2;
 
 namespace SQMReorderer.Tests.Export
 {

@@ -62,7 +62,6 @@ namespace SQMReorderer.Core.Export.ArmA3
             intelString.Append("class " + elementName + "\n");
             intelString.Append("{\n");
             intelString.Append(_propertyVisitor.Visit("briefingName", intel.BriefingName));
-            intelString.Append(_propertyVisitor.Visit("briefingDescription", intel.BriefingDescription));
             intelString.Append(_propertyVisitor.Visit("startWeather", intel.StartWeather));
             intelString.Append(_propertyVisitor.Visit("forecastWeather", intel.ForecastWeather));
             intelString.Append(_propertyVisitor.Visit("year", intel.Year));

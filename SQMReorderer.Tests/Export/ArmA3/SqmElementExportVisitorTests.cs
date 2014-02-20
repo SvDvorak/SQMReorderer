@@ -161,7 +161,6 @@ namespace SQMReorderer.Tests.Export.ArmA3
             var intel = new Intel();
 
             intel.BriefingName = "rootbeer";
-            intel.BriefingDescription = "Square cup = beer";
             intel.StartWeather = 0.25;
             intel.ForecastWeather = 0.25;
             intel.Year = 2008;

@@ -41,6 +41,7 @@ namespace SQMReorderer.Gui.ViewModels
                 Set(value, () => SelectedItems, () => _selectedItems = value);
                 SelectedItemsViewModel =
                     new CombinedVehicleViewModel(_selectedItems
+                        .Where(x => x is VehicleViewModel)
                         .Cast<VehicleViewModel>()
                         .ToList());
             }

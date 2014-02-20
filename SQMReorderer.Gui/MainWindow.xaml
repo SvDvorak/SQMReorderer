@@ -56,10 +56,10 @@
                     <TabItem.Resources>
                         <Style x:Key="TeamStyle"  TargetType="MultiSelectionTreeView:MultipleSelectionTreeViewItem">
                             <Setter Property="IsSelectable" Value="False" />
-                            <Setter Property="CanTakeDrop" Value="False" />
+                            <Setter Property="CanTakeDrop" Value="True" />
                         </Style>
                         <Style x:Key="GroupStyle"  TargetType="MultiSelectionTreeView:MultipleSelectionTreeViewItem">
-                            <Setter Property="IsSelectable" Value="False" />
+                            <Setter Property="IsSelectable" Value="True" />
                             <Setter Property="CanTakeDrop" Value="True" />
                         </Style>
                         <Style x:Key="UnitStyle"  TargetType="MultiSelectionTreeView:MultipleSelectionTreeViewItem">

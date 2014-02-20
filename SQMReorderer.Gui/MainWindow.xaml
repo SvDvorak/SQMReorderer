@@ -5,6 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:MultiSelectionTreeView="clr-namespace:MultiSelectionTreeView;assembly=MultiSelectionTreeView"
         xmlns:gui="clr-namespace:SQMReorderer.Gui"
+        xmlns:generic="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+        xmlns:viewModels="clr-namespace:SQMReorderer.Gui.ViewModels"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=gui:TestMainViewModel}"
         Title="MainWindow" Height="600" Width="800">
@@ -54,13 +56,15 @@
             <TabControl Grid.Column="0">
                 <TabItem Header="Groups">
                     <TabItem.Resources>
-                        <Style x:Key="TeamStyle"  TargetType="MultiSelectionTreeView:MultipleSelectionTreeViewItem">
+                        <Style x:Key="TeamStyle" TargetType="MultiSelectionTreeView:MultipleSelectionTreeViewItem">
                             <Setter Property="IsSelectable" Value="False" />
                             <Setter Property="CanTakeDrop" Value="True" />
+                            <Setter Property="TakesDroppedTypes" Value="{Binding ChildTypes}" />
                         </Style>
                         <Style x:Key="GroupStyle"  TargetType="MultiSelectionTreeView:MultipleSelectionTreeViewItem">
                             <Setter Property="IsSelectable" Value="True" />
                             <Setter Property="CanTakeDrop" Value="True" />
+                            <Setter Property="TakesDroppedTypes" Value="{Binding ChildTypes}" />
                         </Style>
                         <Style x:Key="UnitStyle"  TargetType="MultiSelectionTreeView:MultipleSelectionTreeViewItem">
                             <Setter Property="IsSelectable" Value="True" />

@@ -1,6 +1,8 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System;
 
@@ -72,6 +74,15 @@ namespace MultiSelectionTreeView
             get { return (bool)GetValue(CanTakeDropProperty); }
             set { SetValue(CanTakeDropProperty, value); }
         }
+
+        private static readonly DependencyProperty TakesDroppedTypesProperty =
+            DependencyProperty.Register("TakesDroppedTypes", typeof(List<Type>), typeof(MultipleSelectionTreeViewItem), new PropertyMetadata(new List<Type>()));
+
+        public List<Type> TakesDroppedTypes
+        {
+            get { return (List<Type>)GetValue(TakesDroppedTypesProperty); }
+            set { SetValue(TakesDroppedTypesProperty, value); }
+        }
         #endregion
 
         #region Constructors
@@ -101,10 +112,9 @@ namespace MultiSelectionTreeView
         {
             dragEventArgs.Effects = DragDropEffects.None;
 
-            var draggedOverItem = sender as MultipleSelectionTreeViewItem;
             var dragItem = dragEventArgs.Data.GetData(typeof(MultipleSelectionTreeViewItem)) as MultipleSelectionTreeViewItem;
 
-            if (draggedOverItem.CanTakeDrop && dragItem != null)
+            if (dragItem != null && CanTakeDrop && TakesDroppedTypes.Exists(x => x == dragItem.DataContext.GetType()))
             {
                 dragEventArgs.Effects = DragDropEffects.Copy | DragDropEffects.Move;
                 dragEventArgs.Handled = true;

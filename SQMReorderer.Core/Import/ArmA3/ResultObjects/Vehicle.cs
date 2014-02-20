@@ -17,8 +17,9 @@ namespace SQMReorderer.Core.Import.ArmA3.ResultObjects
         public string Player { get; set; }
         public int? Leader { get; set; }
         public string Rank { get; set; }
-        public string Lock { get; set; }
         public double? Skill { get; set; }
+        public double? Health { get; set; }
+        public string Lock { get; set; }
         public string Text { get; set; }
         public string Init { get; set; }
         public string Description { get; set; }

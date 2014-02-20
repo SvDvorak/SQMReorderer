@@ -24,6 +24,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
                 "leader=1;\n",
                 "rank=\"CORPORAL\";\n",
                 "skill=0.60000002;\n",
+		        "health=0.99000001;",
                 "lock=\"UNLOCKED\";\n",
                 "text=\"UnitUS_Alpha_FTL\";\n",
                 "init=\"GrpUS_Alpha = group this; nul = [\"ftl\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n",
@@ -112,6 +113,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
             Assert.AreEqual(1, itemResult.Leader);
             Assert.AreEqual("CORPORAL", itemResult.Rank);
             Assert.AreEqual(0.60000002, itemResult.Skill);
+            Assert.AreEqual(0.99000001, itemResult.Health);
             Assert.AreEqual("UNLOCKED", itemResult.Lock);
             Assert.AreEqual("UnitUS_Alpha_FTL", itemResult.Text);
             Assert.AreEqual(@"GrpUS_Alpha = group this; nul = [""ftl"",this] execVM ""f\common\folk_assignGear.sqf"";", itemResult.Init);

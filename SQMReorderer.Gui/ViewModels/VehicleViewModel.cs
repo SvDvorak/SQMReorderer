@@ -61,9 +61,9 @@ namespace SQMReorderer.Gui.ViewModels
 
         private string GetPropertyWithData()
         {
-            if (!string.IsNullOrWhiteSpace(Description))
+            if (!string.IsNullOrWhiteSpace(Text))
             {
-                return Description;
+                return Text;
             }
             if (!string.IsNullOrWhiteSpace(VehicleName))
             {

@@ -27,27 +27,27 @@ namespace SQMReorderer.Tests.MainView
         }
 
         [Test]
-        public void Description_is_header_when_it_is_not_null_or_whitespace()
+        public void Text_is_header_when_it_is_not_null_or_whitespace()
         {
             var vehicle = new Vehicle
                 {
-                    Description = "desc",
+                    Text = "text",
                     VehicleName = "vehicleName",
-                    Side = "Side"
+                    Side = "side"
                 };
 
             var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModel>());
 
-            Assert.AreEqual("desc", itemViewModel.Header);
+            Assert.AreEqual("text", itemViewModel.Header);
         }
 
         [Test]
-        public void Vehicle_name_is_header_when_description_is_empty_or_null_and_vehicle_name_is_not_null_or_whitespace()
+        public void Vehicle_name_is_header_when_text_is_empty_or_null_and_vehicle_name_is_not_null_or_whitespace()
         {
             var vehicle = new Vehicle
                 {
                     VehicleName = "vehicleName",
-                    Side = "Side"
+                    Side = "side"
                 };
 
             var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModel>());

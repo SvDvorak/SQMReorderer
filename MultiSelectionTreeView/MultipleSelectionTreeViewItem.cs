@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System;
 
@@ -117,13 +115,9 @@ namespace MultiSelectionTreeView
             if (dragItem != null && CanTakeDrop && TakesDroppedTypes.Exists(x => x == dragItem.DataContext.GetType()))
             {
                 dragEventArgs.Effects = DragDropEffects.Copy | DragDropEffects.Move;
-                dragEventArgs.Handled = true;
             }
-            else
-            {
-                dragEventArgs.Effects = DragDropEffects.None;
-                dragEventArgs.Handled = true;
-            }
+
+            dragEventArgs.Handled = true;
         }
 
         private void OnDrop(object sender, DragEventArgs dragEventArgs)

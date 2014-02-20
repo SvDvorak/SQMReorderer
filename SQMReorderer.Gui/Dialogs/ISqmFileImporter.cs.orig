@@ -1,9 +1,0 @@
-using SQMReorderer.Core.Import.ResultObjects;
-
-namespace SQMReorderer.Gui.Dialogs
-{
-    public interface ISqmFileImporter
-    {
-        SqmContents Import(string fileContents);
-    }
-}

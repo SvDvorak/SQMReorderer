@@ -92,6 +92,15 @@
     <Compile Include="Import\ArmA3\ResultObjects\Vehicle.cs" />
     <Compile Include="Import\ArmA3\SqmFileImporter.cs" />
     <Compile Include="Import\ArmA3\SqmParser.cs" />
+    <Compile Include="Import\ISqmFileImporter.cs" />
+    <Compile Include="Import\ResultObjects\Intel.cs" />
+    <Compile Include="Import\ResultObjects\ItemBase.cs" />
+    <Compile Include="Import\ResultObjects\Marker.cs" />
+    <Compile Include="Import\ResultObjects\MissionState.cs" />
+    <Compile Include="Import\ResultObjects\Sensor.cs" />
+    <Compile Include="Import\ResultObjects\SqmContents.cs" />
+    <Compile Include="Import\ResultObjects\Vehicle.cs" />
+    <Compile Include="Import\SqmFileImporter.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Export\ArmA2\ISqmElementVisitor.cs" />
     <Compile Include="Export\ArmA2\SqmElementExportVisitor.cs" />

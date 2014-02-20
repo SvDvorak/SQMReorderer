@@ -1,13 +1,7 @@
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using SQMReorderer.Core.Export;
-using SQMReorderer.Core.Export.ArmA2;
-using SQMReorderer.Core.Import;
-using SQMReorderer.Core.Import.ArmA2;
-using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 using SQMReorderer.Core.Import.Context;
+using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Core.StreamHelpers;
 using SQMReorderer.Gui.Command;
 using SQMReorderer.Gui.Dialogs;
@@ -61,7 +55,7 @@ namespace SQMReorderer.Gui.ViewModels
 
         private void OpenFile()
         {
-            var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(), new SqmFileImporter(new StreamToStringsReader(), new SqmContextCreator(), new SqmParser()));
+            var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(), new Core.Import.SqmFileImporter(new StreamToStringsReader(), new SqmContextCreator(), new Core.Import.ArmA2.SqmParser(), new Core.Import.ArmA3.SqmParser()));
 
             _sqmContents = openSqmFileDialog.ShowDialog();
 
@@ -74,12 +68,12 @@ namespace SQMReorderer.Gui.ViewModels
 
         private void SaveFileAs()
         {
-            var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), new SqmFileExporter(new SqmElementExportVisitor(), new ContextIndenter(), new StreamWriterFactory()));
+            //var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), new SqmFileExporter(new SqmElementExportVisitor(), new ContextIndenter(), new StreamWriterFactory()));
 
-            var reorderer = new ViewModelToContentReorderer();
-            reorderer.Reorder(_sqmContents.Mission, Teams.ToList());
+            //var reorderer = new ViewModelToContentReorderer();
+            //reorderer.Reorder(_sqmContents.Mission, Teams.ToList());
 
-            saveSqmFileDialog.ShowDialog(_sqmContents);
+            //saveSqmFileDialog.ShowDialog(_sqmContents);
         }
     }
 }

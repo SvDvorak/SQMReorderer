@@ -207,9 +207,9 @@ namespace SQMReorderer.Tests.Export.ArmA3
             originalVehicleText.Append("vehicle=\"TK_GUE_Soldier_2_EP1\";\n");
             originalVehicleText.Append("player=\"PLAY CDG\";\n");
             originalVehicleText.Append("leader=1;\n");
+            originalVehicleText.Append("lock=\"UNLOCKED\";\n");
             originalVehicleText.Append("rank=\"CORPORAL\";\n");
             originalVehicleText.Append("skill=0.60000002;\n");
-            originalVehicleText.Append("lock=\"UNLOCKED\";\n");
             originalVehicleText.Append("text=\"UnitGUE_MTR1_AG\";\n");
             originalVehicleText.Append("init=\"GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n");
             originalVehicleText.Append("description=\"TK Local Mortar Team 1 Assistant Gunner\";\n");

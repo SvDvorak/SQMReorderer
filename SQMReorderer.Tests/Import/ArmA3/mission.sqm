@@ -1567,7 +1567,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.60000002;
 					text="UnitNATO_MMG1_G";
-					init="GrpNATO_MMG1 = group this; nul = [""mmgg"",this] call f_fnc_folk_assignGear ;      ";
+					init="GrpNATO_MMG1 = group this; nul = [""mmgg"",this] call f_fnc_folk_assignGear ;";
 					description="NATO Medium MG Team 1 Gunner";
 				};
 				class Item1
@@ -1579,7 +1579,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="UnitNATO_MMG1_AG";
-					init="GrpNATO_MMG1 = group this; nul = [""mmgag"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpNATO_MMG1 = group this; nul = [""mmgag"",this] call f_fnc_folk_assignGear ;";
 					description="NATO Medium MG Team 1 Assistant Gunner";
 				};
 			};
@@ -1601,7 +1601,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.60000002;
 					text="UnitNATO_MAT1_G";
-					init="GrpNATO_MAT1 = group this; nul = [""matg"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpNATO_MAT1 = group this; nul = [""matg"",this] call f_fnc_folk_assignGear ;";
 					description="NATO Medium AT Team 1 Gunner";
 				};
 				class Item1
@@ -1614,7 +1614,7 @@ class Mission
 					skill=0.60000002;
 					health=0.99000001;
 					text="UnitNATO_MAT1_AG";
-					init="GrpNATO_MAT1 = group this; nul = [""matag"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpNATO_MAT1 = group this; nul = [""matag"",this] call f_fnc_folk_assignGear ;";
 					description="NATO Medium AT Team 1 Assistant Gunner";
 				};
 			};
@@ -1850,7 +1850,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.60000002;
 					text="UnitCSAT_MAT1_G";
-					init="GrpCSAT_MAT1 = group this; nul = [""matg"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpCSAT_MAT1 = group this; nul = [""matg"",this] call f_fnc_folk_assignGear ;";
 					description="CSAT Medium AT Team 1 Gunner";
 				};
 				class Item1
@@ -2725,7 +2725,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="UnitAAF_MMG1_G";
-					init="GrpAAF_MMG1 = group this; nul = [""mmgg"",this] call f_fnc_folk_assignGear ;  ";
+					init="GrpAAF_MMG1 = group this; nul = [""mmgg"",this] call f_fnc_folk_assignGear ;";
 					description="AAF Medium MG Team 1 Gunner";
 				};
 				class Item1
@@ -2737,7 +2737,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="UnitAAF_MMG1_AG";
-					init="GrpAAF_MMG1 = group this; nul = [""mmgag"",this] call f_fnc_folk_assignGear ;  ";
+					init="GrpAAF_MMG1 = group this; nul = [""mmgag"",this] call f_fnc_folk_assignGear ;";
 					description="AAF Medium MG Team 1 Assistant Gunner";
 				};
 			};
@@ -2758,7 +2758,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="UnitAAF_MAT1_G";
-					init="GrpAAF_MAT1 = group this; nul = [""matg"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpAAF_MAT1 = group this; nul = [""matg"",this] call f_fnc_folk_assignGear ;";
 					description="AAF Medium AT Team 1 Gunner";
 				};
 				class Item1
@@ -2770,7 +2770,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="UnitAAF_MAT1_AG";
-					init="GrpAAF_MAT1 = group this; nul = [""matag"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpAAF_MAT1 = group this; nul = [""matag"",this] call f_fnc_folk_assignGear ;";
 					description="AAF Medium AT Team 1 Assistant Gunner";
 				};
 			};
@@ -2791,7 +2791,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="UnitAAF_ENG1_FTL";
-					init="GrpAAF_ENG1 = group this; nul = [""eng"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpAAF_ENG1 = group this; nul = [""eng"",this] call f_fnc_folk_assignGear ;";
 					description="AAF Engineer Team 1 Leader (Demo)";
 				};
 				class Item1
@@ -2803,7 +2803,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="UnitAAF_ENG1_A1";
-					init="GrpAAF_ENG1 = group this; nul = [""eng"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpAAF_ENG1 = group this; nul = [""eng"",this] call f_fnc_folk_assignGear ;";
 					description="AAF Engineer Team 1 Assistant (Demo)";
 				};
 				class Item2
@@ -2815,7 +2815,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="UnitAAF_ENG1_A2";
-					init="GrpAAF_ENG1 = group this; nul = [""engm"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpAAF_ENG1 = group this; nul = [""engm"",this] call f_fnc_folk_assignGear ;";
 					description="AAF Engineer Team 1 Assistant (Mines)";
 				};
 				class Item3
@@ -2827,7 +2827,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="UnitAAF_ENG1_A3";
-					init="GrpAAF_ENG1 = group this; nul = [""engm"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpAAF_ENG1 = group this; nul = [""engm"",this] call f_fnc_folk_assignGear ;";
 					description="AAF Engineer Team 1 Assistant (Mines)";
 				};
 			};
@@ -5711,7 +5711,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.60000002;
 					text="UnitFIA_MMG1_G";
-					init="GrpFIA_MMG1 = group this; nul = [""mmgg"",this] call f_fnc_folk_assignGear ;      ";
+					init="GrpFIA_MMG1 = group this; nul = [""mmgg"",this] call f_fnc_folk_assignGear ;";
 					description="FIA Medium MG Team 1 Gunner";
 				};
 				class Item1
@@ -5723,7 +5723,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="UnitFIA_MMG1_AG";
-					init="GrpFIA_MMG1 = group this; nul = [""mmgag"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpFIA_MMG1 = group this; nul = [""mmgag"",this] call f_fnc_folk_assignGear ;";
 					description="FIA Medium MG Team 1 Assistant Gunner";
 				};
 			};
@@ -5745,7 +5745,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.60000002;
 					text="UnitFIA_MAT1_G";
-					init="GrpFIA_MAT1 = group this; nul = [""matg"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpFIA_MAT1 = group this; nul = [""matg"",this] call f_fnc_folk_assignGear ;";
 					description="FIA Medium AT Team 1 Gunner";
 				};
 				class Item1
@@ -5758,7 +5758,7 @@ class Mission
 					skill=0.60000002;
 					health=0.99000001;
 					text="UnitFIA_MAT1_AG";
-					init="GrpFIA_MAT1 = group this; nul = [""matag"",this] call f_fnc_folk_assignGear ; ";
+					init="GrpFIA_MAT1 = group this; nul = [""matag"",this] call f_fnc_folk_assignGear ;";
 					description="FIA Medium AT Team 1 Assistant Gunner";
 				};
 			};

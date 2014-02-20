@@ -1,3 +1,4 @@
+using SQMReorderer.Core.Export;
 using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Gui.Dialogs

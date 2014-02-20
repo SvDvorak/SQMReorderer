@@ -1,10 +1,9 @@
 using System.IO;
-using SQMReorderer.Core.Import;
 using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Core.StreamHelpers;
 
-namespace SQMReorderer.Gui.Dialogs
+namespace SQMReorderer.Core.Import
 {
     public class SqmFileImporter : ISqmFileImporter
     {

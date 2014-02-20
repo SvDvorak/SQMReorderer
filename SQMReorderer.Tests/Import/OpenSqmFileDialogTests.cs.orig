@@ -1,8 +1,8 @@
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
-using SQMReorderer.Core.Import;
 using SQMReorderer.Core.Import.ResultObjects;
+using SQMReorderer.Core.StreamHelpers;
 using SQMReorderer.Gui.Dialogs;
 
 namespace SQMReorderer.Tests.Import
@@ -11,6 +11,7 @@ namespace SQMReorderer.Tests.Import
     internal class OpenSqmFileDialogTests
     {
         private IOpenFileDialogAdapter _openFileDialogAdapter;
+        private IStreamToStringsReader _streamToStringsReader;
         private ISqmFileImporter _sqmFileImporter;
 
         private SqmContents _expectedContents;
@@ -21,9 +22,10 @@ namespace SQMReorderer.Tests.Import
         public void Setup()
         {
             _openFileDialogAdapter = Substitute.For<IOpenFileDialogAdapter>();
+            _streamToStringsReader = Substitute.For<IStreamToStringsReader>();
             _sqmFileImporter = Substitute.For<ISqmFileImporter>();
 
-            _openSqmFileDialog = new OpenSqmFileDialog(_openFileDialogAdapter, _sqmFileImporter);
+            _openSqmFileDialog = new OpenSqmFileDialog(_openFileDialogAdapter, _streamToStringsReader, _sqmFileImporter);
 
             _memoryStream = Substitute.For<MemoryStream>();
             _openFileDialogAdapter.OpenFile().Returns(_memoryStream);

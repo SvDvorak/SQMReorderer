@@ -57,6 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoubleExtensions.cs" />
+    <Compile Include="Export\ISqmFileExporter.cs" />
+    <Compile Include="Export\SqmFileExporter.cs" />
+    <Compile Include="Import\ISqmFileImporter.cs" />
+    <Compile Include="Import\SqmFileImporter.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Export\ContextIndenter.cs" />
     <Compile Include="Export\ISqmElementVisitor.cs" />

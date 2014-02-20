@@ -112,9 +112,13 @@ namespace MultiSelectionTreeView
 
             var dragItem = dragEventArgs.Data.GetData(typeof(MultipleSelectionTreeViewItem)) as MultipleSelectionTreeViewItem;
 
-            if (dragItem != null && CanTakeDrop && TakesDroppedTypes.Exists(x => x == dragItem.DataContext.GetType()))
+            if (dragItem != null && CanTakeDrop)
             {
-                dragEventArgs.Effects = DragDropEffects.Copy | DragDropEffects.Move;
+                var draggedDataType = dragItem.DataContext.GetType();
+                if(draggedDataType == DataContext.GetType() || TakesDroppedTypes.Exists(x => x == draggedDataType))
+                {
+                    dragEventArgs.Effects = DragDropEffects.Copy | DragDropEffects.Move;
+                }
             }
 
             dragEventArgs.Handled = true;

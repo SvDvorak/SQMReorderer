@@ -153,15 +153,24 @@ namespace MultiSelectionTreeView
             foreach (var selectedItem in SelectedItemsViewModels)
             {
                 var dataContext = selectedItem.DataContext;
-
+                var targetParentItems = (IList)GetItemsSourceToDropInto(sourceItem, targetItem);
                 var sourceParentItems = (IList)selectedItem.ParentMultipleSelectionTreeViewItem.ItemsSource;
-                sourceParentItems.Remove(dataContext);
 
-                var targetParentItems = (IList)targetItem.ItemsSource;
+                sourceParentItems.Remove(dataContext);
                 targetParentItems.Insert(0, dataContext);
             }
 
             SelectedItemsViewModels.Clear();
+        }
+
+        private static IEnumerable GetItemsSourceToDropInto(MultipleSelectionTreeViewItem sourceItem, MultipleSelectionTreeViewItem targetItem)
+        {
+            if (sourceItem.GetDepth() == targetItem.GetDepth())
+            {
+                return targetItem.ParentMultipleSelectionTreeViewItem.ItemsSource;
+            }
+
+            return targetItem.ItemsSource;
         }
 
         #region Methods

@@ -146,6 +146,7 @@ namespace SQMReorderer.Core.Export.ArmA3
             stringBuilder.Append(_propertyVisitor.Visit("lock", vehicle.Lock));
             stringBuilder.Append(_propertyVisitor.Visit("rank", vehicle.Rank));
             stringBuilder.Append(_propertyVisitor.Visit("skill", vehicle.Skill));
+            stringBuilder.Append(_propertyVisitor.Visit("health", vehicle.Health));
             stringBuilder.Append(_propertyVisitor.Visit("text", vehicle.Text));
             stringBuilder.Append(_propertyVisitor.Visit("init", vehicle.Init));
             stringBuilder.Append(_propertyVisitor.Visit("description", vehicle.Description));

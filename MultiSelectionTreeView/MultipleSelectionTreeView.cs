@@ -150,27 +150,32 @@ namespace MultiSelectionTreeView
 
         public void OnItemDrop(MultipleSelectionTreeViewItem sourceItem, MultipleSelectionTreeViewItem targetItem)
         {
-            foreach (var selectedItem in SelectedItemsViewModels)
+            if (sourceItem.GetDepth() == targetItem.GetDepth())
             {
-                var dataContext = selectedItem.DataContext;
-                var targetParentItems = (IList)GetItemsSourceToDropInto(sourceItem, targetItem);
-                var sourceParentItems = (IList)selectedItem.ParentMultipleSelectionTreeViewItem.ItemsSource;
+                foreach (var selectedItem in SelectedItemsViewModels)
+                {
+                    var dataContext = selectedItem.DataContext;
+                    var sourceParentItems = (IList)selectedItem.ParentMultipleSelectionTreeViewItem.ItemsSource;
+                    var targetParentItems = (IList)targetItem.ParentMultipleSelectionTreeViewItem.ItemsSource;
 
-                sourceParentItems.Remove(dataContext);
-                targetParentItems.Insert(0, dataContext);
+                    sourceParentItems.Remove(dataContext);
+                    targetParentItems.Insert(targetItem.GetIndexInParent(), dataContext);
+                }
+            }
+            else
+            {
+                foreach (var selectedItem in SelectedItemsViewModels)
+                {
+                    var dataContext = selectedItem.DataContext;
+                    var targetParentItems = (IList)targetItem.ItemsSource;
+                    var sourceParentItems = (IList)selectedItem.ParentMultipleSelectionTreeViewItem.ItemsSource;
+
+                    sourceParentItems.Remove(dataContext);
+                    targetParentItems.Insert(0, dataContext);
+                }
             }
 
             SelectedItemsViewModels.Clear();
-        }
-
-        private static IEnumerable GetItemsSourceToDropInto(MultipleSelectionTreeViewItem sourceItem, MultipleSelectionTreeViewItem targetItem)
-        {
-            if (sourceItem.GetDepth() == targetItem.GetDepth())
-            {
-                return targetItem.ParentMultipleSelectionTreeViewItem.ItemsSource;
-            }
-
-            return targetItem.ItemsSource;
         }
 
         #region Methods

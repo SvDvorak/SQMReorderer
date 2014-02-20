@@ -18,7 +18,7 @@ namespace MultiSelectionTreeView
         {
             get
             {
-                return ItemsControl.ItemsControlFromItemContainer(this);
+                return ItemsControlFromItemContainer(this);
             }
         }
 
@@ -30,7 +30,7 @@ namespace MultiSelectionTreeView
         {
             get
             {
-                for (ItemsControl container = this.ParentItemsControl; container != null; container = ItemsControl.ItemsControlFromItemContainer(container))
+                for (ItemsControl container = ParentItemsControl; container != null; container = ItemsControl.ItemsControlFromItemContainer(container))
                 {
                     MultipleSelectionTreeView view = container as MultipleSelectionTreeView;
                     if (view != null)
@@ -51,7 +51,7 @@ namespace MultiSelectionTreeView
         {
             get
             {
-                return (this.ParentItemsControl as MultipleSelectionTreeViewItem);
+                return (ParentItemsControl as MultipleSelectionTreeViewItem);
             }
         }
 
@@ -92,17 +92,11 @@ namespace MultiSelectionTreeView
 
         public MultipleSelectionTreeViewItem()
         {
-            ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
-
             AllowDrop = true;
             IsExpanded = true;
             DragOver += OnDragOver;
+            GiveFeedback += OnGiveFeedback;
             Drop += OnDrop;
-        }
-
-        void ItemContainerGenerator_ItemsChanged(object sender, System.Windows.Controls.Primitives.ItemsChangedEventArgs e)
-        {
-            //throw new NotImplementedException();
         }
         #endregion
 
@@ -112,7 +106,7 @@ namespace MultiSelectionTreeView
 
             var dragItem = dragEventArgs.Data.GetData(typeof(MultipleSelectionTreeViewItem)) as MultipleSelectionTreeViewItem;
 
-            if (dragItem != null && CanTakeDrop)
+            if (dragItem != null && CanTakeDrop && !IsSelected)
             {
                 var draggedDataType = dragItem.DataContext.GetType();
                 if(draggedDataType == DataContext.GetType() || TakesDroppedTypes.Exists(x => x == draggedDataType))
@@ -122,6 +116,11 @@ namespace MultiSelectionTreeView
             }
 
             dragEventArgs.Handled = true;
+        }
+
+        private void OnGiveFeedback(object sender, GiveFeedbackEventArgs e)
+        {
+            
         }
 
         private void OnDrop(object sender, DragEventArgs dragEventArgs)
@@ -204,7 +203,7 @@ namespace MultiSelectionTreeView
                     }
                     else
                     {
-                        var previousNodeAtSameLevel = GetPreviousNodeAtSameLevel(this);
+                        var previousNodeAtSameLevel = GetPreviousNodeAtSameLevel();
                         itemToSelect = GetLastVisibleChildNodeOf(previousNodeAtSameLevel);
                     }
                 }
@@ -252,6 +251,11 @@ namespace MultiSelectionTreeView
         #endregion
 
         #region Methods
+        public int GetIndexInParent()
+        {
+            return ParentItemsControl.ItemContainerGenerator.IndexFromContainer(this); 
+        }
+
         /// <summary>
         /// Retrieve the last displayed child node of the given one.
         /// </summary>
@@ -273,17 +277,14 @@ namespace MultiSelectionTreeView
         /// </summary>
         /// <param name="item">The node starting with you want to retrieve the previous one.</param>
         /// <returns>Null if there is no previous node at the same level.</returns>
-        public MultipleSelectionTreeViewItem GetPreviousNodeAtSameLevel(MultipleSelectionTreeViewItem item)
+        public MultipleSelectionTreeViewItem GetPreviousNodeAtSameLevel()
         {
-            if (item == null)
-                return null;
-
             MultipleSelectionTreeViewItem previousNodeAtSameLevel = null;
 
-            ItemsControl parentControl = item.ParentItemsControl;
+            ItemsControl parentControl = ParentItemsControl;
             if (parentControl != null)
             {
-                int index = parentControl.ItemContainerGenerator.IndexFromContainer(item);
+                int index = parentControl.ItemContainerGenerator.IndexFromContainer(this);
                 if (index != 0) // if this is not the last item
                 {
                     previousNodeAtSameLevel = parentControl.ItemContainerGenerator.ContainerFromIndex(index - 1) as MultipleSelectionTreeViewItem;

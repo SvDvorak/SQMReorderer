@@ -153,11 +153,13 @@ namespace MultiSelectionTreeView
         {
             foreach (var selectedItem in SelectedItemsViewModels)
             {
-                var targetParentItems = (IList)targetItem.ItemsSource;
-                targetParentItems.Add(selectedItem.DataContext);
+                var dataContext = selectedItem.DataContext;
 
                 var sourceParentItems = (IList)selectedItem.ParentMultipleSelectionTreeViewItem.ItemsSource;
-                sourceParentItems.Remove(selectedItem.DataContext);
+                sourceParentItems.Remove(dataContext);
+
+                var targetParentItems = (IList)targetItem.ItemsSource;
+                targetParentItems.Insert(0, dataContext);
             }
 
             SelectedItemsViewModels.Clear();

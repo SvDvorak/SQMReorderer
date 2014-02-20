@@ -124,13 +124,12 @@ namespace MultiSelectionTreeView
                     break;
                 case SelectionModalities.SingleSelectionOnly:
                     ManageSingleSelection(newItem);
+                    SetLastClicked(viewItem);
                     break;
                 case SelectionModalities.KeyboardModifiersMode:
                     if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
                     {
-                        // ... TODO ... right now we use the same behavior of Shit Keyword
-                        ManageCtrlSelection(newItem);
-                        //ManageShiftSelection(viewItem);
+                        ManageShiftSelection(viewItem);
                     }
                     else if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
                     {
@@ -139,10 +138,14 @@ namespace MultiSelectionTreeView
                     else
                     {
                         ManageSingleSelection(newItem);
+                        SetLastClicked(newItem);
                     }
                     break;
             }
+        }
 
+        private void SetLastClicked(MultipleSelectionTreeViewItem viewItem)
+        {
             _lastClickedItem = viewItem.IsSelected ? viewItem : null;
         }
 
@@ -242,29 +245,46 @@ namespace MultiSelectionTreeView
             }
         }
 
-        /// <summary>
-        /// ... TODO ...
-        /// </summary>
-        /// <param name="viewItem"></param>
         private void ManageShiftSelection(MultipleSelectionTreeViewItem viewItem)
         {
-            if (_lastClickedItem != null)
+            if (_lastClickedItem == null)
             {
-                // BEGIN TODO
-                IsItem1ListedBeforeItem2(_lastClickedItem, viewItem);
-                // END TODO
+                return;
             }
 
-            if (viewItem.IsSelectable && viewItem.IsSelected)
+            if (viewItem.IsSelectable)
             {
-                viewItem.SelectAllExpandedChildren();
-                //viewItem.IsExpanded = true; // TO BE CLARIFY: this expand only item children, does not expand children of children
-                AddItemToSelection(viewItem);
+                UnselectAll();
+
+
+                ItemsControl parentControl = viewItem.ParentItemsControl;
+                if (parentControl == _lastClickedItem.ParentItemsControl)
+                {
+                    var startRangeIndex = parentControl.ItemContainerGenerator.IndexFromContainer(_lastClickedItem);
+                    var endRangeIndex = parentControl.ItemContainerGenerator.IndexFromContainer(viewItem);
+                    //viewItem.ParentMultipleSelectionTreeViewItem.SelectAllExpandedChildren();
+
+                    var direction = (endRangeIndex - startRangeIndex).Clamp(-1, 1);
+                    for (int i = 0; i <= Math.Abs(endRangeIndex - startRangeIndex); i++)
+                    {
+                        var nextItemIndex = startRangeIndex + i * direction;
+                        var nextItemInRange = parentControl.ItemContainerGenerator.ContainerFromIndex(nextItemIndex) as MultipleSelectionTreeViewItem;
+                        nextItemInRange.IsSelected = true;
+                        AddItemToSelection(nextItemInRange);
+                    }
+                }
+                //var itemsOnSameLevel = viewItem.ParentMultipleSelectionTreeViewItem.Items;
+
+                //if (!itemsOnSameLevel.Contains(_lastClickedItem))
+                //{
+                //    return;
+                //}
+
+                //var startRangeIndex = itemsOnSameLevel.IndexOf(_lastClickedItem);
+                //var endRangeIndex = itemsOnSameLevel.IndexOf(viewItem);
+
+                
             }
-            else
-            {
-                viewItem.UnselectAllChildren();
-            }          
         }
 
         /// <summary>

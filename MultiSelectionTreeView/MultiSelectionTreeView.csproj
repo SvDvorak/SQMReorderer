@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="DragDropExtension.cs" />
     <Compile Include="LeftMarginMultiplierConverter.cs" />
+    <Compile Include="MathExtensions.cs" />
     <Compile Include="MultipleSelectionTreeView.cs" />
     <Compile Include="MultipleSelectionTreeViewItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

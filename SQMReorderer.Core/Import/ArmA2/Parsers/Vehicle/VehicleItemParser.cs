@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using SQMReorderer.Core.Import.ArmA2.DataSetters;
+using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle
 {

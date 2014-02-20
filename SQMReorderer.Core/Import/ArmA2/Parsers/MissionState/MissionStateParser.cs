@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.ArmA2.DataSetters;
 using SQMReorderer.Core.Import.ArmA2.Parsers.Intel;
 using SQMReorderer.Core.Import.ArmA2.Parsers.Marker;
 using SQMReorderer.Core.Import.ArmA2.Parsers.Sensor;
 using SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle;
+using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers.MissionState
 {

@@ -3,7 +3,7 @@ using System.Text;
 using NUnit.Framework;
 using SQMReorderer.Core.Export.ArmA2;
 using SQMReorderer.Core.Import.ArmA2;
-using SQMReorderer.Core.Import.ArmA2.Context;
+using SQMReorderer.Core.Import.Context;
 
 namespace SQMReorderer.Tests.Import.ArmA2
 {

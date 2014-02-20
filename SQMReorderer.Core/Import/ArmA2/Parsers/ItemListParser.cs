@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.ArmA2.Context;
+using SQMReorderer.Core.Import.Context;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers
 {

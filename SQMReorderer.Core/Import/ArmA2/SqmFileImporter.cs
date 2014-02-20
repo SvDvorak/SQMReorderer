@@ -1,6 +1,6 @@
 using System.IO;
-using SQMReorderer.Core.Import.ArmA2.Context;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
+using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.StreamHelpers;
 
 namespace SQMReorderer.Core.Import.ArmA2

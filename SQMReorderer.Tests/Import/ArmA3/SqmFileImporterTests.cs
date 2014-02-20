@@ -3,8 +3,8 @@ using System.IO;
 using NSubstitute;
 using NUnit.Framework;
 using SQMReorderer.Core.Import.ArmA3;
-using SQMReorderer.Core.Import.ArmA3.Context;
 using SQMReorderer.Core.Import.ArmA3.ResultObjects;
+using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.StreamHelpers;
 
 namespace SQMReorderer.Tests.Import.ArmA3

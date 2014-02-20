@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using SQMReorderer.Gui.ViewModels;
+﻿using SQMReorderer.Gui.ViewModels;
 
 namespace SQMReorderer.Gui
 {
@@ -8,8 +7,6 @@ namespace SQMReorderer.Gui
     /// </summary>
     public partial class MainWindow
     {
-        private Point _startPoint;
-
         public MainWindow()
         {
             InitializeComponent();

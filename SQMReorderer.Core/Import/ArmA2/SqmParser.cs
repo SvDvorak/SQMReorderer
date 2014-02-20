@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.ArmA2.DataSetters;
 using SQMReorderer.Core.Import.ArmA2.Parsers;
 using SQMReorderer.Core.Import.ArmA2.Parsers.MissionState;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
+using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Core.Import.ArmA2
 {

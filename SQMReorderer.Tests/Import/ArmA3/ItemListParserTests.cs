@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMReorderer.Core.Import;
 using SQMReorderer.Core.Import.ArmA3;
-using SQMReorderer.Core.Import.ArmA3.Context;
 using SQMReorderer.Core.Import.ArmA3.Parsers;
 using SQMReorderer.Core.Import.ArmA3.Parsers.Vehicle;
 using SQMReorderer.Core.Import.ArmA3.ResultObjects;
+using SQMReorderer.Core.Import.Context;
 
 namespace SQMReorderer.Tests.Import.ArmA3
 {

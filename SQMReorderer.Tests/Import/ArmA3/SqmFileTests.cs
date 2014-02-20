@@ -2,10 +2,11 @@
 using System.Reflection;
 using System.Text;
 using NUnit.Framework;
+using SQMReorderer.Core.Export;
 using SQMReorderer.Core.Export.ArmA3;
 using SQMReorderer.Core.Import.ArmA3;
-using SQMReorderer.Core.Import.ArmA3.Context;
 using SQMReorderer.Core.Import.ArmA3.ResultObjects;
+using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.StreamHelpers;
 
 namespace SQMReorderer.Tests.Import.ArmA3

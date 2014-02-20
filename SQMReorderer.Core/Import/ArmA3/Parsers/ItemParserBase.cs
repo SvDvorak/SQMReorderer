@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.ArmA3.Context;
-using SQMReorderer.Core.Import.ArmA3.HelperFunctions;
 using SQMReorderer.Core.Import.ArmA3.ResultObjects;
+using SQMReorderer.Core.Import.Context;
+using SQMReorderer.Core.Import.HelperFunctions;
 
 namespace SQMReorderer.Core.Import.ArmA3.Parsers
 {

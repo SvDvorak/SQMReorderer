@@ -1,5 +1,5 @@
-﻿using SQMReorderer.Core.Import.ArmA2.Context;
-using SQMReorderer.Core.Import.ArmA2.DataSetters;
+﻿using SQMReorderer.Core.Import.Context;
+using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers.Sensor
 {

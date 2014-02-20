@@ -1,5 +1,5 @@
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.ArmA3.DataSetters;
+using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Core.Import.ArmA3.Parsers.Intel
 {

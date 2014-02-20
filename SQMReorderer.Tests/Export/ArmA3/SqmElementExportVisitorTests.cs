@@ -149,11 +149,14 @@ namespace SQMReorderer.Tests.Export.ArmA3
             originalIntelText.Append("{\n");
             originalIntelText.Append("briefingName=\"rootbeer\";\n");
             originalIntelText.Append("overviewText=\"mission text\";\n");
+            originalIntelText.Append("timeOfChanges=0.18;\n");
             originalIntelText.Append("startWeather=0.25;\n");
             originalIntelText.Append("startWind=0.5;\n");
+            originalIntelText.Append("startWaves=0.42;\n");
             originalIntelText.Append("forecastWeather=0.25;\n");
             originalIntelText.Append("forecastWind=0.8;\n");
             originalIntelText.Append("forecastWaves=0.2;\n");
+            originalIntelText.Append("forecastLightnings=0.9;\n");
             originalIntelText.Append("rainForced=1;\n");
             originalIntelText.Append("lightningsForced=1;\n");
             originalIntelText.Append("wavesForced=1;\n");
@@ -171,11 +174,14 @@ namespace SQMReorderer.Tests.Export.ArmA3
 
             intel.BriefingName = "rootbeer";
             intel.OverviewText = "mission text";
+            intel.TimeOfChanges = 0.18;
             intel.StartWeather = 0.25;
             intel.StartWind = 0.5;
+            intel.StartWaves = 0.42;
             intel.ForecastWeather = 0.25;
             intel.ForecastWind = 0.8;
             intel.ForecastWaves = 0.2;
+            intel.ForecastLightnings = 0.9;
             intel.RainForced = 1;
             intel.LightningsForced = 1;
             intel.WavesForced = 1;

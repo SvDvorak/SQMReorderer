@@ -29,8 +29,9 @@ namespace SQMReorderer.Tests.Import.ArmA3
         {
             var exportVisitor = new SqmElementExportVisitor();
             var exportedTestFile = exportVisitor.Visit("file", parseResult);
+            var indentedText = new ContextIndenter().Indent(exportedTestFile);
 
-            return exportedTestFile;
+            return indentedText;
         }
 
         private static List<string> GetSqmFileContents()
@@ -61,7 +62,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
 
             foreach (var row in fileContent)
             {
-                testFileStringBuilder.Append(row);
+                testFileStringBuilder.Append(row + "\n");
             }
 
             return testFileStringBuilder.ToString();

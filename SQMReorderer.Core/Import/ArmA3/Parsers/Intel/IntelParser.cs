@@ -11,11 +11,14 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers.Intel
         {
             PropertySetters.Add(new StringPropertySetter("briefingName", x => ParseResult.BriefingName = x));
             PropertySetters.Add(new StringPropertySetter("overviewText", x => ParseResult.OverviewText = x));
+            PropertySetters.Add(new DoublePropertySetter("timeOfChanges", x => ParseResult.TimeOfChanges = x));
             PropertySetters.Add(new DoublePropertySetter("startWeather", x => ParseResult.StartWeather = x));
             PropertySetters.Add(new DoublePropertySetter("startWind", x => ParseResult.StartWind = x));
+            PropertySetters.Add(new DoublePropertySetter("startWaves", x => ParseResult.StartWaves = x));
             PropertySetters.Add(new DoublePropertySetter("forecastWeather", x => ParseResult.ForecastWeather = x));
             PropertySetters.Add(new DoublePropertySetter("forecastWind", x => ParseResult.ForecastWind = x));
             PropertySetters.Add(new DoublePropertySetter("forecastWaves", x => ParseResult.ForecastWaves = x));
+            PropertySetters.Add(new DoublePropertySetter("forecastLightnings", x => ParseResult.ForecastLightnings = x));
             PropertySetters.Add(new IntegerPropertySetter("rainForced", x => ParseResult.RainForced = x));
             PropertySetters.Add(new IntegerPropertySetter("lightningsForced", x => ParseResult.LightningsForced = x));
             PropertySetters.Add(new IntegerPropertySetter("wavesForced", x => ParseResult.WavesForced = x));

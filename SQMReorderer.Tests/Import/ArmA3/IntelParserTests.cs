@@ -49,11 +49,14 @@ namespace SQMReorderer.Tests.Import.ArmA3
                     "{\n",
                     "briefingName=\"[co04]local_hostility_v2_oa\";\n",
 		            "overviewText=\"Destroy stolen ammocrates and truck\";",
+                    "timeOfChanges=1800.0002;",
                     "startWeather=0.19207704;\n",
                     "startWind=1.14;",
+                    "startWaves=0.1;",
                     "forecastWeather=0.25;\n",
                     "forecastWind=2.01;",
                     "forecastWaves=0.5;",
+                    "forecastLightnings=0.1;",
                     "rainForced=1;",
                     "lightningsForced=1;",
                     "wavesForced=1;",
@@ -74,11 +77,14 @@ namespace SQMReorderer.Tests.Import.ArmA3
 
             Assert.AreEqual("[co04]local_hostility_v2_oa", intelResult.BriefingName);
             Assert.AreEqual("Destroy stolen ammocrates and truck", intelResult.OverviewText);
+            Assert.AreEqual(1800.0002, intelResult.TimeOfChanges);
             Assert.AreEqual(0.19207704, intelResult.StartWeather);
             Assert.AreEqual(1.14, intelResult.StartWind);
+            Assert.AreEqual(0.1, intelResult.StartWaves);
             Assert.AreEqual(0.25, intelResult.ForecastWeather);
             Assert.AreEqual(2.01, intelResult.ForecastWind);
             Assert.AreEqual(0.5, intelResult.ForecastWaves);
+            Assert.AreEqual(0.1, intelResult.ForecastLightnings);
             Assert.AreEqual(1, intelResult.RainForced);
             Assert.AreEqual(1, intelResult.LightningsForced);
             Assert.AreEqual(1, intelResult.WavesForced);

@@ -62,13 +62,23 @@ namespace SQMReorderer.Core.Export.ArmA3
             intelString.Append("class " + elementName + "\n");
             intelString.Append("{\n");
             intelString.Append(_propertyVisitor.Visit("briefingName", intel.BriefingName));
+            intelString.Append(_propertyVisitor.Visit("overviewText", intel.OverviewText));
             intelString.Append(_propertyVisitor.Visit("startWeather", intel.StartWeather));
+            intelString.Append(_propertyVisitor.Visit("startWind", intel.StartWind));
             intelString.Append(_propertyVisitor.Visit("forecastWeather", intel.ForecastWeather));
+            intelString.Append(_propertyVisitor.Visit("forecastWind", intel.ForecastWind));
+            intelString.Append(_propertyVisitor.Visit("forecastWaves", intel.ForecastWaves));
+            intelString.Append(_propertyVisitor.Visit("rainForced", intel.RainForced));
+            intelString.Append(_propertyVisitor.Visit("lightningsForced", intel.LightningsForced));
+            intelString.Append(_propertyVisitor.Visit("wavesForced", intel.WavesForced));
+            intelString.Append(_propertyVisitor.Visit("windForced", intel.WindForced));
             intelString.Append(_propertyVisitor.Visit("year", intel.Year));
             intelString.Append(_propertyVisitor.Visit("month", intel.Month));
             intelString.Append(_propertyVisitor.Visit("day", intel.Day));
             intelString.Append(_propertyVisitor.Visit("hour", intel.Hour));
             intelString.Append(_propertyVisitor.Visit("minute", intel.Minute));
+            intelString.Append(_propertyVisitor.Visit("startFogDecay", intel.StartFogDecay));
+            intelString.Append(_propertyVisitor.Visit("forecastFogDecay", intel.ForecastFogDecay));
             intelString.Append("};\n");
 
             return intelString.ToString();

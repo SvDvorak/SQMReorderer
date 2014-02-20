@@ -148,26 +148,45 @@ namespace SQMReorderer.Tests.Export.ArmA3
             originalIntelText.Append("class Intel\n");
             originalIntelText.Append("{\n");
             originalIntelText.Append("briefingName=\"rootbeer\";\n");
-            originalIntelText.Append("briefingDescription=\"Square cup = beer\";\n");
+            originalIntelText.Append("overviewText=\"mission text\";\n");
             originalIntelText.Append("startWeather=0.25;\n");
+            originalIntelText.Append("startWind=0.5;\n");
             originalIntelText.Append("forecastWeather=0.25;\n");
+            originalIntelText.Append("forecastWind=0.8;\n");
+            originalIntelText.Append("forecastWaves=0.2;\n");
+            originalIntelText.Append("rainForced=1;\n");
+            originalIntelText.Append("lightningsForced=1;\n");
+            originalIntelText.Append("wavesForced=1;\n");
+            originalIntelText.Append("windForced=1;\n");
             originalIntelText.Append("year=2008;\n");
             originalIntelText.Append("month=10;\n");
             originalIntelText.Append("day=11;\n");
             originalIntelText.Append("hour=8;\n");
             originalIntelText.Append("minute=1;\n");
+            originalIntelText.Append("startFogDecay=0.03;\n");
+            originalIntelText.Append("forecastFogDecay=0.06;\n");
             originalIntelText.Append("};\n");
 
             var intel = new Intel();
 
             intel.BriefingName = "rootbeer";
+            intel.OverviewText = "mission text";
             intel.StartWeather = 0.25;
+            intel.StartWind = 0.5;
             intel.ForecastWeather = 0.25;
+            intel.ForecastWind = 0.8;
+            intel.ForecastWaves = 0.2;
+            intel.RainForced = 1;
+            intel.LightningsForced = 1;
+            intel.WavesForced = 1;
+            intel.WindForced = 1;
             intel.Year = 2008;
             intel.Month = 10;
             intel.Day = 11;
             intel.Hour = 8;
             intel.Minute = 1;
+            intel.StartFogDecay = 0.03;
+            intel.ForecastFogDecay = 0.06;
 
             var exportedIntel = _exportVisitor.Visit("Intel", intel);
 

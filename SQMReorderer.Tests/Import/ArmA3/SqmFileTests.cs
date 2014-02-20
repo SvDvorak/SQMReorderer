@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
-using SQMReorderer.Core.Export.ArmA2;
-using SQMReorderer.Core.Import.ArmA2;
-using SQMReorderer.Core.Import.ArmA2.Context;
+using SQMReorderer.Core.Export.ArmA3;
+using SQMReorderer.Core.Import.ArmA3;
+using SQMReorderer.Core.Import.ArmA3.Context;
 
-namespace SQMReorderer.Tests.Import.ArmA2
+namespace SQMReorderer.Tests.Import.ArmA3
 {
     [TestFixture]
     public class SqmFileTests

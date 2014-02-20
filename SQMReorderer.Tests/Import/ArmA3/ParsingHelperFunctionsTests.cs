@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
-using SQMReorderer.Core.Import.ArmA2.HelperFunctions;
+using SQMReorderer.Core.Import.ArmA3.HelperFunctions;
 
-namespace SQMReorderer.Tests.Import.ArmA2
+namespace SQMReorderer.Tests.Import.ArmA3
 {
     [TestFixture]
     public class ParsingHelperFunctionsTests

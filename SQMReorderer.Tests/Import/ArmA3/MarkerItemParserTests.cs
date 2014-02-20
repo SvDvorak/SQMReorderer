@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMReorderer.Core.Import.ArmA2.Context;
-using SQMReorderer.Core.Import.ArmA2.Parsers.Marker;
+using SQMReorderer.Core.Import.ArmA3.Context;
+using SQMReorderer.Core.Import.ArmA3.Parsers.Marker;
 
-namespace SQMReorderer.Tests.Import.ArmA2
+namespace SQMReorderer.Tests.Import.ArmA3
 {
     [TestFixture]
     public class MarkerItemParserTests

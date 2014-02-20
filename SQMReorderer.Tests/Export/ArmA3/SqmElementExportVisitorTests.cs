@@ -2,10 +2,10 @@
 using System.Text;
 using NUnit.Framework;
 using SQMReorderer.Core;
-using SQMReorderer.Core.Export.ArmA2;
-using SQMReorderer.Core.Import.ArmA2.ResultObjects;
+using SQMReorderer.Core.Export.ArmA3;
+using SQMReorderer.Core.Import.ArmA3.ResultObjects;
 
-namespace SQMReorderer.Tests.Export.ArmA2
+namespace SQMReorderer.Tests.Export.ArmA3
 {
     [TestFixture]
     public class SqmElementExportVisitorTests

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMReorderer.Core;
-using SQMReorderer.Core.Export.ArmA2;
+using SQMReorderer.Core.Export.ArmA3;
 
-namespace SQMReorderer.Tests.Export.ArmA2
+namespace SQMReorderer.Tests.Export.ArmA3
 {
     [TestFixture]
     public class SqmPropertyVisitorTests

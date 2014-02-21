@@ -70,6 +70,8 @@
     <Compile Include="Import\ArmA2\SqmFileImporter.cs" />
     <Compile Include="Import\ArmA3\ISqmFileImporter.cs" />
     <Compile Include="Import\ArmA3\ISqmParser.cs" />
+    <Compile Include="Import\FileVersion.cs" />
+    <Compile Include="Import\FileVersionRetriever.cs" />
     <Compile Include="Import\HelperFunctions\CommonRegexPatterns.cs" />
     <Compile Include="Import\HelperFunctions\ParsingHelperFunctions.cs" />
     <Compile Include="Import\ArmA3\Parsers\Intel\IntelParser.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Import\ArmA3\ResultObjects\Vehicle.cs" />
     <Compile Include="Import\ArmA3\SqmFileImporter.cs" />
     <Compile Include="Import\ArmA3\SqmParser.cs" />
+    <Compile Include="Import\IFileVersionRetriever.cs" />
     <Compile Include="Import\ISqmContentCombiner.cs" />
     <Compile Include="Import\ISqmFileImporter.cs" />
     <Compile Include="Import\IStreamReaderAdapter.cs" />

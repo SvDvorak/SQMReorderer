@@ -10,7 +10,10 @@ namespace SQMReorderer.Core.Import
         private readonly ArmA2.ISqmFileImporter _arma2Importer;
         private readonly ArmA3.ISqmFileImporter _arma3Importer;
 
-        public SqmFileImporter(IFileVersionRetriever fileVersionRetriever, ISqmContentCombiner contentCombiner, ArmA2.ISqmFileImporter arma2Importer, ArmA3.ISqmFileImporter arma3Importer)
+        public SqmFileImporter(IFileVersionRetriever fileVersionRetriever,
+            ISqmContentCombiner contentCombiner,
+            ArmA2.ISqmFileImporter arma2Importer,
+            ArmA3.ISqmFileImporter arma3Importer)
         {
             _fileVersionRetriever = fileVersionRetriever;
             _contentCombiner = contentCombiner;
@@ -24,27 +27,13 @@ namespace SQMReorderer.Core.Import
             if (fileVersion == FileVersion.ArmA2)
             {
                 var arma2Contents = _arma2Importer.Import(stream);
+
                 return _contentCombiner.Combine(arma2Contents);
             }
-            if (fileVersion == FileVersion.ArmA3)
-            {
-                var arma3Contents = _arma3Importer.Import(stream);
-                return _contentCombiner.Combine(arma3Contents);
-            }
 
-            throw new SqmParseException("SQM version not found in file");
+            var arma3Contents = _arma3Importer.Import(stream);
+
+            return _contentCombiner.Combine(arma3Contents);
         }
-    }
-
-    public interface IFileVersionRetriever
-    {
-        FileVersion GetVersion(Stream stream);
-    }
-
-    public enum FileVersion
-    {
-        ArmA2,
-        ArmA3,
-        Unknown
     }
 }

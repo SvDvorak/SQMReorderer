@@ -27,24 +27,6 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        public void Throws_exception_when_stream_does_not_have_sqm_version()
-        {
-            var stream = Substitute.For<Stream>();
-            _fileVersionRetriever.GetVersion(stream).Returns(x => { throw new SqmParseException(""); });
-
-            Assert.Throws<SqmParseException>(() => _sut.Import(stream));
-        }
-
-        [Test]
-        public void Throws_exception_when_stream_has_wrong_version()
-        {
-            var stream = Substitute.For<Stream>();
-            _fileVersionRetriever.GetVersion(stream).Returns(FileVersion.Unknown);
-
-            Assert.Throws<SqmParseException>(() => _sut.Import(stream));
-        }
-
-        [Test]
         public void Uses_arma_2_parser_when_file_version_indicates_arma_2_version()
         {
             var stream = Substitute.For<Stream>();

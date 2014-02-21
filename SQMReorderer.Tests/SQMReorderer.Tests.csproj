@@ -67,6 +67,7 @@
     <Compile Include="Import\CommonRegexPatternsTests.cs" />
     <Compile Include="Import\ArmA2\ContextSetterTests.cs" />
     <Compile Include="Import\DoublePropertySetterTests.cs" />
+    <Compile Include="Import\FileVersionRetrieverTests.cs" />
     <Compile Include="Import\IntegerListPropertySetterTests.cs" />
     <Compile Include="Import\IntegerPropertySetterTests.cs" />
     <Compile Include="Import\ArmA2\IntelParserTests.cs" />

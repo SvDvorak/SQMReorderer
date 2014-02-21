@@ -5,20 +5,46 @@ namespace SQMReorderer.Core.Import
 {
     public class SqmFileImporter : ISqmFileImporter
     {
-        private readonly ArmA2.ISqmParser _arma2Parser;
-        private readonly ArmA3.ISqmParser _arma3Parser;
+        private readonly IFileVersionRetriever _fileVersionRetriever;
+        private readonly ISqmContentCombiner _contentCombiner;
+        private readonly ArmA2.ISqmFileImporter _arma2Importer;
+        private readonly ArmA3.ISqmFileImporter _arma3Importer;
 
-        public SqmFileImporter(
-            ArmA2.ISqmParser arma2Parser,
-            ArmA3.ISqmParser arma3Parser)
+        public SqmFileImporter(IFileVersionRetriever fileVersionRetriever, ISqmContentCombiner contentCombiner, ArmA2.ISqmFileImporter arma2Importer, ArmA3.ISqmFileImporter arma3Importer)
         {
-            _arma2Parser = arma2Parser;
-            _arma3Parser = arma3Parser;
+            _fileVersionRetriever = fileVersionRetriever;
+            _contentCombiner = contentCombiner;
+            _arma2Importer = arma2Importer;
+            _arma3Importer = arma3Importer;
         }
 
         public SqmContents Import(Stream stream)
         {
-            throw new System.NotImplementedException();
+            var fileVersion = _fileVersionRetriever.GetVersion(stream);
+            if (fileVersion == FileVersion.ArmA2)
+            {
+                var arma2Contents = _arma2Importer.Import(stream);
+                return _contentCombiner.Combine(arma2Contents);
+            }
+            if (fileVersion == FileVersion.ArmA3)
+            {
+                var arma3Contents = _arma3Importer.Import(stream);
+                return _contentCombiner.Combine(arma3Contents);
+            }
+
+            throw new SqmParseException("SQM version not found in file");
         }
+    }
+
+    public interface IFileVersionRetriever
+    {
+        FileVersion GetVersion(Stream stream);
+    }
+
+    public enum FileVersion
+    {
+        ArmA2,
+        ArmA3,
+        Unknown
     }
 }

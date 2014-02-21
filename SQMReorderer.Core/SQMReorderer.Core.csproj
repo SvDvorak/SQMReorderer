@@ -92,7 +92,10 @@
     <Compile Include="Import\ArmA3\ResultObjects\Vehicle.cs" />
     <Compile Include="Import\ArmA3\SqmFileImporter.cs" />
     <Compile Include="Import\ArmA3\SqmParser.cs" />
+    <Compile Include="Import\ISqmContentCombiner.cs" />
     <Compile Include="Import\ISqmFileImporter.cs" />
+    <Compile Include="Import\IStreamReaderAdapter.cs" />
+    <Compile Include="Import\IStreamReaderFactory.cs" />
     <Compile Include="Import\ResultObjects\Intel.cs" />
     <Compile Include="Import\ResultObjects\ItemBase.cs" />
     <Compile Include="Import\ResultObjects\Marker.cs" />

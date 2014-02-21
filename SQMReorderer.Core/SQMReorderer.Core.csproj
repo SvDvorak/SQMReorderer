@@ -107,6 +107,8 @@
     <Compile Include="Import\ResultObjects\SqmContents.cs" />
     <Compile Include="Import\ResultObjects\Vehicle.cs" />
     <Compile Include="Import\SqmFileImporter.cs" />
+    <Compile Include="Import\StreamReaderAdapter.cs" />
+    <Compile Include="Import\StreamReaderFactory.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Export\ArmA2\ISqmElementVisitor.cs" />
     <Compile Include="Export\ArmA2\SqmElementExportVisitor.cs" />

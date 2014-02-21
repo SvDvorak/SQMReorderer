@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using SQMReorderer.Core.Import.FileVersion;
 using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Core.Import
@@ -24,7 +25,7 @@ namespace SQMReorderer.Core.Import
         public SqmContents Import(Stream stream)
         {
             var fileVersion = _fileVersionRetriever.GetVersion(stream);
-            if (fileVersion == FileVersion.ArmA2)
+            if (fileVersion == FileVersion.FileVersion.ArmA2)
             {
                 var arma2Contents = _arma2Importer.Import(stream);
 

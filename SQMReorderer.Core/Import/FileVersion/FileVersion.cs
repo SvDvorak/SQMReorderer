@@ -1,4 +1,4 @@
-﻿namespace SQMReorderer.Core.Import
+﻿namespace SQMReorderer.Core.Import.FileVersion
 {
     public enum FileVersion
     {

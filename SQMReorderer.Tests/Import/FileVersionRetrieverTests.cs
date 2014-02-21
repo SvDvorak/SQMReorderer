@@ -2,6 +2,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using SQMReorderer.Core.Import;
+using SQMReorderer.Core.Import.FileVersion;
 
 namespace SQMReorderer.Tests.Import
 {

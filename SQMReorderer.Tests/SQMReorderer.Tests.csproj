@@ -77,6 +77,7 @@
     <Compile Include="Import\MultiLineStringListPropertySetterTests.cs" />
     <Compile Include="Import\ParsingHelperFunctionsTests.cs" />
     <Compile Include="Import\ArmA2\SensorItemParserTests.cs" />
+    <Compile Include="Import\SqmContentCombinerTests_arma_2.cs" />
     <Compile Include="Import\SqmContextCreatorTests.cs" />
     <Compile Include="Import\ArmA2\SqmFileTests.cs" />
     <Compile Include="Import\ArmA2\SqmParserTests.cs" />

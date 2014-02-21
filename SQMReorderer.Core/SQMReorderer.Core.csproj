@@ -106,6 +106,7 @@
     <Compile Include="Import\ResultObjects\Sensor.cs" />
     <Compile Include="Import\ResultObjects\SqmContents.cs" />
     <Compile Include="Import\ResultObjects\Vehicle.cs" />
+    <Compile Include="Import\SqmContentCombiner.cs" />
     <Compile Include="Import\SqmFileImporter.cs" />
     <Compile Include="Import\FileVersion\StreamReaderAdapter.cs" />
     <Compile Include="Import\FileVersion\StreamReaderFactory.cs" />

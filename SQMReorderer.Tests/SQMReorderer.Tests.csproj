@@ -64,6 +64,7 @@
     <Compile Include="Export\ArmA3\SqmFileExporterTests.cs" />
     <Compile Include="Export\ContextIndenterTests.cs" />
     <Compile Include="Export\ArmA2\SqmElementExportVisitorTests.cs" />
+    <Compile Include="Export\SqmFileExporterTests.cs" />
     <Compile Include="Export\SqmPropertyVisitorTests.cs" />
     <Compile Include="Import\CommonRegexPatternsTests.cs" />
     <Compile Include="Import\ArmA2\ContextSetterTests.cs" />
@@ -81,7 +82,7 @@
     <Compile Include="Import\ArmA2\SensorItemParserTests.cs" />
     <Compile Include="Import\SqmContentCombinerTests_arma_2.cs" />
     <Compile Include="Import\SqmContextCreatorTests.cs" />
-    <Compile Include="Import\ArmA2\SqmFileTests.cs" />
+    <Compile Include="Import\SqmFileTests.cs" />
     <Compile Include="Import\ArmA2\SqmParserTests.cs" />
     <Compile Include="Import\SqmFileImporterTests.cs" />
     <Compile Include="Import\StringPropertySetterTests.cs" />
@@ -94,7 +95,6 @@
     <Compile Include="Import\ArmA3\MissionStateParserTests.cs" />
     <Compile Include="Import\ArmA3\SensorItemParserTests.cs" />
     <Compile Include="Import\ArmA3\SqmFileImporterTests.cs" />
-    <Compile Include="Import\ArmA3\SqmFileTests.cs" />
     <Compile Include="Import\ArmA3\SqmParserTests.cs" />
     <Compile Include="Import\ArmA3\VehicleItemParserTests.cs" />
     <Compile Include="Main.cs" />

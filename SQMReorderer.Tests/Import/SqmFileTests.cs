@@ -1,18 +1,15 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using System.Text;
 using NUnit.Framework;
 using SQMReorderer.Core.Export;
-using SQMReorderer.Core.Export.ArmA2;
 using SQMReorderer.Core.Import;
 using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.Import.FileVersion;
 using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Core.StreamHelpers;
-using SqmFileExporter = SQMReorderer.Core.Export.SqmFileExporter;
 
-namespace SQMReorderer.Tests.Import.ArmA2
+namespace SQMReorderer.Tests.Import
 {
     [Category("AcceptanceTest")]
     [TestFixture]
@@ -81,8 +78,12 @@ namespace SQMReorderer.Tests.Import.ArmA2
 
         private void Export(SqmContents importResults)
         {
-            var sqmFileExporter = new SqmFileExporter(new SqmElementExportVisitor(), new ContextIndenter(),
-                new StreamWriterFactory());
+            var contextIndenter = new ContextIndenter();
+            var streamWriterFactory = new StreamWriterFactory();
+            var sqmFileExporter = new SqmFileExporter(
+                new Core.Export.ArmA2.SqmFileExporter(new Core.Export.ArmA2.SqmElementExportVisitor(), contextIndenter, streamWriterFactory), 
+                new Core.Export.ArmA3.SqmFileExporter(new Core.Export.ArmA3.SqmElementExportVisitor(), contextIndenter, streamWriterFactory),
+                new FileVersionRetriever(new StreamReaderFactory()));
             var exportStream = new FileStream(GetTestExportPath(), FileMode.OpenOrCreate);
             sqmFileExporter.Export(exportStream, importResults);
             exportStream.Close();

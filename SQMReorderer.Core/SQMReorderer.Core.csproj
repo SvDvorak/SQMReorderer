@@ -68,6 +68,7 @@
     <Compile Include="Export\ISqmPropertyVisitor.cs" />
     <Compile Include="Export\ArmA2\SqmElementExportVisitor.cs" />
     <Compile Include="Export\ArmA2\SqmFileExporter.cs" />
+    <Compile Include="Export\SqmExportException.cs" />
     <Compile Include="Export\SqmFileExporter.cs" />
     <Compile Include="Export\SqmPropertyVisitor.cs" />
     <Compile Include="Import\ArmA2\ISqmFileImporter.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Import\ArmA3\ISqmParser.cs" />
     <Compile Include="Import\FileVersion\FileVersion.cs" />
     <Compile Include="Import\FileVersion\FileVersionRetriever.cs" />
+    <Compile Include="Import\FileVersion\SqmVersionException.cs" />
     <Compile Include="Import\HelperFunctions\CommonRegexPatterns.cs" />
     <Compile Include="Import\HelperFunctions\ParsingHelperFunctions.cs" />
     <Compile Include="Import\ArmA3\Parsers\Intel\IntelParser.cs" />

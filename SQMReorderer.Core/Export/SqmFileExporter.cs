@@ -1,33 +1,41 @@
+using System;
 using System.IO;
-using SQMReorderer.Core.Export.ArmA2;
+using SQMReorderer.Core.Import.FileVersion;
 using SQMReorderer.Core.Import.ResultObjects;
-using SQMReorderer.Core.StreamHelpers;
 
 namespace SQMReorderer.Core.Export
 {
     public class SqmFileExporter : ISqmFileExporter
     {
-        private readonly ISqmElementVisitor _sqmElementVisitor;
-        private readonly IContextIndenter _contextIndenter;
-        private readonly IStreamWriterFactory _streamWriterFactory;
+        private readonly ArmA2.ISqmFileExporter _arma2Exporter;
+        private readonly ArmA3.ISqmFileExporter _arma3Exporter;
+        private readonly IFileVersionRetriever _fileVersionRetriever;
 
-        public SqmFileExporter(ISqmElementVisitor sqmElementVisitor, IContextIndenter contextIndenter, IStreamWriterFactory streamWriterFactory)
+        public SqmFileExporter(ArmA2.ISqmFileExporter arma2Exporter, ArmA3.ISqmFileExporter arma3Exporter, IFileVersionRetriever fileVersionRetriever)
         {
-            _sqmElementVisitor = sqmElementVisitor;
-            _contextIndenter = contextIndenter;
-            _streamWriterFactory = streamWriterFactory;
+            _arma2Exporter = arma2Exporter;
+            _arma3Exporter = arma3Exporter;
+            _fileVersionRetriever = fileVersionRetriever;
         }
 
         public void Export(Stream stream, SqmContents contents)
         {
-            var contentText = _sqmElementVisitor.Visit("", contents);
-            var indentedText = _contextIndenter.Indent(contentText);
-
-            var streamWriter = _streamWriterFactory.Create(stream);
-
-            streamWriter.Write(indentedText);
-
-            streamWriter.Flush();
+            try
+            {
+                var contentsVersion = _fileVersionRetriever.GetVersion(contents.Version.Value);
+                if (contentsVersion == FileVersion.ArmA2)
+                {
+                    _arma2Exporter.Export(stream, contents);
+                }
+                else if (contentsVersion == FileVersion.ArmA3)
+                {
+                    _arma3Exporter.Export(stream, contents);
+                }
+            }
+            catch (Exception)
+            {
+                throw new SqmExportException("Unable to export version " + contents.Version + ", version is unknown");
+            }
         }
     }
 }

@@ -148,27 +148,53 @@ namespace SQMReorderer.Tests.Export
             originalIntelText.Append("class Intel\n");
             originalIntelText.Append("{\n");
             originalIntelText.Append("briefingName=\"rootbeer\";\n");
-            originalIntelText.Append("briefingDescription=\"Square cup = beer\";\n");
+            originalIntelText.Append("briefingDescription=\"stuffs\";\n");
+            originalIntelText.Append("overviewText=\"mission text\";\n");
+            originalIntelText.Append("timeOfChanges=0.18;\n");
             originalIntelText.Append("startWeather=0.25;\n");
+            originalIntelText.Append("startWind=0.5;\n");
+            originalIntelText.Append("startWaves=0.42;\n");
             originalIntelText.Append("forecastWeather=0.25;\n");
+            originalIntelText.Append("forecastWind=0.8;\n");
+            originalIntelText.Append("forecastWaves=0.2;\n");
+            originalIntelText.Append("forecastLightnings=0.9;\n");
+            originalIntelText.Append("rainForced=1;\n");
+            originalIntelText.Append("lightningsForced=1;\n");
+            originalIntelText.Append("wavesForced=1;\n");
+            originalIntelText.Append("windForced=1;\n");
             originalIntelText.Append("year=2008;\n");
             originalIntelText.Append("month=10;\n");
             originalIntelText.Append("day=11;\n");
             originalIntelText.Append("hour=8;\n");
             originalIntelText.Append("minute=1;\n");
+            originalIntelText.Append("startFogDecay=0.03;\n");
+            originalIntelText.Append("forecastFogDecay=0.06;\n");
             originalIntelText.Append("};\n");
 
             var intel = new Intel();
 
             intel.BriefingName = "rootbeer";
-            intel.BriefingDescription = "Square cup = beer";
+            intel.BriefingDescription = "stuffs";
+            intel.OverviewText = "mission text";
+            intel.TimeOfChanges = 0.18;
             intel.StartWeather = 0.25;
+            intel.StartWind = 0.5;
+            intel.StartWaves = 0.42;
             intel.ForecastWeather = 0.25;
+            intel.ForecastWind = 0.8;
+            intel.ForecastWaves = 0.2;
+            intel.ForecastLightnings = 0.9;
+            intel.RainForced = 1;
+            intel.LightningsForced = 1;
+            intel.WavesForced = 1;
+            intel.WindForced = 1;
             intel.Year = 2008;
             intel.Month = 10;
             intel.Day = 11;
             intel.Hour = 8;
             intel.Minute = 1;
+            intel.StartFogDecay = 0.03;
+            intel.ForecastFogDecay = 0.06;
 
             var exportedIntel = _exportVisitor.Visit("Intel", intel);
 
@@ -192,6 +218,7 @@ namespace SQMReorderer.Tests.Export
             originalVehicleText.Append("rank=\"CORPORAL\";\n");
             originalVehicleText.Append("lock=\"UNLOCKED\";\n");
             originalVehicleText.Append("skill=0.60000002;\n");
+            originalVehicleText.Append("health=0.45;\n");
             originalVehicleText.Append("text=\"UnitGUE_MTR1_AG\";\n");
             originalVehicleText.Append("init=\"GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n");
             originalVehicleText.Append("description=\"TK Local Mortar Team 1 Assistant Gunner\";\n");
@@ -210,6 +237,7 @@ namespace SQMReorderer.Tests.Export
             vehicle.Rank = "CORPORAL";
             vehicle.Lock = "UNLOCKED";
             vehicle.Skill = 0.60000002;
+            vehicle.Health = 0.45;
             vehicle.Text = "UnitGUE_MTR1_AG";
             vehicle.Init = "GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";";
             vehicle.Description = "TK Local Mortar Team 1 Assistant Gunner";

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Text;
 using NUnit.Framework;
@@ -15,17 +16,20 @@ namespace SQMReorderer.Tests.Import.ArmA2
     [TestFixture]
     public class SqmFileTests
     {
-        private const string _testExportPath = "test_arma2_export.sqm";
+        private string _armaVersion;
 
+        [TestCase(2)]
+        [TestCase(3)]
         [Test]
-        public void Expect_SqmParser_to_successfully_parse_testFile()
+        public void Expect_SqmParser_to_successfully_parse_testFile(int armaVersion)
         {
+            _armaVersion = armaVersion.ToString();
             CleanupPreviousTest();
             var importStream = GetImportStream();
-            var importResults = ImportStream(importStream);
+            var importResults = Import(importStream);
             importStream.Seek(0, SeekOrigin.Begin);
 
-            ExportContents(importResults);
+            Export(importResults);
 
             var verifyExportStream = GetExportedFileStream();
             Assert.AreEqual(CombineToSingleString(importStream), CombineToSingleString(verifyExportStream));
@@ -35,22 +39,29 @@ namespace SQMReorderer.Tests.Import.ArmA2
 
         private void CleanupPreviousTest()
         {
-            if (File.Exists(_testExportPath))
+            var testExportPath = GetTestExportPath();
+
+            if (File.Exists(testExportPath))
             {
-                File.Delete(_testExportPath);
+                File.Delete(testExportPath);
             }
+        }
+
+        private string GetTestExportPath()
+        {
+            return "test_arma" + _armaVersion + "_export.sqm";
         }
 
         private Stream GetImportStream()
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var resourcePath = assembly.GetName().Name + "." + "Import.ArmA2." + "mission.sqm";
+            var resourcePath = assembly.GetName().Name + ".Import.ArmA" + _armaVersion + ".mission.sqm";
             var importStream = assembly.GetManifestResourceStream(resourcePath);
 
             return importStream;
         }
 
-        private SqmContents ImportStream(Stream importStream)
+        private SqmContents Import(Stream importStream)
         {
             var streamToStringsReader = new StreamToStringsReader();
             var sqmContextCreator = new SqmContextCreator();
@@ -66,18 +77,18 @@ namespace SQMReorderer.Tests.Import.ArmA2
             return importResults;
         }
 
-        private void ExportContents(SqmContents importResults)
+        private void Export(SqmContents importResults)
         {
             var sqmFileExporter = new SqmFileExporter(new SqmElementExportVisitor(), new ContextIndenter(),
                 new StreamWriterFactory());
-            var exportStream = new FileStream(_testExportPath, FileMode.OpenOrCreate);
+            var exportStream = new FileStream(GetTestExportPath(), FileMode.OpenOrCreate);
             sqmFileExporter.Export(exportStream, importResults);
             exportStream.Close();
         }
 
         private FileStream GetExportedFileStream()
         {
-            var verifyExportStream = new FileStream(_testExportPath, FileMode.Open);
+            var verifyExportStream = new FileStream(GetTestExportPath(), FileMode.Open);
 
             return verifyExportStream;
         }

@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace SQMReorderer.Core.Import.FileVersion
 {
@@ -6,9 +8,25 @@ namespace SQMReorderer.Core.Import.FileVersion
     {
         private readonly IStreamReaderFactory _streamReaderFactory;
 
+        private readonly Regex _versionRegex = new Regex(@"version\=(?<version>\d+)", RegexOptions.Compiled);
+
         public FileVersionRetriever(IStreamReaderFactory streamReaderFactory)
         {
             _streamReaderFactory = streamReaderFactory;
+        }
+
+        public FileVersion GetVersion(int version)
+        {
+            if (version == 11)
+            {
+                return FileVersion.ArmA2;
+            }
+            if (version == 12)
+            {
+                return FileVersion.ArmA3;
+            }
+
+            throw new SqmVersionException("Version " + version + " is unknown");
         }
 
         public FileVersion GetVersion(Stream stream)
@@ -18,16 +36,23 @@ namespace SQMReorderer.Core.Import.FileVersion
             var versionLine = streamReader.ReadLine();
             stream.Seek(0, SeekOrigin.Begin);
 
-            if (versionLine.Contains("version=11"))
+            var version = MatchVersion(versionLine);
+
+            return GetVersion(version);
+        }
+
+        private int MatchVersion(string versionLine)
+        {
+            var match = _versionRegex.Match(versionLine);
+            var versionGroup = match.Groups["version"];
+
+            var version = -1;
+            if (versionGroup.Success)
             {
-                return FileVersion.ArmA2;
-            }
-            if(versionLine.Contains("version=12"))
-            {
-                return FileVersion.ArmA3;
+                version = Convert.ToInt32(versionGroup.Value);
             }
 
-            throw new SqmParseException("File is missing or has an unknown version");
+            return version;
         }
     }
 }

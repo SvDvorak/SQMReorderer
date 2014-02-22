@@ -190,8 +190,8 @@ namespace SQMReorderer.Tests.Export
             originalVehicleText.Append("player=\"PLAY CDG\";\n");
             originalVehicleText.Append("leader=1;\n");
             originalVehicleText.Append("rank=\"CORPORAL\";\n");
-            originalVehicleText.Append("skill=0.60000002;\n");
             originalVehicleText.Append("lock=\"UNLOCKED\";\n");
+            originalVehicleText.Append("skill=0.60000002;\n");
             originalVehicleText.Append("text=\"UnitGUE_MTR1_AG\";\n");
             originalVehicleText.Append("init=\"GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n");
             originalVehicleText.Append("description=\"TK Local Mortar Team 1 Assistant Gunner\";\n");
@@ -208,8 +208,8 @@ namespace SQMReorderer.Tests.Export
             vehicle.Player = "PLAY CDG";
             vehicle.Leader = 1;
             vehicle.Rank = "CORPORAL";
-            vehicle.Skill = 0.60000002;
             vehicle.Lock = "UNLOCKED";
+            vehicle.Skill = 0.60000002;
             vehicle.Text = "UnitGUE_MTR1_AG";
             vehicle.Init = "GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";";
             vehicle.Description = "TK Local Mortar Team 1 Assistant Gunner";

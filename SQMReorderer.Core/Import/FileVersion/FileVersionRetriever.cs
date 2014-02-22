@@ -16,6 +16,7 @@ namespace SQMReorderer.Core.Import.FileVersion
             var streamReader = _streamReaderFactory.Create(stream);
 
             var versionLine = streamReader.ReadLine();
+            stream.Seek(0, SeekOrigin.Begin);
 
             if (versionLine.Contains("version=11"))
             {

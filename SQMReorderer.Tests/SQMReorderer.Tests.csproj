@@ -54,6 +54,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <EmbeddedResource Include="Import\ArmA3\mission.sqm" />
+    <EmbeddedResource Include="Import\ArmA2\mission.sqm" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

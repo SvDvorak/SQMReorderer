@@ -1,7 +1,7 @@
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
-using SQMReorderer.Core.Export.ArmA2;
+using SQMReorderer.Core.Export;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 using SQMReorderer.Gui.Dialogs;
 

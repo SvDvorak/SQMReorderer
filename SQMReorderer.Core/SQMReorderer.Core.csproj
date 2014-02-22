@@ -58,13 +58,11 @@
   <ItemGroup>
     <Compile Include="DoubleExtensions.cs" />
     <Compile Include="Export\ContextIndenter.cs" />
-    <Compile Include="Export\ArmA2\ISqmFileExporter.cs" />
-    <Compile Include="Export\ArmA2\SqmFileExporter.cs" />
-    <Compile Include="Export\ArmA3\ISqmElementVisitor.cs" />
-    <Compile Include="Export\ArmA3\ISqmFileExporter.cs" />
+    <Compile Include="Export\ISqmElementVisitor.cs" />
+    <Compile Include="Export\ISqmFileExporter.cs" />
     <Compile Include="Export\ISqmPropertyVisitor.cs" />
-    <Compile Include="Export\ArmA3\SqmElementExportVisitor.cs" />
-    <Compile Include="Export\ArmA3\SqmFileExporter.cs" />
+    <Compile Include="Export\SqmElementExportVisitor.cs" />
+    <Compile Include="Export\SqmFileExporter.cs" />
     <Compile Include="Export\SqmPropertyVisitor.cs" />
     <Compile Include="Import\ArmA2\ISqmFileImporter.cs" />
     <Compile Include="Import\ArmA2\SqmFileImporter.cs" />
@@ -111,8 +109,6 @@
     <Compile Include="Import\FileVersion\StreamReaderAdapter.cs" />
     <Compile Include="Import\FileVersion\StreamReaderFactory.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="Export\ArmA2\ISqmElementVisitor.cs" />
-    <Compile Include="Export\ArmA2\SqmElementExportVisitor.cs" />
     <Compile Include="Import\Context\ISqmContextCreator.cs" />
     <Compile Include="Import\Context\SqmContext.cs" />
     <Compile Include="Import\Context\SqmContextCreator.cs" />

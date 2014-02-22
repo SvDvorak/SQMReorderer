@@ -1,6 +1,5 @@
-using SQMReorderer.Core.Export;
-using SQMReorderer.Core.Export.ArmA2;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
+using ISqmFileExporter = SQMReorderer.Core.Export.ISqmFileExporter;
 
 namespace SQMReorderer.Gui.Dialogs
 {

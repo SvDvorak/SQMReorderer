@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 
-namespace SQMReorderer.Core.Export.ArmA2
+namespace SQMReorderer.Core.Export
 {
     public interface ISqmElementVisitor
     {

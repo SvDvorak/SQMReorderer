@@ -2,11 +2,10 @@ using System.IO;
 using NSubstitute;
 using NUnit.Framework;
 using SQMReorderer.Core.Export;
-using SQMReorderer.Core.Export.ArmA3;
-using SQMReorderer.Core.Import.ArmA3.ResultObjects;
+using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 using SQMReorderer.Core.StreamHelpers;
 
-namespace SQMReorderer.Tests.Export.ArmA3
+namespace SQMReorderer.Tests.Export
 {
     [TestFixture]
     public class SqmFileExporterTests

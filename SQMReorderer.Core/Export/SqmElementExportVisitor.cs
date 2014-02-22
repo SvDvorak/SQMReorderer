@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 
-namespace SQMReorderer.Core.Export.ArmA2
+namespace SQMReorderer.Core.Export
 {
     public class SqmElementExportVisitor : ISqmElementVisitor
     {

@@ -8,7 +8,7 @@ namespace SQMReorderer.Core.Import
     {
         public SqmContents Combine(ArmA2.ResultObjects.SqmContents arma2Contents)
         {
-            return new SqmContents()
+            return new SqmContents
                 {
                     Version = arma2Contents.Version,
                     Mission = Combine(arma2Contents.Mission),
@@ -25,7 +25,7 @@ namespace SQMReorderer.Core.Import
                 return null;
             }
 
-            return new MissionState()
+            return new MissionState
                 {
                     AddOns = arma2MissionState.AddOns,
                     AddOnsAuto = arma2MissionState.AddOnsAuto,
@@ -45,7 +45,7 @@ namespace SQMReorderer.Core.Import
                 return null;
             }
 
-            return new Intel()
+            return new Intel
                 {
                     BriefingName = arma2Intel.BriefingName,
                     BriefingDescription = arma2Intel.BriefingDescription,
@@ -66,7 +66,7 @@ namespace SQMReorderer.Core.Import
 
         private Vehicle Combine(ArmA2.ResultObjects.Vehicle vehicle)
         {
-            return new Vehicle()
+            return new Vehicle
                 {
                     Number = vehicle.Number,
                     Position = vehicle.Position,
@@ -94,7 +94,7 @@ namespace SQMReorderer.Core.Import
 
         private Marker Combine(ArmA2.ResultObjects.Marker marker)
         {
-            return new Marker()
+            return new Marker
                 {
                     Number = marker.Number,
                     Position = marker.Position,
@@ -117,7 +117,7 @@ namespace SQMReorderer.Core.Import
 
         private Sensor Combine(ArmA2.ResultObjects.Sensor sensor)
         {
-            return new Sensor()
+            return new Sensor
                 {
                     Number = sensor.Number,
                     Position = sensor.Position,
@@ -134,7 +134,141 @@ namespace SQMReorderer.Core.Import
 
         public SqmContents Combine(ArmA3.ResultObjects.SqmContents arma3Contents)
         {
-            throw new System.NotImplementedException();
+            return new SqmContents
+                {
+                    Version = arma3Contents.Version,
+                    Mission = Combine(arma3Contents.Mission),
+                    Intro = Combine(arma3Contents.Intro),
+                    OutroWin = Combine(arma3Contents.OutroWin),
+                    OutroLose = Combine(arma3Contents.OutroLose)
+                };
+        }
+
+        private MissionState Combine(ArmA3.ResultObjects.MissionState arma3MissionState)
+        {
+            if (arma3MissionState == null)
+            {
+                return null;
+            }
+
+            return new MissionState
+                {
+                    AddOns = arma3MissionState.AddOns,
+                    AddOnsAuto = arma3MissionState.AddOnsAuto,
+                    RandomSeed = arma3MissionState.RandomSeed,
+                    Intel = Combine(arma3MissionState.Intel),
+                    Groups = Combine(arma3MissionState.Groups),
+                    Vehicles = Combine(arma3MissionState.Vehicles),
+                    Markers = Combine(arma3MissionState.Markers),
+                    Sensors = Combine(arma3MissionState.Sensors)
+                };
+        }
+
+        private Intel Combine(ArmA3.ResultObjects.Intel arma3Intel)
+        {
+            if (arma3Intel == null)
+            {
+                return null;
+            }
+
+            return new Intel
+                {
+                    BriefingName = arma3Intel.BriefingName,
+                    OverviewText = arma3Intel.OverviewText,
+                    TimeOfChanges = arma3Intel.TimeOfChanges,
+                    StartWeather = arma3Intel.StartWeather,
+                    StartWind = arma3Intel.StartWind,
+                    StartWaves = arma3Intel.StartWaves,
+                    ForecastWeather = arma3Intel.ForecastWeather,
+                    ForecastWind = arma3Intel.ForecastWind,
+                    ForecastWaves = arma3Intel.ForecastWaves,
+                    ForecastLightnings = arma3Intel.ForecastLightnings,
+                    RainForced = arma3Intel.RainForced,
+                    LightningsForced = arma3Intel.LightningsForced,
+                    WavesForced = arma3Intel.WavesForced,
+                    WindForced = arma3Intel.WindForced,
+                    Year = arma3Intel.Year,
+                    Month = arma3Intel.Month,
+                    Day = arma3Intel.Day,
+                    Hour = arma3Intel.Hour,
+                    Minute = arma3Intel.Minute,
+                    StartFogDecay = arma3Intel.StartFogDecay,
+                    ForecastFogDecay = arma3Intel.ForecastFogDecay
+                };
+        }
+
+        private List<Vehicle> Combine(List<ArmA3.ResultObjects.Vehicle> arma3Vehicles)
+        {
+            return arma3Vehicles.Select(Combine).ToList();
+        }
+
+        private Vehicle Combine(ArmA3.ResultObjects.Vehicle vehicle)
+        {
+            return new Vehicle
+                {
+                    Number = vehicle.Number,
+                    Position = vehicle.Position,
+                    Azimut = vehicle.Azimut,
+                    Id = vehicle.Id,
+                    Side = vehicle.Side,
+                    VehicleName = vehicle.VehicleName,
+                    Player = vehicle.Player,
+                    Leader = vehicle.Leader,
+                    Rank = vehicle.Rank,
+                    Lock = vehicle.Lock,
+                    Skill = vehicle.Skill,
+                    Health = vehicle.Health,
+                    Text = vehicle.Text,
+                    Init = vehicle.Init,
+                    Description = vehicle.Description,
+                    Synchronizations = vehicle.Synchronizations,
+                    Vehicles = Combine(vehicle.Vehicles),
+                };
+        }
+
+        private List<Marker> Combine(List<ArmA3.ResultObjects.Marker> markers)
+        {
+            return markers.Select(Combine).ToList();
+        }
+
+        private Marker Combine(ArmA3.ResultObjects.Marker marker)
+        {
+            return new Marker
+                {
+                    Number = marker.Number,
+                    Position = marker.Position,
+                    Text = marker.Text,
+                    Name = marker.Name,
+                    MarkerType = marker.MarkerType,
+                    Type = marker.Type,
+                    FillName = marker.FillName,
+                    A = marker.A,
+                    B = marker.B,
+                    DrawBorder = marker.DrawBorder,
+                    Angle = marker.Angle,
+                };
+        }
+
+        private List<Sensor> Combine(List<ArmA3.ResultObjects.Sensor> sensors)
+        {
+            return sensors.Select(Combine).ToList();
+        }
+
+        private Sensor Combine(ArmA3.ResultObjects.Sensor sensor)
+        {
+            return new Sensor
+                {
+                    Number = sensor.Number,
+                    Position = sensor.Position,
+                    A = sensor.A,
+                    B = sensor.B,
+                    Type = sensor.Type,
+                    ActivationBy = sensor.ActivationBy,
+                    Interruptable = sensor.Interruptable,
+                    Age = sensor.Age,
+                    ExpCond = sensor.ExpCond,
+                    ExpActiv = sensor.ExpActiv,
+                };
         }
     }
 }

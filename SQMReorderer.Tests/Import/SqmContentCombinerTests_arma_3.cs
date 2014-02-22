@@ -2,12 +2,12 @@
 using NUnit.Framework;
 using SQMReorderer.Core;
 using SQMReorderer.Core.Import;
-using SQMReorderer.Core.Import.ArmA2.ResultObjects;
+using SQMReorderer.Core.Import.ArmA3.ResultObjects;
 
 namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
-    public class SqmContentCombinerTests_arma_2
+    public class SqmContentCombinerTests_arma_3
     {
         private SqmContentCombiner _sut;
 
@@ -18,9 +18,9 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        public void Sets_sqm_contents_to_correct_arma_2_values()
+        public void Sets_sqm_contents_to_correct_arma_3_values()
         {
-            var arma2Contents = new SqmContents
+            var arma3Contents = new SqmContents
                 {
                     Version = 11,
                     Mission = new MissionState { RandomSeed = 1 },
@@ -29,7 +29,7 @@ namespace SQMReorderer.Tests.Import
                     OutroLose = new MissionState { RandomSeed = 4 }
                 };
 
-            var sqmContents = _sut.Combine(arma2Contents);
+            var sqmContents = _sut.Combine(arma3Contents);
 
             Assert.AreEqual(11, sqmContents.Version);
             Assert.AreEqual(1, sqmContents.Mission.RandomSeed);
@@ -39,7 +39,7 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        public void Contents_are_null_if_not_set_in_arma_2_contents()
+        public void Contents_are_null_if_not_set_in_arma_3_contents()
         {
             var sqmContents = _sut.Combine(new SqmContents());
 
@@ -51,7 +51,7 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        public void Sets_mission_state_to_correct_arma_2_values()
+        public void Sets_mission_state_to_correct_arma_3_values()
         {
             var missionState = new MissionState
                 {
@@ -67,19 +67,18 @@ namespace SQMReorderer.Tests.Import
 
             var sqmContents = _sut.Combine(CreateContents(missionState));
 
-            var newMission = sqmContents.Mission;
-            Assert.AreEqual("addon", newMission.AddOns[0]);
-            Assert.AreEqual("auto", newMission.AddOnsAuto[0]);
-            Assert.AreEqual(11, newMission.RandomSeed);
-            Assert.AreEqual("name", newMission.Intel.BriefingName);
-            Assert.AreEqual("groupName", newMission.Groups[0].VehicleName);
-            Assert.AreEqual("vehicleName", newMission.Vehicles[0].VehicleName);
-            Assert.AreEqual(1, newMission.Markers[0].A);
-            Assert.AreEqual(2, newMission.Sensors[0].A);
+            Assert.AreEqual("addon", sqmContents.Mission.AddOns[0]);
+            Assert.AreEqual("auto", sqmContents.Mission.AddOnsAuto[0]);
+            Assert.AreEqual(11, sqmContents.Mission.RandomSeed);
+            Assert.AreEqual("name", sqmContents.Mission.Intel.BriefingName);
+            Assert.AreEqual("groupName", sqmContents.Mission.Groups[0].VehicleName);
+            Assert.AreEqual("vehicleName", sqmContents.Mission.Vehicles[0].VehicleName);
+            Assert.AreEqual(1, sqmContents.Mission.Markers[0].A);
+            Assert.AreEqual(2, sqmContents.Mission.Sensors[0].A);
         }
 
         [Test]
-        public void Mission_state_contents_are_null_if_not_set_in_arma_2_mission_state()
+        public void Mission_state_contents_are_null_if_not_set_in_arma_3_mission_state()
         {
             var sqmContents = _sut.Combine(CreateContents(new MissionState()));
 
@@ -95,67 +94,79 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        public void Sets_intel_to_correct_arma_2_values()
+        public void Sets_intel_to_correct_arma_3_values()
         {
             var intel = new Intel
                 {
                     BriefingName = "name",
-                    BriefingDescription = "desc",
+                    OverviewText = "overview",
+                    TimeOfChanges = 1,
                     StartWeather = 10,
+                    StartWind = 2,
+                    StartWaves = 3,
                     ForecastWeather = 11,
+                    ForecastWind = 4,
+                    ForecastWaves = 5,
+                    ForecastLightnings = 6,
+                    RainForced = 7,
+                    LightningsForced = 8,
+                    WavesForced = 9,
+                    WindForced = 10,
                     Year = 1,
                     Month = 2,
                     Day = 3,
                     Hour = 4,
-                    Minute = 5
+                    Minute = 5,
+                    StartFogDecay = 11,
+                    ForecastFogDecay = 12
                 };
 
             var sqmContents = _sut.Combine(CreateContents(intel));
 
             var newIntel = sqmContents.Mission.Intel;
             Assert.AreEqual("name", newIntel.BriefingName);
-            Assert.AreEqual("desc", newIntel.BriefingDescription);
+            Assert.AreEqual("overview", newIntel.OverviewText);
+            Assert.AreEqual(1, newIntel.TimeOfChanges);
             Assert.AreEqual(10, newIntel.StartWeather);
+            Assert.AreEqual(2, newIntel.StartWind);
+            Assert.AreEqual(3, newIntel.StartWaves);
             Assert.AreEqual(11, newIntel.ForecastWeather);
+            Assert.AreEqual(4, newIntel.ForecastWind);
+            Assert.AreEqual(5, newIntel.ForecastWaves);
+            Assert.AreEqual(6, newIntel.ForecastLightnings);
+            Assert.AreEqual(7, newIntel.RainForced);
+            Assert.AreEqual(8, newIntel.LightningsForced);
+            Assert.AreEqual(9, newIntel.WavesForced);
+            Assert.AreEqual(10, newIntel.WindForced);
             Assert.AreEqual(1, newIntel.Year);
             Assert.AreEqual(2, newIntel.Month);
             Assert.AreEqual(3, newIntel.Day);
             Assert.AreEqual(4, newIntel.Hour);
             Assert.AreEqual(5, newIntel.Minute);
+            Assert.AreEqual(11, newIntel.StartFogDecay);
+            Assert.AreEqual(12, newIntel.ForecastFogDecay);
         }
 
         [Test]
-        public void Intel_contents_are_null_if_not_set_in_arma_2_intel()
+        public void Intel_contents_are_null_if_not_set_in_arma_3_intel()
         {
             var sqmContents = _sut.Combine(CreateContents(new Intel()));
 
             var newIntel = sqmContents.Mission.Intel;
             Assert.IsNull(newIntel.BriefingName);
-            Assert.IsNull(newIntel.BriefingDescription);
             Assert.IsNull(newIntel.OverviewText);
-            Assert.IsNull(newIntel.TimeOfChanges);
+            Assert.IsNull(newIntel.BriefingDescription);
             Assert.IsNull(newIntel.StartWeather);
-            Assert.IsNull(newIntel.StartWind);
-            Assert.IsNull(newIntel.StartWaves);
             Assert.IsNull(newIntel.ForecastWeather);
-            Assert.IsNull(newIntel.ForecastWind);
-            Assert.IsNull(newIntel.ForecastWaves);
-            Assert.IsNull(newIntel.ForecastLightnings);
-            Assert.IsNull(newIntel.RainForced);
-            Assert.IsNull(newIntel.LightningsForced);
-            Assert.IsNull(newIntel.WavesForced);
-            Assert.IsNull(newIntel.WindForced);
             Assert.IsNull(newIntel.Year);
             Assert.IsNull(newIntel.Month);
             Assert.IsNull(newIntel.Day);
             Assert.IsNull(newIntel.Hour);
             Assert.IsNull(newIntel.Minute);
-            Assert.IsNull(newIntel.StartFogDecay);
-            Assert.IsNull(newIntel.ForecastFogDecay);
         }
 
         [Test]
-        public void Sets_vehicle_to_correct_arma_2_values()
+        public void Sets_vehicle_to_correct_arma_3_values()
         {
             var vehicle = new Vehicle
                 {
@@ -168,6 +179,7 @@ namespace SQMReorderer.Tests.Import
                     Rank = "rank",
                     Lock = "lock",
                     Skill = 4,
+                    Health = 4,
                     Text = "text",
                     Init = "init",
                     Description = "desc",
@@ -189,6 +201,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("rank", newVehicle.Rank);
             Assert.AreEqual("lock", newVehicle.Lock);
             Assert.AreEqual(4, newVehicle.Skill);
+            Assert.AreEqual(4, newVehicle.Health);
             Assert.AreEqual("text", newVehicle.Text);
             Assert.AreEqual("init", newVehicle.Init);
             Assert.AreEqual("desc", newVehicle.Description);
@@ -199,7 +212,7 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        public void Vehicle_contents_are_null_if_not_set_in_arma_2_vehicle()
+        public void Vehicle_contents_are_null_if_not_set_in_arma_3_vehicle()
         {
             var sqmContents = _sut.Combine(CreateContents(new Vehicle()));
 
@@ -213,7 +226,6 @@ namespace SQMReorderer.Tests.Import
             Assert.IsNull(newVehicle.Rank);
             Assert.IsNull(newVehicle.Lock);
             Assert.IsNull(newVehicle.Skill);
-            Assert.IsNull(newVehicle.Health);
             Assert.IsNull(newVehicle.Text);
             Assert.IsNull(newVehicle.Init);
             Assert.IsNull(newVehicle.Description);
@@ -224,7 +236,7 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        public void Sets_marker_to_correct_arma_2_values()
+        public void Sets_marker_to_correct_arma_3_values()
         {
             var marker = new Marker
                 {
@@ -258,7 +270,7 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        public void Marker_contents_are_null_if_not_set_in_arma_2_marker()
+        public void Marker_contents_are_null_if_not_set_in_arma_3_marker()
         {
             var sqmContents = _sut.Combine(CreateContents(new Marker()));
 
@@ -277,7 +289,7 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        public void Sets_sensor_to_correct_arma_2_values()
+        public void Sets_sensor_to_correct_arma_3_values()
         {
             var sensor = new Sensor
                 {
@@ -309,7 +321,7 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        public void Sensor_contents_are_null_if_not_set_in_arma_2_sensor()
+        public void Sensor_contents_are_null_if_not_set_in_arma_3_sensor()
         {
             var sqmContents = _sut.Combine(CreateContents(new Sensor()));
 

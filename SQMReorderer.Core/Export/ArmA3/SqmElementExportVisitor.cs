@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SQMReorderer.Core.Import.ResultObjects;
 
-namespace SQMReorderer.Core.Export
+namespace SQMReorderer.Core.Export.ArmA3
 {
     public class SqmElementExportVisitor : ISqmElementVisitor
     {
@@ -62,7 +62,6 @@ namespace SQMReorderer.Core.Export
             intelString.Append("class " + elementName + "\n");
             intelString.Append("{\n");
             intelString.Append(_propertyVisitor.Visit("briefingName", intel.BriefingName));
-            intelString.Append(_propertyVisitor.Visit("briefingDescription", intel.BriefingDescription));
             intelString.Append(_propertyVisitor.Visit("overviewText", intel.OverviewText));
             intelString.Append(_propertyVisitor.Visit("timeOfChanges", intel.TimeOfChanges));
             intelString.Append(_propertyVisitor.Visit("startWeather", intel.StartWeather));
@@ -147,8 +146,8 @@ namespace SQMReorderer.Core.Export
             stringBuilder.Append(_propertyVisitor.Visit("vehicle", vehicle.VehicleName));
             stringBuilder.Append(_propertyVisitor.Visit("player", vehicle.Player));
             stringBuilder.Append(_propertyVisitor.Visit("leader", vehicle.Leader));
-            stringBuilder.Append(_propertyVisitor.Visit("rank", vehicle.Rank));
             stringBuilder.Append(_propertyVisitor.Visit("lock", vehicle.Lock));
+            stringBuilder.Append(_propertyVisitor.Visit("rank", vehicle.Rank));
             stringBuilder.Append(_propertyVisitor.Visit("skill", vehicle.Skill));
             stringBuilder.Append(_propertyVisitor.Visit("health", vehicle.Health));
             stringBuilder.Append(_propertyVisitor.Visit("text", vehicle.Text));

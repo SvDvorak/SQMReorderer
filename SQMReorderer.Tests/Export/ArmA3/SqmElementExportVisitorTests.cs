@@ -2,10 +2,10 @@
 using System.Text;
 using NUnit.Framework;
 using SQMReorderer.Core;
-using SQMReorderer.Core.Export;
+using SQMReorderer.Core.Export.ArmA3;
 using SQMReorderer.Core.Import.ResultObjects;
 
-namespace SQMReorderer.Tests.Export
+namespace SQMReorderer.Tests.Export.ArmA3
 {
     [TestFixture]
     public class SqmElementExportVisitorTests
@@ -148,7 +148,6 @@ namespace SQMReorderer.Tests.Export
             originalIntelText.Append("class Intel\n");
             originalIntelText.Append("{\n");
             originalIntelText.Append("briefingName=\"rootbeer\";\n");
-            originalIntelText.Append("briefingDescription=\"stuffs\";\n");
             originalIntelText.Append("overviewText=\"mission text\";\n");
             originalIntelText.Append("timeOfChanges=0.18;\n");
             originalIntelText.Append("startWeather=0.25;\n");
@@ -174,7 +173,6 @@ namespace SQMReorderer.Tests.Export
             var intel = new Intel();
 
             intel.BriefingName = "rootbeer";
-            intel.BriefingDescription = "stuffs";
             intel.OverviewText = "mission text";
             intel.TimeOfChanges = 0.18;
             intel.StartWeather = 0.25;
@@ -215,8 +213,8 @@ namespace SQMReorderer.Tests.Export
             originalVehicleText.Append("vehicle=\"TK_GUE_Soldier_2_EP1\";\n");
             originalVehicleText.Append("player=\"PLAY CDG\";\n");
             originalVehicleText.Append("leader=1;\n");
-            originalVehicleText.Append("rank=\"CORPORAL\";\n");
             originalVehicleText.Append("lock=\"UNLOCKED\";\n");
+            originalVehicleText.Append("rank=\"CORPORAL\";\n");
             originalVehicleText.Append("skill=0.60000002;\n");
             originalVehicleText.Append("health=0.45;\n");
             originalVehicleText.Append("text=\"UnitGUE_MTR1_AG\";\n");
@@ -234,8 +232,8 @@ namespace SQMReorderer.Tests.Export
             vehicle.VehicleName = "TK_GUE_Soldier_2_EP1";
             vehicle.Player = "PLAY CDG";
             vehicle.Leader = 1;
-            vehicle.Rank = "CORPORAL";
             vehicle.Lock = "UNLOCKED";
+            vehicle.Rank = "CORPORAL";
             vehicle.Skill = 0.60000002;
             vehicle.Health = 0.45;
             vehicle.Text = "UnitGUE_MTR1_AG";

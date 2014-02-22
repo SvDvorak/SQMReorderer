@@ -1,9 +1,8 @@
 using System.IO;
-using SQMReorderer.Core.Export.ArmA2;
 using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Core.StreamHelpers;
 
-namespace SQMReorderer.Core.Export
+namespace SQMReorderer.Core.Export.ArmA3
 {
     public class SqmFileExporter : ISqmFileExporter
     {

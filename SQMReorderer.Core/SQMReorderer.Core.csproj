@@ -57,11 +57,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoubleExtensions.cs" />
+    <Compile Include="Export\ArmA2\ISqmElementVisitor.cs" />
+    <Compile Include="Export\ArmA2\ISqmFileExporter.cs" />
+    <Compile Include="Export\ArmA3\ISqmElementVisitor.cs" />
+    <Compile Include="Export\ArmA3\ISqmFileExporter.cs" />
+    <Compile Include="Export\ArmA3\SqmElementExportVisitor.cs" />
+    <Compile Include="Export\ArmA3\SqmFileExporter.cs" />
     <Compile Include="Export\ContextIndenter.cs" />
-    <Compile Include="Export\ISqmElementVisitor.cs" />
     <Compile Include="Export\ISqmFileExporter.cs" />
     <Compile Include="Export\ISqmPropertyVisitor.cs" />
-    <Compile Include="Export\SqmElementExportVisitor.cs" />
+    <Compile Include="Export\ArmA2\SqmElementExportVisitor.cs" />
+    <Compile Include="Export\ArmA2\SqmFileExporter.cs" />
     <Compile Include="Export\SqmFileExporter.cs" />
     <Compile Include="Export\SqmPropertyVisitor.cs" />
     <Compile Include="Import\ArmA2\ISqmFileImporter.cs" />

@@ -60,8 +60,10 @@
   <ItemGroup>
     <Compile Include="DelegateCommandTests.cs" />
     <Compile Include="DoubleExtensionsTests.cs" />
+    <Compile Include="Export\ArmA3\SqmElementExportVisitorTests.cs" />
+    <Compile Include="Export\ArmA3\SqmFileExporterTests.cs" />
     <Compile Include="Export\ContextIndenterTests.cs" />
-    <Compile Include="Export\SqmElementExportVisitorTests.cs" />
+    <Compile Include="Export\ArmA2\SqmElementExportVisitorTests.cs" />
     <Compile Include="Export\SqmPropertyVisitorTests.cs" />
     <Compile Include="Import\CommonRegexPatternsTests.cs" />
     <Compile Include="Import\ArmA2\ContextSetterTests.cs" />
@@ -104,7 +106,7 @@
     <Compile Include="MainView\ViewModelBaseTests.cs" />
     <Compile Include="Import\OpenSqmFileDialogTests.cs" />
     <Compile Include="Export\SaveSqmFileDialogTests.cs" />
-    <Compile Include="Export\SqmFileExporterTests.cs" />
+    <Compile Include="Export\ArmA2\SqmFileExporterTests.cs" />
     <Compile Include="Import\ArmA2\SqmFileImporterTests.cs" />
     <Compile Include="MainView\ViewModelToContentReordererTests.cs" />
     <Compile Include="VectorTests.cs" />

@@ -4,11 +4,13 @@ using System.Reflection;
 using System.Text;
 using NUnit.Framework;
 using SQMReorderer.Core.Export;
+using SQMReorderer.Core.Export.ArmA2;
 using SQMReorderer.Core.Import;
 using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.Import.FileVersion;
 using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Core.StreamHelpers;
+using SqmFileExporter = SQMReorderer.Core.Export.SqmFileExporter;
 
 namespace SQMReorderer.Tests.Import.ArmA2
 {

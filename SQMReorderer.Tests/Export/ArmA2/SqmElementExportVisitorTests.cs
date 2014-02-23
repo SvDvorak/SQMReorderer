@@ -282,6 +282,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalMarkerText.Append("text=\"INSERTION\";\n");
             originalMarkerText.Append("markerType=\"RECTANGLE\";\n");
             originalMarkerText.Append("type=\"EMPTY\";\n");
+            originalMarkerText.Append("colorName=\"ColorRed\";\n");
             originalMarkerText.Append("fillName=\"FDiagonal\";\n");
             originalMarkerText.Append("a=45;\n");
             originalMarkerText.Append("b=55;\n");
@@ -297,6 +298,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             marker.Text = "INSERTION";
             marker.MarkerType = "RECTANGLE";
             marker.Type = "EMPTY";
+            marker.ColorName = "ColorRed";
             marker.FillName = "FDiagonal";
             marker.A = 45;
             marker.B = 55;

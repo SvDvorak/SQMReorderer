@@ -106,6 +106,7 @@ namespace SQMReorderer.Core.Import
                     Name = marker.Name,
                     MarkerType = marker.MarkerType,
                     Type = marker.Type,
+                    ColorName = marker.ColorName,
                     FillName = marker.FillName,
                     A = marker.A,
                     B = marker.B,

@@ -6,6 +6,7 @@ namespace SQMReorderer.Core.Import.ResultObjects
         public string Name { get; set; }
         public string MarkerType { get; set; }
         public string Type { get; set; }
+        public string ColorName { get; set; }
         public string FillName { get; set; }
         public int? A { get; set; }
         public int? B { get; set; }

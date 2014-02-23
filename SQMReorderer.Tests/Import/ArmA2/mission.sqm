@@ -17873,6 +17873,7 @@ class Mission
 			name="mkrInsertion";
 			text="Insert";
 			type="mil_start";
+			colorName="ColorRed";
 			angle=0.32468101;
 		};
 		class Item1

@@ -1,3 +1,4 @@
+using System;
 using SQMReorderer.Core.Import;
 using SQMReorderer.Core.Import.ResultObjects;
 
@@ -7,13 +8,16 @@ namespace SQMReorderer.Gui.Dialogs
     {
         private readonly IOpenFileDialogAdapter _openFileDialog;
         private readonly ISqmFileImporter _sqmFileImporter;
+        private readonly IMessageBoxPresenter _messageBoxPresenter;
 
         public OpenSqmFileDialog(
             IOpenFileDialogAdapter openFileDialog,
-            ISqmFileImporter sqmFileImporter)
+            ISqmFileImporter sqmFileImporter,
+            IMessageBoxPresenter messageBoxPresenter)
         {
             _openFileDialog = openFileDialog;
             _sqmFileImporter = sqmFileImporter;
+            _messageBoxPresenter = messageBoxPresenter;
 
             _openFileDialog.Filter = "SQM Files (*.sqm)|*.sqm";
         }
@@ -27,7 +31,14 @@ namespace SQMReorderer.Gui.Dialogs
             {
                 var fileStream = _openFileDialog.OpenFile();
 
-                sqmContents = _sqmFileImporter.Import(fileStream);
+                try
+                {
+                    sqmContents = _sqmFileImporter.Import(fileStream);
+                }
+                catch (SqmParseException exception)
+                {
+                    _messageBoxPresenter.ShowError("Unable to read file: " + exception.Message);
+                }
 
                 fileStream.Close();
             }

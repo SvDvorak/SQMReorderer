@@ -53,8 +53,10 @@
     </ApplicationDefinition>
     <Compile Include="Command\ActionCanNotBeNullException.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
+    <Compile Include="Dialogs\IMessageBoxPresenter.cs" />
     <Compile Include="Dialogs\ISaveFileDialogAdapter.cs" />
     <Compile Include="Dialogs\IOpenFileDialogAdapter.cs" />
+    <Compile Include="Dialogs\MessageBoxPresenter.cs" />
     <Compile Include="Dialogs\OpenFileDialogAdapter.cs" />
     <Compile Include="Dialogs\OpenSqmFileDialog.cs" />
     <Compile Include="Dialogs\SaveFileDialogAdapter.cs" />

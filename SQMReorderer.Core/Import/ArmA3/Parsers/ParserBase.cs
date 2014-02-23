@@ -51,7 +51,8 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers
 
                 if (parseResult == Result.Failure)
                 {
-                    throw new SqmParseException("Unknown context: " + subContext.Header);
+                    var resultTypeName = typeof(TParseResult).Name;
+                    throw new SqmParseException(string.Format("Unknown context in {0}: {1}", resultTypeName, subContext.Header.Trim()));
                 }
             }
 
@@ -71,7 +72,8 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers
 
                 if (parseResult == Result.Failure)
                 {
-                    throw new SqmParseException("Unknown property: " + line);
+                    var resultTypeName = typeof (TParseResult).Name;
+                    throw new SqmParseException(string.Format("Unknown property in {0}: {1}", resultTypeName, line.ToString().Trim()));
                 }
             }
 

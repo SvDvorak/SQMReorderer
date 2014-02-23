@@ -63,6 +63,8 @@ namespace SQMReorderer.Core.Export.ArmA2
             intelString.Append("{\n");
             intelString.Append(_propertyVisitor.Visit("briefingName", intel.BriefingName));
             intelString.Append(_propertyVisitor.Visit("briefingDescription", intel.BriefingDescription));
+            intelString.Append(_propertyVisitor.Visit("resistanceWest", intel.ResistanceWest));
+            intelString.Append(_propertyVisitor.Visit("resistanceEast", intel.ResistanceEast));
             intelString.Append(_propertyVisitor.Visit("startWeather", intel.StartWeather));
             intelString.Append(_propertyVisitor.Visit("forecastWeather", intel.ForecastWeather));
             intelString.Append(_propertyVisitor.Visit("year", intel.Year));

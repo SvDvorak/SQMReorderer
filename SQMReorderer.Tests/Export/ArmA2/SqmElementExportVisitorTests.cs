@@ -149,6 +149,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalIntelText.Append("{\n");
             originalIntelText.Append("briefingName=\"rootbeer\";\n");
             originalIntelText.Append("briefingDescription=\"stuffs\";\n");
+            originalIntelText.Append("resistanceWest=0;\n");
+            originalIntelText.Append("resistanceEast=1;\n");
             originalIntelText.Append("startWeather=0.25;\n");
             originalIntelText.Append("forecastWeather=0.25;\n");
             originalIntelText.Append("year=2008;\n");
@@ -162,6 +164,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
 
             intel.BriefingName = "rootbeer";
             intel.BriefingDescription = "stuffs";
+            intel.ResistanceWest = 0;
+            intel.ResistanceEast = 1;
             intel.StartWeather = 0.25;
             intel.ForecastWeather = 0.25;
             intel.Year = 2008;

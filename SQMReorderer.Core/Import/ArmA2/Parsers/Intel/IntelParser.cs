@@ -11,6 +11,8 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Intel
         {
             PropertySetters.Add(new StringPropertySetter("briefingName", x => ParseResult.BriefingName = x));
             PropertySetters.Add(new StringPropertySetter("briefingDescription", x => ParseResult.BriefingDescription = x));
+            PropertySetters.Add(new IntegerPropertySetter("resistanceWest", x => ParseResult.ResistanceWest = x));
+            PropertySetters.Add(new IntegerPropertySetter("resistanceEast", x => ParseResult.ResistanceEast = x));
             PropertySetters.Add(new DoublePropertySetter("startWeather", x => ParseResult.StartWeather = x));
             PropertySetters.Add(new DoublePropertySetter("forecastWeather", x => ParseResult.ForecastWeather = x));
             PropertySetters.Add(new IntegerPropertySetter("year", x => ParseResult.Year = x));

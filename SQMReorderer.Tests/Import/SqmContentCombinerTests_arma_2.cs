@@ -101,6 +101,8 @@ namespace SQMReorderer.Tests.Import
                 {
                     BriefingName = "name",
                     BriefingDescription = "desc",
+                    ResistanceWest = 0,
+                    ResistanceEast = 1,
                     StartWeather = 10,
                     ForecastWeather = 11,
                     Year = 1,
@@ -115,6 +117,8 @@ namespace SQMReorderer.Tests.Import
             var newIntel = sqmContents.Mission.Intel;
             Assert.AreEqual("name", newIntel.BriefingName);
             Assert.AreEqual("desc", newIntel.BriefingDescription);
+            Assert.AreEqual(0, newIntel.ResistanceWest);
+            Assert.AreEqual(1, newIntel.ResistanceEast);
             Assert.AreEqual(10, newIntel.StartWeather);
             Assert.AreEqual(11, newIntel.ForecastWeather);
             Assert.AreEqual(1, newIntel.Year);

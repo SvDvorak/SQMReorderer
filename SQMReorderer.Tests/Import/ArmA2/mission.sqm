@@ -82,6 +82,8 @@ class Mission
 	{
 		briefingName="F2";
 		briefingDescription="*** Insert mission description here. ***";
+		resistanceWest=0;
+		resistanceEast=1;
 		startWeather=0.25;
 		forecastWeather=0.25;
 		year=2008;

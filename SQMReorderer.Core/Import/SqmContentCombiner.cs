@@ -49,6 +49,8 @@ namespace SQMReorderer.Core.Import
                 {
                     BriefingName = arma2Intel.BriefingName,
                     BriefingDescription = arma2Intel.BriefingDescription,
+                    ResistanceWest = arma2Intel.ResistanceWest,
+                    ResistanceEast = arma2Intel.ResistanceEast,
                     StartWeather = arma2Intel.StartWeather,
                     ForecastWeather = arma2Intel.ForecastWeather,
                     Year = arma2Intel.Year,

@@ -5,6 +5,8 @@
         public string BriefingName { get; set; }
         public string BriefingDescription { get; set; }
         public string OverviewText { get; set; }
+        public int? ResistanceWest { get; set; }
+        public int? ResistanceEast { get; set; }
         public double? TimeOfChanges { get; set; }
         public double? StartWeather { get; set; }
         public double? StartWind { get; set; }

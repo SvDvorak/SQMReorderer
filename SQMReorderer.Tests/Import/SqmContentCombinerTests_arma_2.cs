@@ -173,6 +173,7 @@ namespace SQMReorderer.Tests.Import
                     Rank = "rank",
                     Lock = "lock",
                     Skill = 4,
+                    Fuel = 0.1,
                     Text = "text",
                     Init = "init",
                     Description = "desc",
@@ -195,6 +196,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("rank", newVehicle.Rank);
             Assert.AreEqual("lock", newVehicle.Lock);
             Assert.AreEqual(4, newVehicle.Skill);
+            Assert.AreEqual(0.1, newVehicle.Fuel);
             Assert.AreEqual("text", newVehicle.Text);
             Assert.AreEqual("init", newVehicle.Init);
             Assert.AreEqual("desc", newVehicle.Description);

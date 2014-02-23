@@ -21,6 +21,7 @@ namespace SQMReorderer.Core.Import.ResultObjects
         public string Lock { get; set; }
         public double? Skill { get; set; }
         public double? Health { get; set; }
+        public double? Fuel { get; set; }
         public string Text { get; set; }
         public string Init { get; set; }
         public string Description { get; set; }

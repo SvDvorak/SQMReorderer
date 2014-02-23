@@ -56,6 +56,16 @@ namespace SQMReorderer.Gui.ViewModels
             }
         }
 
+        public string Init
+        {
+            get { return Vehicle.Init; }
+            set
+            {
+                Set(value, () => Init, () => Vehicle.Init = value);
+                UpdateHeader();
+            }
+        }
+
         public ObservableCollection<VehicleViewModel> Children { get; set; }
 
         private string GetPropertyWithData()

@@ -121,6 +121,10 @@
                     <TextBlock Text="Description:" Style="{StaticResource itemInfoTextBlock}" />
                     <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource itemInfoTextBox}" />
                 </DockPanel>
+                <DockPanel Style="{StaticResource itemRowStackPanel}">
+                    <TextBlock Text="Init:" Style="{StaticResource itemInfoTextBlock}" />
+                    <TextBox Text="{Binding Init, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource itemInfoTextBox}" />
+                </DockPanel>
             </StackPanel>
         </Grid>
     </DockPanel>

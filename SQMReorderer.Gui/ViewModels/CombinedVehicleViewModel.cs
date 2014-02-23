@@ -37,6 +37,12 @@ namespace SQMReorderer.Gui.ViewModels
             set { Set(value, () => Description, () => SetCombinedValue(x => x.Description = value)); }
         }
 
+        public string Init
+        {
+            get { return GetCombinedValue(x => x.Init); }
+            set { Set(value, () => Init, () => SetCombinedValue(x => x.Init = value)); }
+        }
+
         private string GetCombinedValue(Func<VehicleViewModel, string> getValueFunc)
         {
             if (_vehicles.Count == 0)

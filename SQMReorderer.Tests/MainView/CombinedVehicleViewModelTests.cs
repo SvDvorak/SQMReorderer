@@ -17,6 +17,7 @@ namespace SQMReorderer.Tests.MainView
             Assert.AreEqual(null, sut.Rank);
             Assert.AreEqual(null, sut.Text);
             Assert.AreEqual(null, sut.Description);
+            Assert.AreEqual(null, sut.Init);
         }
 
         [Test]
@@ -27,7 +28,8 @@ namespace SQMReorderer.Tests.MainView
                     VehicleName = "name1",
                     Rank = "rank1",
                     Text = "text1",
-                    Description = "description1"
+                    Description = "description1",
+                    Init = "init1"
                 };
 
             var vehicle2 = new Vehicle()
@@ -35,7 +37,8 @@ namespace SQMReorderer.Tests.MainView
                     VehicleName = "name2",
                     Rank = "rank2",
                     Text = "text2",
-                    Description = "description2"
+                    Description = "description2",
+                    Init = "init2"
                 };
 
             var vehicles = CreateViewModelList(vehicle1, vehicle2);
@@ -45,6 +48,7 @@ namespace SQMReorderer.Tests.MainView
             Assert.AreEqual(null, sut.Rank);
             Assert.AreEqual(null, sut.Text);
             Assert.AreEqual(null, sut.Description);
+            Assert.AreEqual(null, sut.Init);
         }
 
         [Test]
@@ -55,7 +59,8 @@ namespace SQMReorderer.Tests.MainView
                     VehicleName = "name",
                     Rank = "rank",
                     Text = "text",
-                    Description = "description"
+                    Description = "description",
+                    Init = "init"
                 };
 
             var vehicle2 = new Vehicle()
@@ -63,7 +68,8 @@ namespace SQMReorderer.Tests.MainView
                     VehicleName = "name",
                     Rank = "rank",
                     Text = "text",
-                    Description = "description"
+                    Description = "description",
+                    Init = "init"
                 };
 
             var vehicles = CreateViewModelList(vehicle1, vehicle2);
@@ -73,6 +79,7 @@ namespace SQMReorderer.Tests.MainView
             Assert.AreEqual(vehicle1.Rank, sut.Rank);
             Assert.AreEqual(vehicle1.Text, sut.Text);
             Assert.AreEqual(vehicle1.Description, sut.Description);
+            Assert.AreEqual(vehicle1.Init, sut.Init);
         }
 
         [Test]
@@ -88,6 +95,7 @@ namespace SQMReorderer.Tests.MainView
             sut.Rank = "rank";
             sut.Text = "text";
             sut.Description = "description";
+            sut.Init = "init";
 
             Assert.AreEqual("name", vehicle1.VehicleName);
             Assert.AreEqual("name", vehicle2.VehicleName);
@@ -100,6 +108,9 @@ namespace SQMReorderer.Tests.MainView
 
             Assert.AreEqual("description", vehicle1.Description);
             Assert.AreEqual("description", vehicle2.Description);
+
+            Assert.AreEqual("init", vehicle1.Init);
+            Assert.AreEqual("init", vehicle2.Init);
         }
 
         private List<VehicleViewModel> CreateViewModelList(Vehicle vehicle1, Vehicle vehicle2)

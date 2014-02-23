@@ -17,6 +17,7 @@ namespace SQMReorderer.Tests.MainView
             vehicle.Rank = "RANK";
             vehicle.Text = "TEXT";
             vehicle.Description = "DESC";
+            vehicle.Init = "INIT";
 
             var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModel>());
 
@@ -24,6 +25,7 @@ namespace SQMReorderer.Tests.MainView
             Assert.AreEqual("RANK", itemViewModel.Rank);
             Assert.AreEqual("TEXT", itemViewModel.Text);
             Assert.AreEqual("DESC", itemViewModel.Description);
+            Assert.AreEqual("INIT", itemViewModel.Init);
         }
 
         [Test]
@@ -86,8 +88,9 @@ namespace SQMReorderer.Tests.MainView
             itemViewModel.Rank = "text";
             itemViewModel.Text = "text";
             itemViewModel.Description = "text";
+            itemViewModel.Init = "text";
 
-            Assert.AreEqual(4, headerChangedCount);
+            Assert.AreEqual(5, headerChangedCount);
         }
     }
 }

@@ -28,6 +28,8 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers.Intel
             PropertySetters.Add(new IntegerPropertySetter("day", x => ParseResult.Day = x));
             PropertySetters.Add(new IntegerPropertySetter("hour", x => ParseResult.Hour = x));
             PropertySetters.Add(new IntegerPropertySetter("minute", x => ParseResult.Minute = x));
+            PropertySetters.Add(new DoublePropertySetter("startFogBase", x => ParseResult.StartFogBase = x));
+            PropertySetters.Add(new DoublePropertySetter("forecastFogBase", x => ParseResult.ForecastFogBase = x));
             PropertySetters.Add(new DoublePropertySetter("startFogDecay", x => ParseResult.StartFogDecay = x));
             PropertySetters.Add(new DoublePropertySetter("forecastFogDecay", x => ParseResult.ForecastFogDecay = x));
         }

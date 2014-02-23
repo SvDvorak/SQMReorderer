@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMReorderer.Core.Import;
-using SQMReorderer.Core.Import.ArmA3;
 using SQMReorderer.Core.Import.ArmA3.Parsers.Intel;
 using SQMReorderer.Core.Import.Context;
 
@@ -24,7 +23,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
         [Test]
         public void Expect_is_intel_to_return_true_on_correct_intel_element_syntax()
         {
-            var context = _contextCreator.CreateContext(new List<string> {"class Intel\n", "{\n", "};\n"});
+            var context = _contextCreator.CreateContext(new List<string> { "class Intel\n", "{\n", "};\n" });
 
             var isItemElement = _parser.IsCorrectContext(context);
 
@@ -49,7 +48,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
                     "class Intel\n",
                     "{\n",
                     "briefingName=\"[co04]local_hostility_v2_oa\";\n",
-		            "overviewText=\"Destroy stolen ammocrates and truck\";",
+                    "overviewText=\"Destroy stolen ammocrates and truck\";",
                     "timeOfChanges=1800.0002;",
                     "startWeather=0.19207704;\n",
                     "startWind=1.14;",
@@ -67,6 +66,8 @@ namespace SQMReorderer.Tests.Import.ArmA3
                     "day=11;\n",
                     "hour=16;\n",
                     "minute=0;\n",
+                    "startFogBase=0.001;",
+                    "forecastFogBase=0.002;",
                     "startFogDecay=0.0049333;",
                     "forecastFogDecay=0.0048333;",
                     "};\n",
@@ -95,6 +96,8 @@ namespace SQMReorderer.Tests.Import.ArmA3
             Assert.AreEqual(11, intelResult.Day);
             Assert.AreEqual(16, intelResult.Hour);
             Assert.AreEqual(0, intelResult.Minute);
+            Assert.AreEqual(0.001, intelResult.StartFogBase);
+            Assert.AreEqual(0.002, intelResult.ForecastFogBase);
             Assert.AreEqual(0.0049333, intelResult.StartFogDecay);
             Assert.AreEqual(0.0048333, intelResult.ForecastFogDecay);
         }

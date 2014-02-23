@@ -65,6 +65,8 @@ class Mission
 		day=6;
 		hour=5;
 		minute=15;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
 		startFogDecay=0.0049333;
 		forecastFogDecay=0.0049333;
 	};

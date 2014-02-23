@@ -166,6 +166,8 @@ namespace SQMReorderer.Tests.Export.ArmA3
             originalIntelText.Append("day=11;\n");
             originalIntelText.Append("hour=8;\n");
             originalIntelText.Append("minute=1;\n");
+            originalIntelText.Append("startFogBase=0.01;\n");
+            originalIntelText.Append("forecastFogBase=0.02;\n");
             originalIntelText.Append("startFogDecay=0.03;\n");
             originalIntelText.Append("forecastFogDecay=0.06;\n");
             originalIntelText.Append("};\n");
@@ -191,6 +193,8 @@ namespace SQMReorderer.Tests.Export.ArmA3
             intel.Day = 11;
             intel.Hour = 8;
             intel.Minute = 1;
+            intel.StartFogBase = 0.01;
+            intel.ForecastFogBase = 0.02;
             intel.StartFogDecay = 0.03;
             intel.ForecastFogDecay = 0.06;
 

@@ -192,6 +192,8 @@ namespace SQMReorderer.Core.Import
                     Day = arma3Intel.Day,
                     Hour = arma3Intel.Hour,
                     Minute = arma3Intel.Minute,
+                    StartFogBase = arma3Intel.StartFogBase,
+                    ForecastFogBase = arma3Intel.ForecastFogBase,
                     StartFogDecay = arma3Intel.StartFogDecay,
                     ForecastFogDecay = arma3Intel.ForecastFogDecay
                 };

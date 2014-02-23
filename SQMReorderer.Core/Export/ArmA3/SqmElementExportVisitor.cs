@@ -80,6 +80,8 @@ namespace SQMReorderer.Core.Export.ArmA3
             intelString.Append(_propertyVisitor.Visit("day", intel.Day));
             intelString.Append(_propertyVisitor.Visit("hour", intel.Hour));
             intelString.Append(_propertyVisitor.Visit("minute", intel.Minute));
+            intelString.Append(_propertyVisitor.Visit("startFogBase", intel.StartFogBase));
+            intelString.Append(_propertyVisitor.Visit("forecastFogBase", intel.ForecastFogBase));
             intelString.Append(_propertyVisitor.Visit("startFogDecay", intel.StartFogDecay));
             intelString.Append(_propertyVisitor.Visit("forecastFogDecay", intel.ForecastFogDecay));
             intelString.Append("};\n");

@@ -21,6 +21,8 @@
         public int? Day { get; set; }
         public int? Hour { get; set; }
         public int? Minute { get; set; }
+        public double? StartFogBase { get; set; }
+        public double? ForecastFogBase { get; set; }
         public double? StartFogDecay { get; set; }
         public double? ForecastFogDecay { get; set; }
     }

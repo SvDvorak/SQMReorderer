@@ -117,6 +117,8 @@ namespace SQMReorderer.Tests.Import
                     Day = 3,
                     Hour = 4,
                     Minute = 5,
+                    StartFogBase = 1.1,
+                    ForecastFogBase = 1.2,
                     StartFogDecay = 11,
                     ForecastFogDecay = 12
                 };
@@ -143,6 +145,8 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(3, newIntel.Day);
             Assert.AreEqual(4, newIntel.Hour);
             Assert.AreEqual(5, newIntel.Minute);
+            Assert.AreEqual(1.1, newIntel.StartFogBase);
+            Assert.AreEqual(1.2, newIntel.ForecastFogBase);
             Assert.AreEqual(11, newIntel.StartFogDecay);
             Assert.AreEqual(12, newIntel.ForecastFogDecay);
         }

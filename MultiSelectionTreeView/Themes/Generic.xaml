@@ -69,7 +69,6 @@
                     <StackPanel Orientation="Vertical">
 
                         <Border x:Name="Selection_Border"
-                                Height="13.277"
             				    Background="{TemplateBinding Background}"
             				    BorderBrush="{TemplateBinding BorderBrush}"
             				    BorderThickness="{TemplateBinding BorderThickness}"

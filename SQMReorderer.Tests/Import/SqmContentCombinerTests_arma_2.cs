@@ -295,6 +295,9 @@ namespace SQMReorderer.Tests.Import
                     B = 2,
                     Type = "type",
                     ActivationBy = "act",
+                    TimeoutMin = 30,
+                    TimeoutMid = 31,
+                    TimeoutMax = 32,
                     Interruptable = 3,
                     Age = "age",
                     ExpCond = "cond",
@@ -310,6 +313,9 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(2, newSensor.B);
             Assert.AreEqual("type", newSensor.Type);
             Assert.AreEqual("act", newSensor.ActivationBy);
+            Assert.AreEqual(30, newSensor.TimeoutMin);
+            Assert.AreEqual(31, newSensor.TimeoutMid);
+            Assert.AreEqual(32, newSensor.TimeoutMax);
             Assert.AreEqual(3, newSensor.Interruptable);
             Assert.AreEqual("age", newSensor.Age);
             Assert.AreEqual("cond", newSensor.ExpCond);

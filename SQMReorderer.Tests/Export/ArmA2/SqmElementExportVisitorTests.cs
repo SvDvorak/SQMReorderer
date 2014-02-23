@@ -321,6 +321,9 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalSensorText.Append("a=45;\n");
             originalSensorText.Append("b=55;\n");
             originalSensorText.Append("activationBy=\"ANY\";\n");
+            originalSensorText.Append("timeoutMin=30;\n");
+            originalSensorText.Append("timeoutMid=31;\n");
+            originalSensorText.Append("timeoutMax=32;\n");
             originalSensorText.Append("interruptable=1;\n");
             originalSensorText.Append("type=\"EMPTY\";\n");
             originalSensorText.Append("age=\"UNKNOWN\";\n");
@@ -339,6 +342,9 @@ namespace SQMReorderer.Tests.Export.ArmA2
             sensor.A = 45;
             sensor.B = 55;
             sensor.ActivationBy = "ANY";
+            sensor.TimeoutMin = 30;
+            sensor.TimeoutMid = 31;
+            sensor.TimeoutMax = 32;
             sensor.Interruptable = 1;
             sensor.Type = "EMPTY";
             sensor.Age = "UNKNOWN";

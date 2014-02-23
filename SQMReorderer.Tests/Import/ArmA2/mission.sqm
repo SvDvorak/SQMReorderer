@@ -17885,6 +17885,212 @@ class Mission
 			angle=0.32468101;
 		};
 	};
+	class Sensors
+	{
+		items=15;
+		class Item0
+		{
+			position[]={3687.3662,18.926329,3487.916};
+			interruptable=1;
+			type="EAST G";
+			age="UNKNOWN";
+			class Effects
+			{
+			};
+		};
+		class Item1
+		{
+			position[]={3591.0562,18.251637,3685.8301};
+			interruptable=1;
+			type="EAST G";
+			age="UNKNOWN";
+			class Effects
+			{
+			};
+		};
+		class Item2
+		{
+			position[]={4331.894,27,3207.6274};
+			interruptable=1;
+			type="EAST G";
+			age="UNKNOWN";
+			class Effects
+			{
+			};
+		};
+		class Item3
+		{
+			position[]={3371.8213,16.957485,4402.4297};
+			interruptable=1;
+			type="EAST G";
+			age="UNKNOWN";
+			class Effects
+			{
+			};
+		};
+		class Item4
+		{
+			position[]={3866.092,28,3322.0974};
+			activationBy="WEST";
+			timeoutMin=30;
+			timeoutMid=30;
+			timeoutMax=30;
+			age="UNKNOWN";
+			expActiv="base_overrun=true; ""Barracks"" setMarkerColor ""ColorGreen""; hint ""The Barracks have been overrun!"" ";
+			class Effects
+			{
+				titleEffect="PLAIN DOWN";
+			};
+		};
+		class Item5
+		{
+			position[]={3182.5059,36.950581,4041.283};
+			activationBy="WEST";
+			timeoutMin=30;
+			timeoutMid=30;
+			timeoutMax=30;
+			age="UNKNOWN";
+			expActiv="base2_overrun=true; ""MotorPool"" setMarkerColor ""ColorGreen""; hint ""The Motor Pool has been overrun!"" ";
+			class Effects
+			{
+			};
+		};
+		class Item6
+		{
+			position[]={2951.0757,39,4515.5801};
+			activationBy="WEST";
+			timeoutMin=30;
+			timeoutMid=30;
+			timeoutMax=30;
+			age="UNKNOWN";
+			expActiv="base3_overrun=true; ""SFBase"" setMarkerColor ""ColorGreen""; hint ""The SF Base has been overrun!"" ";
+			class Effects
+			{
+				titleEffect="PLAIN DOWN";
+			};
+		};
+		class Item7
+		{
+			position[]={4333.3696,27,3204.3972};
+			a=125;
+			b=75;
+			angle=20.8573;
+			rectangular=1;
+			activationBy="EAST";
+			activationType="NOT PRESENT";
+			repeating=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expActiv="""1"" objstatus ""Done""; obj1_done=true; task1 setTaskState ""SUCCEEDED""; ""TownStrelka"" setMarkerColor ""ColorGreen""; hint ""Strelka has been captured!"" ";
+			expDesactiv="""1"" objstatus ""Failed""; obj1_done=false; task1 setTaskState ""FAILED""; ""TownStrelka"" setMarkerColor ""ColorRed""; hint ""Strelka has been lost!"" ";
+			class Effects
+			{
+			};
+		};
+		class Item8
+		{
+			position[]={3690.7969,18.89999,3484.7961};
+			angle=20.8573;
+			rectangular=1;
+			activationBy="EAST";
+			activationType="NOT PRESENT";
+			repeating=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expActiv="""2"" objstatus ""Done""; obj2_done=true; task2 setTaskState ""SUCCEEDED""; ""AirbaseSouth"" setMarkerColor ""ColorGreen""; hint ""Airbase South has been captured!"" ";
+			expDesactiv="""2"" objstatus ""Failed""; obj2_done=false; task2 setTaskState ""FAILED""; ""AirbaseSouth"" setMarkerColor ""ColorRed""; hint ""Airbase South has been lost!"" ";
+			class Effects
+			{
+			};
+		};
+		class Item9
+		{
+			position[]={3578.7583,18.30077,3685.7705};
+			angle=89.171402;
+			rectangular=1;
+			activationBy="EAST";
+			activationType="NOT PRESENT";
+			repeating=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expActiv="""3"" objstatus ""Done""; obj3_done=true; task3 setTaskState ""SUCCEEDED""; ""AirbaseNorth"" setMarkerColor ""ColorGreen""; hint ""Airbase North has been captured!"" ";
+			expDesactiv="""3"" objstatus ""Failed""; obj3_done=false; task3 setTaskState ""FAILED""; ""AirbaseNorth"" setMarkerColor ""ColorRed""; hint ""Airbase North has been lost!"" ";
+			class Effects
+			{
+			};
+		};
+		class Item10
+		{
+			position[]={3355.7703,16.829794,4404.3311};
+			b=125;
+			angle=89.4589;
+			rectangular=1;
+			activationBy="EAST";
+			activationType="NOT PRESENT";
+			repeating=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expActiv="""4"" objstatus ""Done""; obj4_done=true; task4 setTaskState ""SUCCEEDED""; ""TownKamenyy"" setMarkerColor ""ColorGreen""; hint ""Kamenny has been captured!"" ";
+			expDesactiv="""4"" objstatus ""Failed""; obj4_done=false; task4 setTaskState ""Failed""; ""Kamenyy"" setMarkerColor ""ColorRed""; hint ""Kamenyy has been lost!"" ";
+			class Effects
+			{
+			};
+		};
+		class Item11
+		{
+			position[]={1294.3052,0.013382167,1412.2939};
+			a=0;
+			b=0;
+			timeoutMin=15;
+			timeoutMid=15;
+			timeoutMax=15;
+			type="END1";
+			age="UNKNOWN";
+			expCond="obj1_done && obj2_done && obj3_done && obj4_done";
+			class Effects
+			{
+			};
+		};
+		class Item12
+		{
+			position[]={3125.0591,34.424274,4113.8452};
+			a=0;
+			b=0;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="((damage tank1) > 0.1) ";
+			expActiv="tank1 setdammage 1; ";
+			class Effects
+			{
+			};
+		};
+		class Item13
+		{
+			position[]={3134.2773,34.72831,4113.2314};
+			a=0;
+			b=0;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="((damage tank2) > 0.1) ";
+			expActiv="tank2 setdammage 1; ";
+			class Effects
+			{
+			};
+		};
+		class Item14
+		{
+			position[]={3140.4229,34.916908,4113.436};
+			a=0;
+			b=0;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="((damage tank3) > 0.1) ";
+			expActiv="tank3 setdammage 1; ";
+			class Effects
+			{
+			};
+		};
+	};
 };
 class Intro
 {

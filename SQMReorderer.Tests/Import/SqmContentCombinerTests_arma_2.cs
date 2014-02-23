@@ -164,6 +164,7 @@ namespace SQMReorderer.Tests.Import
             var vehicle = new Vehicle
                 {
                     Azimut = 1,
+                    Special = "CARGO",
                     Id = 2,
                     Side = "side",
                     VehicleName = "name",
@@ -185,6 +186,7 @@ namespace SQMReorderer.Tests.Import
 
             var newVehicle = sqmContents.Mission.Groups[0];
             Assert.AreEqual(1, newVehicle.Azimut);
+            Assert.AreEqual("CARGO", newVehicle.Special);
             Assert.AreEqual(2, newVehicle.Id);
             Assert.AreEqual("side", newVehicle.Side);
             Assert.AreEqual("name", newVehicle.VehicleName);

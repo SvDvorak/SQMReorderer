@@ -73,6 +73,7 @@ namespace SQMReorderer.Core.Import
                     Number = vehicle.Number,
                     Position = vehicle.Position,
                     Azimut = vehicle.Azimut,
+                    Special = vehicle.Special,
                     Id = vehicle.Id,
                     Side = vehicle.Side,
                     VehicleName = vehicle.VehicleName,

@@ -188,6 +188,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalVehicleText.Append("{\n");
             originalVehicleText.Append("position[]={10,12,14};\n");
             originalVehicleText.Append("azimut=3.14;\n");
+            originalVehicleText.Append("special=\"CARGO\";\n");
             originalVehicleText.Append("id=4;\n");
             originalVehicleText.Append("side=\"GUER\";\n");
             originalVehicleText.Append("vehicle=\"TK_GUE_Soldier_2_EP1\";\n");
@@ -207,6 +208,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             vehicle.Number = 3;
             vehicle.Position = new Vector(10, 12, 14);
             vehicle.Azimut = 3.14;
+            vehicle.Special = "CARGO";
             vehicle.Id = 4;
             vehicle.Side = "GUER";
             vehicle.VehicleName = "TK_GUE_Soldier_2_EP1";

@@ -11,6 +11,7 @@ namespace SQMReorderer.Core.Import.ResultObjects
         }
 
         public double? Azimut { get; set; }
+        public string Special { get; set; }
         public int? Id { get; set; }
         public string Side { get; set; }
         public string VehicleName { get; set; }

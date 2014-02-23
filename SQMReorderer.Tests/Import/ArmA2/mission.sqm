@@ -105,6 +105,7 @@ class Mission
 				{
 					position[]={-80.279602,644.16785,100.88849};
 					azimut=90;
+					special="CARGO";
 					id=0;
 					side="WEST";
 					vehicle="US_Soldier_EP1";

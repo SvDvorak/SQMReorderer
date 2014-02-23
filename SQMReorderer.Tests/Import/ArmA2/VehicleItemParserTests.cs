@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMReorderer.Core.Import;
-using SQMReorderer.Core.Import.ArmA2;
 using SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle;
 using SQMReorderer.Core.Import.Context;
 
@@ -18,6 +17,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "{\n",
                 "position[]={5533.8467,143.18413,6350.1045};\n",
                 "azimut=17.206261;\n",
+                "special=\"CARGO\";",
                 "id=4;\n",
                 "side=\"WEST\";\n",
                 "vehicle=\"US_Soldier_TL_EP1\";\n",
@@ -106,6 +106,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual(143.18413, itemResult.Position.Y);
             Assert.AreEqual(6350.1045, itemResult.Position.Z);
             Assert.AreEqual(17.206261, itemResult.Azimut);
+            Assert.AreEqual("CARGO", itemResult.Special);
             Assert.AreEqual(4, itemResult.Id);
             Assert.AreEqual("WEST", itemResult.Side);
             Assert.AreEqual("US_Soldier_TL_EP1", itemResult.VehicleName);

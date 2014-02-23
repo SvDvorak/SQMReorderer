@@ -12,6 +12,7 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle
 
             PropertySetters.Add(new VectorPropertySetter("position", x => ParseResult.Position = x));
             PropertySetters.Add(new DoublePropertySetter("azimut", x => ParseResult.Azimut = x));
+            PropertySetters.Add(new StringPropertySetter("special", x => ParseResult.Special = x));
             PropertySetters.Add(new IntegerPropertySetter("id", x => ParseResult.Id = x));
             PropertySetters.Add(new StringPropertySetter("side", x => ParseResult.Side = x));
             PropertySetters.Add(new StringPropertySetter("vehicle", x => ParseResult.VehicleName = x));

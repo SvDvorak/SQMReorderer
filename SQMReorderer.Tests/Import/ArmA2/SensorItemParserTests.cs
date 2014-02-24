@@ -20,6 +20,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "angle=20.8573;\n",
                 "rectangular=1;\n",
                 "activationBy=\"ANY\";\n",
+                "activationType=\"NOT PRESENT\";\n",
                 "timeoutMin=30;\n",
 			    "timeoutMid=31;\n",
 			    "timeoutMax=32;\n",
@@ -63,6 +64,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual(20.8573, sensorResult.Angle);
             Assert.AreEqual(1, sensorResult.Rectangular);
             Assert.AreEqual("ANY", sensorResult.ActivationBy);
+            Assert.AreEqual("NOT PRESENT", sensorResult.ActivationType);
             Assert.AreEqual(30, sensorResult.TimeoutMin);
             Assert.AreEqual(31, sensorResult.TimeoutMid);
             Assert.AreEqual(32, sensorResult.TimeoutMax);

@@ -8,6 +8,7 @@
         public int? Rectangular { get; set; }
         public string Type { get; set; }
         public string ActivationBy { get; set; }
+        public string ActivationType { get; set; }
         public int? TimeoutMin { get; set; }
         public int? TimeoutMid { get; set; }
         public int? TimeoutMax { get; set; }

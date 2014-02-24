@@ -294,6 +294,7 @@ namespace SQMReorderer.Tests.Import
                     A = 1,
                     B = 2,
                     Angle = 20.1,
+                    Rectangular = 1,
                     Type = "type",
                     ActivationBy = "act",
                     TimeoutMin = 30,
@@ -313,6 +314,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(1, newSensor.A);
             Assert.AreEqual(2, newSensor.B);
             Assert.AreEqual(20.1, newSensor.Angle);
+            Assert.AreEqual(1, newSensor.Rectangular);
             Assert.AreEqual("type", newSensor.Type);
             Assert.AreEqual("act", newSensor.ActivationBy);
             Assert.AreEqual(30, newSensor.TimeoutMin);

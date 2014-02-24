@@ -5,6 +5,7 @@
         public int? A { get; set; }
         public int? B { get; set; }
         public double? Angle { get; set; }
+        public int? Rectangular { get; set; }
         public string Type { get; set; }
         public string ActivationBy { get; set; }
         public int? TimeoutMin { get; set; }

@@ -129,6 +129,7 @@ namespace SQMReorderer.Core.Import
                     A = sensor.A,
                     B = sensor.B,
                     Angle = sensor.Angle,
+                    Rectangular = sensor.Rectangular,
                     Type = sensor.Type,
                     ActivationBy = sensor.ActivationBy,
                     TimeoutMin = sensor.TimeoutMin,

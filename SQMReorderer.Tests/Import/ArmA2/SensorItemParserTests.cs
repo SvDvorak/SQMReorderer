@@ -17,6 +17,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "position[]={414,16,413};\n",
                 "a=40;\n",
                 "b=30;\n",
+                "angle=20.8573;\n",
                 "activationBy=\"ANY\";\n",
                 "timeoutMin=30;\n",
 			    "timeoutMid=31;\n",
@@ -58,6 +59,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual(413, sensorResult.Position.Z);
             Assert.AreEqual(40, sensorResult.A);
             Assert.AreEqual(30, sensorResult.B);
+            Assert.AreEqual(20.8573, sensorResult.Angle);
             Assert.AreEqual("ANY", sensorResult.ActivationBy);
             Assert.AreEqual(30, sensorResult.TimeoutMin);
             Assert.AreEqual(31, sensorResult.TimeoutMid);

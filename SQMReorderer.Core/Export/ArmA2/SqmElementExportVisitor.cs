@@ -195,6 +195,7 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("position", sensor.Position));
             stringBuilder.Append(_propertyVisitor.Visit("a", sensor.A));
             stringBuilder.Append(_propertyVisitor.Visit("b", sensor.B));
+            stringBuilder.Append(_propertyVisitor.Visit("angle", sensor.Angle));
             stringBuilder.Append(_propertyVisitor.Visit("activationBy", sensor.ActivationBy));
             stringBuilder.Append(_propertyVisitor.Visit("timeoutMin", sensor.TimeoutMin));
             stringBuilder.Append(_propertyVisitor.Visit("timeoutMid", sensor.TimeoutMid));

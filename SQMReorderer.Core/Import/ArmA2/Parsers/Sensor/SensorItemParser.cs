@@ -10,6 +10,7 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Sensor
             PropertySetters.Add(new VectorPropertySetter("position", x => ParseResult.Position = x));
             PropertySetters.Add(new IntegerPropertySetter("a", x => ParseResult.A = x));
             PropertySetters.Add(new IntegerPropertySetter("b", x => ParseResult.B = x));
+            PropertySetters.Add(new DoublePropertySetter("angle", x => ParseResult.Angle = x));
             PropertySetters.Add(new StringPropertySetter("activationBy", x => ParseResult.ActivationBy = x));
             PropertySetters.Add(new IntegerPropertySetter("timeoutMin", x => ParseResult.TimeoutMin = x));
             PropertySetters.Add(new IntegerPropertySetter("timeoutMid", x => ParseResult.TimeoutMid = x));

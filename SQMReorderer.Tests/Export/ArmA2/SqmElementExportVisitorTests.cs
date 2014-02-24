@@ -320,6 +320,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalSensorText.Append("position[]={10,12,14};\n");
             originalSensorText.Append("a=45;\n");
             originalSensorText.Append("b=55;\n");
+            originalSensorText.Append("angle=20.3;\n");
             originalSensorText.Append("activationBy=\"ANY\";\n");
             originalSensorText.Append("timeoutMin=30;\n");
             originalSensorText.Append("timeoutMid=31;\n");
@@ -341,6 +342,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             sensor.Position = new Vector(10, 12, 14);
             sensor.A = 45;
             sensor.B = 55;
+            sensor.Angle = 20.3;
             sensor.ActivationBy = "ANY";
             sensor.TimeoutMin = 30;
             sensor.TimeoutMid = 31;

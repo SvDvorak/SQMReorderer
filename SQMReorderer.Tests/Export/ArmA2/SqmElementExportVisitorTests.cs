@@ -324,6 +324,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalSensorText.Append("rectangular=1;\n");
             originalSensorText.Append("activationBy=\"ANY\";\n");
             originalSensorText.Append("activationType=\"ANY TYPE\";\n");
+            originalSensorText.Append("repeating=1;\n");
             originalSensorText.Append("timeoutMin=30;\n");
             originalSensorText.Append("timeoutMid=31;\n");
             originalSensorText.Append("timeoutMax=32;\n");
@@ -348,6 +349,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             sensor.Rectangular = 1;
             sensor.ActivationBy = "ANY";
             sensor.ActivationType = "ANY TYPE";
+            sensor.Repeating = 1;
             sensor.TimeoutMin = 30;
             sensor.TimeoutMid = 31;
             sensor.TimeoutMax = 32;

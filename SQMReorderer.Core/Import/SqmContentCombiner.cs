@@ -133,6 +133,7 @@ namespace SQMReorderer.Core.Import
                     Type = sensor.Type,
                     ActivationBy = sensor.ActivationBy,
                     ActivationType = sensor.ActivationType,
+                    Repeating = sensor.Repeating,
                     TimeoutMin = sensor.TimeoutMin,
                     TimeoutMid = sensor.TimeoutMid,
                     TimeoutMax = sensor.TimeoutMax,

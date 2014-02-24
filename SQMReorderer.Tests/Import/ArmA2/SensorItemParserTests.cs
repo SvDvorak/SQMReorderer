@@ -21,6 +21,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "rectangular=1;\n",
                 "activationBy=\"ANY\";\n",
                 "activationType=\"NOT PRESENT\";\n",
+                "repeating=1\n",
                 "timeoutMin=30;\n",
 			    "timeoutMid=31;\n",
 			    "timeoutMax=32;\n",
@@ -65,6 +66,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual(1, sensorResult.Rectangular);
             Assert.AreEqual("ANY", sensorResult.ActivationBy);
             Assert.AreEqual("NOT PRESENT", sensorResult.ActivationType);
+            Assert.AreEqual(1, sensorResult.Repeating);
             Assert.AreEqual(30, sensorResult.TimeoutMin);
             Assert.AreEqual(31, sensorResult.TimeoutMid);
             Assert.AreEqual(32, sensorResult.TimeoutMax);

@@ -298,6 +298,7 @@ namespace SQMReorderer.Tests.Import
                     Type = "type",
                     ActivationBy = "act",
                     ActivationType = "act type",
+                    Repeating = 1,
                     TimeoutMin = 30,
                     TimeoutMid = 31,
                     TimeoutMax = 32,
@@ -319,6 +320,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("type", newSensor.Type);
             Assert.AreEqual("act", newSensor.ActivationBy);
             Assert.AreEqual("act type", newSensor.ActivationType);
+            Assert.AreEqual(1, newSensor.Repeating);
             Assert.AreEqual(30, newSensor.TimeoutMin);
             Assert.AreEqual(31, newSensor.TimeoutMid);
             Assert.AreEqual(32, newSensor.TimeoutMax);

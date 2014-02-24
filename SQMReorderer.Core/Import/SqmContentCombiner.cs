@@ -141,6 +141,7 @@ namespace SQMReorderer.Core.Import
                     Age = sensor.Age,
                     ExpCond = sensor.ExpCond,
                     ExpActiv = sensor.ExpActiv,
+                    ExpDesactiv = sensor.ExpDesactiv,
                 };
         }
 

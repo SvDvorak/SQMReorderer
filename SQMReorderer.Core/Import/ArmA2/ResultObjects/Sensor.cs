@@ -17,5 +17,6 @@
         public string Age { get; set; }
         public string ExpCond { get; set; }
         public string ExpActiv { get; set; }
+        public string ExpDesactiv { get; set; }
     }
 }

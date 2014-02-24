@@ -333,6 +333,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalSensorText.Append("age=\"UNKNOWN\";\n");
             originalSensorText.Append("expCond=\"checkpoint3NrOfClearedDT == 7\";\n");
             originalSensorText.Append("expActiv=\"end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n");
+            originalSensorText.Append("expDesactiv=\"some code stuffs\";\n");
             originalSensorText.Append("};\n");
             //originalItemText.Append("class Effects\n");
             //originalItemText.Append("{\n");
@@ -358,6 +359,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             sensor.Age = "UNKNOWN";
             sensor.ExpCond = "checkpoint3NrOfClearedDT == 7";
             sensor.ExpActiv = "end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";";
+            sensor.ExpDesactiv = "some code stuffs";
 
             //item.Effects = new List<string>() { "blur" };
 

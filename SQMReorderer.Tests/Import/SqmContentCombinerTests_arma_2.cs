@@ -306,6 +306,7 @@ namespace SQMReorderer.Tests.Import
                     Age = "age",
                     ExpCond = "cond",
                     ExpActiv = "activ",
+                    ExpDesactiv = "desactiv",
                     Number = 4,
                     Position = new Vector(5, 6, 7)
                 };
@@ -328,6 +329,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("age", newSensor.Age);
             Assert.AreEqual("cond", newSensor.ExpCond);
             Assert.AreEqual("activ", newSensor.ExpActiv);
+            Assert.AreEqual("desactiv", newSensor.ExpDesactiv);
             Assert.AreEqual(4, newSensor.Number);
             Assert.AreEqual(new Vector(5, 6, 7), newSensor.Position);
         }

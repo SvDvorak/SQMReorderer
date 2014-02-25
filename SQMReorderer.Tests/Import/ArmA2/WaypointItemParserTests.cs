@@ -16,7 +16,14 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "class Item0",
                 "{",
                 "position[]={4083.6555,25.784687,11750.772};",
+                "placement=100;",
+                "completitionRadius=150;",
                 "type=\"DISMISS\";",
+                "combatMode=\"RED\";",
+                "formation=\"FILE\";",
+                "speed=\"LIMITED\";",
+                "combat=\"SAFE\";",
+                "synchronizations[]={3,2,1};",
                 "showWP=\"NEVER\";",
                 "};"
             };
@@ -55,11 +62,20 @@ namespace SQMReorderer.Tests.Import.ArmA2
 
             var waypoint = _sut.ParseContext(context);
 
-            Assert.AreEqual("DISMISS", waypoint.Type);
-            Assert.AreEqual("NEVER", waypoint.ShowWp);
             Assert.AreEqual(4083.6555, waypoint.Position.X);
             Assert.AreEqual(25.784687, waypoint.Position.Y);
             Assert.AreEqual(11750.772, waypoint.Position.Z);
+            Assert.AreEqual(100, waypoint.Placement);
+            Assert.AreEqual(150, waypoint.CompletitionRadius);
+            Assert.AreEqual("DISMISS", waypoint.Type);
+            Assert.AreEqual("RED", waypoint.CombatMode);
+            Assert.AreEqual("FILE", waypoint.Formation);
+            Assert.AreEqual("LIMITED", waypoint.Speed);
+            Assert.AreEqual("SAFE", waypoint.Combat);
+            Assert.AreEqual(3, waypoint.Synchronizations[0]);
+            Assert.AreEqual(2, waypoint.Synchronizations[1]);
+            Assert.AreEqual(1, waypoint.Synchronizations[2]);
+            Assert.AreEqual("NEVER", waypoint.ShowWp);
         }
     }
 }

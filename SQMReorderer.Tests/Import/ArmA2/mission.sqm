@@ -346,14 +346,23 @@ class Mission
 			};
 			class Waypoints
 			{
-				items=1;
+				items=2;
 				class Item0
 				{
 					position[]={4083.6555,25.784687,11750.772};
+					placement=100;
+					completitionRadius=150;
 					type="DISMISS";
-					class Effects
-					{
-					};
+					combatMode="RED";
+					formation="FILE";
+					speed="LIMITED";
+					combat="SAFE";
+					synchronizations[]={3};
+					showWP="NEVER";
+				};
+				class Item1
+				{
+					position[]={7688.7617,5.9911075,3486.3081};
 					showWP="NEVER";
 				};
 			};

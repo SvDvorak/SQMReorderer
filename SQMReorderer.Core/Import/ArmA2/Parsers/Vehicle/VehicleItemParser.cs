@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SQMReorderer.Core.Import.ArmA2.Parsers.Waypoint;
 using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle
@@ -9,6 +10,9 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle
         {
             var vehiclesParser = new ItemListParser<ResultObjects.Vehicle>(new VehicleItemParserFactory(), "Vehicles");
             ContextSetters.Add(new ContextSetter<List<ResultObjects.Vehicle>>(vehiclesParser, x => ParseResult.Vehicles = x));
+
+            var waypointsParser = new ItemListParser<ResultObjects.Waypoint>(new WaypointItemParserFactory(), "Waypoints");
+            ContextSetters.Add(new ContextSetter<List<ResultObjects.Waypoint>>(waypointsParser, x => ParseResult.Waypoints = x));
 
             PropertySetters.Add(new VectorPropertySetter("position", x => ParseResult.Position = x));
             PropertySetters.Add(new DoublePropertySetter("azimut", x => ParseResult.Azimut = x));

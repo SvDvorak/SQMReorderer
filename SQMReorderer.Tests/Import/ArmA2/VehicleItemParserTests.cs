@@ -210,8 +210,8 @@ namespace SQMReorderer.Tests.Import.ArmA2
         {
             var itemResult = _parser.ParseContext(_itemWithWaypointsContext);
 
-            Assert.AreEqual("DISMISSED", itemResult.Waypoints[0].Type);
-            Assert.AreEqual("DISMISSED", itemResult.Waypoints[1].Type);
+            Assert.AreEqual("DISMISS", itemResult.Waypoints[0].Type);
+            Assert.AreEqual("STOP", itemResult.Waypoints[1].Type);
         }
     }
 }

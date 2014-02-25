@@ -67,6 +67,7 @@
     <Compile Include="Export\ArmA2\SqmElementExportVisitorTests.cs" />
     <Compile Include="Export\SqmFileExporterTests.cs" />
     <Compile Include="Export\SqmPropertyVisitorTests.cs" />
+    <Compile Include="Import\ArmA2\WaypointItemParserTests.cs" />
     <Compile Include="Import\CommonRegexPatternsTests.cs" />
     <Compile Include="Import\ArmA2\ContextSetterTests.cs" />
     <Compile Include="Import\SqmContentCombinerTests_arma_3.cs" />

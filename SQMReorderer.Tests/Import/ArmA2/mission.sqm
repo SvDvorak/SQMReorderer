@@ -344,6 +344,19 @@ class Mission
 					description="UN Alpha 1 Rifleman (AT)";
 				};
 			};
+			class Waypoints
+			{
+				items=1;
+				class Item0
+				{
+					position[]={4083.6555,25.784687,11750.772};
+					type="DISMISS";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
 		};
 		class Item8
 		{

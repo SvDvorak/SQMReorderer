@@ -1,4 +1,5 @@
-﻿using SQMReorderer.Core.Import.Context;
+﻿using System.Collections.Generic;
+using SQMReorderer.Core.Import.ArmA2.Parsers.Effects;
 using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers.Sensor
@@ -7,6 +8,9 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Sensor
     {
         public SensorItemParser()
         {
+            var effectsParser = new EffectsParser();
+            ContextSetters.Add(new ContextSetter<List<string>>(effectsParser, x => ParseResult.Effects = x));
+
             PropertySetters.Add(new VectorPropertySetter("position", x => ParseResult.Position = x));
             PropertySetters.Add(new DoublePropertySetter("a", x => ParseResult.A = x));
             PropertySetters.Add(new DoublePropertySetter("b", x => ParseResult.B = x));
@@ -27,19 +31,6 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Sensor
             PropertySetters.Add(new StringPropertySetter("expActiv", x => ParseResult.ExpActiv = x));
             PropertySetters.Add(new StringPropertySetter("expDesactiv", x => ParseResult.ExpDesactiv = x));
             PropertySetters.Add(new IntegerListPropertySetter("synchronizations", x => ParseResult.Synchronizations = x));
-        }
-
-        protected override Result CustomParseContext(SqmContext context)
-        {
-            var parseResult = Result.Failure;
-
-            // TODO: HACK! We're currently ignoring the Effects class but should be parsed!
-            if (context.Header.Contains("Effects"))
-            {
-                parseResult = Result.Success;
-            }
-
-            return parseResult;
         }
     }
 }

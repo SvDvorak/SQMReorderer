@@ -32,12 +32,7 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers
 
             foreach (var subContext in context.SubContexts)
             {
-                var parseResult = CustomParseContext(subContext);
-
-                if (parseResult != Result.Failure)
-                {
-                    continue;
-                }
+                var parseResult = Result.Failure;
 
                 foreach (var contextSetter in ContextSetters)
                 {
@@ -78,11 +73,6 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers
             }
 
             return ParseResult;
-        }
-
-        protected virtual Result CustomParseContext(SqmContext context)
-        {
-            return Result.Failure;
         }
     }
 }

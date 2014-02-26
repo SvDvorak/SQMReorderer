@@ -394,6 +394,7 @@ namespace SQMReorderer.Tests.Import
                     ExpCond = "cond",
                     ExpActiv = "activ",
                     ExpDesactiv = "desactiv",
+                    Effects = new List<string> { "line1", "line2" },
                     Synchronizations = new List<int> { 2, 3 },
                     Number = 4,
                     Position = new Vector(5, 6, 7)
@@ -420,6 +421,8 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("cond", newSensor.ExpCond);
             Assert.AreEqual("activ", newSensor.ExpActiv);
             Assert.AreEqual("desactiv", newSensor.ExpDesactiv);
+            Assert.AreEqual("line1", newSensor.Effects[0]);
+            Assert.AreEqual("line2", newSensor.Effects[1]);
             Assert.AreEqual(2, newSensor.Synchronizations[0]);
             Assert.AreEqual(3, newSensor.Synchronizations[1]);
             Assert.AreEqual(4, newSensor.Number);
@@ -441,6 +444,7 @@ namespace SQMReorderer.Tests.Import
             Assert.IsNull(newSensor.Name);
             Assert.IsNull(newSensor.ExpCond);
             Assert.IsNull(newSensor.ExpActiv);
+            Assert.IsEmpty(newSensor.Effects);
             Assert.IsEmpty(newSensor.Synchronizations);
             Assert.AreEqual(0, newSensor.Number);
             Assert.IsNull(newSensor.Position);

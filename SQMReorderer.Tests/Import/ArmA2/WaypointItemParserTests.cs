@@ -11,7 +11,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
         private WaypointItemParser _sut;
         private SqmContextCreator _contextCreator;
 
-        private readonly List<string> completeWaypointText = new List<string>()
+        private readonly List<string> completeWaypointText = new List<string>
             {
                 "class Item0",
                 "{",
@@ -30,8 +30,8 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "expActiv=\"op_h1;\";",
                 "synchronizations[]={3,2,1};",
                 "timeoutMin=300;",
-				"timeoutMid=301;",
-				"timeoutMax=302;",
+                "timeoutMid=301;",
+                "timeoutMax=302;",
                 "showWP=\"NEVER\";",
                 "};"
             };
@@ -97,7 +97,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
         [Test]
         public void Effects_are_parsed_in_waypoint()
         {
-            var context = _contextCreator.CreateContext(new List<string>()
+            var context = _contextCreator.CreateContext(new List<string>
                 {
                     "class Item0",
                     "{\n",

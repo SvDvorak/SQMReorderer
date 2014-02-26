@@ -112,6 +112,9 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalMissionText.Append("class Item0\n");
             originalMissionText.Append("{\n");
             originalMissionText.Append("b=10;\n");
+            originalMissionText.Append("class Effects\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("};\n");
             originalMissionText.Append("};\n");
             originalMissionText.Append("};\n");
             originalMissionText.Append("};\n");
@@ -444,12 +447,11 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalSensorText.Append("expCond=\"checkpoint3NrOfClearedDT == 7\";\n");
             originalSensorText.Append("expActiv=\"end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n");
             originalSensorText.Append("expDesactiv=\"some code stuffs\";\n");
+            originalSensorText.Append("class Effects\n");
+            originalSensorText.Append("{\n");
+            originalSensorText.Append("};\n");
             originalSensorText.Append("synchronizations[]={5,4};\n");
             originalSensorText.Append("};\n");
-            //originalItemText.Append("class Effects\n");
-            //originalItemText.Append("{\n");
-            //originalItemText.Append("\"blur\"\n");
-            //originalItemText.Append("};\n");
 
             var sensor = new Sensor();
 
@@ -473,9 +475,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
             sensor.ExpCond = "checkpoint3NrOfClearedDT == 7";
             sensor.ExpActiv = "end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";";
             sensor.ExpDesactiv = "some code stuffs";
+            sensor.Effects = new List<string>();
             sensor.Synchronizations = new List<int> { 5, 4 };
-
-            //item.Effects = new List<string>() { "blur" };
 
             var actualSensorText = _exportVisitor.Visit("Item", sensor);
 

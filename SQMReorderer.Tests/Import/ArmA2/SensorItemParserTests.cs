@@ -34,25 +34,19 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "expActiv=\"myEnd = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n",
                 "expDesactiv=\"a whole bunch of text\";\n",
                 "synchronizations[]={0,1};",
-                "class Effects\n",
-                "{\n",
-                "filmgrain,\n",
-                "motionblur,\n",
-                "brown\n",
-                "};\n",
                 "};"
             };
 
         private SqmContext _completeSimpleSensorItemContext;
+        private SqmContextCreator _contextCreator;
 
         [SetUp]
         public void Setup()
         {
             _parser = new SensorItemParser();
+            _contextCreator = new SqmContextCreator();
 
-            var contextCreator = new SqmContextCreator();
-
-            _completeSimpleSensorItemContext = contextCreator.CreateContext(completeSimpleSensorItemText);
+            _completeSimpleSensorItemContext = _contextCreator.CreateContext(completeSimpleSensorItemText);
         }
 
         [Test]
@@ -85,10 +79,24 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual(@"a whole bunch of text", sensorResult.ExpDesactiv);
             Assert.AreEqual(0, sensorResult.Synchronizations[0]);
             Assert.AreEqual(1, sensorResult.Synchronizations[1]);
-            //Assert.AreEqual(3, itemResult.Effects);
-            //Assert.AreEqual("filmgrain", itemResult.Effects[0]);
-            //Assert.AreEqual("motionblur", itemResult.Effects[1]);
-            //Assert.AreEqual("brown", itemResult.Effects[2]);
+        }
+
+        [Test]
+        public void Effects_are_parsed_in_sensor()
+        {
+            var context = _contextCreator.CreateContext(new List<string>
+                {
+                    "class Item0",
+                    "{\n",
+                    "class Effects\n",
+                    "{\n",
+                    "};\n",
+                    "};\n"
+                });
+
+            var sensor = _parser.ParseContext(context);
+            
+            Assert.IsEmpty(sensor.Effects);
         }
     }
 }

@@ -17948,6 +17948,9 @@ class Mission
 			type="EAST G";
 			age="UNKNOWN";
 			idVehicle=795;
+			class Effects
+			{
+			};
 			synchronizations[]={0};
 		};
 		class Item1
@@ -17957,6 +17960,9 @@ class Mission
 			type="EAST G";
 			age="UNKNOWN";
 			name="End1";
+			class Effects
+			{
+			};
 		};
 		class Item2
 		{
@@ -17964,6 +17970,9 @@ class Mission
 			interruptable=1;
 			type="EAST G";
 			age="UNKNOWN";
+			class Effects
+			{
+			};
 		};
 		class Item3
 		{
@@ -17971,6 +17980,9 @@ class Mission
 			interruptable=1;
 			type="EAST G";
 			age="UNKNOWN";
+			class Effects
+			{
+			};
 		};
 		class Item4
 		{
@@ -17981,6 +17993,9 @@ class Mission
 			timeoutMax=30;
 			age="UNKNOWN";
 			expActiv="base_overrun=true; ""Barracks"" setMarkerColor ""ColorGreen""; hint ""The Barracks have been overrun!""";
+			class Effects
+			{
+			};
 		};
 		class Item5
 		{
@@ -17991,6 +18006,9 @@ class Mission
 			timeoutMax=30;
 			age="UNKNOWN";
 			expActiv="base2_overrun=true; ""MotorPool"" setMarkerColor ""ColorGreen""; hint ""The Motor Pool has been overrun!""";
+			class Effects
+			{
+			};
 		};
 		class Item6
 		{
@@ -18001,6 +18019,9 @@ class Mission
 			timeoutMax=30;
 			age="UNKNOWN";
 			expActiv="base3_overrun=true; ""SFBase"" setMarkerColor ""ColorGreen""; hint ""The SF Base has been overrun!""";
+			class Effects
+			{
+			};
 		};
 		class Item7
 		{
@@ -18016,6 +18037,9 @@ class Mission
 			age="UNKNOWN";
 			expActiv="""1"" objstatus ""Done""; obj1_done=true; task1 setTaskState ""SUCCEEDED""; ""TownStrelka"" setMarkerColor ""ColorGreen""; hint ""Strelka has been captured!"";
 			expDesactiv="""1"" objstatus ""Failed""; obj1_done=false; task1 setTaskState ""FAILED""; ""TownStrelka"" setMarkerColor ""ColorRed""; hint ""Strelka has been lost!""";
+			class Effects
+			{
+			};
 		};
 		class Item8
 		{
@@ -18029,6 +18053,9 @@ class Mission
 			age="UNKNOWN";
 			expActiv="""2"" objstatus ""Done""; obj2_done=true; task2 setTaskState ""SUCCEEDED""; ""AirbaseSouth"" setMarkerColor ""ColorGreen""; hint ""Airbase South has been captured!""";
 			expDesactiv="""2"" objstatus ""Failed""; obj2_done=false; task2 setTaskState ""FAILED""; ""AirbaseSouth"" setMarkerColor ""ColorRed""; hint ""Airbase South has been lost!""";
+			class Effects
+			{
+			};
 		};
 		class Item9
 		{
@@ -18042,6 +18069,9 @@ class Mission
 			age="UNKNOWN";
 			expActiv="""3"" objstatus ""Done""; obj3_done=true; task3 setTaskState ""SUCCEEDED""; ""AirbaseNorth"" setMarkerColor ""ColorGreen""; hint ""Airbase North has been captured!""";
 			expDesactiv="""3"" objstatus ""Failed""; obj3_done=false; task3 setTaskState ""FAILED""; ""AirbaseNorth"" setMarkerColor ""ColorRed""; hint ""Airbase North has been lost!""";
+			class Effects
+			{
+			};
 		};
 		class Item10
 		{
@@ -18056,6 +18086,9 @@ class Mission
 			age="UNKNOWN";
 			expActiv="""4"" objstatus ""Done""; obj4_done=true; task4 setTaskState ""SUCCEEDED""; ""TownKamenyy"" setMarkerColor ""ColorGreen""; hint ""Kamenny has been captured!"";
 			expDesactiv="""4"" objstatus ""Failed""; obj4_done=false; task4 setTaskState ""Failed""; ""Kamenyy"" setMarkerColor ""ColorRed""; hint ""Kamenyy has been lost!""";
+			class Effects
+			{
+			};
 		};
 		class Item11
 		{
@@ -18068,6 +18101,9 @@ class Mission
 			type="END1";
 			age="UNKNOWN";
 			expCond="obj1_done && obj2_done && obj3_done && obj4_done";
+			class Effects
+			{
+			};
 		};
 		class Item12
 		{
@@ -18078,6 +18114,9 @@ class Mission
 			age="UNKNOWN";
 			expCond="((damage tank1) > 0.1)";
 			expActiv="tank1 setdammage 1;";
+			class Effects
+			{
+			};
 		};
 		class Item13
 		{
@@ -18088,6 +18127,9 @@ class Mission
 			age="UNKNOWN";
 			expCond="((damage tank2) > 0.1)";
 			expActiv="tank2 setdammage 1;";
+			class Effects
+			{
+			};
 		};
 		class Item14
 		{
@@ -18098,6 +18140,9 @@ class Mission
 			age="UNKNOWN";
 			expCond="((damage tank3) > 0.1)";
 			expActiv="tank3 setdammage 1;";
+			class Effects
+			{
+			};
 		};
 	};
 };

@@ -181,6 +181,7 @@ namespace SQMReorderer.Core.Import
                     ExpCond = sensor.ExpCond,
                     ExpActiv = sensor.ExpActiv,
                     ExpDesactiv = sensor.ExpDesactiv,
+                    Effects = sensor.Effects,
                     Synchronizations = sensor.Synchronizations
                 };
         }

@@ -6,6 +6,7 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
     {
         public Sensor()
         {
+            Effects = new List<string>();
             Synchronizations = new List<int>();
         }
 
@@ -27,6 +28,7 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
         public string ExpCond { get; set; }
         public string ExpActiv { get; set; }
         public string ExpDesactiv { get; set; }
+        public List<string> Effects { get; set; }
         public List<int> Synchronizations { get; set; }
     }
 }

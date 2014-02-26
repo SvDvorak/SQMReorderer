@@ -26,7 +26,7 @@ namespace SQMReorderer.Core.Export.ArmA2
 
         public string Visit(string elementName, MissionState mission)
         {
-            if(mission == null)
+            if (mission == null)
             {
                 return "";
             }
@@ -52,7 +52,7 @@ namespace SQMReorderer.Core.Export.ArmA2
 
         public string Visit(string elementName, Intel intel)
         {
-            if(intel == null)
+            if (intel == null)
             {
                 return "";
             }
@@ -105,27 +105,31 @@ namespace SQMReorderer.Core.Export.ArmA2
 
         public string Visit(string elementName, List<Vehicle> vehicles)
         {
-            return Visit(elementName, vehicles.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Vehicle) item));
+            return Visit(elementName, vehicles.Cast<ItemBase>().ToList(),
+                (itemName, item) => Visit(itemName, (Vehicle) item));
         }
 
         private string Visit(string elementName, List<Waypoint> waypoints)
         {
-            return Visit(elementName, waypoints.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Waypoint) item));
+            return Visit(elementName, waypoints.Cast<ItemBase>().ToList(),
+                (itemName, item) => Visit(itemName, (Waypoint) item));
         }
 
         public string Visit(string elementName, List<Marker> markers)
         {
-            return Visit(elementName, markers.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Marker) item));
+            return Visit(elementName, markers.Cast<ItemBase>().ToList(),
+                (itemName, item) => Visit(itemName, (Marker) item));
         }
 
         public string Visit(string elementName, List<Sensor> sensors)
         {
-            return Visit(elementName, sensors.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Sensor) item));
+            return Visit(elementName, sensors.Cast<ItemBase>().ToList(),
+                (itemName, item) => Visit(itemName, (Sensor) item));
         }
 
         public string Visit(string elementName, Vehicle vehicle)
         {
-            if(vehicle == null)
+            if (vehicle == null)
             {
                 return "";
             }
@@ -216,7 +220,7 @@ namespace SQMReorderer.Core.Export.ArmA2
 
         public string Visit(string elementName, Marker marker)
         {
-            if(marker == null)
+            if (marker == null)
             {
                 return "";
             }
@@ -243,7 +247,7 @@ namespace SQMReorderer.Core.Export.ArmA2
 
         public string Visit(string elementName, Sensor sensor)
         {
-            if(sensor == null)
+            if (sensor == null)
             {
                 return "";
             }
@@ -271,8 +275,8 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("expCond", sensor.ExpCond));
             stringBuilder.Append(_propertyVisitor.Visit("expActiv", sensor.ExpActiv));
             stringBuilder.Append(_propertyVisitor.Visit("expDesactiv", sensor.ExpDesactiv));
+            stringBuilder.Append(GetEffectsAsSingleString(sensor.Effects));
             stringBuilder.Append(_propertyVisitor.Visit("synchronizations", sensor.Synchronizations));
-            //itemString.Append(Visit("Effects", item.Effects));
             stringBuilder.Append("};\n");
 
             return stringBuilder.ToString();

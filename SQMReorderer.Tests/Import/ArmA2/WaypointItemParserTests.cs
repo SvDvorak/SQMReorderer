@@ -16,6 +16,8 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "class Item0",
                 "{",
                 "position[]={4083.6555,25.784687,11750.772};",
+                "idStatic=70594;",
+                "idObject=-166;",
                 "placement=100;",
                 "completitionRadius=150;",
                 "type=\"DISMISS\";",
@@ -66,6 +68,8 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual(4083.6555, waypoint.Position.X);
             Assert.AreEqual(25.784687, waypoint.Position.Y);
             Assert.AreEqual(11750.772, waypoint.Position.Z);
+            Assert.AreEqual(70594, waypoint.IdStatic);
+            Assert.AreEqual(-166, waypoint.IdObject);
             Assert.AreEqual(100, waypoint.Placement);
             Assert.AreEqual(150, waypoint.CompletitionRadius);
             Assert.AreEqual("DISMISS", waypoint.Type);

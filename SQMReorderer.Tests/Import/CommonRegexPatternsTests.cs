@@ -8,6 +8,7 @@ namespace SQMReorderer.Tests.Import
     public class CommonRegexPatternsTests
     {
         private Regex _doubleRegex = new Regex(CommonRegexPatterns.DoublePattern);
+        private Regex _intRegex = new Regex(CommonRegexPatterns.IntegerPattern);
         private Regex _stringRegex = new Regex(CommonRegexPatterns.NonSpacedTextPattern);
 
         [Test]
@@ -38,6 +39,18 @@ namespace SQMReorderer.Tests.Import
         public void Expect_negative_double_to_match_double_pattern()
         {
             Assert.IsTrue(_doubleRegex.IsMatch("-1.5"));
+        }
+
+        [Test]
+        public void Expect_positive_whole_numbers_to_match_int_pattern()
+        {
+            Assert.AreEqual("1", _intRegex.Match("1").Value);
+        }
+
+        [Test]
+        public void Expect_negative_whole_numbers_to_match_int_pattern()
+        {
+            Assert.AreEqual("-1", _intRegex.Match("-1").Value);
         }
 
         [Test]

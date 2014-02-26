@@ -48,5 +48,16 @@ namespace SQMReorderer.Tests.Import
 
             Assert.AreEqual(Result.Failure, matchResult);
         }
+
+        [Test]
+        public void Handles_negative_values()
+        {
+            var inputText = @"camelot=-133";
+
+            var matchResult = _integerPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
+
+            Assert.AreEqual(Result.Success, matchResult);
+            Assert.AreEqual(-133, _value);
+        }
     }
 }

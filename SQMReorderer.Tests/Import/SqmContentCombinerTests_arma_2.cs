@@ -240,6 +240,8 @@ namespace SQMReorderer.Tests.Import
                 {
                     Number = 1,
                     Position = new Vector(1, 2, 3),
+                    IdStatic = 3,
+                    IdObject = 15,
                     Placement = 100,
                     CompletitionRadius = 150,
                     Type = "a type",
@@ -258,6 +260,8 @@ namespace SQMReorderer.Tests.Import
             var newWaypoint = sqmContents.Mission.Groups[0].Waypoints[0];
             Assert.AreEqual(1, newWaypoint.Number);
             Assert.AreEqual(new Vector(1, 2, 3), newWaypoint.Position);
+            Assert.AreEqual(3, newWaypoint.IdStatic);
+            Assert.AreEqual(15, newWaypoint.IdObject);
             Assert.AreEqual(100, newWaypoint.Placement);
             Assert.AreEqual(150, newWaypoint.CompletitionRadius);
             Assert.AreEqual("a type", newWaypoint.Type);

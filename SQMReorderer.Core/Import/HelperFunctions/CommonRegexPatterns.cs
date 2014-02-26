@@ -9,7 +9,7 @@
 
         public static string IntegerPattern
         {
-            get { return @"\d+"; }
+            get { return @"-?\d+"; }
         }
 
         public static string NonSpacedTextPattern

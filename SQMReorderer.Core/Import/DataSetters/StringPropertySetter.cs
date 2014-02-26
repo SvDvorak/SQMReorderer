@@ -5,7 +5,7 @@ namespace SQMReorderer.Core.Import.DataSetters
     public class StringPropertySetter : SingleValuePropertySetterBase<string>
     {
         public StringPropertySetter(string propertyName, Action<string> propertySetter)
-            : base(propertyName, @""".+""", propertySetter)
+            : base(propertyName, @""".*""", propertySetter)
         {
         }
 

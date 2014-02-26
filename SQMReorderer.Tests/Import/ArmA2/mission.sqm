@@ -387,6 +387,7 @@ class Mission
 				class Item1
 				{
 					position[]={7688.7617,5.9911075,3486.3081};
+					expCond="";
 					class Effects
 					{
 					};

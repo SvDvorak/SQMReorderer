@@ -49,5 +49,16 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(Result.Failure, matchResult);
             Assert.AreNotEqual("itsonlyamodel", _value);
         }
+
+        [Test]
+        public void Expect_empty_value_when_line_is_matching_but_with_empty_value()
+        {
+            var inputText = "camelot=\"\"";
+
+            var matchResult = _stringPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
+
+            Assert.AreEqual(Result.Success, matchResult);
+            Assert.AreEqual("", _value);
+        }
     }
 }

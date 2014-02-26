@@ -199,6 +199,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalVehicleText.Append("lock=\"UNLOCKED\";\n");
             originalVehicleText.Append("skill=0.60000002;\n");
             originalVehicleText.Append("health=0.45;\n");
+            originalVehicleText.Append("fuel=1;\n");
             originalVehicleText.Append("ammo=2;\n");
             originalVehicleText.Append("text=\"UnitGUE_MTR1_AG\";\n");
             originalVehicleText.Append("markers[]=\n");
@@ -227,6 +228,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             vehicle.Lock = "UNLOCKED";
             vehicle.Skill = 0.60000002;
             vehicle.Health = 0.45;
+            vehicle.Fuel = 1;
             vehicle.Ammo = 2;
             vehicle.Text = "UnitGUE_MTR1_AG";
             vehicle.Markers = new List<string> { "as_1", "as_2" };

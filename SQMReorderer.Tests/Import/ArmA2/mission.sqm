@@ -17959,6 +17959,7 @@ class Mission
 			interruptable=1;
 			type="EAST G";
 			age="UNKNOWN";
+			text="trgClear";
 			name="End1";
 			class Effects
 			{

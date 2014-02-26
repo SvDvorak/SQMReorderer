@@ -28,6 +28,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "interruptable=1;\n",
                 "type=\"SWITCH\";\n",
                 "age=\"UNKNOWN\";\n",
+                "text=\"targetClear\";\n",
                 "name=\"END\";\n",
                 "idVehicle=795;",
                 "expCond=\"!alive SupplyTruck && ((getDammage AmmoBox1) > 0.5) && ((getDammage AmmoBox2) > 0.5)\";\n",
@@ -71,6 +72,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual(1, sensorResult.Interruptable);
             Assert.AreEqual("SWITCH", sensorResult.Type);
             Assert.AreEqual("UNKNOWN", sensorResult.Age);
+            Assert.AreEqual("targetClear", sensorResult.Text);
             Assert.AreEqual("END", sensorResult.Name);
             Assert.AreEqual(795, sensorResult.IdVehicle);
             Assert.AreEqual(@"!alive SupplyTruck && ((getDammage AmmoBox1) > 0.5) && ((getDammage AmmoBox2) > 0.5)",

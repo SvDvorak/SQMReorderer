@@ -23,6 +23,7 @@ namespace SQMReorderer.Core.Import.ResultObjects
         public int? TimeoutMax { get; set; }
         public int? Interruptable { get; set; }
         public string Age { get; set; }
+        public string Text { get; set; }
         public string Name { get; set; }
         public int? IdVehicle { get; set; }
         public string ExpCond { get; set; }

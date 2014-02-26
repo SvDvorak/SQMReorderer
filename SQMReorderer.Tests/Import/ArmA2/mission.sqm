@@ -358,11 +358,17 @@ class Mission
 					speed="LIMITED";
 					combat="SAFE";
 					synchronizations[]={3};
+					class Effects
+					{
+					};
 					showWP="NEVER";
 				};
 				class Item1
 				{
 					position[]={7688.7617,5.9911075,3486.3081};
+					class Effects
+					{
+					};
 					showWP="NEVER";
 				};
 			};

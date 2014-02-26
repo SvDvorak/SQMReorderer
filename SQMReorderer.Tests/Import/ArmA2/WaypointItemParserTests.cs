@@ -77,5 +77,23 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual(1, waypoint.Synchronizations[2]);
             Assert.AreEqual("NEVER", waypoint.ShowWp);
         }
+
+        [Test]
+        public void Effects_are_parsed_in_waypoint()
+        {
+            var context = _contextCreator.CreateContext(new List<string>()
+                {
+                    "class Item0",
+                    "{\n",
+                    "class Effects\n",
+                    "{\n",
+                    "};\n",
+                    "};\n"
+                });
+
+            var waypoint = _sut.ParseContext(context);
+
+            Assert.IsEmpty(waypoint.Effects);
+        }
     }
 }

@@ -72,6 +72,8 @@
     <Compile Include="Export\SqmFileExporter.cs" />
     <Compile Include="Export\SqmPropertyVisitor.cs" />
     <Compile Include="Import\ArmA2\ISqmFileImporter.cs" />
+    <Compile Include="Import\ArmA2\Parsers\Effects\EffectsParser.cs" />
+    <Compile Include="Import\ArmA2\Parsers\Effects\EffectsParserFactory.cs" />
     <Compile Include="Import\ArmA2\Parsers\Waypoint\WaypointItemParserFactory.cs" />
     <Compile Include="Import\ArmA2\Parsers\Waypoint\WaypointItemParser.cs" />
     <Compile Include="Import\ArmA2\ResultObjects\Waypoint.cs" />
@@ -171,6 +173,7 @@
   <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

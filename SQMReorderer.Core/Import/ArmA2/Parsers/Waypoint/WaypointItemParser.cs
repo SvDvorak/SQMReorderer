@@ -1,4 +1,6 @@
-﻿using SQMReorderer.Core.Import.DataSetters;
+﻿using System.Collections.Generic;
+using SQMReorderer.Core.Import.ArmA2.Parsers.Effects;
+using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers.Waypoint
 {
@@ -6,6 +8,9 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Waypoint
     {
         public WaypointItemParser()
         {
+            var effectsParser = new EffectsParser();
+            ContextSetters.Add(new ContextSetter<List<string>>(effectsParser, x => ParseResult.Effects = x));
+
             PropertySetters.Add(new VectorPropertySetter("position", x => ParseResult.Position = x));
             PropertySetters.Add(new IntegerPropertySetter("placement", x => ParseResult.Placement = x));
             PropertySetters.Add(new IntegerPropertySetter("completitionRadius", x => ParseResult.CompletitionRadius = x));

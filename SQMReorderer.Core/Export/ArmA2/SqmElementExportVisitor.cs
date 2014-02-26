@@ -180,7 +180,24 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("speed", waypoint.Speed));
             stringBuilder.Append(_propertyVisitor.Visit("combat", waypoint.Combat));
             stringBuilder.Append(_propertyVisitor.Visit("synchronizations", waypoint.Synchronizations));
+            stringBuilder.Append(GetEffectsAsSingleString(waypoint.Effects));
             stringBuilder.Append(_propertyVisitor.Visit("showWP", waypoint.ShowWp));
+            stringBuilder.Append("};\n");
+
+            return stringBuilder.ToString();
+        }
+
+        private string GetEffectsAsSingleString(List<string> effects)
+        {
+            if (effects == null)
+            {
+                return "";
+            }
+
+            var stringBuilder = new StringBuilder();
+
+            stringBuilder.Append("class Effects\n");
+            stringBuilder.Append("{\n");
             stringBuilder.Append("};\n");
 
             return stringBuilder.ToString();

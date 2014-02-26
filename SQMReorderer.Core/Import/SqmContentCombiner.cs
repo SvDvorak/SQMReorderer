@@ -116,6 +116,7 @@ namespace SQMReorderer.Core.Import
                     Speed = waypoint.Speed,
                     Combat = waypoint.Combat,
                     Synchronizations = waypoint.Synchronizations,
+                    Effects = waypoint.Effects,
                     ShowWp = waypoint.ShowWp
                 };
         }

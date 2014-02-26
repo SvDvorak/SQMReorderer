@@ -7,6 +7,7 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
         public Waypoint()
         {
             Synchronizations = new List<int>();
+            Effects = new List<string>();
         }
 
         public int? Placement { get; set; }
@@ -17,6 +18,7 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
         public string Speed { get; set; }
         public string Combat { get; set; }
         public List<int> Synchronizations { get; set; }
+        public List<string> Effects { get; set; }
         public string ShowWp { get; set; }
     }
 }

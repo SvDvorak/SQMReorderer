@@ -103,6 +103,22 @@ namespace SQMReorderer.Tests.Export
                 "id=6;\n" +
                 "};\n" +
                 "};\n" +
+                "class Waypoints\n" +
+                "{\n" +
+                "items=2;\n" +
+                "class Item0\n" +
+                "{\n" +
+                "class Effects\n" +
+                "{\n" +
+                "};\n" +
+                "};\n" +
+                "class Item1\n" +
+                "{\n" +
+                "class Effects\n" +
+                "{\n" +
+                "};\n" +
+                "};\n" +
+                "};\n" +
                 "};";
 
 
@@ -120,6 +136,22 @@ namespace SQMReorderer.Tests.Export
                 "\t\tclass Item5\n" +
                 "\t\t{\n" +
                 "\t\t\tid=6;\n" +
+                "\t\t};\n" +
+                "\t};\n" +
+                "\tclass Waypoints\n" +
+                "\t{\n" +
+                "\t\titems=2;\n" +
+                "\t\tclass Item0\n" +
+                "\t\t{\n" +
+                "\t\t\tclass Effects\n" +
+                "\t\t\t{\n" +
+                "\t\t\t};\n" +
+                "\t\t};\n" +
+                "\t\tclass Item1\n" +
+                "\t\t{\n" +
+                "\t\t\tclass Effects\n" +
+                "\t\t\t{\n" +
+                "\t\t\t};\n" +
                 "\t\t};\n" +
                 "\t};\n" +
                 "};";

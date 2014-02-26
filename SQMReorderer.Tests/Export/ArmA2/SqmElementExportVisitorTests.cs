@@ -281,9 +281,15 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalItemsText.Append("items=2;\n");
             originalItemsText.Append("class Item0\n");
             originalItemsText.Append("{\n");
+            originalItemsText.Append("class Effects\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("};\n");
             originalItemsText.Append("};\n");
             originalItemsText.Append("class Item1\n");
             originalItemsText.Append("{\n");
+            originalItemsText.Append("class Effects\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("};\n");
             originalItemsText.Append("};\n");
             originalItemsText.Append("};\n");
             originalItemsText.Append("};\n");
@@ -314,6 +320,9 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalItemsText.Append("speed=\"LIMITED\";\n");
             originalItemsText.Append("combat=\"SAFE\";\n");
             originalItemsText.Append("synchronizations[]={3,4};\n");
+            originalItemsText.Append("class Effects\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("};\n");
             originalItemsText.Append("showWP=\"NEVER\";\n");
             originalItemsText.Append("};\n");
 
@@ -331,6 +340,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
                     Speed = "LIMITED",
                     Combat = "SAFE",
                     Synchronizations = new List<int>() { 3, 4 },
+                    Effects = new List<string>(),
                     ShowWp = "NEVER"
                 };
 

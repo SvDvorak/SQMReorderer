@@ -248,6 +248,7 @@ namespace SQMReorderer.Tests.Import
                     Speed = "speed",
                     Combat = "combat",
                     Synchronizations = { 5, 3 },
+                    Effects = new List<string> { "line1", "line2" },
                     ShowWp = "show"
                 };
 
@@ -265,6 +266,8 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("combat", newWaypoint.Combat);
             Assert.AreEqual(5, newWaypoint.Synchronizations[0]);
             Assert.AreEqual(3, newWaypoint.Synchronizations[1]);
+            Assert.AreEqual("line1", newWaypoint.Effects[0]);
+            Assert.AreEqual("line2", newWaypoint.Effects[1]);
             Assert.AreEqual("show", newWaypoint.ShowWp);
         }
 

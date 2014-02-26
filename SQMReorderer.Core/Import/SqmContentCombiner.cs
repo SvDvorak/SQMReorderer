@@ -123,6 +123,9 @@ namespace SQMReorderer.Core.Import
                     ExpActiv = waypoint.ExpActiv,
                     Synchronizations = waypoint.Synchronizations,
                     Effects = waypoint.Effects,
+                    TimeoutMin = waypoint.TimeoutMin,
+                    TimeoutMid = waypoint.TimeoutMid,
+                    TimeoutMax = waypoint.TimeoutMax,
                     ShowWp = waypoint.ShowWp
                 };
         }

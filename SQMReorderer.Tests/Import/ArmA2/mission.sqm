@@ -375,6 +375,9 @@ class Mission
 					class Effects
 					{
 					};
+					timeoutMin=300;
+					timeoutMid=300;
+					timeoutMax=300;
 					showWP="NEVER";
 				};
 				class Item1

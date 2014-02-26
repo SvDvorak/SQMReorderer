@@ -335,6 +335,9 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalItemsText.Append("class Effects\n");
             originalItemsText.Append("{\n");
             originalItemsText.Append("};\n");
+            originalItemsText.Append("timeoutMin=300;\n");
+            originalItemsText.Append("timeoutMid=301;\n");
+            originalItemsText.Append("timeoutMax=302;\n");
             originalItemsText.Append("showWP=\"NEVER\";\n");
             originalItemsText.Append("};\n");
 
@@ -357,6 +360,9 @@ namespace SQMReorderer.Tests.Export.ArmA2
                     ExpActiv = "op_h1;",
                     Synchronizations = new List<int>() { 3, 4 },
                     Effects = new List<string>(),
+                    TimeoutMin = 300,
+                    TimeoutMid = 301,
+                    TimeoutMax = 302,
                     ShowWp = "NEVER"
                 };
 

@@ -187,6 +187,9 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("expActiv", waypoint.ExpActiv));
             stringBuilder.Append(_propertyVisitor.Visit("synchronizations", waypoint.Synchronizations));
             stringBuilder.Append(GetEffectsAsSingleString(waypoint.Effects));
+            stringBuilder.Append(_propertyVisitor.Visit("timeoutMin", waypoint.TimeoutMin));
+            stringBuilder.Append(_propertyVisitor.Visit("timeoutMid", waypoint.TimeoutMid));
+            stringBuilder.Append(_propertyVisitor.Visit("timeoutMax", waypoint.TimeoutMax));
             stringBuilder.Append(_propertyVisitor.Visit("showWP", waypoint.ShowWp));
             stringBuilder.Append("};\n");
 

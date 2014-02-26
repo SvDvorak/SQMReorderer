@@ -24,6 +24,9 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Waypoint
             PropertySetters.Add(new StringPropertySetter("combat", x => ParseResult.Combat = x));
             PropertySetters.Add(new StringPropertySetter("expActiv", x => ParseResult.ExpActiv = x));
             PropertySetters.Add(new IntegerListPropertySetter("synchronizations", x => ParseResult.Synchronizations = x));
+            PropertySetters.Add(new IntegerPropertySetter("timeoutMin", x => ParseResult.TimeoutMin = x));
+            PropertySetters.Add(new IntegerPropertySetter("timeoutMid", x => ParseResult.TimeoutMid = x));
+            PropertySetters.Add(new IntegerPropertySetter("timeoutMax", x => ParseResult.TimeoutMax = x));
             PropertySetters.Add(new StringPropertySetter("showWP", x => ParseResult.ShowWp = x));
         }
     }

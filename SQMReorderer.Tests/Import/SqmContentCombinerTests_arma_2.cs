@@ -256,6 +256,9 @@ namespace SQMReorderer.Tests.Import
                     Combat = "combat",
                     ExpActiv = "expActiv",
                     Synchronizations = { 5, 3 },
+                    TimeoutMin = 20,
+                    TimeoutMid = 21,
+                    TimeoutMax = 22,
                     Effects = new List<string> { "line1", "line2" },
                     ShowWp = "show"
                 };
@@ -280,6 +283,9 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(3, newWaypoint.Synchronizations[1]);
             Assert.AreEqual("line1", newWaypoint.Effects[0]);
             Assert.AreEqual("line2", newWaypoint.Effects[1]);
+            Assert.AreEqual(20, newWaypoint.TimeoutMin);
+            Assert.AreEqual(21, newWaypoint.TimeoutMid);
+            Assert.AreEqual(22, newWaypoint.TimeoutMax);
             Assert.AreEqual("show", newWaypoint.ShowWp);
         }
 

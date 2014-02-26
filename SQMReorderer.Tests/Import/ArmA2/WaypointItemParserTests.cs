@@ -28,6 +28,9 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "combat=\"SAFE\";",
                 "expActiv=\"op_h1;\";",
                 "synchronizations[]={3,2,1};",
+                "timeoutMin=300;",
+				"timeoutMid=301;",
+				"timeoutMax=302;",
                 "showWP=\"NEVER\";",
                 "};"
             };
@@ -83,6 +86,9 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual(3, waypoint.Synchronizations[0]);
             Assert.AreEqual(2, waypoint.Synchronizations[1]);
             Assert.AreEqual(1, waypoint.Synchronizations[2]);
+            Assert.AreEqual(300, waypoint.TimeoutMin);
+            Assert.AreEqual(301, waypoint.TimeoutMid);
+            Assert.AreEqual(302, waypoint.TimeoutMax);
             Assert.AreEqual("NEVER", waypoint.ShowWp);
         }
 

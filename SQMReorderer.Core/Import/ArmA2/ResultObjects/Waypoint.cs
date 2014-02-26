@@ -23,6 +23,9 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
         public string ExpActiv { get; set; }
         public List<int> Synchronizations { get; set; }
         public List<string> Effects { get; set; }
+        public int? TimeoutMin { get; set; }
+        public int? TimeoutMid { get; set; }
+        public int? TimeoutMax { get; set; }
         public string ShowWp { get; set; }
     }
 }

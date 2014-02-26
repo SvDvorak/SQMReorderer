@@ -1,5 +1,6 @@
 using System;
 using SQMReorderer.Core.Import;
+using SQMReorderer.Core.Import.FileVersion;
 using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Gui.Dialogs
@@ -33,9 +34,14 @@ namespace SQMReorderer.Gui.Dialogs
 
                 try
                 {
+                    if (fileStream.Length == 0)
+                    {
+                        throw new EmptyFileException();
+                    }
+
                     sqmContents = _sqmFileImporter.Import(fileStream);
                 }
-                catch (SqmParseException exception)
+                catch (Exception exception)
                 {
                     _messageBoxPresenter.ShowError("Unable to read file: " + exception.Message);
                 }

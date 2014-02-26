@@ -28,6 +28,7 @@ namespace SQMReorderer.Tests.Import
             _openSqmFileDialog = new OpenSqmFileDialog(_openFileDialogAdapter, _sqmFileImporter, _messageBoxPresenter);
 
             _memoryStream = Substitute.For<MemoryStream>();
+            _memoryStream.Length.Returns(1);
             _openFileDialogAdapter.OpenFile().Returns(_memoryStream);
 
             _expectedContents = new SqmContents();
@@ -98,6 +99,19 @@ namespace SQMReorderer.Tests.Import
             var sqmContents = _openSqmFileDialog.ShowDialog();
 
             _messageBoxPresenter.Received().ShowError("Unable to read file: Parse error");
+            Assert.IsNull(sqmContents);
+        }
+
+        [Test]
+        public void Shows_error_message_and_returns_null_when_selected_file_is_empty()
+        {
+            _openFileDialogAdapter.ShowDialog().Returns(true);
+            var emptyStream = Substitute.For<MemoryStream>();
+            _openFileDialogAdapter.OpenFile().Returns(emptyStream);
+
+            var sqmContents = _openSqmFileDialog.ShowDialog();
+
+            _messageBoxPresenter.Received().ShowError("Unable to read file: Empty file");
             Assert.IsNull(sqmContents);
         }
     }

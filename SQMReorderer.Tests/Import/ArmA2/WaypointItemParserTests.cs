@@ -23,6 +23,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "formation=\"FILE\";",
                 "speed=\"LIMITED\";",
                 "combat=\"SAFE\";",
+                "expActiv=\"op_h1;\";",
                 "synchronizations[]={3,2,1};",
                 "showWP=\"NEVER\";",
                 "};"
@@ -72,6 +73,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual("FILE", waypoint.Formation);
             Assert.AreEqual("LIMITED", waypoint.Speed);
             Assert.AreEqual("SAFE", waypoint.Combat);
+            Assert.AreEqual("op_h1;", waypoint.ExpActiv);
             Assert.AreEqual(3, waypoint.Synchronizations[0]);
             Assert.AreEqual(2, waypoint.Synchronizations[1]);
             Assert.AreEqual(1, waypoint.Synchronizations[2]);

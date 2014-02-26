@@ -357,6 +357,7 @@ class Mission
 					formation="FILE";
 					speed="LIMITED";
 					combat="SAFE";
+					expActiv="op_h1 flyinheight 200;";
 					synchronizations[]={3};
 					class Effects
 					{

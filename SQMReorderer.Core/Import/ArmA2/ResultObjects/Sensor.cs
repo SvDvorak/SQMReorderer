@@ -23,6 +23,7 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
         public int? Interruptable { get; set; }
         public string Age { get; set; }
         public int? IdVehicle { get; set; }
+        public string Name { get; set; }
         public string ExpCond { get; set; }
         public string ExpActiv { get; set; }
         public string ExpDesactiv { get; set; }

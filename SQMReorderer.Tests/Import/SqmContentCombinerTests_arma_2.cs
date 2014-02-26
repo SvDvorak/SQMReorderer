@@ -384,6 +384,7 @@ namespace SQMReorderer.Tests.Import
                     TimeoutMax = 32,
                     Interruptable = 3,
                     Age = "age",
+                    Name = "name",
                     IdVehicle = 14,
                     ExpCond = "cond",
                     ExpActiv = "activ",
@@ -409,6 +410,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(32, newSensor.TimeoutMax);
             Assert.AreEqual(3, newSensor.Interruptable);
             Assert.AreEqual("age", newSensor.Age);
+            Assert.AreEqual("name", newSensor.Name);
             Assert.AreEqual(14, newSensor.IdVehicle);
             Assert.AreEqual("cond", newSensor.ExpCond);
             Assert.AreEqual("activ", newSensor.ExpActiv);
@@ -431,6 +433,7 @@ namespace SQMReorderer.Tests.Import
             Assert.IsNull(newSensor.ActivationBy);
             Assert.IsNull(newSensor.Interruptable);
             Assert.IsNull(newSensor.Age);
+            Assert.IsNull(newSensor.Name);
             Assert.IsNull(newSensor.ExpCond);
             Assert.IsNull(newSensor.ExpActiv);
             Assert.IsEmpty(newSensor.Synchronizations);

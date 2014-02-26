@@ -435,6 +435,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalSensorText.Append("interruptable=1;\n");
             originalSensorText.Append("type=\"EMPTY\";\n");
             originalSensorText.Append("age=\"UNKNOWN\";\n");
+            originalSensorText.Append("name=\"END\";\n");
             originalSensorText.Append("idVehicle=795;\n");
             originalSensorText.Append("expCond=\"checkpoint3NrOfClearedDT == 7\";\n");
             originalSensorText.Append("expActiv=\"end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n");
@@ -463,6 +464,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             sensor.Interruptable = 1;
             sensor.Type = "EMPTY";
             sensor.Age = "UNKNOWN";
+            sensor.Name = "END";
             sensor.IdVehicle = 795;
             sensor.ExpCond = "checkpoint3NrOfClearedDT == 7";
             sensor.ExpActiv = "end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";";

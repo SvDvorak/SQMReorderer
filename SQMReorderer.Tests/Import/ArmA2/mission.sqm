@@ -17949,6 +17949,7 @@ class Mission
 			interruptable=1;
 			type="EAST G";
 			age="UNKNOWN";
+			name="End1";
 		};
 		class Item2
 		{

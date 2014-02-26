@@ -149,6 +149,7 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("health", vehicle.Health));
             stringBuilder.Append(_propertyVisitor.Visit("fuel", vehicle.Fuel));
             stringBuilder.Append(_propertyVisitor.Visit("text", vehicle.Text));
+            stringBuilder.Append(_propertyVisitor.Visit("markers", vehicle.Markers));
             stringBuilder.Append(_propertyVisitor.Visit("init", vehicle.Init));
             stringBuilder.Append(_propertyVisitor.Visit("description", vehicle.Description));
             stringBuilder.Append(_propertyVisitor.Visit("synchronizations", vehicle.Synchronizations));

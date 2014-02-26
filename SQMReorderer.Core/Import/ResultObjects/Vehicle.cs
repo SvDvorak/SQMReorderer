@@ -25,6 +25,7 @@ namespace SQMReorderer.Core.Import.ResultObjects
         public double? Health { get; set; }
         public double? Fuel { get; set; }
         public string Text { get; set; }
+        public List<string> Markers { get; set; }
         public string Init { get; set; }
         public string Description { get; set; }
         public List<int> Synchronizations { get; set; }

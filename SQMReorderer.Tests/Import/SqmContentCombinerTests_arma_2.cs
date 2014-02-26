@@ -176,6 +176,7 @@ namespace SQMReorderer.Tests.Import
                     Skill = 4,
                     Fuel = 0.1,
                     Text = "text",
+                    Markers = new List<string>() { "m1", "m2" },
                     Init = "init",
                     Description = "desc",
                     Synchronizations = { 5 },
@@ -201,6 +202,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(4, newVehicle.Skill);
             Assert.AreEqual(0.1, newVehicle.Fuel);
             Assert.AreEqual("text", newVehicle.Text);
+            Assert.AreEqual("m1", newVehicle.Markers[0]);
             Assert.AreEqual("init", newVehicle.Init);
             Assert.AreEqual("desc", newVehicle.Description);
             Assert.AreEqual(5, newVehicle.Synchronizations[0]);

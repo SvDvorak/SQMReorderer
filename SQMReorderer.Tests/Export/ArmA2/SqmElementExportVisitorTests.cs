@@ -200,6 +200,11 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalVehicleText.Append("skill=0.60000002;\n");
             originalVehicleText.Append("health=0.45;\n");
             originalVehicleText.Append("text=\"UnitGUE_MTR1_AG\";\n");
+            originalVehicleText.Append("markers[]=\n");
+            originalVehicleText.Append("{\n");
+            originalVehicleText.Append("\"as_1\",\n");
+            originalVehicleText.Append("\"as_2\"\n");
+            originalVehicleText.Append("};\n");
             originalVehicleText.Append("init=\"GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n");
             originalVehicleText.Append("description=\"TK Local Mortar Team 1 Assistant Gunner\";\n");
             originalVehicleText.Append("synchronizations[]={1,2,3};\n");
@@ -221,6 +226,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             vehicle.Skill = 0.60000002;
             vehicle.Health = 0.45;
             vehicle.Text = "UnitGUE_MTR1_AG";
+            vehicle.Markers = new List<string>() { "as_1", "as_2" };
             vehicle.Init = "GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";";
             vehicle.Description = "TK Local Mortar Team 1 Assistant Gunner";
             vehicle.Synchronizations = new List<int> { 1, 2, 3 };

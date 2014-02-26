@@ -31,6 +31,8 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle
             PropertySetters.Add(new StringPropertySetter("init", x => ParseResult.Init = x));
             PropertySetters.Add(new StringPropertySetter("description", x => ParseResult.Description = x));
             PropertySetters.Add(new IntegerListPropertySetter("synchronizations", x => ParseResult.Synchronizations = x));
+
+            ContextSetters.Add(new MultiLineStringListPropertySetter("markers", x => ParseResult.Markers = x));
         }
     }
 }

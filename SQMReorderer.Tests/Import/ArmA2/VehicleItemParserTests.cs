@@ -16,7 +16,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "class Item5\n",
                 "{\n",
                 "position[]={5533.8467,143.18413,6350.1045};\n",
-		"placement=60;",
+                "placement=60;",
                 "azimut=17.206261;\n",
                 "special=\"CARGO\";",
                 "id=4;\n",
@@ -62,9 +62,10 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "};"
             };
 
-        private readonly List<string> itemWithWaypointsText = new List<string>()
+        private readonly List<string> itemWithWaypointsText = new List<string>
             {
                 "class Item0",
+                "{",
                 "side=\"EAST\";",
                 "class Waypoints",
                 "{",
@@ -73,9 +74,21 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "{",
                 "type=\"DISMISS\";",
                 "};",
-		        "class Item1",
+                "class Item1",
                 "{",
                 "type=\"STOP\";",
+                "};",
+                "};",
+            };
+
+        private readonly List<string> itemWithMarkersText = new List<string>
+            {
+                "class Item0",
+                "{",
+                "markers[]=",
+                "{",
+                "\"text1\"",
+                "\"text2\"",
                 "};",
                 "};",
             };
@@ -85,6 +98,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
         private SqmContext _completeSimpleGroupItemContext;
         private SqmContext _completeComplexGroupItemContext;
         private SqmContext _itemWithWaypointsContext;
+        private SqmContext _itemWithMarkersContext;
 
         [SetUp]
         public void Setup()
@@ -96,6 +110,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
             _completeSimpleGroupItemContext = _contextCreator.CreateContext(completeSimpleGroupItemText);
             _completeComplexGroupItemContext = _contextCreator.CreateContext(completeComplexGroupItemText);
             _itemWithWaypointsContext = _contextCreator.CreateContext(itemWithWaypointsText);
+            _itemWithMarkersContext = _contextCreator.CreateContext(itemWithMarkersText);
         }
 
         [Test]
@@ -214,6 +229,15 @@ namespace SQMReorderer.Tests.Import.ArmA2
 
             Assert.AreEqual("DISMISS", itemResult.Waypoints[0].Type);
             Assert.AreEqual("STOP", itemResult.Waypoints[1].Type);
+        }
+
+        [Test]
+        public void Expect_parser_to_parse_vehicle_markers()
+        {
+            var itemResult = _parser.ParseContext(_itemWithMarkersContext);
+
+            Assert.AreEqual("text1", itemResult.Markers[0]);
+            Assert.AreEqual("text2", itemResult.Markers[1]);
         }
     }
 }

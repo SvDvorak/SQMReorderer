@@ -194,6 +194,15 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.5;
 					text="UnitUN_CO";
+					markers[]=
+					{
+						"ass_2",
+						"ass_4",
+						"ass_6",
+						"ass_1",
+						"ass_3",
+						"ass_5"
+					};
 					init="GrpUN_CO = group this; nul = [""co"",this] call f_fnc_assignGear;";
 					description="UN Commander";
 				};

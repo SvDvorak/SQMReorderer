@@ -198,8 +198,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalVehicleText.Append("vehicle=\"TK_GUE_Soldier_2_EP1\";\n");
             originalVehicleText.Append("player=\"PLAY CDG\";\n");
             originalVehicleText.Append("leader=1;\n");
-            originalVehicleText.Append("rank=\"CORPORAL\";\n");
             originalVehicleText.Append("lock=\"UNLOCKED\";\n");
+            originalVehicleText.Append("rank=\"CORPORAL\";\n");
             originalVehicleText.Append("skill=0.60000002;\n");
             originalVehicleText.Append("health=0.45;\n");
             originalVehicleText.Append("fuel=1.1;\n");
@@ -227,8 +227,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
             vehicle.VehicleName = "TK_GUE_Soldier_2_EP1";
             vehicle.Player = "PLAY CDG";
             vehicle.Leader = 1;
-            vehicle.Rank = "CORPORAL";
             vehicle.Lock = "UNLOCKED";
+            vehicle.Rank = "CORPORAL";
             vehicle.Skill = 0.60000002;
             vehicle.Health = 0.45;
             vehicle.Fuel = 1.1;

@@ -147,8 +147,8 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("vehicle", vehicle.VehicleName));
             stringBuilder.Append(_propertyVisitor.Visit("player", vehicle.Player));
             stringBuilder.Append(_propertyVisitor.Visit("leader", vehicle.Leader));
-            stringBuilder.Append(_propertyVisitor.Visit("rank", vehicle.Rank));
             stringBuilder.Append(_propertyVisitor.Visit("lock", vehicle.Lock));
+            stringBuilder.Append(_propertyVisitor.Visit("rank", vehicle.Rank));
             stringBuilder.Append(_propertyVisitor.Visit("skill", vehicle.Skill));
             stringBuilder.Append(_propertyVisitor.Visit("health", vehicle.Health));
             stringBuilder.Append(_propertyVisitor.Visit("fuel", vehicle.Fuel));

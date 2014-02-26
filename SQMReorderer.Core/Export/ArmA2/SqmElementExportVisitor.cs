@@ -269,6 +269,7 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("expCond", sensor.ExpCond));
             stringBuilder.Append(_propertyVisitor.Visit("expActiv", sensor.ExpActiv));
             stringBuilder.Append(_propertyVisitor.Visit("expDesactiv", sensor.ExpDesactiv));
+            stringBuilder.Append(_propertyVisitor.Visit("synchronizations", sensor.Synchronizations));
             //itemString.Append(Visit("Effects", item.Effects));
             stringBuilder.Append("};\n");
 

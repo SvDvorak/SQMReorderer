@@ -32,6 +32,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "expCond=\"!alive SupplyTruck && ((getDammage AmmoBox1) > 0.5) && ((getDammage AmmoBox2) > 0.5)\";\n",
                 "expActiv=\"myEnd = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n",
                 "expDesactiv=\"a whole bunch of text\";\n",
+                "synchronizations[]={0,1};",
                 "class Effects\n",
                 "{\n",
                 "filmgrain,\n",
@@ -80,6 +81,8 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 sensorResult.ExpCond);
             Assert.AreEqual(@"myEnd = [1] execVM ""f\server\f_mpEndBroadcast.sqf"";", sensorResult.ExpActiv);
             Assert.AreEqual(@"a whole bunch of text", sensorResult.ExpDesactiv);
+            Assert.AreEqual(0, sensorResult.Synchronizations[0]);
+            Assert.AreEqual(1, sensorResult.Synchronizations[1]);
             //Assert.AreEqual(3, itemResult.Effects);
             //Assert.AreEqual("filmgrain", itemResult.Effects[0]);
             //Assert.AreEqual("motionblur", itemResult.Effects[1]);

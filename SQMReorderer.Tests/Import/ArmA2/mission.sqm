@@ -17941,6 +17941,7 @@ class Mission
 			type="EAST G";
 			age="UNKNOWN";
 			idVehicle=795;
+			synchronizations[]={0};
 		};
 		class Item1
 		{

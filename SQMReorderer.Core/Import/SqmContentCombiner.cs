@@ -106,11 +106,11 @@ namespace SQMReorderer.Core.Import
 
         private Waypoint Combine(ArmA2.ResultObjects.Waypoint waypoint)
         {
-            return new Waypoint()
+            return new Waypoint
                 {
                     Number = waypoint.Number,
                     Position = waypoint.Position,
-		    Id = waypoint.Id,
+                    Id = waypoint.Id,
                     IdStatic = waypoint.IdStatic,
                     IdObject = waypoint.IdObject,
                     HousePos = waypoint.HousePos,
@@ -178,6 +178,7 @@ namespace SQMReorderer.Core.Import
                     ExpCond = sensor.ExpCond,
                     ExpActiv = sensor.ExpActiv,
                     ExpDesactiv = sensor.ExpDesactiv,
+                    Synchronizations = sensor.Synchronizations
                 };
         }
 

@@ -25,6 +25,7 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Sensor
             PropertySetters.Add(new StringPropertySetter("expCond", x => ParseResult.ExpCond = x));
             PropertySetters.Add(new StringPropertySetter("expActiv", x => ParseResult.ExpActiv = x));
             PropertySetters.Add(new StringPropertySetter("expDesactiv", x => ParseResult.ExpDesactiv = x));
+	    PropertySetters.Add(new IntegerListPropertySetter("synchronizations", x => ParseResult.Synchronizations = x));
         }
 
         protected override Result CustomParseContext(SqmContext context)

@@ -2,8 +2,8 @@
 {
     public class Sensor : ItemBase
     {
-        public int? A { get; set; }
-        public int? B { get; set; }
+        public double? A { get; set; }
+        public double? B { get; set; }
         public string Type { get; set; }
         public string ActivationBy { get; set; }
         public int? Interruptable { get; set; }

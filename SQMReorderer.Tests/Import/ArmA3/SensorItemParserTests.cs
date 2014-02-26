@@ -15,8 +15,8 @@ namespace SQMReorderer.Tests.Import.ArmA3
                 "class Item0\n",
                 "{\n",
                 "position[]={414,16,413};\n",
-                "a=40;\n",
-                "b=30;\n",
+                "a=4.4;\n",
+                "b=3.3;\n",
                 "activationBy=\"ANY\";\n",
                 "interruptable=1;\n",
                 "type=\"SWITCH\";\n",
@@ -53,8 +53,8 @@ namespace SQMReorderer.Tests.Import.ArmA3
             Assert.AreEqual(414, sensorResult.Position.X);
             Assert.AreEqual(16, sensorResult.Position.Y);
             Assert.AreEqual(413, sensorResult.Position.Z);
-            Assert.AreEqual(40, sensorResult.A);
-            Assert.AreEqual(30, sensorResult.B);
+            Assert.AreEqual(4.4, sensorResult.A);
+            Assert.AreEqual(3.3, sensorResult.B);
             Assert.AreEqual("ANY", sensorResult.ActivationBy);
             Assert.AreEqual(1, sensorResult.Interruptable);
             Assert.AreEqual("SWITCH", sensorResult.Type);

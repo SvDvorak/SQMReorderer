@@ -9,8 +9,8 @@ namespace SQMReorderer.Core.Import.ResultObjects
             Synchronizations = new List<int>();
         }
 
-        public int? A { get; set; }
-        public int? B { get; set; }
+        public double? A { get; set; }
+        public double? B { get; set; }
         public double? Angle { get; set; }
         public int? Rectangular { get; set; }
         public string Type { get; set; }

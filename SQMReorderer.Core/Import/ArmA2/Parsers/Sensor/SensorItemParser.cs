@@ -8,8 +8,8 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Sensor
         public SensorItemParser()
         {
             PropertySetters.Add(new VectorPropertySetter("position", x => ParseResult.Position = x));
-            PropertySetters.Add(new IntegerPropertySetter("a", x => ParseResult.A = x));
-            PropertySetters.Add(new IntegerPropertySetter("b", x => ParseResult.B = x));
+            PropertySetters.Add(new DoublePropertySetter("a", x => ParseResult.A = x));
+            PropertySetters.Add(new DoublePropertySetter("b", x => ParseResult.B = x));
             PropertySetters.Add(new DoublePropertySetter("angle", x => ParseResult.Angle = x));
             PropertySetters.Add(new IntegerPropertySetter("rectangular", x => ParseResult.Rectangular = x));
             PropertySetters.Add(new StringPropertySetter("activationBy", x => ParseResult.ActivationBy = x));

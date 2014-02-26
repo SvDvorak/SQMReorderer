@@ -17920,8 +17920,13 @@ class Mission
 			position[]={418.26794,527.66675,-197.25009};
 			name="mkrInsertion";
 			text="Insert";
+			markerType="RECTANGLE";
 			type="mil_start";
 			colorName="ColorRed";
+			fillName="FDiagonal";
+			a=12.5;
+			b=14.5;
+			drawBorder=1;
 			angle=0.32468101;
 		};
 		class Item1
@@ -18000,8 +18005,8 @@ class Mission
 		class Item7
 		{
 			position[]={4333.3696,27,3204.3972};
-			a=125;
-			b=75;
+			a=12.5;
+			b=7.5;
 			angle=20.8573;
 			rectangular=1;
 			activationBy="EAST";

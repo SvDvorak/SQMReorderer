@@ -6400,6 +6400,8 @@ class Mission
 			name="f_insert";
 			text="insert";
 			type="mil_start";
+			a=12.5;
+			b=14.5;
 		};
 		class Item1
 		{
@@ -6407,6 +6409,26 @@ class Mission
 			name="f_extract";
 			text="extract";
 			type="mil_end";
+		};
+	};
+	class Sensors
+	{
+		items=2;
+		class Item0
+		{
+			position[]={3687.3662,18.926329,3487.916};
+			a=12.5;
+			b=7.5;
+			interruptable=1;
+			type="EAST G";
+			age="UNKNOWN";
+		};
+		class Item1
+		{
+			position[]={3591.0562,18.251637,3685.8301};
+			interruptable=1;
+			type="EAST G";
+			age="UNKNOWN";
 		};
 	};
 };

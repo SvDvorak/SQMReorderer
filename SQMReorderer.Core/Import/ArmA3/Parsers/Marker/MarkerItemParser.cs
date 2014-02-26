@@ -12,8 +12,8 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers.Marker
             PropertySetters.Add(new StringPropertySetter("markerType", x => ParseResult.MarkerType = x));
             PropertySetters.Add(new StringPropertySetter("type", x => ParseResult.Type = x));
             PropertySetters.Add(new StringPropertySetter("fillName", x => ParseResult.FillName = x));
-            PropertySetters.Add(new IntegerPropertySetter("a", x => ParseResult.A = x));
-            PropertySetters.Add(new IntegerPropertySetter("b", x => ParseResult.B = x));
+            PropertySetters.Add(new DoublePropertySetter("a", x => ParseResult.A = x));
+            PropertySetters.Add(new DoublePropertySetter("b", x => ParseResult.B = x));
             PropertySetters.Add(new IntegerPropertySetter("drawBorder", x => ParseResult.DrawBorder = x));
             PropertySetters.Add(new DoublePropertySetter("angle", x => ParseResult.Angle = x));
         }

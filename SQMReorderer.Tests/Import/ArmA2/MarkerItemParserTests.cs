@@ -19,10 +19,10 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "text=\"Destroy equipment\";",
                 "markerType=\"ELLIPSE\";\n",
                 "type=\"Empty\";\n",
-		"colorName=\"ColorRed\";\n",
+                "colorName=\"ColorRed\";\n",
                 "fillName=\"Border\";\n",
-                "a=40;\n",
-                "b=30;\n",
+                "a=4.4;\n",
+                "b=3.3;\n",
                 "drawBorder=1;\n",
                 "angle=202.98199;\n",
                 "};\n"
@@ -55,8 +55,8 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual("Empty", markerResult.Type);
             Assert.AreEqual("ColorRed", markerResult.ColorName);
             Assert.AreEqual("Border", markerResult.FillName);
-            Assert.AreEqual(40, markerResult.A);
-            Assert.AreEqual(30, markerResult.B);
+            Assert.AreEqual(4.4, markerResult.A);
+            Assert.AreEqual(3.3, markerResult.B);
             Assert.AreEqual(1, markerResult.DrawBorder);
             Assert.AreEqual(202.98199, markerResult.Angle);
         }

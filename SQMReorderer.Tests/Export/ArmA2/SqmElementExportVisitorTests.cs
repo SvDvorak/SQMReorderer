@@ -390,8 +390,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalMarkerText.Append("type=\"EMPTY\";\n");
             originalMarkerText.Append("colorName=\"ColorRed\";\n");
             originalMarkerText.Append("fillName=\"FDiagonal\";\n");
-            originalMarkerText.Append("a=45;\n");
-            originalMarkerText.Append("b=55;\n");
+            originalMarkerText.Append("a=4.5;\n");
+            originalMarkerText.Append("b=5.5;\n");
             originalMarkerText.Append("drawBorder=1;\n");
             originalMarkerText.Append("angle=2.42;\n");
             originalMarkerText.Append("};\n");
@@ -406,8 +406,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
             marker.Type = "EMPTY";
             marker.ColorName = "ColorRed";
             marker.FillName = "FDiagonal";
-            marker.A = 45;
-            marker.B = 55;
+            marker.A = 4.5;
+            marker.B = 5.5;
             marker.DrawBorder = 1;
             marker.Angle = 2.42;
 
@@ -424,8 +424,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalSensorText.Append("class Item5\n");
             originalSensorText.Append("{\n");
             originalSensorText.Append("position[]={10,12,14};\n");
-            originalSensorText.Append("a=45;\n");
-            originalSensorText.Append("b=55;\n");
+            originalSensorText.Append("a=4.5;\n");
+            originalSensorText.Append("b=5.5;\n");
             originalSensorText.Append("angle=20.3;\n");
             originalSensorText.Append("rectangular=1;\n");
             originalSensorText.Append("activationBy=\"ANY\";\n");
@@ -453,8 +453,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
 
             sensor.Number = 5;
             sensor.Position = new Vector(10, 12, 14);
-            sensor.A = 45;
-            sensor.B = 55;
+            sensor.A = 4.5;
+            sensor.B = 5.5;
             sensor.Angle = 20.3;
             sensor.Rectangular = 1;
             sensor.ActivationBy = "ANY";

@@ -20,8 +20,8 @@ namespace SQMReorderer.Tests.Import.ArmA3
                 "markerType=\"ELLIPSE\";\n",
                 "type=\"Empty\";\n",
                 "fillName=\"Border\";\n",
-                "a=40;\n",
-                "b=30;\n",
+                "a=4.4;\n",
+                "b=3.3;\n",
                 "drawBorder=1;\n",
                 "angle=202.98199;\n",
                 "};\n"
@@ -53,8 +53,8 @@ namespace SQMReorderer.Tests.Import.ArmA3
             Assert.AreEqual("ELLIPSE", markerResult.MarkerType);
             Assert.AreEqual("Empty", markerResult.Type);
             Assert.AreEqual("Border", markerResult.FillName);
-            Assert.AreEqual(40, markerResult.A);
-            Assert.AreEqual(30, markerResult.B);
+            Assert.AreEqual(4.4, markerResult.A);
+            Assert.AreEqual(3.3, markerResult.B);
             Assert.AreEqual(1, markerResult.DrawBorder);
             Assert.AreEqual(202.98199, markerResult.Angle);
         }

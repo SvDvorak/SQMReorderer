@@ -15,8 +15,8 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "class Item0\n",
                 "{\n",
                 "position[]={414,16,413};\n",
-                "a=40;\n",
-                "b=30;\n",
+                "a=4.4;\n",
+                "b=3.3;\n",
                 "angle=20.8573;\n",
                 "rectangular=1;\n",
                 "activationBy=\"ANY\";\n",
@@ -64,8 +64,8 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual(414, sensorResult.Position.X);
             Assert.AreEqual(16, sensorResult.Position.Y);
             Assert.AreEqual(413, sensorResult.Position.Z);
-            Assert.AreEqual(40, sensorResult.A);
-            Assert.AreEqual(30, sensorResult.B);
+            Assert.AreEqual(4.4, sensorResult.A);
+            Assert.AreEqual(3.3, sensorResult.B);
             Assert.AreEqual(20.8573, sensorResult.Angle);
             Assert.AreEqual(1, sensorResult.Rectangular);
             Assert.AreEqual("ANY", sensorResult.ActivationBy);

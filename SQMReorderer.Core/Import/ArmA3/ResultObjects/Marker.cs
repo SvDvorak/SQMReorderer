@@ -7,8 +7,8 @@ namespace SQMReorderer.Core.Import.ArmA3.ResultObjects
         public string MarkerType { get; set; }
         public string Type { get; set; }
         public string FillName { get; set; }
-        public int? A { get; set; }
-        public int? B { get; set; }
+        public double? A { get; set; }
+        public double? B { get; set; }
         public int? DrawBorder { get; set; }
         public double? Angle { get; set; }
     }

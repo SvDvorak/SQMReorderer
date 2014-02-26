@@ -238,8 +238,8 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("fillName", marker.FillName));
             stringBuilder.Append(_propertyVisitor.Visit("a", marker.A));
             stringBuilder.Append(_propertyVisitor.Visit("b", marker.B));
-            stringBuilder.Append(_propertyVisitor.Visit("drawBorder", marker.DrawBorder));
             stringBuilder.Append(_propertyVisitor.Visit("angle", marker.Angle));
+            stringBuilder.Append(_propertyVisitor.Visit("drawBorder", marker.DrawBorder));
             stringBuilder.Append("};\n");
 
             return stringBuilder.ToString();

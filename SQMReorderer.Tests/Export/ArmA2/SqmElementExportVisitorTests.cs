@@ -397,8 +397,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalMarkerText.Append("fillName=\"FDiagonal\";\n");
             originalMarkerText.Append("a=4.5;\n");
             originalMarkerText.Append("b=5.5;\n");
-            originalMarkerText.Append("drawBorder=1;\n");
             originalMarkerText.Append("angle=2.42;\n");
+            originalMarkerText.Append("drawBorder=1;\n");
             originalMarkerText.Append("};\n");
 
             var marker = new Marker();
@@ -413,8 +413,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
             marker.FillName = "FDiagonal";
             marker.A = 4.5;
             marker.B = 5.5;
-            marker.DrawBorder = 1;
             marker.Angle = 2.42;
+            marker.DrawBorder = 1;
 
             var actualMarkerText = _exportVisitor.Visit("Item", marker);
 

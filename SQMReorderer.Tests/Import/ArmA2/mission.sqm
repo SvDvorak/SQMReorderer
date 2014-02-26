@@ -17926,8 +17926,8 @@ class Mission
 			fillName="FDiagonal";
 			a=12.5;
 			b=14.5;
-			drawBorder=1;
 			angle=0.32468101;
+			drawBorder=1;
 		};
 		class Item1
 		{

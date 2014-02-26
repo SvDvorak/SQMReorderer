@@ -179,6 +179,7 @@ namespace SQMReorderer.Tests.Import
                     Description = "desc",
                     Synchronizations = { 5 },
                     Vehicles = new List<Vehicle> { new Vehicle { Azimut = 6 } },
+                    Waypoints = new List<Waypoint> { new Waypoint { Type = "type" } },
                     Number = 7,
                     Position = new Vector(8, 9, 10)
                 };
@@ -202,6 +203,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("desc", newVehicle.Description);
             Assert.AreEqual(5, newVehicle.Synchronizations[0]);
             Assert.AreEqual(6, newVehicle.Vehicles[0].Azimut);
+            Assert.AreEqual("type", newVehicle.Waypoints[0].Type);
             Assert.AreEqual(7, newVehicle.Number);
             Assert.AreEqual(new Vector(8, 9, 10), newVehicle.Position);
         }
@@ -229,6 +231,60 @@ namespace SQMReorderer.Tests.Import
             Assert.IsEmpty(newVehicle.Vehicles);
             Assert.AreEqual(0, newVehicle.Number);
             Assert.IsNull(newVehicle.Position);
+        }
+
+        [Test]
+        public void Sets_waypoint_to_correct_arma_2_values()
+        {
+            var waypoint = new Waypoint
+                {
+                    Number = 1,
+                    Position = new Vector(1, 2, 3),
+                    Placement = 100,
+                    CompletitionRadius = 150,
+                    Type = "a type",
+                    CombatMode = "combatMode",
+                    Formation = "line",
+                    Speed = "speed",
+                    Combat = "combat",
+                    Synchronizations = { 5, 3 },
+                    ShowWp = "show"
+                };
+
+            var sqmContents = _sut.Combine(CreateContents(waypoint));
+
+            var newWaypoint = sqmContents.Mission.Groups[0].Waypoints[0];
+            Assert.AreEqual(1, newWaypoint.Number);
+            Assert.AreEqual(new Vector(1, 2, 3), newWaypoint.Position);
+            Assert.AreEqual(100, newWaypoint.Placement);
+            Assert.AreEqual(150, newWaypoint.CompletitionRadius);
+            Assert.AreEqual("a type", newWaypoint.Type);
+            Assert.AreEqual("combatMode", newWaypoint.CombatMode);
+            Assert.AreEqual("line", newWaypoint.Formation);
+            Assert.AreEqual("speed", newWaypoint.Speed);
+            Assert.AreEqual("combat", newWaypoint.Combat);
+            Assert.AreEqual(5, newWaypoint.Synchronizations[0]);
+            Assert.AreEqual(3, newWaypoint.Synchronizations[1]);
+            Assert.AreEqual("show", newWaypoint.ShowWp);
+        }
+
+        [Test]
+        public void Waypoint_contents_are_null_if_not_set_in_arma_2_waypoint()
+        {
+            var sqmContents = _sut.Combine(CreateContents(new Waypoint()));
+
+            var newWaypoint = sqmContents.Mission.Groups[0].Waypoints[0];
+            Assert.AreEqual(0, newWaypoint.Number);
+            Assert.AreEqual(null, newWaypoint.Position);
+            Assert.AreEqual(null, newWaypoint.Placement);
+            Assert.AreEqual(null, newWaypoint.CompletitionRadius);
+            Assert.AreEqual(null, newWaypoint.Type);
+            Assert.AreEqual(null, newWaypoint.CombatMode);
+            Assert.AreEqual(null, newWaypoint.Formation);
+            Assert.AreEqual(null, newWaypoint.Speed);
+            Assert.AreEqual(null, newWaypoint.Combat);
+            Assert.IsEmpty(newWaypoint.Synchronizations);
+            Assert.AreEqual(null, newWaypoint.ShowWp);
         }
 
         [Test]
@@ -380,6 +436,26 @@ namespace SQMReorderer.Tests.Import
                             Groups = new List<Vehicle>
                                 {
                                     vehicle
+                                }
+                        }
+                };
+        }
+
+        private SqmContents CreateContents(Waypoint waypoint)
+        {
+            return new SqmContents
+                {
+                    Mission = new MissionState
+                        {
+                            Groups = new List<Vehicle>
+                                {
+                                    new Vehicle
+                                        {
+                                            Waypoints = new List<Waypoint>
+                                                {
+                                                    waypoint
+                                                }
+                                        }
                                 }
                         }
                 };

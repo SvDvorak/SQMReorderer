@@ -88,12 +88,36 @@ namespace SQMReorderer.Core.Import
                     Description = vehicle.Description,
                     Synchronizations = vehicle.Synchronizations,
                     Vehicles = Combine(vehicle.Vehicles),
+                    Waypoints = Combine(vehicle.Waypoints)
                 };
         }
 
         private List<Marker> Combine(List<ArmA2.ResultObjects.Marker> markers)
         {
             return markers.Select(Combine).ToList();
+        }
+
+        private List<Waypoint> Combine(List<ArmA2.ResultObjects.Waypoint> waypoints)
+        {
+            return waypoints.Select(Combine).ToList();
+        }
+
+        private Waypoint Combine(ArmA2.ResultObjects.Waypoint waypoint)
+        {
+            return new Waypoint()
+                {
+                    Number = waypoint.Number,
+                    Position = waypoint.Position,
+                    Placement = waypoint.Placement,
+                    CompletitionRadius = waypoint.CompletitionRadius,
+                    Type = waypoint.Type,
+                    CombatMode = waypoint.CombatMode,
+                    Formation = waypoint.Formation,
+                    Speed = waypoint.Speed,
+                    Combat = waypoint.Combat,
+                    Synchronizations = waypoint.Synchronizations,
+                    ShowWp = waypoint.ShowWp
+                };
         }
 
         private Marker Combine(ArmA2.ResultObjects.Marker marker)

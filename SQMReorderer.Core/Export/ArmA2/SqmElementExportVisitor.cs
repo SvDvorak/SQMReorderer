@@ -108,6 +108,11 @@ namespace SQMReorderer.Core.Export.ArmA2
             return Visit(elementName, vehicles.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Vehicle) item));
         }
 
+        private string Visit(string elementName, List<Waypoint> waypoints)
+        {
+            return Visit(elementName, waypoints.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Waypoint) item));
+        }
+
         public string Visit(string elementName, List<Marker> markers)
         {
             return Visit(elementName, markers.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Marker) item));
@@ -148,7 +153,34 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("synchronizations", vehicle.Synchronizations));
 
             stringBuilder.Append(Visit("Vehicles", vehicle.Vehicles));
+            stringBuilder.Append(Visit("Waypoints", vehicle.Waypoints));
 
+            stringBuilder.Append("};\n");
+
+            return stringBuilder.ToString();
+        }
+
+        public string Visit(string elementName, Waypoint waypoint)
+        {
+            if (waypoint == null)
+            {
+                return "";
+            }
+
+            var stringBuilder = new StringBuilder();
+
+            stringBuilder.Append("class " + elementName + waypoint.Number + "\n");
+            stringBuilder.Append("{\n");
+            stringBuilder.Append(_propertyVisitor.Visit("position", waypoint.Position));
+            stringBuilder.Append(_propertyVisitor.Visit("placement", waypoint.Placement));
+            stringBuilder.Append(_propertyVisitor.Visit("completitionRadius", waypoint.CompletitionRadius));
+            stringBuilder.Append(_propertyVisitor.Visit("type", waypoint.Type));
+            stringBuilder.Append(_propertyVisitor.Visit("combatMode", waypoint.CombatMode));
+            stringBuilder.Append(_propertyVisitor.Visit("formation", waypoint.Formation));
+            stringBuilder.Append(_propertyVisitor.Visit("speed", waypoint.Speed));
+            stringBuilder.Append(_propertyVisitor.Visit("combat", waypoint.Combat));
+            stringBuilder.Append(_propertyVisitor.Visit("synchronizations", waypoint.Synchronizations));
+            stringBuilder.Append(_propertyVisitor.Visit("showWP", waypoint.ShowWp));
             stringBuilder.Append("};\n");
 
             return stringBuilder.ToString();

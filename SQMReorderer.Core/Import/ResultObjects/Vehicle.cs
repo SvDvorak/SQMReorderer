@@ -8,6 +8,7 @@ namespace SQMReorderer.Core.Import.ResultObjects
         {
             Synchronizations = new List<int>();
             Vehicles = new List<Vehicle>();
+            Waypoints = new List<Waypoint>();
         }
 
         public double? Azimut { get; set; }
@@ -28,5 +29,6 @@ namespace SQMReorderer.Core.Import.ResultObjects
         public List<int> Synchronizations { get; set; }
 
         public List<Vehicle> Vehicles { get; set; }
+        public List<Waypoint> Waypoints { get; set; }
     }
 }

@@ -271,6 +271,75 @@ namespace SQMReorderer.Tests.Export.ArmA2
         }
 
         [Test]
+        public void Expect_exporter_to_successfully_export_vehicle_with_waypoints()
+        {
+            var originalItemsText = new StringBuilder();
+            originalItemsText.Append("class Item0\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("class Waypoints\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("items=2;\n");
+            originalItemsText.Append("class Item0\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("};\n");
+            originalItemsText.Append("class Item1\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("};\n");
+            originalItemsText.Append("};\n");
+            originalItemsText.Append("};\n");
+
+            var exportVisitor = new SqmElementExportVisitor();
+
+            var vehicle = new Vehicle();
+            vehicle.Waypoints.Add(new Waypoint { Number = 0 });
+            vehicle.Waypoints.Add(new Waypoint { Number = 1 });
+
+            var actualItemsText = exportVisitor.Visit("Item", vehicle);
+
+            Assert.AreEqual(originalItemsText.ToString(), actualItemsText);
+        }
+
+        [Test]
+        public void Expect_exporter_to_successfull_export_complete_waypoint()
+        {
+            var originalItemsText = new StringBuilder();
+            originalItemsText.Append("class Item0\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("position[]={4083.6555,25.784687,11750.772};\n");
+            originalItemsText.Append("placement=100;\n");
+            originalItemsText.Append("completitionRadius=150;\n");
+            originalItemsText.Append("type=\"DISMISS\";\n");
+            originalItemsText.Append("combatMode=\"RED\";\n");
+            originalItemsText.Append("formation=\"FILE\";\n");
+            originalItemsText.Append("speed=\"LIMITED\";\n");
+            originalItemsText.Append("combat=\"SAFE\";\n");
+            originalItemsText.Append("synchronizations[]={3,4};\n");
+            originalItemsText.Append("showWP=\"NEVER\";\n");
+            originalItemsText.Append("};\n");
+
+            var exportVisitor = new SqmElementExportVisitor();
+
+            var waypoint = new Waypoint
+                {
+                    Number = 0,
+                    Position = new Vector(4083.6555, 25.784687, 11750.772),
+                    Placement = 100,
+                    CompletitionRadius = 150,
+                    Type = "DISMISS",
+                    CombatMode = "RED",
+                    Formation = "FILE",
+                    Speed = "LIMITED",
+                    Combat = "SAFE",
+                    Synchronizations = new List<int>() { 3, 4 },
+                    ShowWp = "NEVER"
+                };
+
+            var actualItemsText = exportVisitor.Visit("Item", waypoint);
+
+            Assert.AreEqual(originalItemsText.ToString(), actualItemsText);
+        }
+
+        [Test]
         public void Expect_exporter_to_successfully_export_complete_marker()
         {
             var originalMarkerText = new StringBuilder();

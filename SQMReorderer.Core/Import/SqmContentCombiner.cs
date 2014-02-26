@@ -72,6 +72,7 @@ namespace SQMReorderer.Core.Import
                 {
                     Number = vehicle.Number,
                     Position = vehicle.Position,
+                    Placement = vehicle.Placement,
                     Azimut = vehicle.Azimut,
                     Special = vehicle.Special,
                     Id = vehicle.Id,

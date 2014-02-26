@@ -184,6 +184,7 @@ class Mission
 				class Item0
 				{
 					position[]={321.84567,654.96686,416.8855};
+					placement=60;
 					azimut=0.32468101;
 					id=4;
 					side="GUER";

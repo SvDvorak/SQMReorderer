@@ -11,6 +11,7 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
             Waypoints = new List<Waypoint>();
         }
 
+        public int? Placement { get; set; }
         public double? Azimut { get; set; }
         public string Special { get; set; }
         public int? Id { get; set; }

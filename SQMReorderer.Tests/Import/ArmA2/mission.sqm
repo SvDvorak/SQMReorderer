@@ -362,11 +362,11 @@ class Mission
 				class Item0
 				{
 					position[]={4083.6555,25.784687,11750.772};
+					placement=100;
 					id=194;
 					idStatic=70594;
 					idObject=-1662725182;
 					housePos=2;
-					placement=100;
 					completitionRadius=150;
 					type="DISMISS";
 					combatMode="RED";

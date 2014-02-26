@@ -174,6 +174,7 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("position", waypoint.Position));
             stringBuilder.Append(_propertyVisitor.Visit("idStatic", waypoint.IdStatic));
             stringBuilder.Append(_propertyVisitor.Visit("idObject", waypoint.IdObject));
+            stringBuilder.Append(_propertyVisitor.Visit("housePos", waypoint.HousePos));
             stringBuilder.Append(_propertyVisitor.Visit("placement", waypoint.Placement));
             stringBuilder.Append(_propertyVisitor.Visit("completitionRadius", waypoint.CompletitionRadius));
             stringBuilder.Append(_propertyVisitor.Visit("type", waypoint.Type));

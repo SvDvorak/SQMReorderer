@@ -12,6 +12,7 @@ namespace SQMReorderer.Core.Import.ResultObjects
 
         public int? IdStatic { get; set; }
         public int? IdObject { get; set; }
+        public int? HousePos { get; set; }
         public int? Placement { get; set; }
         public int? CompletitionRadius { get; set; }
         public string Type { get; set; }

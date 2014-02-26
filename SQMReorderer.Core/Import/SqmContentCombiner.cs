@@ -110,6 +110,7 @@ namespace SQMReorderer.Core.Import
                     Position = waypoint.Position,
                     IdStatic = waypoint.IdStatic,
                     IdObject = waypoint.IdObject,
+                    HousePos = waypoint.HousePos,
                     Placement = waypoint.Placement,
                     CompletitionRadius = waypoint.CompletitionRadius,
                     Type = waypoint.Type,

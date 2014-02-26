@@ -242,6 +242,7 @@ namespace SQMReorderer.Tests.Import
                     Position = new Vector(1, 2, 3),
                     IdStatic = 3,
                     IdObject = 15,
+		    HousePos = 4,
                     Placement = 100,
                     CompletitionRadius = 150,
                     Type = "a type",
@@ -262,6 +263,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(new Vector(1, 2, 3), newWaypoint.Position);
             Assert.AreEqual(3, newWaypoint.IdStatic);
             Assert.AreEqual(15, newWaypoint.IdObject);
+            Assert.AreEqual(4, newWaypoint.HousePos);
             Assert.AreEqual(100, newWaypoint.Placement);
             Assert.AreEqual(150, newWaypoint.CompletitionRadius);
             Assert.AreEqual("a type", newWaypoint.Type);

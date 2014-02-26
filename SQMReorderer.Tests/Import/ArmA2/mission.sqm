@@ -352,6 +352,7 @@ class Mission
 					position[]={4083.6555,25.784687,11750.772};
 					idStatic=70594;
 					idObject=-1662725182;
+					housePos=2;
 					placement=100;
 					completitionRadius=150;
 					type="DISMISS";

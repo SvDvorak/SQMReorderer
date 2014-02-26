@@ -314,6 +314,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalItemsText.Append("position[]={4083.6555,25.784687,11750.772};\n");
             originalItemsText.Append("idStatic=70594;\n");
             originalItemsText.Append("idObject=-1662;\n");
+            originalItemsText.Append("housePos=5;\n");
             originalItemsText.Append("placement=100;\n");
             originalItemsText.Append("completitionRadius=150;\n");
             originalItemsText.Append("type=\"DISMISS\";\n");
@@ -337,6 +338,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
                     Position = new Vector(4083.6555, 25.784687, 11750.772),
                     IdStatic = 70594,
                     IdObject = -1662,
+                    HousePos = 5,
                     Placement = 100,
                     CompletitionRadius = 150,
                     Type = "DISMISS",

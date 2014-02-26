@@ -11,6 +11,7 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Waypoint
             var effectsParser = new EffectsParser();
             ContextSetters.Add(new ContextSetter<List<string>>(effectsParser, x => ParseResult.Effects = x));
 
+            PropertySetters.Add(new IntegerPropertySetter("id", x => ParseResult.Id = x));
             PropertySetters.Add(new IntegerPropertySetter("idStatic", x => ParseResult.IdStatic = x));
             PropertySetters.Add(new IntegerPropertySetter("idObject", x => ParseResult.IdObject = x));
             PropertySetters.Add(new IntegerPropertySetter("housePos", x => ParseResult.HousePos = x));

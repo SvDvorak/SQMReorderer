@@ -9,7 +9,7 @@ namespace SQMReorderer.Core.Import.DataSetters
 
         protected PropertySetterBase(string propertyPattern)
         {
-            _propertyRegex = new Regex(propertyPattern);
+            _propertyRegex = new Regex(@"^\s*" + propertyPattern);
         }
 
         public Result SetPropertyIfMatch(SqmLine line)

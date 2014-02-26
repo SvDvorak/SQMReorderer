@@ -110,6 +110,7 @@ namespace SQMReorderer.Core.Import
                 {
                     Number = waypoint.Number,
                     Position = waypoint.Position,
+		    Id = waypoint.Id,
                     IdStatic = waypoint.IdStatic,
                     IdObject = waypoint.IdObject,
                     HousePos = waypoint.HousePos,

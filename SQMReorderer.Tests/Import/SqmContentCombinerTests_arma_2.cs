@@ -176,7 +176,7 @@ namespace SQMReorderer.Tests.Import
                     Skill = 4,
                     Fuel = 0.1,
                     Text = "text",
-                    Markers = new List<string>() { "m1", "m2" },
+                    Markers = new List<string> { "m1", "m2" },
                     Init = "init",
                     Description = "desc",
                     Synchronizations = { 5 },
@@ -244,6 +244,7 @@ namespace SQMReorderer.Tests.Import
                 {
                     Number = 1,
                     Position = new Vector(1, 2, 3),
+                    Id = 2,
                     IdStatic = 3,
                     IdObject = 15,
                     HousePos = 4,
@@ -268,6 +269,7 @@ namespace SQMReorderer.Tests.Import
             var newWaypoint = sqmContents.Mission.Groups[0].Waypoints[0];
             Assert.AreEqual(1, newWaypoint.Number);
             Assert.AreEqual(new Vector(1, 2, 3), newWaypoint.Position);
+            Assert.AreEqual(2, newWaypoint.Id);
             Assert.AreEqual(3, newWaypoint.IdStatic);
             Assert.AreEqual(15, newWaypoint.IdObject);
             Assert.AreEqual(4, newWaypoint.HousePos);
@@ -297,6 +299,7 @@ namespace SQMReorderer.Tests.Import
             var newWaypoint = sqmContents.Mission.Groups[0].Waypoints[0];
             Assert.AreEqual(0, newWaypoint.Number);
             Assert.AreEqual(null, newWaypoint.Position);
+            Assert.AreEqual(null, newWaypoint.Id);
             Assert.AreEqual(null, newWaypoint.Placement);
             Assert.AreEqual(null, newWaypoint.CompletitionRadius);
             Assert.AreEqual(null, newWaypoint.Type);

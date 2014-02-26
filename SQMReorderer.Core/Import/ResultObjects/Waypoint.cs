@@ -27,5 +27,6 @@ namespace SQMReorderer.Core.Import.ResultObjects
         public int? TimeoutMid { get; set; }
         public int? TimeoutMax { get; set; }
         public string ShowWp { get; set; }
+        public int? Id { get; set; }
     }
 }

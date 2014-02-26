@@ -10,6 +10,7 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
             Effects = new List<string>();
         }
 
+        public int? Id { get; set; }
         public int? IdStatic { get; set; }
         public int? IdObject { get; set; }
         public int? HousePos { get; set; }

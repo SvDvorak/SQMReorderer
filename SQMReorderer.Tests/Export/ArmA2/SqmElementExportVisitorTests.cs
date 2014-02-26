@@ -118,22 +118,22 @@ namespace SQMReorderer.Tests.Export.ArmA2
 
             var mission = new MissionState();
 
-            mission.AddOns = new List<string>() { "cacharacters_e", "Takistan" };
-            mission.AddOnsAuto = new List<string>() { "ca_modules_functions", "camisc3" };
+            mission.AddOns = new List<string> { "cacharacters_e", "Takistan" };
+            mission.AddOnsAuto = new List<string> { "ca_modules_functions", "camisc3" };
             mission.RandomSeed = 4931020;
-            mission.Intel = new Intel() { BriefingName = "missionBriefing" };
+            mission.Intel = new Intel { BriefingName = "missionBriefing" };
 
-            var missionGroupItem = new Vehicle() { Number = 0, Side = "itemSide" };
-            mission.Groups = new List<Vehicle>() { missionGroupItem };
+            var missionGroupItem = new Vehicle { Number = 0, Side = "itemSide" };
+            mission.Groups = new List<Vehicle> { missionGroupItem };
 
-            var missionVehicleItem = new Vehicle() { Number = 0, Id = 1 };
-            mission.Vehicles = new List<Vehicle>() { missionVehicleItem };
+            var missionVehicleItem = new Vehicle { Number = 0, Id = 1 };
+            mission.Vehicles = new List<Vehicle> { missionVehicleItem };
 
-            var missionMarkerItem = new Marker() { A = 10 };
-            mission.Markers = new List<Marker>() { missionMarkerItem };
+            var missionMarkerItem = new Marker { A = 10 };
+            mission.Markers = new List<Marker> { missionMarkerItem };
 
-            var missionSensorItem = new Sensor() { B = 10 };
-            mission.Sensors = new List<Sensor>() { missionSensorItem };
+            var missionSensorItem = new Sensor { B = 10 };
+            mission.Sensors = new List<Sensor> { missionSensorItem };
 
             var exportedMission = _exportVisitor.Visit("Mission", mission);
 
@@ -205,7 +205,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalVehicleText.Append("\"as_1\",\n");
             originalVehicleText.Append("\"as_2\"\n");
             originalVehicleText.Append("};\n");
-            originalVehicleText.Append("init=\"GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n");
+            originalVehicleText.Append(
+                "init=\"GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n");
             originalVehicleText.Append("description=\"TK Local Mortar Team 1 Assistant Gunner\";\n");
             originalVehicleText.Append("synchronizations[]={1,2,3};\n");
             originalVehicleText.Append("};\n");
@@ -226,7 +227,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             vehicle.Skill = 0.60000002;
             vehicle.Health = 0.45;
             vehicle.Text = "UnitGUE_MTR1_AG";
-            vehicle.Markers = new List<string>() { "as_1", "as_2" };
+            vehicle.Markers = new List<string> { "as_1", "as_2" };
             vehicle.Init = "GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";";
             vehicle.Description = "TK Local Mortar Team 1 Assistant Gunner";
             vehicle.Synchronizations = new List<int> { 1, 2, 3 };
@@ -320,6 +321,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalItemsText.Append("class Item0\n");
             originalItemsText.Append("{\n");
             originalItemsText.Append("position[]={4083.6555,25.784687,11750.772};\n");
+            originalItemsText.Append("id=101;\n");
             originalItemsText.Append("idStatic=70594;\n");
             originalItemsText.Append("idObject=-1662;\n");
             originalItemsText.Append("housePos=5;\n");
@@ -347,6 +349,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
                 {
                     Number = 0,
                     Position = new Vector(4083.6555, 25.784687, 11750.772),
+                    Id = 101,
                     IdStatic = 70594,
                     IdObject = -1662,
                     HousePos = 5,
@@ -358,7 +361,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
                     Speed = "LIMITED",
                     Combat = "SAFE",
                     ExpActiv = "op_h1;",
-                    Synchronizations = new List<int>() { 3, 4 },
+                    Synchronizations = new List<int> { 3, 4 },
                     Effects = new List<string>(),
                     TimeoutMin = 300,
                     TimeoutMid = 301,

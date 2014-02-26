@@ -170,6 +170,7 @@ namespace SQMReorderer.Core.Import
                     TimeoutMax = sensor.TimeoutMax,
                     Interruptable = sensor.Interruptable,
                     Age = sensor.Age,
+                    IdVehicle = sensor.IdVehicle,
                     ExpCond = sensor.ExpCond,
                     ExpActiv = sensor.ExpActiv,
                     ExpDesactiv = sensor.ExpDesactiv,

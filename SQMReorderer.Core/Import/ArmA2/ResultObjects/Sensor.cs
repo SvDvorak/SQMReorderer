@@ -15,6 +15,7 @@
         public int? TimeoutMax { get; set; }
         public int? Interruptable { get; set; }
         public string Age { get; set; }
+        public int? IdVehicle { get; set; }
         public string ExpCond { get; set; }
         public string ExpActiv { get; set; }
         public string ExpDesactiv { get; set; }

@@ -23,11 +23,12 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "activationType=\"NOT PRESENT\";\n",
                 "repeating=1\n",
                 "timeoutMin=30;\n",
-			    "timeoutMid=31;\n",
-			    "timeoutMax=32;\n",
+                "timeoutMid=31;\n",
+                "timeoutMax=32;\n",
                 "interruptable=1;\n",
                 "type=\"SWITCH\";\n",
                 "age=\"UNKNOWN\";\n",
+                "idVehicle=795;",
                 "expCond=\"!alive SupplyTruck && ((getDammage AmmoBox1) > 0.5) && ((getDammage AmmoBox2) > 0.5)\";\n",
                 "expActiv=\"myEnd = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n",
                 "expDesactiv=\"a whole bunch of text\";\n",
@@ -74,7 +75,9 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual(1, sensorResult.Interruptable);
             Assert.AreEqual("SWITCH", sensorResult.Type);
             Assert.AreEqual("UNKNOWN", sensorResult.Age);
-            Assert.AreEqual(@"!alive SupplyTruck && ((getDammage AmmoBox1) > 0.5) && ((getDammage AmmoBox2) > 0.5)", sensorResult.ExpCond);
+            Assert.AreEqual(795, sensorResult.IdVehicle);
+            Assert.AreEqual(@"!alive SupplyTruck && ((getDammage AmmoBox1) > 0.5) && ((getDammage AmmoBox2) > 0.5)",
+                sensorResult.ExpCond);
             Assert.AreEqual(@"myEnd = [1] execVM ""f\server\f_mpEndBroadcast.sqf"";", sensorResult.ExpActiv);
             Assert.AreEqual(@"a whole bunch of text", sensorResult.ExpDesactiv);
             //Assert.AreEqual(3, itemResult.Effects);

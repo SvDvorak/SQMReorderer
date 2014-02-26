@@ -17936,6 +17936,7 @@ class Mission
 			interruptable=1;
 			type="EAST G";
 			age="UNKNOWN";
+			idVehicle=795;
 		};
 		class Item1
 		{

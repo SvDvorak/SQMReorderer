@@ -123,6 +123,7 @@ namespace SQMReorderer.Core.Import
                     Formation = waypoint.Formation,
                     Speed = waypoint.Speed,
                     Combat = waypoint.Combat,
+                    ExpCond = waypoint.ExpCond,
                     ExpActiv = waypoint.ExpActiv,
                     Synchronizations = waypoint.Synchronizations,
                     Effects = waypoint.Effects,

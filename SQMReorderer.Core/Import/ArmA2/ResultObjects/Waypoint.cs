@@ -21,6 +21,7 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
         public string Formation { get; set; }
         public string Speed { get; set; }
         public string Combat { get; set; }
+        public string ExpCond { get; set; }
         public string ExpActiv { get; set; }
         public List<int> Synchronizations { get; set; }
         public List<string> Effects { get; set; }

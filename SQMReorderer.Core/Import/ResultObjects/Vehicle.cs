@@ -11,6 +11,7 @@ namespace SQMReorderer.Core.Import.ResultObjects
             Waypoints = new List<Waypoint>();
         }
 
+        public double? Presence { get; set; }
         public int? Placement { get; set; }
         public double? Azimut { get; set; }
         public string Special { get; set; }

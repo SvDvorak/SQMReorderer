@@ -193,6 +193,7 @@ class Mission
 					leader=1;
 					rank="LIEUTENANT";
 					skill=0.5;
+					health=0.89999998;
 					ammo=0;
 					text="UnitUN_CO";
 					markers[]=

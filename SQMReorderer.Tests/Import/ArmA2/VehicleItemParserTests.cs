@@ -27,8 +27,9 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "rank=\"CORPORAL\";\n",
                 "skill=0.60000002;\n",
                 "lock=\"UNLOCKED\";\n",
+                "health=0.899;\n",
                 "fuel=0.1;\n",
-		"ammo=10;\n",
+                "ammo=10;\n",
                 "text=\"UnitUS_Alpha_FTL\";\n",
                 "init=\"GrpUS_Alpha = group this; nul = [\"ftl\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n",
                 "description=\"US Army Alpha Fireteam Leader\";\n",
@@ -154,6 +155,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual("CORPORAL", itemResult.Rank);
             Assert.AreEqual(0.60000002, itemResult.Skill);
             Assert.AreEqual("UNLOCKED", itemResult.Lock);
+            Assert.AreEqual(0.899, itemResult.Health);
             Assert.AreEqual(0.1, itemResult.Fuel);
             Assert.AreEqual(10, itemResult.Ammo);
             Assert.AreEqual("UnitUS_Alpha_FTL", itemResult.Text);

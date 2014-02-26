@@ -26,6 +26,7 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle
             PropertySetters.Add(new StringPropertySetter("rank", x => ParseResult.Rank = x));
             PropertySetters.Add(new DoublePropertySetter("skill", x => ParseResult.Skill = x));
             PropertySetters.Add(new StringPropertySetter("lock", x => ParseResult.Lock = x));
+            PropertySetters.Add(new DoublePropertySetter("health", x => ParseResult.Health = x));
             PropertySetters.Add(new DoublePropertySetter("fuel", x => ParseResult.Fuel = x));
             PropertySetters.Add(new IntegerPropertySetter("ammo", x => ParseResult.Ammo = x));
             PropertySetters.Add(new StringPropertySetter("text", x => ParseResult.Text = x));

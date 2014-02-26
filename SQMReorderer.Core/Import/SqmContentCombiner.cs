@@ -83,6 +83,7 @@ namespace SQMReorderer.Core.Import
                     Rank = vehicle.Rank,
                     Lock = vehicle.Lock,
                     Skill = vehicle.Skill,
+                    Health = vehicle.Health,
                     Fuel = vehicle.Fuel,
                     Ammo = vehicle.Ammo,
                     Text = vehicle.Text,

@@ -23,6 +23,7 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
         public string Rank { get; set; }
         public string Lock { get; set; }
         public double? Skill { get; set; }
+        public double? Health { get; set; }
         public double? Fuel { get; set; }
         public int? Ammo { get; set; }
         public string Text { get; set; }

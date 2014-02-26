@@ -171,6 +171,7 @@ namespace SQMReorderer.Tests.Export
                 "{\n" +
                 "a=45;\n" +
                 "position[]={10,12,14};\n" +
+                "init=\"this addEventHandler [\"\"HandleDamage\"\", {}];\";\n" +
                 "id=5;\n" +
                 "};";
 
@@ -179,6 +180,7 @@ namespace SQMReorderer.Tests.Export
                 "{\n" +
                 "\ta=45;\n" +
                 "\tposition[]={10,12,14};\n" +
+                "\tinit=\"this addEventHandler [\"\"HandleDamage\"\", {}];\";\n" +
                 "\tid=5;\n" +
                 "};";
 

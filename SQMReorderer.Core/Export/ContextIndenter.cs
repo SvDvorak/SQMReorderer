@@ -48,17 +48,19 @@ namespace SQMReorderer.Core.Export
 
         private int UpdateIndentation(int currentIndentation, char currentCharacter, char? nextCharacter)
         {
+            var newIndentation = currentIndentation;
+
             if (nextCharacter.HasValue && IsEndOfContext(nextCharacter.Value))
             {
-                return currentIndentation - 1;
+                newIndentation -= 1;
             }
 
             if (IsStartOfContext(currentCharacter))
             {
-                return currentIndentation + 1;
+                newIndentation += 1;
             }
 
-            return currentIndentation;
+            return newIndentation;
         }
 
         private void AddIndentation(int indentationLevel, StringBuilder builder)

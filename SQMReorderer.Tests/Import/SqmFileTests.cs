@@ -47,6 +47,7 @@ namespace SQMReorderer.Tests.Import
             Export(importResults, exportPath);
 
             var verifyExportStream = GetExportedFileStream(exportPath);
+            Assert.AreEqual(CombineToSingleString(importStream), CombineToSingleString(verifyExportStream));
 
             verifyExportStream.Close();
         }

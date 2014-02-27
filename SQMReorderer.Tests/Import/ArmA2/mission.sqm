@@ -369,20 +369,20 @@ class Mission
 				{
 					position[]={4083.6555,25.784687,11750.772};
 					placement=100;
+					completitionRadius=150;
 					id=194;
 					idStatic=70594;
 					idObject=-1662725182;
 					housePos=2;
-					completitionRadius=150;
 					type="DISMISS";
 					combatMode="RED";
 					formation="FILE";
 					speed="LIMITED";
 					combat="SAFE";
 					description="Secure the Compound";
-					visible=1;
 					expCond="obj2_done && obj3_done";
 					expActiv="op_h1 flyinheight 200;";
+					visible=1;
 					synchronizations[]={3};
 					class Effects
 					{
@@ -17958,8 +17958,8 @@ class Mission
 			interruptable=1;
 			type="EAST G";
 			age="UNKNOWN";
-			idStatic=85921;
 			idVehicle=795;
+			idStatic=85921;
 			idObject=-1272195167;
 			class Effects
 			{

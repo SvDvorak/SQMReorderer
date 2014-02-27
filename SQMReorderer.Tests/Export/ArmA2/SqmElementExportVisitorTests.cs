@@ -358,20 +358,20 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalItemsText.Append("{\n");
             originalItemsText.Append("position[]={4083.6555,25.784687,11750.772};\n");
             originalItemsText.Append("placement=100;\n");
+            originalItemsText.Append("completitionRadius=150;\n");
             originalItemsText.Append("id=101;\n");
             originalItemsText.Append("idStatic=70594;\n");
             originalItemsText.Append("idObject=-1662;\n");
             originalItemsText.Append("housePos=5;\n");
-            originalItemsText.Append("completitionRadius=150;\n");
             originalItemsText.Append("type=\"DISMISS\";\n");
             originalItemsText.Append("combatMode=\"RED\";\n");
             originalItemsText.Append("formation=\"FILE\";\n");
             originalItemsText.Append("speed=\"LIMITED\";\n");
             originalItemsText.Append("combat=\"SAFE\";\n");
             originalItemsText.Append("description=\"Secure the Compound\";\n");
-            originalItemsText.Append("visible=1;\n");
             originalItemsText.Append("expCond=\"obj_done;\";\n");
             originalItemsText.Append("expActiv=\"op_h1;\";\n");
+            originalItemsText.Append("visible=1;\n");
             originalItemsText.Append("synchronizations[]={3,4};\n");
             originalItemsText.Append("class Effects\n");
             originalItemsText.Append("{\n");
@@ -391,20 +391,20 @@ namespace SQMReorderer.Tests.Export.ArmA2
                     Number = 0,
                     Position = new Vector(4083.6555, 25.784687, 11750.772),
                     Placement = 100,
+                    CompletitionRadius = 150,
                     Id = 101,
                     IdStatic = 70594,
                     IdObject = -1662,
                     HousePos = 5,
-                    CompletitionRadius = 150,
                     Type = "DISMISS",
                     CombatMode = "RED",
                     Formation = "FILE",
                     Speed = "LIMITED",
                     Combat = "SAFE",
                     Description = "Secure the Compound",
-                    Visible = 1,
                     ExpCond = "obj_done;",
                     ExpActiv = "op_h1;",
+                    Visible = 1,
                     Synchronizations = new List<int> { 3, 4 },
                     Effects = new List<string> { "titleEffect=\"PLAIN DOWN\";", "otherText" },
                     TimeoutMin = 300,
@@ -479,10 +479,10 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalSensorText.Append("interruptable=1;\n");
             originalSensorText.Append("type=\"EMPTY\";\n");
             originalSensorText.Append("age=\"UNKNOWN\";\n");
+            originalSensorText.Append("idVehicle=795;\n");
             originalSensorText.Append("text=\"targetClear\";\n");
             originalSensorText.Append("name=\"END\";\n");
             originalSensorText.Append("idStatic=794;\n");
-            originalSensorText.Append("idVehicle=795;\n");
             originalSensorText.Append("idObject=796;\n");
             originalSensorText.Append("expCond=\"checkpoint3NrOfClearedDT == 7\";\n");
             originalSensorText.Append("expActiv=\"end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n");
@@ -512,10 +512,10 @@ namespace SQMReorderer.Tests.Export.ArmA2
             sensor.Interruptable = 1;
             sensor.Type = "EMPTY";
             sensor.Age = "UNKNOWN";
+            sensor.IdVehicle = 795;
             sensor.Text = "targetClear";
             sensor.Name = "END";
             sensor.IdStatic = 794;
-            sensor.IdVehicle = 795;
             sensor.IdObject = 796;
             sensor.ExpCond = "checkpoint3NrOfClearedDT == 7";
             sensor.ExpActiv = "end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";";

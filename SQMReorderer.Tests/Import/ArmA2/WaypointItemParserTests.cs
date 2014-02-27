@@ -28,6 +28,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "speed=\"LIMITED\";",
                 "combat=\"SAFE\";",
                 "description=\"Secure the Compound\";\n",
+                "visible=1;\n",
                 "expCond=\"obj2_done\";",
                 "expActiv=\"op_h1;\";",
                 "synchronizations[]={3,2,1};",
@@ -87,6 +88,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual("LIMITED", waypoint.Speed);
             Assert.AreEqual("SAFE", waypoint.Combat);
             Assert.AreEqual("Secure the Compound", waypoint.Description);
+            Assert.AreEqual(1, waypoint.Visible);
             Assert.AreEqual("obj2_done", waypoint.ExpCond);
             Assert.AreEqual("op_h1;", waypoint.ExpActiv);
             Assert.AreEqual(3, waypoint.Synchronizations[0]);

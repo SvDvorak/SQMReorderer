@@ -29,6 +29,7 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Sensor
             LineSetters.Add(new StringPropertySetter("name", x => ParseResult.Name = x));
             LineSetters.Add(new IntegerPropertySetter("idStatic", x => ParseResult.IdStatic = x));
             LineSetters.Add(new IntegerPropertySetter("idVehicle", x => ParseResult.IdVehicle = x));
+            LineSetters.Add(new IntegerPropertySetter("idObject", x => ParseResult.IdObject = x));
             LineSetters.Add(new StringPropertySetter("expCond", x => ParseResult.ExpCond = x));
             LineSetters.Add(new StringPropertySetter("expActiv", x => ParseResult.ExpActiv = x));
             LineSetters.Add(new StringPropertySetter("expDesactiv", x => ParseResult.ExpDesactiv = x));

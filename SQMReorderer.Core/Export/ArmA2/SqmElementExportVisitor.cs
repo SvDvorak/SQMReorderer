@@ -230,6 +230,7 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("speed", waypoint.Speed));
             stringBuilder.Append(_propertyVisitor.Visit("combat", waypoint.Combat));
             stringBuilder.Append(_propertyVisitor.Visit("description", waypoint.Description));
+            stringBuilder.Append(_propertyVisitor.Visit("visible", waypoint.Visible));
             stringBuilder.Append(_propertyVisitor.Visit("expCond", waypoint.ExpCond));
             stringBuilder.Append(_propertyVisitor.Visit("expActiv", waypoint.ExpActiv));
             stringBuilder.Append(_propertyVisitor.Visit("synchronizations", waypoint.Synchronizations));
@@ -321,6 +322,7 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("name", sensor.Name));
             stringBuilder.Append(_propertyVisitor.Visit("idStatic", sensor.IdStatic));
             stringBuilder.Append(_propertyVisitor.Visit("idVehicle", sensor.IdVehicle));
+            stringBuilder.Append(_propertyVisitor.Visit("idObject", sensor.IdObject));
             stringBuilder.Append(_propertyVisitor.Visit("expCond", sensor.ExpCond));
             stringBuilder.Append(_propertyVisitor.Visit("expActiv", sensor.ExpActiv));
             stringBuilder.Append(_propertyVisitor.Visit("expDesactiv", sensor.ExpDesactiv));

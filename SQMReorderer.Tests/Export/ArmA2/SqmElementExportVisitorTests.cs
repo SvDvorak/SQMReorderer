@@ -369,6 +369,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalItemsText.Append("speed=\"LIMITED\";\n");
             originalItemsText.Append("combat=\"SAFE\";\n");
             originalItemsText.Append("description=\"Secure the Compound\";\n");
+            originalItemsText.Append("visible=1;\n");
             originalItemsText.Append("expCond=\"obj_done;\";\n");
             originalItemsText.Append("expActiv=\"op_h1;\";\n");
             originalItemsText.Append("synchronizations[]={3,4};\n");
@@ -401,6 +402,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
                     Speed = "LIMITED",
                     Combat = "SAFE",
                     Description = "Secure the Compound",
+                    Visible = 1,
                     ExpCond = "obj_done;",
                     ExpActiv = "op_h1;",
                     Synchronizations = new List<int> { 3, 4 },
@@ -481,6 +483,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalSensorText.Append("name=\"END\";\n");
             originalSensorText.Append("idStatic=794;\n");
             originalSensorText.Append("idVehicle=795;\n");
+            originalSensorText.Append("idObject=796;\n");
             originalSensorText.Append("expCond=\"checkpoint3NrOfClearedDT == 7\";\n");
             originalSensorText.Append("expActiv=\"end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n");
             originalSensorText.Append("expDesactiv=\"some code stuffs\";\n");
@@ -513,6 +516,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             sensor.Name = "END";
             sensor.IdStatic = 794;
             sensor.IdVehicle = 795;
+            sensor.IdObject = 796;
             sensor.ExpCond = "checkpoint3NrOfClearedDT == 7";
             sensor.ExpActiv = "end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";";
             sensor.ExpDesactiv = "some code stuffs";

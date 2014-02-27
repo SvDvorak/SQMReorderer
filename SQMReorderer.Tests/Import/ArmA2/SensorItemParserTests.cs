@@ -32,6 +32,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "name=\"END\";\n",
                 "idStatic=859;\n",
                 "idVehicle=795;\n",
+                "idObject=-127;\n",
                 "expCond=\"!alive SupplyTruck && ((getDammage AmmoBox1) > 0.5) && ((getDammage AmmoBox2) > 0.5)\";\n",
                 "expActiv=\"myEnd = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n",
                 "expDesactiv=\"a whole bunch of text\";\n",
@@ -77,6 +78,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual("END", sensorResult.Name);
             Assert.AreEqual(859, sensorResult.IdStatic);
             Assert.AreEqual(795, sensorResult.IdVehicle);
+            Assert.AreEqual(-127, sensorResult.IdObject);
             Assert.AreEqual(@"!alive SupplyTruck && ((getDammage AmmoBox1) > 0.5) && ((getDammage AmmoBox2) > 0.5)",
                 sensorResult.ExpCond);
             Assert.AreEqual(@"myEnd = [1] execVM ""f\server\f_mpEndBroadcast.sqf"";", sensorResult.ExpActiv);

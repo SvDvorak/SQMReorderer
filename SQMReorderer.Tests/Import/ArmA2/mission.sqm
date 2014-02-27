@@ -380,6 +380,7 @@ class Mission
 					speed="LIMITED";
 					combat="SAFE";
 					description="Secure the Compound";
+					visible=1;
 					expCond="obj2_done && obj3_done";
 					expActiv="op_h1 flyinheight 200;";
 					synchronizations[]={3};
@@ -17959,6 +17960,7 @@ class Mission
 			age="UNKNOWN";
 			idStatic=85921;
 			idVehicle=795;
+			idObject=-1272195167;
 			class Effects
 			{
 				titleEffect="PLAIN DOWN";

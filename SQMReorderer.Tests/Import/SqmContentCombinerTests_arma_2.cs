@@ -277,6 +277,7 @@ namespace SQMReorderer.Tests.Import
                     Speed = "speed",
                     Combat = "combat",
                     Description = "description",
+                    Visible = 1,
                     ExpCond = "expCond",
                     ExpActiv = "expActiv",
                     Synchronizations = { 5, 3 },
@@ -304,6 +305,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("speed", newWaypoint.Speed);
             Assert.AreEqual("combat", newWaypoint.Combat);
             Assert.AreEqual("description", newWaypoint.Description);
+            Assert.AreEqual(1, newWaypoint.Visible);
             Assert.AreEqual("expCond", newWaypoint.ExpCond);
             Assert.AreEqual("expActiv", newWaypoint.ExpActiv);
             Assert.AreEqual(5, newWaypoint.Synchronizations[0]);
@@ -333,6 +335,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(null, newWaypoint.Speed);
             Assert.AreEqual(null, newWaypoint.Combat);
             Assert.AreEqual(null, newWaypoint.Description);
+            Assert.AreEqual(null, newWaypoint.Visible);
             Assert.AreEqual(null, newWaypoint.ExpCond);
             Assert.IsEmpty(newWaypoint.Synchronizations);
             Assert.AreEqual(null, newWaypoint.ShowWp);
@@ -415,6 +418,7 @@ namespace SQMReorderer.Tests.Import
                     Name = "name",
                     IdStatic = 13,
                     IdVehicle = 14,
+                    IdObject = 15,
                     ExpCond = "cond",
                     ExpActiv = "activ",
                     ExpDesactiv = "desactiv",
@@ -444,6 +448,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("name", newSensor.Name);
             Assert.AreEqual(13, newSensor.IdStatic);
             Assert.AreEqual(14, newSensor.IdVehicle);
+            Assert.AreEqual(15, newSensor.IdObject);
             Assert.AreEqual("cond", newSensor.ExpCond);
             Assert.AreEqual("activ", newSensor.ExpActiv);
             Assert.AreEqual("desactiv", newSensor.ExpDesactiv);
@@ -470,6 +475,7 @@ namespace SQMReorderer.Tests.Import
             Assert.IsNull(newSensor.Text);
             Assert.IsNull(newSensor.Name);
             Assert.IsNull(newSensor.IdStatic);
+            Assert.IsNull(newSensor.IdObject);
             Assert.IsNull(newSensor.ExpCond);
             Assert.IsNull(newSensor.ExpActiv);
             Assert.IsEmpty(newSensor.Effects);

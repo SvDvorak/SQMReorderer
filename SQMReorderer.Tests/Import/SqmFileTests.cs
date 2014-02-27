@@ -36,31 +36,6 @@ namespace SQMReorderer.Tests.Import
             verifyExportStream.Close();
         }
 
-        [Test]
-        [TestCase(3)]
-        [TestCase(4)]
-        [TestCase(5)]
-        [TestCase(11)]
-        [TestCase(12)]
-        [TestCase(13)]
-        [TestCase(14)]
-        [TestCase(15)]
-        [TestCase(16)]
-        public void test_all_arma_3_files(int fileNumber)
-        {
-            var importStream = new FileStream(string.Format("C:\\Users\\Andreas\\Desktop\\omg dvorak\\mission ({0}).sqm", fileNumber), FileMode.OpenOrCreate);
-            var importResults = Import(importStream);
-            importStream.Seek(0, SeekOrigin.Begin);
-
-            string exportPath = string.Format("C:\\Users\\Andreas\\Desktop\\omg dvorak\\mission ({0})_auto_out.sqm", fileNumber);
-            Export(importResults, exportPath);
-
-            var verifyExportStream = GetExportedFileStream(exportPath);
-            Assert.AreEqual(CombineToSingleString(importStream), CombineToSingleString(verifyExportStream));
-
-            verifyExportStream.Close();
-        }
-
         private void CleanupPreviousTest()
         {
             var testExportPath = GetTestExportPath();

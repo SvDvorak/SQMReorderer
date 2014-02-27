@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2A3D6BF9-D17A-43BD-BEA5-EBB73EB6E569}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SQMReorderer.Core</RootNamespace>
     <AssemblyName>SQMReorderer.Core</AssemblyName>
@@ -51,6 +51,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -127,7 +130,6 @@
     <Compile Include="Import\SqmFileImporter.cs" />
     <Compile Include="Import\FileVersion\StreamReaderAdapter.cs" />
     <Compile Include="Import\FileVersion\StreamReaderFactory.cs" />
-    <Compile Include="Main.cs" />
     <Compile Include="Import\Context\ISqmContextCreator.cs" />
     <Compile Include="Import\Context\SqmContext.cs" />
     <Compile Include="Import\Context\SqmContextCreator.cs" />

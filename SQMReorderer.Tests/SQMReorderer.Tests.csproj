@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{47888AD3-BB00-415D-9C69-CE88C2EBD76B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SQMReorderer.Tests</RootNamespace>
     <AssemblyName>SQMReorderer.Tests</AssemblyName>
@@ -51,6 +51,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -103,7 +106,6 @@
     <Compile Include="Import\ArmA3\SqmFileImporterTests.cs" />
     <Compile Include="Import\ArmA3\SqmParserTests.cs" />
     <Compile Include="Import\ArmA3\VehicleItemParserTests.cs" />
-    <Compile Include="Main.cs" />
     <Compile Include="MainView\CombinedVehicleViewModelTests.cs" />
     <Compile Include="MainView\GroupViewModelsFactoryTests.cs" />
     <Compile Include="MainView\TeamViewModelsFactoryTests.cs" />

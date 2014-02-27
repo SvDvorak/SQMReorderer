@@ -81,6 +81,7 @@ class Mission
 				items=2;
 				class Item0
 				{
+					presence=0.77276766;
 					position[]={21114.061,17.466579,7606.3511};
 					placement=15;
 					id=0;

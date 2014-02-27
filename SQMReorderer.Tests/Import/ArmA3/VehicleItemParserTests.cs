@@ -16,6 +16,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
             {
                 "class Item5\n",
                 "{\n",
+                "presence=0.256;",
                 "position[]={5533.8467,143.18413,6350.1045};\n",
                 "placement=60;\n",
                 "azimut=17.206261;\n",
@@ -126,6 +127,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
             var itemResult = _parser.ParseContext(_completeSimpleGroupItemContext);
 
             Assert.AreEqual(5, itemResult.Number);
+            Assert.AreEqual(0.256, itemResult.Presence);
             Assert.AreEqual(5533.8467, itemResult.Position.X);
             Assert.AreEqual(143.18413, itemResult.Position.Y);
             Assert.AreEqual(6350.1045, itemResult.Position.Z);

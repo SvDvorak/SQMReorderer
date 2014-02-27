@@ -8,6 +8,7 @@ namespace SQMReorderer.Core.Import.ArmA3.ResultObjects
         {
             Synchronizations = new List<int>();
             Vehicles = new List<Vehicle>();
+            Waypoints = new List<Waypoint>();
         }
 
         public double? Azimut { get; set; }
@@ -18,13 +19,15 @@ namespace SQMReorderer.Core.Import.ArmA3.ResultObjects
         public int? Leader { get; set; }
         public string Rank { get; set; }
         public double? Skill { get; set; }
-        public double? Health { get; set; }
         public string Lock { get; set; }
+        public double? Health { get; set; }
+        public double? Ammo { get; set; }
         public string Text { get; set; }
         public string Init { get; set; }
         public string Description { get; set; }
         public List<int> Synchronizations { get; set; }
 
         public List<Vehicle> Vehicles { get; set; }
+        public List<Waypoint> Waypoints { get; set; }
     }
 }

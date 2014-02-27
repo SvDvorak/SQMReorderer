@@ -89,6 +89,7 @@ class Mission
 					leader=1;
 					rank="LIEUTENANT";
 					skill=0.60000002;
+					ammo=1.2;
 					text="UnitNATO_CO";
 					init="GrpNATO_CO = group this; nul = [""co"",this] call f_fnc_folk_assignGear ;";
 					description="NATO Commander";
@@ -105,6 +106,19 @@ class Mission
 					text="UnitNATO_CO_M";
 					init="GrpNATO_CO = group this; nul = [""m"",this] call f_fnc_folk_assignGear ;";
 					description="NATO Medic";
+				};
+			};
+			class Waypoints
+			{
+				items=1;
+				class Item0
+				{
+					position[]={14132.853,19.049568,18440.096};
+					expActiv="[group this, getPos this, 100] call BIS_fnc_taskPatrol;";
+					class Effects
+					{
+					};
+					showWP="NEVER";
 				};
 			};
 		};
@@ -6424,6 +6438,9 @@ class Mission
 			interruptable=1;
 			type="EAST G";
 			age="UNKNOWN";
+			class Effects
+			{
+			};
 		};
 		class Item1
 		{
@@ -6431,6 +6448,9 @@ class Mission
 			interruptable=1;
 			type="EAST G";
 			age="UNKNOWN";
+			class Effects
+			{
+			};
 		};
 	};
 };

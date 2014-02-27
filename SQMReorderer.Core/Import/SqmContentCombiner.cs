@@ -286,12 +286,31 @@ namespace SQMReorderer.Core.Import
                     Lock = vehicle.Lock,
                     Skill = vehicle.Skill,
                     Health = vehicle.Health,
+                    Ammo = vehicle.Ammo,
                     Text = vehicle.Text,
                     Init = vehicle.Init,
                     Description = vehicle.Description,
                     Synchronizations = vehicle.Synchronizations,
                     Vehicles = Combine(vehicle.Vehicles),
+                    Waypoints = Combine(vehicle.Waypoints)
                 };
+        }
+
+        private List<Waypoint> Combine(List<ArmA3.ResultObjects.Waypoint> waypoints)
+        {
+            return waypoints.Select(Combine).ToList();
+        }
+
+        private Waypoint Combine(ArmA3.ResultObjects.Waypoint waypoint)
+        {
+            return new Waypoint
+            {
+                Number = waypoint.Number,
+                Position = waypoint.Position,
+                ExpActiv = waypoint.ExpActiv,
+                Effects = waypoint.Effects,
+                ShowWp = waypoint.ShowWp
+            };
         }
 
         private List<Marker> Combine(List<ArmA3.ResultObjects.Marker> markers)
@@ -338,6 +357,7 @@ namespace SQMReorderer.Core.Import
                     Age = sensor.Age,
                     ExpCond = sensor.ExpCond,
                     ExpActiv = sensor.ExpActiv,
+                    Effects = sensor.Effects
                 };
         }
     }

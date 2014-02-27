@@ -112,6 +112,9 @@ namespace SQMReorderer.Tests.Export.ArmA3
             originalMissionText.Append("class Item0\n");
             originalMissionText.Append("{\n");
             originalMissionText.Append("b=10;\n");
+            originalMissionText.Append("class Effects\n");
+            originalMissionText.Append("{\n");
+            originalMissionText.Append("};\n");
             originalMissionText.Append("};\n");
             originalMissionText.Append("};\n");
             originalMissionText.Append("};\n");
@@ -221,6 +224,7 @@ namespace SQMReorderer.Tests.Export.ArmA3
             originalVehicleText.Append("rank=\"CORPORAL\";\n");
             originalVehicleText.Append("skill=0.60000002;\n");
             originalVehicleText.Append("health=0.45;\n");
+            originalVehicleText.Append("ammo=2.2;\n");
             originalVehicleText.Append("text=\"UnitGUE_MTR1_AG\";\n");
             originalVehicleText.Append("init=\"GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n");
             originalVehicleText.Append("description=\"TK Local Mortar Team 1 Assistant Gunner\";\n");
@@ -240,6 +244,7 @@ namespace SQMReorderer.Tests.Export.ArmA3
             vehicle.Rank = "CORPORAL";
             vehicle.Skill = 0.60000002;
             vehicle.Health = 0.45;
+            vehicle.Ammo = 2.2;
             vehicle.Text = "UnitGUE_MTR1_AG";
             vehicle.Init = "GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";";
             vehicle.Description = "TK Local Mortar Team 1 Assistant Gunner";
@@ -288,6 +293,73 @@ namespace SQMReorderer.Tests.Export.ArmA3
             item1.Vehicles.Add(item1_2);
 
             var actualItemsText = exportVisitor.Visit("Item", item1);
+
+            Assert.AreEqual(originalItemsText.ToString(), actualItemsText);
+        }
+
+        [Test]
+        public void Expect_exporter_to_successfully_export_vehicle_with_waypoints()
+        {
+            var originalItemsText = new StringBuilder();
+            originalItemsText.Append("class Item0\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("class Waypoints\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("items=2;\n");
+            originalItemsText.Append("class Item0\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("class Effects\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("};\n");
+            originalItemsText.Append("};\n");
+            originalItemsText.Append("class Item1\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("class Effects\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("};\n");
+            originalItemsText.Append("};\n");
+            originalItemsText.Append("};\n");
+            originalItemsText.Append("};\n");
+
+            var exportVisitor = new SqmElementExportVisitor();
+
+            var vehicle = new Vehicle();
+            vehicle.Waypoints.Add(new Waypoint { Number = 0 });
+            vehicle.Waypoints.Add(new Waypoint { Number = 1 });
+
+            var actualItemsText = exportVisitor.Visit("Item", vehicle);
+
+            Assert.AreEqual(originalItemsText.ToString(), actualItemsText);
+        }
+
+        [Test]
+        public void Expect_exporter_to_successfull_export_complete_waypoint()
+        {
+            var originalItemsText = new StringBuilder();
+            originalItemsText.Append("class Item0\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("position[]={4083.6555,25.784687,11750.772};\n");
+            originalItemsText.Append("expActiv=\"op_h1;\";\n");
+            originalItemsText.Append("class Effects\n");
+            originalItemsText.Append("{\n");
+            originalItemsText.Append("titleEffect=\"PLAIN DOWN\";\n");
+            originalItemsText.Append("otherText\n");
+            originalItemsText.Append("};\n");
+            originalItemsText.Append("showWP=\"NEVER\";\n");
+            originalItemsText.Append("};\n");
+
+            var exportVisitor = new SqmElementExportVisitor();
+
+            var waypoint = new Waypoint
+            {
+                Number = 0,
+                Position = new Vector(4083.6555, 25.784687, 11750.772),
+                ExpActiv = "op_h1;",
+                Effects = new List<string> { "titleEffect=\"PLAIN DOWN\";", "otherText" },
+                ShowWp = "NEVER"
+            };
+
+            var actualItemsText = exportVisitor.Visit("Item", waypoint);
 
             Assert.AreEqual(originalItemsText.ToString(), actualItemsText);
         }
@@ -349,12 +421,12 @@ namespace SQMReorderer.Tests.Export.ArmA3
             originalSensorText.Append("age=\"UNKNOWN\";\n");
             originalSensorText.Append("expCond=\"checkpoint3NrOfClearedDT == 7\";\n");
             originalSensorText.Append("expActiv=\"end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n");
+            originalSensorText.Append("class Effects\n");
+            originalSensorText.Append("{\n");
+            originalSensorText.Append("titleEffect=\"PLAIN DOWN\";\n");
+            originalSensorText.Append("otherText\n");
             originalSensorText.Append("};\n");
-            //originalItemText.Append("class Effects\n");
-            //originalItemText.Append("{\n");
-            //originalItemText.Append("\"blur\"\n");
-            //originalItemText.Append("};\n");
-
+            originalSensorText.Append("};\n");
             var sensor = new Sensor();
 
             sensor.Number = 5;
@@ -368,8 +440,7 @@ namespace SQMReorderer.Tests.Export.ArmA3
             sensor.Age = "UNKNOWN";
             sensor.ExpCond = "checkpoint3NrOfClearedDT == 7";
             sensor.ExpActiv = "end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";";
-
-            //item.Effects = new List<string>() { "blur" };
+            sensor.Effects = new List<string> { "titleEffect=\"PLAIN DOWN\";", "otherText" };
 
             var actualSensorText = _exportVisitor.Visit("Item", sensor);
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using SQMReorderer.Core.Import.ArmA2.Parsers.Effects;
 using SQMReorderer.Core.Import.DataSetters;
+using SQMReorderer.Core.Import.DataSetters.Effects;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers.Sensor
 {

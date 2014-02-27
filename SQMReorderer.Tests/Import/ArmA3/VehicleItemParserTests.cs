@@ -25,8 +25,9 @@ namespace SQMReorderer.Tests.Import.ArmA3
                 "leader=1;\n",
                 "rank=\"CORPORAL\";\n",
                 "skill=0.60000002;\n",
-		        "health=0.99000001;",
                 "lock=\"UNLOCKED\";\n",
+                "health=0.99000001;",
+                "ammo=1.1;\n",
                 "text=\"UnitUS_Alpha_FTL\";\n",
                 "init=\"GrpUS_Alpha = group this; nul = [\"ftl\",this] execVM \"f\\common\\folk_assignGear.sqf\";\";\n",
                 "description=\"US Army Alpha Fireteam Leader\";\n",
@@ -39,32 +40,52 @@ namespace SQMReorderer.Tests.Import.ArmA3
                 "class Item4",
                 "{",
                 "side=\"WEST\";",
-			    "class Vehicles",
-			    "{",
-				"items=4;",
-				"class Item0",
-				"{",
-				"text=\"UnitUS_Bravo_FTL\";",
-				"};",
-				"class Item1",
-				"{",
-				"text=\"UnitUS_Bravo_AR\";",
-				"};",
-				"class Item2",
-				"{",
-				"text=\"UnitUS_Bravo_AAR\";",
-				"};",
-				"class Item3",
-				"{",
-				"text=\"UnitUS_Bravo_Eng\";",
-				"};",
-			    "};"
+                "class Vehicles",
+                "{",
+                "items=4;",
+                "class Item0",
+                "{",
+                "text=\"UnitUS_Bravo_FTL\";",
+                "};",
+                "class Item1",
+                "{",
+                "text=\"UnitUS_Bravo_AR\";",
+                "};",
+                "class Item2",
+                "{",
+                "text=\"UnitUS_Bravo_AAR\";",
+                "};",
+                "class Item3",
+                "{",
+                "text=\"UnitUS_Bravo_Eng\";",
+                "};",
+                "};"
+            };
+
+        private readonly List<string> itemWithWaypointsText = new List<string>
+            {
+                "class Item0",
+                "{",
+                "side=\"EAST\";",
+                "class Waypoints",
+                "{",
+                "items=2;",
+                "class Item0",
+                "{",
+                "showWP=\"DISMISS\";",
+                "};",
+                "class Item1",
+                "{",
+                "showWP=\"STOP\";",
+                "};",
+                "};",
             };
 
         private SqmContextCreator _contextCreator;
 
         private SqmContext _completeSimpleGroupItemContext;
         private SqmContext _completeComplexGroupItemContext;
+        private SqmContext _itemWithWaypointsContext;
 
         [SetUp]
         public void Setup()
@@ -75,12 +96,13 @@ namespace SQMReorderer.Tests.Import.ArmA3
 
             _completeSimpleGroupItemContext = _contextCreator.CreateContext(completeSimpleGroupItemText);
             _completeComplexGroupItemContext = _contextCreator.CreateContext(completeComplexGroupItemText);
+            _itemWithWaypointsContext = _contextCreator.CreateContext(itemWithWaypointsText);
         }
 
         [Test]
         public void Expect_is_item_to_return_true_on_correct_item_element_syntax()
         {
-            var context = _contextCreator.CreateContext(new List<string> {"class Item0", "{\n", "};\n"});
+            var context = _contextCreator.CreateContext(new List<string> { "class Item0", "{\n", "};\n" });
 
             var isItemElement = _parser.IsCorrectContext(context);
 
@@ -90,7 +112,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
         [Test]
         public void Expect_is_item_to_return_false_on_incorrect_item_element_syntax()
         {
-            var context = _contextCreator.CreateContext(new List<string>() {"class Markers", "{\n", "};\n"});
+            var context = _contextCreator.CreateContext(new List<string> { "class Markers", "{\n", "};\n" });
 
             var isItemElement = _parser.IsCorrectContext(context);
 
@@ -114,10 +136,12 @@ namespace SQMReorderer.Tests.Import.ArmA3
             Assert.AreEqual(1, itemResult.Leader);
             Assert.AreEqual("CORPORAL", itemResult.Rank);
             Assert.AreEqual(0.60000002, itemResult.Skill);
-            Assert.AreEqual(0.99000001, itemResult.Health);
             Assert.AreEqual("UNLOCKED", itemResult.Lock);
+            Assert.AreEqual(0.99000001, itemResult.Health);
+            Assert.AreEqual(1.1, itemResult.Ammo);
             Assert.AreEqual("UnitUS_Alpha_FTL", itemResult.Text);
-            Assert.AreEqual(@"GrpUS_Alpha = group this; nul = [""ftl"",this] execVM ""f\common\folk_assignGear.sqf"";", itemResult.Init);
+            Assert.AreEqual(@"GrpUS_Alpha = group this; nul = [""ftl"",this] execVM ""f\common\folk_assignGear.sqf"";",
+                itemResult.Init);
             Assert.AreEqual("US Army Alpha Fireteam Leader", itemResult.Description);
             Assert.AreEqual(116, itemResult.Synchronizations[0]);
             Assert.AreEqual(117, itemResult.Synchronizations[1]);
@@ -173,6 +197,23 @@ namespace SQMReorderer.Tests.Import.ArmA3
             Assert.AreEqual(4, itemResult.Vehicles.Count);
             Assert.AreEqual("UnitUS_Bravo_FTL", itemResult.Vehicles[0].Text);
             Assert.AreEqual("UnitUS_Bravo_Eng", itemResult.Vehicles[3].Text);
+        }
+
+        [Test]
+        public void Empty_waypoints_when_waypoints_are_missing()
+        {
+            var itemResult = _parser.ParseContext(_completeComplexGroupItemContext);
+
+            Assert.IsEmpty(itemResult.Waypoints);
+        }
+
+        [Test]
+        public void Expect_parser_to_parse_waypoints()
+        {
+            var itemResult = _parser.ParseContext(_itemWithWaypointsContext);
+
+            Assert.AreEqual("DISMISS", itemResult.Waypoints[0].ShowWp);
+            Assert.AreEqual("STOP", itemResult.Waypoints[1].ShowWp);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers.MissionState
             ContextSetters.Add(new MultiLineStringListPropertySetter("addOns", x => ParseResult.AddOns = x));
             ContextSetters.Add(new MultiLineStringListPropertySetter("addOnsAuto", x => ParseResult.AddOnsAuto = x));
 
-            PropertySetters.Add(new IntegerPropertySetter("randomSeed", x => ParseResult.RandomSeed = x));
+            LineSetters.Add(new IntegerPropertySetter("randomSeed", x => ParseResult.RandomSeed = x));
         }
 
         protected override Regex HeaderRegex

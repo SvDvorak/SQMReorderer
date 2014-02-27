@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.DataSetters;
 
-namespace SQMReorderer.Core.Import.ArmA2.Parsers.Effects
+namespace SQMReorderer.Core.Import.DataSetters.Effects
 {
     public class EffectsParser : ParserBase<List<string>>
     {

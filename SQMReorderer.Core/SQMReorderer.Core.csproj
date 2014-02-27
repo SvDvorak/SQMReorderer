@@ -72,8 +72,11 @@
     <Compile Include="Export\SqmFileExporter.cs" />
     <Compile Include="Export\SqmPropertyVisitor.cs" />
     <Compile Include="Import\ArmA2\ISqmFileImporter.cs" />
-    <Compile Include="Import\ArmA2\Parsers\Effects\EffectsParser.cs" />
-    <Compile Include="Import\ArmA2\Parsers\Effects\EffectsParserFactory.cs" />
+    <Compile Include="Import\ArmA3\Parsers\Waypoint\WaypointItemParser.cs" />
+    <Compile Include="Import\ArmA3\Parsers\Waypoint\WaypointItemParserFactory.cs" />
+    <Compile Include="Import\ArmA3\ResultObjects\Waypoint.cs" />
+    <Compile Include="Import\DataSetters\Effects\EffectsParser.cs" />
+    <Compile Include="Import\DataSetters\Effects\EffectsParserFactory.cs" />
     <Compile Include="Import\DataSetters\StringLineSetter.cs" />
     <Compile Include="Import\ArmA2\Parsers\Waypoint\WaypointItemParserFactory.cs" />
     <Compile Include="Import\ArmA2\Parsers\Waypoint\WaypointItemParser.cs" />
@@ -94,7 +97,6 @@
     <Compile Include="Import\ArmA3\Parsers\Marker\MarkerItemParser.cs" />
     <Compile Include="Import\ArmA3\Parsers\Marker\MarkerItemParserFactory.cs" />
     <Compile Include="Import\ArmA3\Parsers\MissionState\MissionStateParser.cs" />
-    <Compile Include="Import\ArmA3\Parsers\ParserBase.cs" />
     <Compile Include="Import\ArmA3\Parsers\Sensor\SensorItemParser.cs" />
     <Compile Include="Import\ArmA3\Parsers\Sensor\SensorItemParserFactory.cs" />
     <Compile Include="Import\ArmA3\Parsers\Vehicle\VehicleItemParser.cs" />
@@ -150,7 +152,7 @@
     <Compile Include="Import\ArmA2\Parsers\Marker\MarkerItemParser.cs" />
     <Compile Include="Import\ArmA2\Parsers\Marker\MarkerItemParserFactory.cs" />
     <Compile Include="Import\ArmA2\Parsers\MissionState\MissionStateParser.cs" />
-    <Compile Include="Import\ArmA2\Parsers\ParserBase.cs" />
+    <Compile Include="Import\ParserBase.cs" />
     <Compile Include="Import\ArmA2\Parsers\Sensor\SensorItemParser.cs" />
     <Compile Include="Import\ArmA2\Parsers\Sensor\SensorItemParserFactory.cs" />
     <Compile Include="Import\ArmA2\Parsers\Vehicle\VehicleItemParser.cs" />

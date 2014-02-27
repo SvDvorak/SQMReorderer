@@ -3,13 +3,13 @@ using System.Text.RegularExpressions;
 using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.Import.DataSetters;
 
-namespace SQMReorderer.Core.Import.ArmA3.Parsers
+namespace SQMReorderer.Core.Import
 {
     public abstract class ParserBase<TParseResult> : IParser<TParseResult>
         where TParseResult : new()
     {
         public List<IContextSetter> ContextSetters { get; private set; }
-        public List<LineSetterBase> PropertySetters { get; private set; }
+        public List<LineSetterBase> LineSetters { get; private set; }
 
         protected TParseResult ParseResult { get; set; }
 
@@ -18,7 +18,7 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers
         protected ParserBase()
         {
             ContextSetters = new List<IContextSetter>();
-            PropertySetters = new List<LineSetterBase>();
+            LineSetters = new List<LineSetterBase>();
         }
 
         public bool IsCorrectContext(SqmContext context)
@@ -32,12 +32,7 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers
 
             foreach (var subContext in context.SubContexts)
             {
-                var parseResult = CustomParseContext(subContext);
-
-                if (parseResult != Result.Failure)
-                {
-                    continue;
-                }
+                var parseResult = Result.Failure;
 
                 foreach (var contextSetter in ContextSetters)
                 {
@@ -60,9 +55,9 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers
             {
                 var parseResult = new Result();
 
-                foreach (var propertySetter in PropertySetters)
+                foreach (var lineSetter in LineSetters)
                 {
-                    parseResult = propertySetter.SetValueIfLineMatches(line);
+                    parseResult = lineSetter.SetValueIfLineMatches(line);
 
                     if (parseResult == Result.Success)
                     {
@@ -72,17 +67,12 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers
 
                 if (parseResult == Result.Failure)
                 {
-                    var resultTypeName = typeof (TParseResult).Name;
-                    throw new SqmParseException(string.Format("Unknown property in {0}: {1}", resultTypeName, line.ToString().Trim()));
+                    var resultTypeName = typeof(TParseResult).Name;
+                    throw new SqmParseException(string.Format("Unknown line in {0}: {1}", resultTypeName, line.ToString().Trim()));
                 }
             }
 
             return ParseResult;
-        }
-
-        protected virtual Result CustomParseContext(SqmContext context)
-        {
-            return Result.Failure;
         }
     }
 }

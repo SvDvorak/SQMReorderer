@@ -183,12 +183,14 @@ namespace SQMReorderer.Tests.Import
                     Rank = "rank",
                     Lock = "lock",
                     Skill = 4,
+                    Ammo = 21,
                     Health = 4,
                     Text = "text",
                     Init = "init",
                     Description = "desc",
                     Synchronizations = { 5 },
                     Vehicles = new List<Vehicle> { new Vehicle { Azimut = 6 } },
+                    Waypoints = new List<Waypoint> { new Waypoint { ShowWp = "showWp" } },
                     Number = 7,
                     Position = new Vector(8, 9, 10)
                 };
@@ -206,11 +208,13 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("lock", newVehicle.Lock);
             Assert.AreEqual(4, newVehicle.Skill);
             Assert.AreEqual(4, newVehicle.Health);
+            Assert.AreEqual(21, newVehicle.Ammo);
             Assert.AreEqual("text", newVehicle.Text);
             Assert.AreEqual("init", newVehicle.Init);
             Assert.AreEqual("desc", newVehicle.Description);
             Assert.AreEqual(5, newVehicle.Synchronizations[0]);
             Assert.AreEqual(6, newVehicle.Vehicles[0].Azimut);
+            Assert.AreEqual("showWp", newVehicle.Waypoints[0].ShowWp);
             Assert.AreEqual(7, newVehicle.Number);
             Assert.AreEqual(new Vector(8, 9, 10), newVehicle.Position);
         }
@@ -230,13 +234,51 @@ namespace SQMReorderer.Tests.Import
             Assert.IsNull(newVehicle.Rank);
             Assert.IsNull(newVehicle.Lock);
             Assert.IsNull(newVehicle.Skill);
+            Assert.IsNull(newVehicle.Ammo);
             Assert.IsNull(newVehicle.Text);
             Assert.IsNull(newVehicle.Init);
             Assert.IsNull(newVehicle.Description);
             Assert.IsEmpty(newVehicle.Synchronizations);
             Assert.IsEmpty(newVehicle.Vehicles);
+            Assert.IsEmpty(newVehicle.Waypoints);
             Assert.AreEqual(0, newVehicle.Number);
             Assert.IsNull(newVehicle.Position);
+        }
+
+        [Test]
+        public void Sets_waypoint_to_correct_arma_3_values()
+        {
+            var waypoint = new Waypoint
+            {
+                Number = 1,
+                Position = new Vector(1, 2, 3),
+                ExpActiv = "expActiv",
+                Effects = new List<string> { "line1", "line2" },
+                ShowWp = "show"
+            };
+
+            var sqmContents = _sut.Combine(CreateContents(waypoint));
+
+            var newWaypoint = sqmContents.Mission.Groups[0].Waypoints[0];
+            Assert.AreEqual(1, newWaypoint.Number);
+            Assert.AreEqual(new Vector(1, 2, 3), newWaypoint.Position);
+            Assert.AreEqual("expActiv", newWaypoint.ExpActiv);
+            Assert.AreEqual("line1", newWaypoint.Effects[0]);
+            Assert.AreEqual("line2", newWaypoint.Effects[1]);
+            Assert.AreEqual("show", newWaypoint.ShowWp);
+        }
+
+        [Test]
+        public void Waypoint_contents_are_null_if_not_set_in_arma_3_waypoint()
+        {
+            var sqmContents = _sut.Combine(CreateContents(new Waypoint()));
+
+            var newWaypoint = sqmContents.Mission.Groups[0].Waypoints[0];
+            Assert.AreEqual(0, newWaypoint.Number);
+            Assert.AreEqual(null, newWaypoint.ExpActiv);
+            Assert.IsEmpty(newWaypoint.Effects);
+            Assert.AreEqual(null, newWaypoint.ShowWp);
+            Assert.IsNull(newWaypoint.Position);
         }
 
         [Test]
@@ -308,6 +350,7 @@ namespace SQMReorderer.Tests.Import
                     Age = "age",
                     ExpCond = "cond",
                     ExpActiv = "activ",
+                    Effects = new List<string> { "line1", "line2" },
                     Number = 4,
                     Position = new Vector(5, 6, 7)
                 };
@@ -324,6 +367,8 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("age", newSensor.Age);
             Assert.AreEqual("cond", newSensor.ExpCond);
             Assert.AreEqual("activ", newSensor.ExpActiv);
+            Assert.AreEqual("line1", newSensor.Effects[0]);
+            Assert.AreEqual("line2", newSensor.Effects[1]);
             Assert.AreEqual(4, newSensor.Number);
             Assert.AreEqual(new Vector(5, 6, 7), newSensor.Position);
         }
@@ -343,6 +388,7 @@ namespace SQMReorderer.Tests.Import
             Assert.IsNull(newSensor.Age);
             Assert.IsNull(newSensor.ExpCond);
             Assert.IsNull(newSensor.ExpActiv);
+            Assert.IsEmpty(newSensor.Effects);
             Assert.AreEqual(0, newSensor.Number);
             Assert.IsNull(newSensor.Position);
         }
@@ -378,6 +424,26 @@ namespace SQMReorderer.Tests.Import
                                 }
                         }
                 };
+        }
+
+        private SqmContents CreateContents(Waypoint waypoint)
+        {
+            return new SqmContents
+            {
+                Mission = new MissionState
+                {
+                    Groups = new List<Vehicle>
+                                {
+                                    new Vehicle
+                                        {
+                                            Waypoints = new List<Waypoint>
+                                                {
+                                                    waypoint
+                                                }
+                                        }
+                                }
+                }
+            };
         }
 
         private SqmContents CreateContents(Marker marker)

@@ -37,11 +37,9 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
-        [TestCase(2)]
         [TestCase(3)]
         [TestCase(4)]
         [TestCase(5)]
-        [TestCase(6)]
         [TestCase(11)]
         [TestCase(12)]
         [TestCase(13)]

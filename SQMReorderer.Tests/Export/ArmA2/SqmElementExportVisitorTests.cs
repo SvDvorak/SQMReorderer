@@ -194,6 +194,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalVehicleText.Append("class Item3\n");
             originalVehicleText.Append("{\n");
             originalVehicleText.Append("presence=1.19;\n");
+            originalVehicleText.Append("presenceCondition=\"(ns_Waves==(ns_WavesLimit-2));\";\n");
             originalVehicleText.Append("position[]={10,12,14};\n");
             originalVehicleText.Append("placement=30;\n");
             originalVehicleText.Append("azimut=3.14;\n");
@@ -225,6 +226,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             var vehicle = new Vehicle();
             vehicle.Number = 3;
             vehicle.Presence = 1.19;
+            vehicle.PresenceCondition = "(ns_Waves==(ns_WavesLimit-2));";
             vehicle.Position = new Vector(10, 12, 14);
             vehicle.Placement = 30;
             vehicle.Azimut = 3.14;

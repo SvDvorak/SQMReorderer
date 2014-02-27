@@ -168,6 +168,7 @@ namespace SQMReorderer.Tests.Import
             var vehicle = new Vehicle
                 {
                     Presence = 2.24,
+                    PresenceCondition = "presenceCond",
                     Placement = 40,
                     Azimut = 1,
                     Special = "CARGO",
@@ -199,6 +200,7 @@ namespace SQMReorderer.Tests.Import
 
             var newVehicle = sqmContents.Mission.Groups[0];
             Assert.AreEqual(2.24, newVehicle.Presence);
+            Assert.AreEqual("presenceCond", newVehicle.PresenceCondition);
             Assert.AreEqual(40, newVehicle.Placement);
             Assert.AreEqual(1, newVehicle.Azimut);
             Assert.AreEqual("CARGO", newVehicle.Special);
@@ -234,6 +236,7 @@ namespace SQMReorderer.Tests.Import
 
             var newVehicle = sqmContents.Mission.Groups[0];
             Assert.IsNull(newVehicle.Presence);
+            Assert.IsNull(newVehicle.PresenceCondition);
             Assert.IsNull(newVehicle.Azimut);
             Assert.IsNull(newVehicle.Age);
             Assert.IsNull(newVehicle.Id);

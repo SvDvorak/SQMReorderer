@@ -15,6 +15,7 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle
             ContextSetters.Add(new ContextSetter<List<ResultObjects.Waypoint>>(waypointsParser, x => ParseResult.Waypoints = x));
 
             LineSetters.Add(new DoublePropertySetter("presence", x => ParseResult.Presence = x));
+            LineSetters.Add(new StringPropertySetter("presenceCondition", x => ParseResult.PresenceCondition = x));
             LineSetters.Add(new VectorPropertySetter("position", x => ParseResult.Position = x));
             LineSetters.Add(new IntegerPropertySetter("placement", x => ParseResult.Placement = x));
             LineSetters.Add(new DoublePropertySetter("azimut", x => ParseResult.Azimut = x));

@@ -73,6 +73,7 @@ namespace SQMReorderer.Core.Import
             return new Vehicle
                 {
                     Presence = vehicle.Presence,
+                    PresenceCondition = vehicle.PresenceCondition,
                     Number = vehicle.Number,
                     Position = vehicle.Position,
                     Placement = vehicle.Placement,

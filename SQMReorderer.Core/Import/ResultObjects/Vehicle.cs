@@ -12,6 +12,7 @@ namespace SQMReorderer.Core.Import.ResultObjects
         }
 
         public double? Presence { get; set; }
+        public string PresenceCondition { get; set; }
         public int? Placement { get; set; }
         public double? Azimut { get; set; }
         public string Special { get; set; }

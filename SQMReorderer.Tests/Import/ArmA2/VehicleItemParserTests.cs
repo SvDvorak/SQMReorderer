@@ -18,7 +18,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 "presence=0.256;",
                 "presenceCondition=\"(ns_Waves==(ns_WavesLimit-2));\";",
                 "position[]={5533.8467,143.18413,6350.1045};\n",
-                "placement=60;",
+                "placement=60;\n",
                 "azimut=17.206261;\n",
                 "special=\"CARGO\";\n",
                 "age=\"ACTUAL\";\n",

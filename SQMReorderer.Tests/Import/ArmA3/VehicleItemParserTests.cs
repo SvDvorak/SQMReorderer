@@ -17,6 +17,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
                 "class Item5\n",
                 "{\n",
                 "position[]={5533.8467,143.18413,6350.1045};\n",
+                "placement=60;\n",
                 "azimut=17.206261;\n",
                 "id=4;\n",
                 "side=\"WEST\";\n",
@@ -128,6 +129,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
             Assert.AreEqual(5533.8467, itemResult.Position.X);
             Assert.AreEqual(143.18413, itemResult.Position.Y);
             Assert.AreEqual(6350.1045, itemResult.Position.Z);
+            Assert.AreEqual(60, itemResult.Placement);
             Assert.AreEqual(17.206261, itemResult.Azimut);
             Assert.AreEqual(4, itemResult.Id);
             Assert.AreEqual("WEST", itemResult.Side);

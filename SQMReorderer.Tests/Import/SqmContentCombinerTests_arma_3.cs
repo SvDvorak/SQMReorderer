@@ -174,6 +174,7 @@ namespace SQMReorderer.Tests.Import
         {
             var vehicle = new Vehicle
                 {
+                    Placement = 40,
                     Azimut = 1,
                     Id = 2,
                     Side = "side",
@@ -198,6 +199,7 @@ namespace SQMReorderer.Tests.Import
             var sqmContents = _sut.Combine(CreateContents(vehicle));
 
             var newVehicle = sqmContents.Mission.Groups[0];
+            Assert.AreEqual(40, newVehicle.Placement);
             Assert.AreEqual(1, newVehicle.Azimut);
             Assert.AreEqual(2, newVehicle.Id);
             Assert.AreEqual("side", newVehicle.Side);
@@ -225,6 +227,7 @@ namespace SQMReorderer.Tests.Import
             var sqmContents = _sut.Combine(CreateContents(new Vehicle()));
 
             var newVehicle = sqmContents.Mission.Groups[0];
+            Assert.IsNull(newVehicle.Placement);
             Assert.IsNull(newVehicle.Azimut);
             Assert.IsNull(newVehicle.Id);
             Assert.IsNull(newVehicle.Side);

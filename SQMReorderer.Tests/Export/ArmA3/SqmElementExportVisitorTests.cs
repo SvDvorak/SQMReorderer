@@ -214,6 +214,7 @@ namespace SQMReorderer.Tests.Export.ArmA3
             originalVehicleText.Append("class Item3\n");
             originalVehicleText.Append("{\n");
             originalVehicleText.Append("position[]={10,12,14};\n");
+            originalVehicleText.Append("placement=30;\n");
             originalVehicleText.Append("azimut=3.14;\n");
             originalVehicleText.Append("id=4;\n");
             originalVehicleText.Append("side=\"GUER\";\n");
@@ -234,6 +235,7 @@ namespace SQMReorderer.Tests.Export.ArmA3
             var vehicle = new Vehicle();
             vehicle.Number = 3;
             vehicle.Position = new Vector(10, 12, 14);
+            vehicle.Placement = 30;
             vehicle.Azimut = 3.14;
             vehicle.Id = 4;
             vehicle.Side = "GUER";

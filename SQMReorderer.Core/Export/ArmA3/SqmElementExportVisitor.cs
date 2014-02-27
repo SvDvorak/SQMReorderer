@@ -147,6 +147,7 @@ namespace SQMReorderer.Core.Export.ArmA3
             stringBuilder.Append("class " + elementName + vehicle.Number + "\n");
             stringBuilder.Append("{\n");
             stringBuilder.Append(_propertyVisitor.Visit("position", vehicle.Position));
+            stringBuilder.Append(_propertyVisitor.Visit("placement", vehicle.Placement));
             stringBuilder.Append(_propertyVisitor.Visit("azimut", vehicle.Azimut));
             stringBuilder.Append(_propertyVisitor.Visit("id", vehicle.Id));
             stringBuilder.Append(_propertyVisitor.Visit("side", vehicle.Side));

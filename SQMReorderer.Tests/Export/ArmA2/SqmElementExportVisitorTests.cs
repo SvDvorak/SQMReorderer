@@ -479,6 +479,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalSensorText.Append("age=\"UNKNOWN\";\n");
             originalSensorText.Append("text=\"targetClear\";\n");
             originalSensorText.Append("name=\"END\";\n");
+            originalSensorText.Append("idStatic=794;\n");
             originalSensorText.Append("idVehicle=795;\n");
             originalSensorText.Append("expCond=\"checkpoint3NrOfClearedDT == 7\";\n");
             originalSensorText.Append("expActiv=\"end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";\";\n");
@@ -510,6 +511,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             sensor.Age = "UNKNOWN";
             sensor.Text = "targetClear";
             sensor.Name = "END";
+            sensor.IdStatic = 794;
             sensor.IdVehicle = 795;
             sensor.ExpCond = "checkpoint3NrOfClearedDT == 7";
             sensor.ExpActiv = "end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";";

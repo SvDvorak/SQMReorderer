@@ -413,6 +413,7 @@ namespace SQMReorderer.Tests.Import
                     Age = "age",
                     Text = "text",
                     Name = "name",
+                    IdStatic = 13,
                     IdVehicle = 14,
                     ExpCond = "cond",
                     ExpActiv = "activ",
@@ -441,6 +442,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("age", newSensor.Age);
             Assert.AreEqual("text", newSensor.Text);
             Assert.AreEqual("name", newSensor.Name);
+            Assert.AreEqual(13, newSensor.IdStatic);
             Assert.AreEqual(14, newSensor.IdVehicle);
             Assert.AreEqual("cond", newSensor.ExpCond);
             Assert.AreEqual("activ", newSensor.ExpActiv);
@@ -467,6 +469,7 @@ namespace SQMReorderer.Tests.Import
             Assert.IsNull(newSensor.Age);
             Assert.IsNull(newSensor.Text);
             Assert.IsNull(newSensor.Name);
+            Assert.IsNull(newSensor.IdStatic);
             Assert.IsNull(newSensor.ExpCond);
             Assert.IsNull(newSensor.ExpActiv);
             Assert.IsEmpty(newSensor.Effects);

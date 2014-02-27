@@ -25,6 +25,7 @@ namespace SQMReorderer.Core.Import.ResultObjects
         public string Age { get; set; }
         public string Text { get; set; }
         public string Name { get; set; }
+        public int? IdStatic { get; set; }
         public int? IdVehicle { get; set; }
         public string ExpCond { get; set; }
         public string ExpActiv { get; set; }

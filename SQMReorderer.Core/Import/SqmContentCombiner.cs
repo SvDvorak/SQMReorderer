@@ -186,6 +186,7 @@ namespace SQMReorderer.Core.Import
                     Age = sensor.Age,
                     Text = sensor.Text,
                     Name = sensor.Name,
+                    IdStatic = sensor.IdStatic,
                     IdVehicle = sensor.IdVehicle,
                     ExpCond = sensor.ExpCond,
                     ExpActiv = sensor.ExpActiv,

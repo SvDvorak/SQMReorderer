@@ -17957,6 +17957,7 @@ class Mission
 			interruptable=1;
 			type="EAST G";
 			age="UNKNOWN";
+			idStatic=85921;
 			idVehicle=795;
 			class Effects
 			{

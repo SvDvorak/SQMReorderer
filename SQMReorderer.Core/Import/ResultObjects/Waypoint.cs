@@ -20,6 +20,7 @@ namespace SQMReorderer.Core.Import.ResultObjects
         public string Formation { get; set; }
         public string Speed { get; set; }
         public string Combat { get; set; }
+        public string Description { get; set; }
         public string ExpCond { get; set; }
         public string ExpActiv { get; set; }
         public List<int> Synchronizations { get; set; }

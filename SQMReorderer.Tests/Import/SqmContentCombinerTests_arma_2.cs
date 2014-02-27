@@ -276,6 +276,7 @@ namespace SQMReorderer.Tests.Import
                     Formation = "line",
                     Speed = "speed",
                     Combat = "combat",
+                    Description = "description",
                     ExpCond = "expCond",
                     ExpActiv = "expActiv",
                     Synchronizations = { 5, 3 },
@@ -302,6 +303,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("line", newWaypoint.Formation);
             Assert.AreEqual("speed", newWaypoint.Speed);
             Assert.AreEqual("combat", newWaypoint.Combat);
+            Assert.AreEqual("description", newWaypoint.Description);
             Assert.AreEqual("expCond", newWaypoint.ExpCond);
             Assert.AreEqual("expActiv", newWaypoint.ExpActiv);
             Assert.AreEqual(5, newWaypoint.Synchronizations[0]);
@@ -330,6 +332,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(null, newWaypoint.Formation);
             Assert.AreEqual(null, newWaypoint.Speed);
             Assert.AreEqual(null, newWaypoint.Combat);
+            Assert.AreEqual(null, newWaypoint.Description);
             Assert.AreEqual(null, newWaypoint.ExpCond);
             Assert.IsEmpty(newWaypoint.Synchronizations);
             Assert.AreEqual(null, newWaypoint.ShowWp);

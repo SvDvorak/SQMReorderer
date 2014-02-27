@@ -23,6 +23,7 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Waypoint
             LineSetters.Add(new StringPropertySetter("formation", x => ParseResult.Formation = x));
             LineSetters.Add(new StringPropertySetter("speed", x => ParseResult.Speed = x));
             LineSetters.Add(new StringPropertySetter("combat", x => ParseResult.Combat = x));
+            LineSetters.Add(new StringPropertySetter("description", x => ParseResult.Description = x));
             LineSetters.Add(new StringPropertySetter("expCond", x => ParseResult.ExpCond = x));
             LineSetters.Add(new StringPropertySetter("expActiv", x => ParseResult.ExpActiv = x));
             LineSetters.Add(new IntegerListPropertySetter("synchronizations", x => ParseResult.Synchronizations = x));

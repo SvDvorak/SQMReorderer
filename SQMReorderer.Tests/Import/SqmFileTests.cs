@@ -28,10 +28,25 @@ namespace SQMReorderer.Tests.Import
             var importResults = Import(importStream);
             importStream.Seek(0, SeekOrigin.Begin);
 
-            Export(importResults);
+            Export(importResults, GetTestExportPath());
 
-            var verifyExportStream = GetExportedFileStream();
+            var verifyExportStream = GetExportedFileStream(GetTestExportPath());
             Assert.AreEqual(CombineToSingleString(importStream), CombineToSingleString(verifyExportStream));
+
+            verifyExportStream.Close();
+        }
+
+        [Test]
+        public void test_all_arma_2_files([Range(17, 162)] int fileNumber)
+        {
+            var importStream = new FileStream(string.Format("C:\\Users\\Andreas\\Desktop\\omg dvorak\\mission ({0}).sqm", fileNumber), FileMode.Open);
+            var importResults = Import(importStream);
+            importStream.Seek(0, SeekOrigin.Begin);
+
+            string exportPath = string.Format("C:\\Users\\Andreas\\Desktop\\omg dvorak\\mission ({0})_auto_out.sqm", fileNumber);
+            Export(importResults, exportPath);
+
+            var verifyExportStream = GetExportedFileStream(exportPath);
 
             verifyExportStream.Close();
         }
@@ -76,7 +91,7 @@ namespace SQMReorderer.Tests.Import
             return importResults;
         }
 
-        private void Export(SqmContents importResults)
+        private void Export(SqmContents importResults, string path)
         {
             var contextIndenter = new ContextIndenter();
             var streamWriterFactory = new StreamWriterFactory();
@@ -84,14 +99,14 @@ namespace SQMReorderer.Tests.Import
                 new Core.Export.ArmA2.SqmFileExporter(new Core.Export.ArmA2.SqmElementExportVisitor(), contextIndenter, streamWriterFactory), 
                 new Core.Export.ArmA3.SqmFileExporter(new Core.Export.ArmA3.SqmElementExportVisitor(), contextIndenter, streamWriterFactory),
                 new FileVersionRetriever(new StreamReaderFactory()));
-            var exportStream = new FileStream(GetTestExportPath(), FileMode.OpenOrCreate);
+            var exportStream = new FileStream(path, FileMode.OpenOrCreate);
             sqmFileExporter.Export(exportStream, importResults);
             exportStream.Close();
         }
 
-        private FileStream GetExportedFileStream()
+        private FileStream GetExportedFileStream(string path)
         {
-            var verifyExportStream = new FileStream(GetTestExportPath(), FileMode.Open);
+            var verifyExportStream = new FileStream(path, FileMode.Open);
 
             return verifyExportStream;
         }

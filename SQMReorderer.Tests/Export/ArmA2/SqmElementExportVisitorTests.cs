@@ -368,6 +368,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalItemsText.Append("formation=\"FILE\";\n");
             originalItemsText.Append("speed=\"LIMITED\";\n");
             originalItemsText.Append("combat=\"SAFE\";\n");
+            originalItemsText.Append("description=\"Secure the Compound\";\n");
             originalItemsText.Append("expCond=\"obj_done;\";\n");
             originalItemsText.Append("expActiv=\"op_h1;\";\n");
             originalItemsText.Append("synchronizations[]={3,4};\n");
@@ -399,6 +400,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
                     Formation = "FILE",
                     Speed = "LIMITED",
                     Combat = "SAFE",
+                    Description = "Secure the Compound",
                     ExpCond = "obj_done;",
                     ExpActiv = "op_h1;",
                     Synchronizations = new List<int> { 3, 4 },

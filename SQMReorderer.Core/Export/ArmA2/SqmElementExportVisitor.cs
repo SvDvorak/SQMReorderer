@@ -215,6 +215,12 @@ namespace SQMReorderer.Core.Export.ArmA2
 
             stringBuilder.Append("class Effects\n");
             stringBuilder.Append("{\n");
+
+            foreach (var effect in effects)
+            {
+                stringBuilder.Append(effect + "\n");
+            }
+
             stringBuilder.Append("};\n");
 
             return stringBuilder.ToString();

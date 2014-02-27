@@ -24,7 +24,7 @@ namespace SQMReorderer.Tests.Import
         {
             var inputText = @"thedarkknight[]={116,117,120};";
 
-            var matchResult = _integerListPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
+            var matchResult = _integerListPropertySetter.SetValueIfLineMatches(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Success, matchResult);
             Assert.AreEqual(116, _values[0]);
@@ -37,7 +37,7 @@ namespace SQMReorderer.Tests.Import
         {
             var inputText = @"model=32";
 
-            var matchResult = _integerListPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
+            var matchResult = _integerListPropertySetter.SetValueIfLineMatches(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Failure, matchResult);
             Assert.AreEqual(null, _values);
@@ -48,7 +48,7 @@ namespace SQMReorderer.Tests.Import
         {
             var inputText = @"thedarkknight=itsonlyamodel";
 
-            var matchResult = _integerListPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
+            var matchResult = _integerListPropertySetter.SetValueIfLineMatches(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Failure, matchResult);
             Assert.AreEqual(null, _values);

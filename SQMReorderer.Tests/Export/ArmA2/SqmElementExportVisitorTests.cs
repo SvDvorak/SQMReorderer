@@ -346,6 +346,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalItemsText.Append("synchronizations[]={3,4};\n");
             originalItemsText.Append("class Effects\n");
             originalItemsText.Append("{\n");
+            originalItemsText.Append("titleEffect=\"PLAIN DOWN\";\n");
+            originalItemsText.Append("otherText\n");
             originalItemsText.Append("};\n");
             originalItemsText.Append("timeoutMin=300;\n");
             originalItemsText.Append("timeoutMid=301;\n");
@@ -373,7 +375,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
                     ExpCond = "obj_done;",
                     ExpActiv = "op_h1;",
                     Synchronizations = new List<int> { 3, 4 },
-                    Effects = new List<string>(),
+                    Effects = new List<string> { "titleEffect=\"PLAIN DOWN\";", "otherText" },
                     TimeoutMin = 300,
                     TimeoutMid = 301,
                     TimeoutMax = 302,
@@ -454,6 +456,8 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalSensorText.Append("expDesactiv=\"some code stuffs\";\n");
             originalSensorText.Append("class Effects\n");
             originalSensorText.Append("{\n");
+            originalSensorText.Append("titleEffect=\"PLAIN DOWN\";\n");
+            originalSensorText.Append("otherText\n");
             originalSensorText.Append("};\n");
             originalSensorText.Append("synchronizations[]={5,4};\n");
             originalSensorText.Append("};\n");
@@ -481,7 +485,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             sensor.ExpCond = "checkpoint3NrOfClearedDT == 7";
             sensor.ExpActiv = "end = [1] execVM \"f\\server\\f_mpEndBroadcast.sqf\";";
             sensor.ExpDesactiv = "some code stuffs";
-            sensor.Effects = new List<string>();
+            sensor.Effects = new List<string> { "titleEffect=\"PLAIN DOWN\";", "otherText" };
             sensor.Synchronizations = new List<int> { 5, 4 };
 
             var actualSensorText = _exportVisitor.Visit("Item", sensor);

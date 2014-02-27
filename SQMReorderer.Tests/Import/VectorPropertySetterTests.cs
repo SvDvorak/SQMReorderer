@@ -23,7 +23,7 @@ namespace SQMReorderer.Tests.Import
         {
             var inputText = "position[]={5533.8467,143.18413,6350.1045}";
 
-            var matchResult = _vectorPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
+            var matchResult = _vectorPropertySetter.SetValueIfLineMatches(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Success, matchResult);
             Assert.AreEqual(5533.8467, _value.X);
@@ -36,7 +36,7 @@ namespace SQMReorderer.Tests.Import
         {
             var inputText = "model={5533.8467,143.18413,6350.1045}";
 
-            var matchResult = _vectorPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
+            var matchResult = _vectorPropertySetter.SetValueIfLineMatches(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Failure, matchResult);
         }
@@ -46,7 +46,7 @@ namespace SQMReorderer.Tests.Import
         {
             var inputText = "position[]=itsonlyamodel";
 
-            var matchResult = _vectorPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
+            var matchResult = _vectorPropertySetter.SetValueIfLineMatches(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Failure, matchResult);
         }

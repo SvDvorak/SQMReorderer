@@ -22,7 +22,7 @@ namespace SQMReorderer.Tests.Import
         {
             var inputText = "camelot=\"bravesirrobin\"";
 
-            var matchResult = _stringPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
+            var matchResult = _stringPropertySetter.SetValueIfLineMatches(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Success, matchResult);
             Assert.AreEqual("bravesirrobin", _value);
@@ -33,7 +33,7 @@ namespace SQMReorderer.Tests.Import
         {
             var inputText = "model=32.42";
 
-            var matchResult = _stringPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
+            var matchResult = _stringPropertySetter.SetValueIfLineMatches(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Failure, matchResult);
             Assert.AreNotEqual(32.42, _value);
@@ -44,7 +44,7 @@ namespace SQMReorderer.Tests.Import
         {
             var inputText = "camelot=itsonlyamodel";
 
-            var matchResult = _stringPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
+            var matchResult = _stringPropertySetter.SetValueIfLineMatches(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Failure, matchResult);
             Assert.AreNotEqual("itsonlyamodel", _value);
@@ -55,7 +55,7 @@ namespace SQMReorderer.Tests.Import
         {
             var inputText = "camelot=\"\"";
 
-            var matchResult = _stringPropertySetter.SetPropertyIfMatch(new SqmLine(inputText));
+            var matchResult = _stringPropertySetter.SetValueIfLineMatches(new SqmLine(inputText));
 
             Assert.AreEqual(Result.Success, matchResult);
             Assert.AreEqual("", _value);

@@ -9,7 +9,7 @@ namespace SQMReorderer.Core.Import.DataSetters
         {
         }
 
-        protected override void SetPropertyValue(string value)
+        protected override void SetValue(string value)
         {
             value = value.Substring(1, value.Length - 2);
 

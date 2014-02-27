@@ -379,6 +379,7 @@ class Mission
 					synchronizations[]={3};
 					class Effects
 					{
+						titleEffect="PLAIN DOWN";
 					};
 					timeoutMin=300;
 					timeoutMid=300;
@@ -17953,6 +17954,7 @@ class Mission
 			idVehicle=795;
 			class Effects
 			{
+				titleEffect="PLAIN DOWN";
 			};
 			synchronizations[]={0};
 		};

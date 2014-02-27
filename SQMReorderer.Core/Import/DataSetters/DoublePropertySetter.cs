@@ -15,7 +15,7 @@ namespace SQMReorderer.Core.Import.DataSetters
             _doubleFormatInfo.CurrencyDecimalSeparator = ".";
         }
 
-        protected override void SetPropertyValue(string value)
+        protected override void SetValue(string value)
         {
             PropertySetter(double.Parse(value, _doubleFormatInfo));
         }

@@ -21,7 +21,7 @@ namespace SQMReorderer.Core.Import.ArmA2
             ContextSetters.Add(new ContextSetter<MissionState>(outroWinParser, x => ParseResult.OutroWin = x));
             ContextSetters.Add(new ContextSetter<MissionState>(outroLooseParser, x => ParseResult.OutroLose = x));
 
-            PropertySetters.Add(new IntegerPropertySetter("version", x => ParseResult.Version = x));
+            LineSetters.Add(new IntegerPropertySetter("version", x => ParseResult.Version = x));
         }
 
         protected override Regex HeaderRegex

@@ -88,6 +88,7 @@
     <Compile Include="Import\SqmFileTests.cs" />
     <Compile Include="Import\ArmA2\SqmParserTests.cs" />
     <Compile Include="Import\SqmFileImporterTests.cs" />
+    <Compile Include="Import\StringLineSetterTests.cs" />
     <Compile Include="Import\StringPropertySetterTests.cs" />
     <Compile Include="Import\VectorPropertySetterTests.cs" />
     <Compile Include="Import\ArmA2\VehicleItemParserTests.cs" />

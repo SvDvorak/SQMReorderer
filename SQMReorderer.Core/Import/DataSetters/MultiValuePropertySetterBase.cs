@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace SQMReorderer.Core.Import.DataSetters
 {
-    public abstract class MultiValuePropertySetterBase<T> : PropertySetterBase
+    public abstract class MultiValuePropertySetterBase<T> : LineSetterBase
     {
         protected Action<T> PropertySetter { get; private set; }
 
@@ -18,7 +18,7 @@ namespace SQMReorderer.Core.Import.DataSetters
             _valueRegex = new Regex(valuePattern);
         }
 
-        protected override void SetPropertyValue(string value)
+        protected override void SetValue(string value)
         {
             var match = _valueRegex.Match(value);
 

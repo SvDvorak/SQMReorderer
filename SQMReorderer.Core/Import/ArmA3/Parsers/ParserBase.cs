@@ -9,7 +9,7 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers
         where TParseResult : new()
     {
         public List<IContextSetter> ContextSetters { get; private set; }
-        public List<PropertySetterBase> PropertySetters { get; private set; }
+        public List<LineSetterBase> PropertySetters { get; private set; }
 
         protected TParseResult ParseResult { get; set; }
 
@@ -18,7 +18,7 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers
         protected ParserBase()
         {
             ContextSetters = new List<IContextSetter>();
-            PropertySetters = new List<PropertySetterBase>();
+            PropertySetters = new List<LineSetterBase>();
         }
 
         public bool IsCorrectContext(SqmContext context)
@@ -62,7 +62,7 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers
 
                 foreach (var propertySetter in PropertySetters)
                 {
-                    parseResult = propertySetter.SetPropertyIfMatch(line);
+                    parseResult = propertySetter.SetValueIfLineMatches(line);
 
                     if (parseResult == Result.Success)
                     {

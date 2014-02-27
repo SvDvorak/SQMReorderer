@@ -74,12 +74,14 @@
     <Compile Include="Import\ArmA2\ISqmFileImporter.cs" />
     <Compile Include="Import\ArmA2\Parsers\Effects\EffectsParser.cs" />
     <Compile Include="Import\ArmA2\Parsers\Effects\EffectsParserFactory.cs" />
+    <Compile Include="Import\DataSetters\StringLineSetter.cs" />
     <Compile Include="Import\ArmA2\Parsers\Waypoint\WaypointItemParserFactory.cs" />
     <Compile Include="Import\ArmA2\Parsers\Waypoint\WaypointItemParser.cs" />
     <Compile Include="Import\ArmA2\ResultObjects\Waypoint.cs" />
     <Compile Include="Import\ArmA2\SqmFileImporter.cs" />
     <Compile Include="Import\ArmA3\ISqmFileImporter.cs" />
     <Compile Include="Import\ArmA3\ISqmParser.cs" />
+    <Compile Include="Import\DataSetters\ILineSetter.cs" />
     <Compile Include="Import\FileVersion\FileVersion.cs" />
     <Compile Include="Import\FileVersion\FileVersionRetriever.cs" />
     <Compile Include="Import\FileVersion\SqmVersionException.cs" />
@@ -134,7 +136,7 @@
     <Compile Include="Import\DataSetters\IntegerPropertySetter.cs" />
     <Compile Include="Import\DataSetters\MultiLineStringListPropertySetter.cs" />
     <Compile Include="Import\DataSetters\MultiValuePropertySetterBase.cs" />
-    <Compile Include="Import\DataSetters\PropertySetterBase.cs" />
+    <Compile Include="Import\DataSetters\LineSetterBase.cs" />
     <Compile Include="Import\DataSetters\SingleValuePropertySetterBase.cs" />
     <Compile Include="Import\DataSetters\StringPropertySetter.cs" />
     <Compile Include="Import\DataSetters\VectorPropertySetter.cs" />

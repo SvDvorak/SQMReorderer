@@ -10,7 +10,7 @@ namespace SQMReorderer.Core.Import.DataSetters
         {
         }
 
-        protected override void SetPropertyValue(string value)
+        protected override void SetValue(string value)
         {
             PropertySetter(Convert.ToInt32(value));
         }

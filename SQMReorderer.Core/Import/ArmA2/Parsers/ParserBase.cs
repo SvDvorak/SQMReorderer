@@ -9,7 +9,7 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers
         where TParseResult : new()
     {
         public List<IContextSetter> ContextSetters { get; private set; }
-        public List<PropertySetterBase> PropertySetters { get; private set; }
+        public List<LineSetterBase> LineSetters { get; private set; }
 
         protected TParseResult ParseResult { get; set; }
 
@@ -18,7 +18,7 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers
         protected ParserBase()
         {
             ContextSetters = new List<IContextSetter>();
-            PropertySetters = new List<PropertySetterBase>();
+            LineSetters = new List<LineSetterBase>();
         }
 
         public bool IsCorrectContext(SqmContext context)
@@ -55,9 +55,9 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers
             {
                 var parseResult = new Result();
 
-                foreach (var propertySetter in PropertySetters)
+                foreach (var lineSetter in LineSetters)
                 {
-                    parseResult = propertySetter.SetPropertyIfMatch(line);
+                    parseResult = lineSetter.SetValueIfLineMatches(line);
 
                     if (parseResult == Result.Success)
                     {
@@ -68,7 +68,7 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers
                 if (parseResult == Result.Failure)
                 {
                     var resultTypeName = typeof(TParseResult).Name;
-                    throw new SqmParseException(string.Format("Unknown property in {0}: {1}", resultTypeName, line.ToString().Trim()));
+                    throw new SqmParseException(string.Format("Unknown line in {0}: {1}", resultTypeName, line.ToString().Trim()));
                 }
             }
 

@@ -11,25 +11,25 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Waypoint
             var effectsParser = new EffectsParser();
             ContextSetters.Add(new ContextSetter<List<string>>(effectsParser, x => ParseResult.Effects = x));
 
-            PropertySetters.Add(new IntegerPropertySetter("id", x => ParseResult.Id = x));
-            PropertySetters.Add(new IntegerPropertySetter("idStatic", x => ParseResult.IdStatic = x));
-            PropertySetters.Add(new IntegerPropertySetter("idObject", x => ParseResult.IdObject = x));
-            PropertySetters.Add(new IntegerPropertySetter("housePos", x => ParseResult.HousePos = x));
-            PropertySetters.Add(new VectorPropertySetter("position", x => ParseResult.Position = x));
-            PropertySetters.Add(new IntegerPropertySetter("placement", x => ParseResult.Placement = x));
-            PropertySetters.Add(new IntegerPropertySetter("completitionRadius", x => ParseResult.CompletitionRadius = x));
-            PropertySetters.Add(new StringPropertySetter("type", x => ParseResult.Type = x));
-            PropertySetters.Add(new StringPropertySetter("combatMode", x => ParseResult.CombatMode = x));
-            PropertySetters.Add(new StringPropertySetter("formation", x => ParseResult.Formation = x));
-            PropertySetters.Add(new StringPropertySetter("speed", x => ParseResult.Speed = x));
-            PropertySetters.Add(new StringPropertySetter("combat", x => ParseResult.Combat = x));
-            PropertySetters.Add(new StringPropertySetter("expCond", x => ParseResult.ExpCond = x));
-            PropertySetters.Add(new StringPropertySetter("expActiv", x => ParseResult.ExpActiv = x));
-            PropertySetters.Add(new IntegerListPropertySetter("synchronizations", x => ParseResult.Synchronizations = x));
-            PropertySetters.Add(new IntegerPropertySetter("timeoutMin", x => ParseResult.TimeoutMin = x));
-            PropertySetters.Add(new IntegerPropertySetter("timeoutMid", x => ParseResult.TimeoutMid = x));
-            PropertySetters.Add(new IntegerPropertySetter("timeoutMax", x => ParseResult.TimeoutMax = x));
-            PropertySetters.Add(new StringPropertySetter("showWP", x => ParseResult.ShowWp = x));
+            LineSetters.Add(new IntegerPropertySetter("id", x => ParseResult.Id = x));
+            LineSetters.Add(new IntegerPropertySetter("idStatic", x => ParseResult.IdStatic = x));
+            LineSetters.Add(new IntegerPropertySetter("idObject", x => ParseResult.IdObject = x));
+            LineSetters.Add(new IntegerPropertySetter("housePos", x => ParseResult.HousePos = x));
+            LineSetters.Add(new VectorPropertySetter("position", x => ParseResult.Position = x));
+            LineSetters.Add(new IntegerPropertySetter("placement", x => ParseResult.Placement = x));
+            LineSetters.Add(new IntegerPropertySetter("completitionRadius", x => ParseResult.CompletitionRadius = x));
+            LineSetters.Add(new StringPropertySetter("type", x => ParseResult.Type = x));
+            LineSetters.Add(new StringPropertySetter("combatMode", x => ParseResult.CombatMode = x));
+            LineSetters.Add(new StringPropertySetter("formation", x => ParseResult.Formation = x));
+            LineSetters.Add(new StringPropertySetter("speed", x => ParseResult.Speed = x));
+            LineSetters.Add(new StringPropertySetter("combat", x => ParseResult.Combat = x));
+            LineSetters.Add(new StringPropertySetter("expCond", x => ParseResult.ExpCond = x));
+            LineSetters.Add(new StringPropertySetter("expActiv", x => ParseResult.ExpActiv = x));
+            LineSetters.Add(new IntegerListPropertySetter("synchronizations", x => ParseResult.Synchronizations = x));
+            LineSetters.Add(new IntegerPropertySetter("timeoutMin", x => ParseResult.TimeoutMin = x));
+            LineSetters.Add(new IntegerPropertySetter("timeoutMid", x => ParseResult.TimeoutMid = x));
+            LineSetters.Add(new IntegerPropertySetter("timeoutMax", x => ParseResult.TimeoutMax = x));
+            LineSetters.Add(new StringPropertySetter("showWP", x => ParseResult.ShowWp = x));
         }
     }
 }

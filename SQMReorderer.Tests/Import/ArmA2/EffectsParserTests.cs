@@ -57,9 +57,12 @@ namespace SQMReorderer.Tests.Import.ArmA2
                     "text=otherText",
                     "};\n"
                 });
+
             var parsedEffects = _sut.ParseContext(context);
 
-            Assert.IsEmpty(parsedEffects);
+            Assert.AreEqual("one line with text", parsedEffects[0]);
+            Assert.AreEqual("and another one", parsedEffects[1]);
+            Assert.AreEqual("text=otherText", parsedEffects[2]);
         }
     }
 }

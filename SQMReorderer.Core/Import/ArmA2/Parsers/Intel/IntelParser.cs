@@ -9,17 +9,17 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Intel
 
         public IntelParser()
         {
-            PropertySetters.Add(new StringPropertySetter("briefingName", x => ParseResult.BriefingName = x));
-            PropertySetters.Add(new StringPropertySetter("briefingDescription", x => ParseResult.BriefingDescription = x));
-            PropertySetters.Add(new IntegerPropertySetter("resistanceWest", x => ParseResult.ResistanceWest = x));
-            PropertySetters.Add(new IntegerPropertySetter("resistanceEast", x => ParseResult.ResistanceEast = x));
-            PropertySetters.Add(new DoublePropertySetter("startWeather", x => ParseResult.StartWeather = x));
-            PropertySetters.Add(new DoublePropertySetter("forecastWeather", x => ParseResult.ForecastWeather = x));
-            PropertySetters.Add(new IntegerPropertySetter("year", x => ParseResult.Year = x));
-            PropertySetters.Add(new IntegerPropertySetter("month", x => ParseResult.Month = x));
-            PropertySetters.Add(new IntegerPropertySetter("day", x => ParseResult.Day = x));
-            PropertySetters.Add(new IntegerPropertySetter("hour", x => ParseResult.Hour = x));
-            PropertySetters.Add(new IntegerPropertySetter("minute", x => ParseResult.Minute = x));
+            LineSetters.Add(new StringPropertySetter("briefingName", x => ParseResult.BriefingName = x));
+            LineSetters.Add(new StringPropertySetter("briefingDescription", x => ParseResult.BriefingDescription = x));
+            LineSetters.Add(new IntegerPropertySetter("resistanceWest", x => ParseResult.ResistanceWest = x));
+            LineSetters.Add(new IntegerPropertySetter("resistanceEast", x => ParseResult.ResistanceEast = x));
+            LineSetters.Add(new DoublePropertySetter("startWeather", x => ParseResult.StartWeather = x));
+            LineSetters.Add(new DoublePropertySetter("forecastWeather", x => ParseResult.ForecastWeather = x));
+            LineSetters.Add(new IntegerPropertySetter("year", x => ParseResult.Year = x));
+            LineSetters.Add(new IntegerPropertySetter("month", x => ParseResult.Month = x));
+            LineSetters.Add(new IntegerPropertySetter("day", x => ParseResult.Day = x));
+            LineSetters.Add(new IntegerPropertySetter("hour", x => ParseResult.Hour = x));
+            LineSetters.Add(new IntegerPropertySetter("minute", x => ParseResult.Minute = x));
         }
 
         protected override Regex HeaderRegex

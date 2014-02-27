@@ -307,9 +307,14 @@ namespace SQMReorderer.Core.Import
             {
                 Number = waypoint.Number,
                 Position = waypoint.Position,
+                Placement = waypoint.Placement,
+                CompletitionRadius = waypoint.CompletitionRadius,
                 Type = waypoint.Type,
                 ExpActiv = waypoint.ExpActiv,
                 Effects = waypoint.Effects,
+                TimeoutMin = waypoint.TimeoutMin,
+                TimeoutMid = waypoint.TimeoutMid,
+                TimeoutMax = waypoint.TimeoutMax,
                 ShowWp = waypoint.ShowWp
             };
         }

@@ -16,8 +16,13 @@ namespace SQMReorderer.Tests.Import.ArmA3
                 "class Item0",
                 "{",
                 "position[]={4083.6555,25.784687,11750.772};",
+                "placement=100;",
+                "completitionRadius=150;",
                 "type=\"DISMISS\";",
                 "expActiv=\"op_h1;\";",
+                "timeoutMin=300;",
+                "timeoutMid=301;",
+                "timeoutMax=302;",
                 "showWP=\"NEVER\";",
                 "};"
             };
@@ -59,8 +64,13 @@ namespace SQMReorderer.Tests.Import.ArmA3
             Assert.AreEqual(4083.6555, waypoint.Position.X);
             Assert.AreEqual(25.784687, waypoint.Position.Y);
             Assert.AreEqual(11750.772, waypoint.Position.Z);
+            Assert.AreEqual(100, waypoint.Placement);
+            Assert.AreEqual(150, waypoint.CompletitionRadius);
             Assert.AreEqual("DISMISS", waypoint.Type);
             Assert.AreEqual("op_h1;", waypoint.ExpActiv);
+            Assert.AreEqual(300, waypoint.TimeoutMin);
+            Assert.AreEqual(301, waypoint.TimeoutMid);
+            Assert.AreEqual(302, waypoint.TimeoutMax);
             Assert.AreEqual("NEVER", waypoint.ShowWp);
         }
 

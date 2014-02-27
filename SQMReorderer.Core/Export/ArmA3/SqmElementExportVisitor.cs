@@ -183,9 +183,14 @@ namespace SQMReorderer.Core.Export.ArmA3
             stringBuilder.Append("class " + elementName + waypoint.Number + "\n");
             stringBuilder.Append("{\n");
             stringBuilder.Append(_propertyVisitor.Visit("position", waypoint.Position));
+            stringBuilder.Append(_propertyVisitor.Visit("placement", waypoint.Placement));
+            stringBuilder.Append(_propertyVisitor.Visit("completitionRadius", waypoint.CompletitionRadius));
             stringBuilder.Append(_propertyVisitor.Visit("type", waypoint.Type));
             stringBuilder.Append(_propertyVisitor.Visit("expActiv", waypoint.ExpActiv));
             stringBuilder.Append(GetEffectsAsSingleString(waypoint.Effects));
+            stringBuilder.Append(_propertyVisitor.Visit("timeoutMin", waypoint.TimeoutMin));
+            stringBuilder.Append(_propertyVisitor.Visit("timeoutMid", waypoint.TimeoutMid));
+            stringBuilder.Append(_propertyVisitor.Visit("timeoutMax", waypoint.TimeoutMax));
             stringBuilder.Append(_propertyVisitor.Visit("showWP", waypoint.ShowWp));
             stringBuilder.Append("};\n");
 

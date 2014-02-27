@@ -339,6 +339,8 @@ namespace SQMReorderer.Tests.Export.ArmA3
             originalItemsText.Append("class Item0\n");
             originalItemsText.Append("{\n");
             originalItemsText.Append("position[]={4083.6555,25.784687,11750.772};\n");
+            originalItemsText.Append("placement=100;\n");
+            originalItemsText.Append("completitionRadius=150;\n");
             originalItemsText.Append("type=\"DISMISS\";\n");
             originalItemsText.Append("expActiv=\"op_h1;\";\n");
             originalItemsText.Append("class Effects\n");
@@ -346,6 +348,9 @@ namespace SQMReorderer.Tests.Export.ArmA3
             originalItemsText.Append("titleEffect=\"PLAIN DOWN\";\n");
             originalItemsText.Append("otherText\n");
             originalItemsText.Append("};\n");
+            originalItemsText.Append("timeoutMin=300;\n");
+            originalItemsText.Append("timeoutMid=301;\n");
+            originalItemsText.Append("timeoutMax=302;\n");
             originalItemsText.Append("showWP=\"NEVER\";\n");
             originalItemsText.Append("};\n");
 
@@ -355,9 +360,14 @@ namespace SQMReorderer.Tests.Export.ArmA3
             {
                 Number = 0,
                 Position = new Vector(4083.6555, 25.784687, 11750.772),
+                Placement = 100,
+                CompletitionRadius = 150,
                 Type = "DISMISS",
                 ExpActiv = "op_h1;",
                 Effects = new List<string> { "titleEffect=\"PLAIN DOWN\";", "otherText" },
+                TimeoutMin = 300,
+                TimeoutMid = 301,
+                TimeoutMax = 302,
                 ShowWp = "NEVER"
             };
 

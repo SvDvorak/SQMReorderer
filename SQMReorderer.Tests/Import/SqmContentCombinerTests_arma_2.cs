@@ -43,7 +43,7 @@ namespace SQMReorderer.Tests.Import
         {
             var sqmContents = _sut.Combine(new SqmContents());
 
-            Assert.AreEqual(null, sqmContents.Version);
+            Assert.IsNull(sqmContents.Version);
             Assert.IsNull(sqmContents.Mission);
             Assert.IsNull(sqmContents.Intro);
             Assert.IsNull(sqmContents.OutroWin);
@@ -84,7 +84,7 @@ namespace SQMReorderer.Tests.Import
             var sqmContents = _sut.Combine(CreateContents(new MissionState()));
 
             var newMission = sqmContents.Mission;
-            Assert.AreEqual(null, newMission.RandomSeed);
+            Assert.IsNull(newMission.RandomSeed);
             Assert.IsEmpty(newMission.AddOns);
             Assert.IsEmpty(newMission.AddOnsAuto);
             Assert.IsNull(newMission.Intel);
@@ -325,20 +325,20 @@ namespace SQMReorderer.Tests.Import
 
             var newWaypoint = sqmContents.Mission.Groups[0].Waypoints[0];
             Assert.AreEqual(0, newWaypoint.Number);
-            Assert.AreEqual(null, newWaypoint.Position);
-            Assert.AreEqual(null, newWaypoint.Id);
-            Assert.AreEqual(null, newWaypoint.Placement);
-            Assert.AreEqual(null, newWaypoint.CompletitionRadius);
-            Assert.AreEqual(null, newWaypoint.Type);
-            Assert.AreEqual(null, newWaypoint.CombatMode);
-            Assert.AreEqual(null, newWaypoint.Formation);
-            Assert.AreEqual(null, newWaypoint.Speed);
-            Assert.AreEqual(null, newWaypoint.Combat);
-            Assert.AreEqual(null, newWaypoint.Description);
-            Assert.AreEqual(null, newWaypoint.Visible);
-            Assert.AreEqual(null, newWaypoint.ExpCond);
+            Assert.IsNull(newWaypoint.Position);
+            Assert.IsNull(newWaypoint.Id);
+            Assert.IsNull(newWaypoint.Placement);
+            Assert.IsNull(newWaypoint.CompletitionRadius);
+            Assert.IsNull(newWaypoint.Type);
+            Assert.IsNull(newWaypoint.CombatMode);
+            Assert.IsNull(newWaypoint.Formation);
+            Assert.IsNull(newWaypoint.Speed);
+            Assert.IsNull(newWaypoint.Combat);
+            Assert.IsNull(newWaypoint.Description);
+            Assert.IsNull(newWaypoint.Visible);
+            Assert.IsNull(newWaypoint.ExpCond);
             Assert.IsEmpty(newWaypoint.Synchronizations);
-            Assert.AreEqual(null, newWaypoint.ShowWp);
+            Assert.IsNull(newWaypoint.ShowWp);
         }
 
         [Test]

@@ -43,7 +43,7 @@ namespace SQMReorderer.Tests.Import
         {
             var sqmContents = _sut.Combine(new SqmContents());
 
-            Assert.AreEqual(null, sqmContents.Version);
+            Assert.IsNull(sqmContents.Version);
             Assert.IsNull(sqmContents.Mission);
             Assert.IsNull(sqmContents.Intro);
             Assert.IsNull(sqmContents.OutroWin);
@@ -83,7 +83,7 @@ namespace SQMReorderer.Tests.Import
             var sqmContents = _sut.Combine(CreateContents(new MissionState()));
 
             var newMission = sqmContents.Mission;
-            Assert.AreEqual(null, newMission.RandomSeed);
+            Assert.IsNull(newMission.RandomSeed);
             Assert.IsEmpty(newMission.AddOns);
             Assert.IsEmpty(newMission.AddOnsAuto);
             Assert.IsNull(newMission.Intel);
@@ -252,9 +252,14 @@ namespace SQMReorderer.Tests.Import
             {
                 Number = 1,
                 Position = new Vector(1, 2, 3),
+                Placement = 100,
+                CompletitionRadius = 150,
                 Type = "a type",
                 ExpActiv = "expActiv",
                 Effects = new List<string> { "line1", "line2" },
+                TimeoutMin = 20,
+                TimeoutMid = 21,
+                TimeoutMax = 22,
                 ShowWp = "show"
             };
 
@@ -263,10 +268,15 @@ namespace SQMReorderer.Tests.Import
             var newWaypoint = sqmContents.Mission.Groups[0].Waypoints[0];
             Assert.AreEqual(1, newWaypoint.Number);
             Assert.AreEqual(new Vector(1, 2, 3), newWaypoint.Position);
+            Assert.AreEqual(100, newWaypoint.Placement);
+            Assert.AreEqual(150, newWaypoint.CompletitionRadius);
             Assert.AreEqual("a type", newWaypoint.Type);
             Assert.AreEqual("expActiv", newWaypoint.ExpActiv);
             Assert.AreEqual("line1", newWaypoint.Effects[0]);
             Assert.AreEqual("line2", newWaypoint.Effects[1]);
+            Assert.AreEqual(20, newWaypoint.TimeoutMin);
+            Assert.AreEqual(21, newWaypoint.TimeoutMid);
+            Assert.AreEqual(22, newWaypoint.TimeoutMax);
             Assert.AreEqual("show", newWaypoint.ShowWp);
         }
 
@@ -277,10 +287,15 @@ namespace SQMReorderer.Tests.Import
 
             var newWaypoint = sqmContents.Mission.Groups[0].Waypoints[0];
             Assert.AreEqual(0, newWaypoint.Number);
-            Assert.AreEqual(null, newWaypoint.Type);
-            Assert.AreEqual(null, newWaypoint.ExpActiv);
+            Assert.IsNull(newWaypoint.Placement);
+            Assert.IsNull(newWaypoint.CompletitionRadius);
+            Assert.IsNull(newWaypoint.Type);
+            Assert.IsNull(newWaypoint.ExpActiv);
             Assert.IsEmpty(newWaypoint.Effects);
-            Assert.AreEqual(null, newWaypoint.ShowWp);
+            Assert.IsNull(newWaypoint.TimeoutMin);
+            Assert.IsNull(newWaypoint.TimeoutMid);
+            Assert.IsNull(newWaypoint.TimeoutMax);
+            Assert.IsNull(newWaypoint.ShowWp);
             Assert.IsNull(newWaypoint.Position);
         }
 

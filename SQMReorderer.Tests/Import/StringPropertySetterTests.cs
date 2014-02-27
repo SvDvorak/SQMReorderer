@@ -60,5 +60,16 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(Result.Success, matchResult);
             Assert.AreEqual("", _value);
         }
+
+        [Test]
+        public void Whitespace_is_trimmed_from_value_endings()
+        {
+            var inputText = "camelot=\"  aaa   \"";
+
+            var matchResult = _stringPropertySetter.SetValueIfLineMatches(new SqmLine(inputText));
+
+            Assert.AreEqual(Result.Success, matchResult);
+            Assert.AreEqual("aaa", _value);
+        }
     }
 }

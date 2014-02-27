@@ -13,7 +13,7 @@ namespace SQMReorderer.Core.Import.DataSetters
         {
             value = value.Substring(1, value.Length - 2);
 
-            PropertySetter(value);
+            PropertySetter(value.Trim());
         }
     }
 }

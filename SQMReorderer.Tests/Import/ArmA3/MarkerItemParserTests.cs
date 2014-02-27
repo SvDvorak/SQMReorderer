@@ -19,6 +19,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
                 "text=\"Destroy equipment\";",
                 "markerType=\"ELLIPSE\";\n",
                 "type=\"Empty\";\n",
+                "colorName=\"ColorRed\";\n",
                 "fillName=\"Border\";\n",
                 "a=4.4;\n",
                 "b=3.3;\n",
@@ -52,6 +53,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
             Assert.AreEqual("Destroy equipment", markerResult.Text);
             Assert.AreEqual("ELLIPSE", markerResult.MarkerType);
             Assert.AreEqual("Empty", markerResult.Type);
+            Assert.AreEqual("ColorRed", markerResult.ColorName);
             Assert.AreEqual("Border", markerResult.FillName);
             Assert.AreEqual(4.4, markerResult.A);
             Assert.AreEqual(3.3, markerResult.B);

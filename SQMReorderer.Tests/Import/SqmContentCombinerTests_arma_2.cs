@@ -387,6 +387,7 @@ namespace SQMReorderer.Tests.Import
             Assert.IsNull(newMarker.Name);
             Assert.IsNull(newMarker.MarkerType);
             Assert.IsNull(newMarker.Type);
+            Assert.IsNull(newMarker.ColorName);
             Assert.IsNull(newMarker.FillName);
             Assert.IsNull(newMarker.A);
             Assert.IsNull(newMarker.B);

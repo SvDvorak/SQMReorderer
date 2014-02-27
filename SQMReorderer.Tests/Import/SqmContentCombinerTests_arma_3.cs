@@ -248,6 +248,7 @@ namespace SQMReorderer.Tests.Import
                     Name = "name",
                     MarkerType = "markerType",
                     Type = "type",
+                    ColorName = "colorName",
                     FillName = "fillName",
                     A = 1,
                     B = 2,
@@ -264,6 +265,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual("name", newMarker.Name);
             Assert.AreEqual("markerType", newMarker.MarkerType);
             Assert.AreEqual("type", newMarker.Type);
+            Assert.AreEqual("colorName", newMarker.ColorName);
             Assert.AreEqual("fillName", newMarker.FillName);
             Assert.AreEqual(1, newMarker.A);
             Assert.AreEqual(2, newMarker.B);

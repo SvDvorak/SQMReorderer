@@ -6400,6 +6400,7 @@ class Mission
 			name="f_insert";
 			text="insert";
 			type="mil_start";
+			colorName="ColorRed";
 			a=12.5;
 			b=14.5;
 		};

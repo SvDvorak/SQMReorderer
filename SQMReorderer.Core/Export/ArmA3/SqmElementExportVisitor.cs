@@ -180,6 +180,7 @@ namespace SQMReorderer.Core.Export.ArmA3
             stringBuilder.Append(_propertyVisitor.Visit("text", marker.Text));
             stringBuilder.Append(_propertyVisitor.Visit("markerType", marker.MarkerType));
             stringBuilder.Append(_propertyVisitor.Visit("type", marker.Type));
+            stringBuilder.Append(_propertyVisitor.Visit("colorName", marker.ColorName));
             stringBuilder.Append(_propertyVisitor.Visit("fillName", marker.FillName));
             stringBuilder.Append(_propertyVisitor.Visit("a", marker.A));
             stringBuilder.Append(_propertyVisitor.Visit("b", marker.B));

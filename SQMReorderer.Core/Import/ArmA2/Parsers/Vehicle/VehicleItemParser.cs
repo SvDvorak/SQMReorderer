@@ -31,11 +31,24 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle
             LineSetters.Add(new DoublePropertySetter("fuel", x => ParseResult.Fuel = x));
             LineSetters.Add(new DoublePropertySetter("ammo", x => ParseResult.Ammo = x));
             LineSetters.Add(new StringPropertySetter("text", x => ParseResult.Text = x));
+            LineSetters.Add(new StringListPropertySetter("markers", SetSingleLineMarkers));
             LineSetters.Add(new StringPropertySetter("init", x => ParseResult.Init = x));
             LineSetters.Add(new StringPropertySetter("description", x => ParseResult.Description = x));
             LineSetters.Add(new IntegerListPropertySetter("synchronizations", x => ParseResult.Synchronizations = x));
 
-            ContextSetters.Add(new MultiLineStringListPropertySetter("markers", x => ParseResult.Markers = x));
+            ContextSetters.Add(new MultiLineStringListPropertySetter("markers", SetMultiLineMarkers));
+        }
+
+        private void SetMultiLineMarkers(List<string> markers)
+        {
+            ParseResult.Markers = markers;
+            ParseResult.IsMarkersSingleLine = false;
+        }
+
+        private void SetSingleLineMarkers(List<string> markers)
+        {
+            ParseResult.Markers = markers;
+            ParseResult.IsMarkersSingleLine = true;
         }
     }
 }

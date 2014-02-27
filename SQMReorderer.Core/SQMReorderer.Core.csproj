@@ -82,6 +82,7 @@
     <Compile Include="Import\ArmA3\ISqmFileImporter.cs" />
     <Compile Include="Import\ArmA3\ISqmParser.cs" />
     <Compile Include="Import\DataSetters\ILineSetter.cs" />
+    <Compile Include="Import\DataSetters\StringListPropertySetter.cs" />
     <Compile Include="Import\FileVersion\FileVersion.cs" />
     <Compile Include="Import\FileVersion\FileVersionRetriever.cs" />
     <Compile Include="Import\FileVersion\SqmVersionException.cs" />

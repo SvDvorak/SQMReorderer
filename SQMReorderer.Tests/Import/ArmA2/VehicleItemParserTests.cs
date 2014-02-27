@@ -245,5 +245,24 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual("text1", itemResult.Markers[0]);
             Assert.AreEqual("text2", itemResult.Markers[1]);
         }
+
+        [Test]
+        public void Expect_parser_to_handle_single_line_marker_list()
+        {
+            var context = _contextCreator.CreateContext(new List<string>
+                {
+                    "class Item0",
+                    "{",
+                    "markers[]={\"text1\",\"text2\",\"text3\"};",
+                    "};"
+                });
+
+            var itemResult = _parser.ParseContext(context);
+
+            Assert.IsTrue(itemResult.IsMarkersSingleLine);
+            Assert.AreEqual("text1", itemResult.Markers[0]);
+            Assert.AreEqual("text2", itemResult.Markers[1]);
+            Assert.AreEqual("text3", itemResult.Markers[2]);
+        }
     }
 }

@@ -35,5 +35,7 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
 
         public List<Vehicle> Vehicles { get; set; }
         public List<Waypoint> Waypoints { get; set; }
+
+        public bool IsMarkersSingleLine { get; set; }
     }
 }

@@ -184,6 +184,7 @@ namespace SQMReorderer.Tests.Import
                     Ammo = 21,
                     Text = "text",
                     Markers = new List<string> { "m1", "m2" },
+                    IsMarkersSingleLine = true,
                     Init = "init",
                     Description = "desc",
                     Synchronizations = { 5 },
@@ -213,6 +214,8 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(21, newVehicle.Ammo);
             Assert.AreEqual("text", newVehicle.Text);
             Assert.AreEqual("m1", newVehicle.Markers[0]);
+            Assert.AreEqual("m2", newVehicle.Markers[1]);
+            Assert.IsTrue(newVehicle.IsMarkersSingleLine);
             Assert.AreEqual("init", newVehicle.Init);
             Assert.AreEqual("desc", newVehicle.Description);
             Assert.AreEqual(5, newVehicle.Synchronizations[0]);

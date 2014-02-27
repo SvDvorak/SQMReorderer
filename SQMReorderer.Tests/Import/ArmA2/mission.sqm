@@ -220,6 +220,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.5;
 					text="UnitUN_CO_M";
+					markers[]={"3","5","4","6","2","1","8","7"};
 					init="GrpUN_CO = group this; nul = [""m"",this] call f_fnc_assignGear;";
 					description="UN Exchange Medic (PMC)";
 				};

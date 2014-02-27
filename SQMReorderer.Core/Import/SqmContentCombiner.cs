@@ -91,6 +91,7 @@ namespace SQMReorderer.Core.Import
                     Ammo = vehicle.Ammo,
                     Text = vehicle.Text,
                     Markers = vehicle.Markers,
+                    IsMarkersSingleLine = vehicle.IsMarkersSingleLine,
                     Init = vehicle.Init,
                     Description = vehicle.Description,
                     Synchronizations = vehicle.Synchronizations,

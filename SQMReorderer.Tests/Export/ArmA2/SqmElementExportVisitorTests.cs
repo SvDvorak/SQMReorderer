@@ -251,6 +251,25 @@ namespace SQMReorderer.Tests.Export.ArmA2
         }
 
         [Test]
+        public void Expect_exporter_to_export_markers_as_single_line_if_set()
+        {
+            var originalVehicleText = new StringBuilder();
+
+            originalVehicleText.Append("class Item0\n");
+            originalVehicleText.Append("{\n");
+            originalVehicleText.Append("markers[]={\"text1\",\"text2\",\"text3\"};\n");
+            originalVehicleText.Append("};\n");
+
+            var vehicle = new Vehicle();
+            vehicle.Markers = new List<string> { "text1", "text2", "text3" };
+            vehicle.IsMarkersSingleLine = true;
+
+            var actualVehicleText = _exportVisitor.Visit("Item", vehicle);
+
+            Assert.AreEqual(originalVehicleText.ToString(), actualVehicleText);
+        }
+
+        [Test]
         public void Expect_exporter_to_successfully_export_complex_vehicle()
         {
             var originalItemsText = new StringBuilder();

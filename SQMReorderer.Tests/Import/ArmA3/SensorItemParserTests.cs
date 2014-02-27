@@ -18,6 +18,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
                 "a=4.4;\n",
                 "b=3.3;\n",
                 "activationBy=\"ANY\";\n",
+                "activationType=\"NOT PRESENT\";\n",
                 "interruptable=1;\n",
                 "type=\"SWITCH\";\n",
                 "age=\"UNKNOWN\";\n",
@@ -56,6 +57,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
             Assert.AreEqual(4.4, sensorResult.A);
             Assert.AreEqual(3.3, sensorResult.B);
             Assert.AreEqual("ANY", sensorResult.ActivationBy);
+            Assert.AreEqual("NOT PRESENT", sensorResult.ActivationType);
             Assert.AreEqual(1, sensorResult.Interruptable);
             Assert.AreEqual("SWITCH", sensorResult.Type);
             Assert.AreEqual("UNKNOWN", sensorResult.Age);

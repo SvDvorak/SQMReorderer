@@ -343,6 +343,7 @@ namespace SQMReorderer.Tests.Export.ArmA3
             originalSensorText.Append("a=4.5;\n");
             originalSensorText.Append("b=5.5;\n");
             originalSensorText.Append("activationBy=\"ANY\";\n");
+            originalSensorText.Append("activationType=\"ANY TYPE\";\n");
             originalSensorText.Append("interruptable=1;\n");
             originalSensorText.Append("type=\"EMPTY\";\n");
             originalSensorText.Append("age=\"UNKNOWN\";\n");
@@ -361,6 +362,7 @@ namespace SQMReorderer.Tests.Export.ArmA3
             sensor.A = 4.5;
             sensor.B = 5.5;
             sensor.ActivationBy = "ANY";
+            sensor.ActivationType = "ANY TYPE";
             sensor.Interruptable = 1;
             sensor.Type = "EMPTY";
             sensor.Age = "UNKNOWN";

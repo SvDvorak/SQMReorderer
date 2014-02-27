@@ -6420,6 +6420,7 @@ class Mission
 			position[]={3687.3662,18.926329,3487.916};
 			a=12.5;
 			b=7.5;
+			activationType="NOT PRESENT";
 			interruptable=1;
 			type="EAST G";
 			age="UNKNOWN";

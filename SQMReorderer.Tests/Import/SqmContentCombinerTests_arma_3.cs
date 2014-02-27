@@ -303,6 +303,7 @@ namespace SQMReorderer.Tests.Import
                     B = 2,
                     Type = "type",
                     ActivationBy = "act",
+                    ActivationType = "act type",
                     Interruptable = 3,
                     Age = "age",
                     ExpCond = "cond",
@@ -318,6 +319,7 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(2, newSensor.B);
             Assert.AreEqual("type", newSensor.Type);
             Assert.AreEqual("act", newSensor.ActivationBy);
+            Assert.AreEqual("act type", newSensor.ActivationType);
             Assert.AreEqual(3, newSensor.Interruptable);
             Assert.AreEqual("age", newSensor.Age);
             Assert.AreEqual("cond", newSensor.ExpCond);
@@ -336,6 +338,7 @@ namespace SQMReorderer.Tests.Import
             Assert.IsNull(newSensor.B);
             Assert.IsNull(newSensor.Type);
             Assert.IsNull(newSensor.ActivationBy);
+            Assert.IsNull(newSensor.ActivationType);
             Assert.IsNull(newSensor.Interruptable);
             Assert.IsNull(newSensor.Age);
             Assert.IsNull(newSensor.ExpCond);

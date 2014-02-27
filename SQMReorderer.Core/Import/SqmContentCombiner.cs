@@ -333,6 +333,7 @@ namespace SQMReorderer.Core.Import
                     B = sensor.B,
                     Type = sensor.Type,
                     ActivationBy = sensor.ActivationBy,
+                    ActivationType = sensor.ActivationType,
                     Interruptable = sensor.Interruptable,
                     Age = sensor.Age,
                     ExpCond = sensor.ExpCond,

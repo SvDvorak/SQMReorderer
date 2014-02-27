@@ -206,6 +206,7 @@ namespace SQMReorderer.Core.Export.ArmA3
             stringBuilder.Append(_propertyVisitor.Visit("a", sensor.A));
             stringBuilder.Append(_propertyVisitor.Visit("b", sensor.B));
             stringBuilder.Append(_propertyVisitor.Visit("activationBy", sensor.ActivationBy));
+            stringBuilder.Append(_propertyVisitor.Visit("activationType", sensor.ActivationType));
             stringBuilder.Append(_propertyVisitor.Visit("interruptable", sensor.Interruptable));
             stringBuilder.Append(_propertyVisitor.Visit("type", sensor.Type));
             stringBuilder.Append(_propertyVisitor.Visit("age", sensor.Age));

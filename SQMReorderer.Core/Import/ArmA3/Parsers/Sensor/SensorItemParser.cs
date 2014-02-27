@@ -11,6 +11,7 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers.Sensor
             PropertySetters.Add(new DoublePropertySetter("a", x => ParseResult.A = x));
             PropertySetters.Add(new DoublePropertySetter("b", x => ParseResult.B = x));
             PropertySetters.Add(new StringPropertySetter("activationBy", x => ParseResult.ActivationBy = x));
+            PropertySetters.Add(new StringPropertySetter("activationType", x => ParseResult.ActivationType = x));
             PropertySetters.Add(new IntegerPropertySetter("interruptable", x => ParseResult.Interruptable = x));
             PropertySetters.Add(new StringPropertySetter("type", x => ParseResult.Type = x));
             PropertySetters.Add(new StringPropertySetter("age", x => ParseResult.Age = x));

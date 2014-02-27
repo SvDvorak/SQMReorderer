@@ -155,7 +155,9 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalIntelText.Append("resistanceWest=0;\n");
             originalIntelText.Append("resistanceEast=1;\n");
             originalIntelText.Append("startWeather=0.25;\n");
+            originalIntelText.Append("startFog=0.35;\n");
             originalIntelText.Append("forecastWeather=0.25;\n");
+            originalIntelText.Append("forecastFog=0.45;\n");
             originalIntelText.Append("year=2008;\n");
             originalIntelText.Append("month=10;\n");
             originalIntelText.Append("day=11;\n");
@@ -170,7 +172,9 @@ namespace SQMReorderer.Tests.Export.ArmA2
             intel.ResistanceWest = 0;
             intel.ResistanceEast = 1;
             intel.StartWeather = 0.25;
+            intel.StartFog = 0.35;
             intel.ForecastWeather = 0.25;
+            intel.ForecastFog = 0.45;
             intel.Year = 2008;
             intel.Month = 10;
             intel.Day = 11;

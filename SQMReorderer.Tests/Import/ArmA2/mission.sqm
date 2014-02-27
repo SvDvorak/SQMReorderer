@@ -85,7 +85,9 @@ class Mission
 		resistanceWest=0;
 		resistanceEast=1;
 		startWeather=0.25;
+		startFog=0.64826417;
 		forecastWeather=0.25;
+		forecastFog=0.83790088;
 		year=2008;
 		month=10;
 		day=11;

@@ -9,9 +9,11 @@
         public int? ResistanceEast { get; set; }
         public double? TimeOfChanges { get; set; }
         public double? StartWeather { get; set; }
+        public double? StartFog { get; set; }
         public double? StartWind { get; set; }
         public double? StartWaves { get; set; }
         public double? ForecastWeather { get; set; }
+        public double? ForecastFog { get; set; }
         public double? ForecastWind { get; set; }
         public double? ForecastWaves { get; set; }
         public double? ForecastLightnings { get; set; }

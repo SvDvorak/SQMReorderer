@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMReorderer.Core.Import;
-using SQMReorderer.Core.Import.ArmA2;
 using SQMReorderer.Core.Import.ArmA2.Parsers.Intel;
 using SQMReorderer.Core.Import.Context;
 
@@ -53,7 +52,9 @@ namespace SQMReorderer.Tests.Import.ArmA2
                     "resistanceWest=0;",
                     "resistanceEast=1;",
                     "startWeather=0.19207704;\n",
+                    "startFog=0.6482;\n",
                     "forecastWeather=0.25;\n",
+                    "forecastFog=0.8379;\n",
                     "year=2008;\n",
                     "month=10;\n",
                     "day=11;\n",
@@ -71,7 +72,9 @@ namespace SQMReorderer.Tests.Import.ArmA2
             Assert.AreEqual(0, intelResult.ResistanceWest);
             Assert.AreEqual(1, intelResult.ResistanceEast);
             Assert.AreEqual(0.19207704, intelResult.StartWeather);
+            Assert.AreEqual(0.6482, intelResult.StartFog);
             Assert.AreEqual(0.25, intelResult.ForecastWeather);
+            Assert.AreEqual(0.8379, intelResult.ForecastFog);
             Assert.AreEqual(2008, intelResult.Year);
             Assert.AreEqual(10, intelResult.Month);
             Assert.AreEqual(11, intelResult.Day);

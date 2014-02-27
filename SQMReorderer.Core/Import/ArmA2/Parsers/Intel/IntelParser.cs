@@ -14,7 +14,9 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Intel
             LineSetters.Add(new IntegerPropertySetter("resistanceWest", x => ParseResult.ResistanceWest = x));
             LineSetters.Add(new IntegerPropertySetter("resistanceEast", x => ParseResult.ResistanceEast = x));
             LineSetters.Add(new DoublePropertySetter("startWeather", x => ParseResult.StartWeather = x));
+            LineSetters.Add(new DoublePropertySetter("startFog", x => ParseResult.StartFog = x));
             LineSetters.Add(new DoublePropertySetter("forecastWeather", x => ParseResult.ForecastWeather = x));
+            LineSetters.Add(new DoublePropertySetter("forecastFog", x => ParseResult.ForecastFog = x));
             LineSetters.Add(new IntegerPropertySetter("year", x => ParseResult.Year = x));
             LineSetters.Add(new IntegerPropertySetter("month", x => ParseResult.Month = x));
             LineSetters.Add(new IntegerPropertySetter("day", x => ParseResult.Day = x));

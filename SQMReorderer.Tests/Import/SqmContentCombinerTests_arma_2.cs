@@ -104,7 +104,9 @@ namespace SQMReorderer.Tests.Import
                     ResistanceWest = 0,
                     ResistanceEast = 1,
                     StartWeather = 10,
+                    StartFog = 1.23,
                     ForecastWeather = 11,
+                    ForecastFog = 2.23,
                     Year = 1,
                     Month = 2,
                     Day = 3,
@@ -120,7 +122,9 @@ namespace SQMReorderer.Tests.Import
             Assert.AreEqual(0, newIntel.ResistanceWest);
             Assert.AreEqual(1, newIntel.ResistanceEast);
             Assert.AreEqual(10, newIntel.StartWeather);
+            Assert.AreEqual(1.23, newIntel.StartFog);
             Assert.AreEqual(11, newIntel.ForecastWeather);
+            Assert.AreEqual(2.23, newIntel.ForecastFog);
             Assert.AreEqual(1, newIntel.Year);
             Assert.AreEqual(2, newIntel.Month);
             Assert.AreEqual(3, newIntel.Day);

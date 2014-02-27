@@ -188,6 +188,7 @@ class Mission
 					position[]={321.84567,654.96686,416.8855};
 					placement=60;
 					azimut=0.32468101;
+					age="ACTUAL";
 					id=4;
 					side="GUER";
 					vehicle="UN_CDF_Soldier_SL_EP1";

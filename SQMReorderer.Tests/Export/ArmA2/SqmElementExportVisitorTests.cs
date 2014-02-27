@@ -198,6 +198,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             originalVehicleText.Append("placement=30;\n");
             originalVehicleText.Append("azimut=3.14;\n");
             originalVehicleText.Append("special=\"CARGO\";\n");
+            originalVehicleText.Append("age=\"ACTUAL\";\n");
             originalVehicleText.Append("id=4;\n");
             originalVehicleText.Append("side=\"GUER\";\n");
             originalVehicleText.Append("vehicle=\"TK_GUE_Soldier_2_EP1\";\n");
@@ -228,6 +229,7 @@ namespace SQMReorderer.Tests.Export.ArmA2
             vehicle.Placement = 30;
             vehicle.Azimut = 3.14;
             vehicle.Special = "CARGO";
+            vehicle.Age = "ACTUAL";
             vehicle.Id = 4;
             vehicle.Side = "GUER";
             vehicle.VehicleName = "TK_GUE_Soldier_2_EP1";

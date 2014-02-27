@@ -252,6 +252,7 @@ namespace SQMReorderer.Tests.Import
             {
                 Number = 1,
                 Position = new Vector(1, 2, 3),
+                Type = "a type",
                 ExpActiv = "expActiv",
                 Effects = new List<string> { "line1", "line2" },
                 ShowWp = "show"
@@ -262,6 +263,7 @@ namespace SQMReorderer.Tests.Import
             var newWaypoint = sqmContents.Mission.Groups[0].Waypoints[0];
             Assert.AreEqual(1, newWaypoint.Number);
             Assert.AreEqual(new Vector(1, 2, 3), newWaypoint.Position);
+            Assert.AreEqual("a type", newWaypoint.Type);
             Assert.AreEqual("expActiv", newWaypoint.ExpActiv);
             Assert.AreEqual("line1", newWaypoint.Effects[0]);
             Assert.AreEqual("line2", newWaypoint.Effects[1]);
@@ -275,6 +277,7 @@ namespace SQMReorderer.Tests.Import
 
             var newWaypoint = sqmContents.Mission.Groups[0].Waypoints[0];
             Assert.AreEqual(0, newWaypoint.Number);
+            Assert.AreEqual(null, newWaypoint.Type);
             Assert.AreEqual(null, newWaypoint.ExpActiv);
             Assert.IsEmpty(newWaypoint.Effects);
             Assert.AreEqual(null, newWaypoint.ShowWp);

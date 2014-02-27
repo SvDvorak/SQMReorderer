@@ -339,6 +339,7 @@ namespace SQMReorderer.Tests.Export.ArmA3
             originalItemsText.Append("class Item0\n");
             originalItemsText.Append("{\n");
             originalItemsText.Append("position[]={4083.6555,25.784687,11750.772};\n");
+            originalItemsText.Append("type=\"DISMISS\";\n");
             originalItemsText.Append("expActiv=\"op_h1;\";\n");
             originalItemsText.Append("class Effects\n");
             originalItemsText.Append("{\n");
@@ -354,6 +355,7 @@ namespace SQMReorderer.Tests.Export.ArmA3
             {
                 Number = 0,
                 Position = new Vector(4083.6555, 25.784687, 11750.772),
+                Type = "DISMISS",
                 ExpActiv = "op_h1;",
                 Effects = new List<string> { "titleEffect=\"PLAIN DOWN\";", "otherText" },
                 ShowWp = "NEVER"

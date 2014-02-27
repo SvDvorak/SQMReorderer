@@ -183,6 +183,7 @@ namespace SQMReorderer.Core.Export.ArmA3
             stringBuilder.Append("class " + elementName + waypoint.Number + "\n");
             stringBuilder.Append("{\n");
             stringBuilder.Append(_propertyVisitor.Visit("position", waypoint.Position));
+            stringBuilder.Append(_propertyVisitor.Visit("type", waypoint.Type));
             stringBuilder.Append(_propertyVisitor.Visit("expActiv", waypoint.ExpActiv));
             stringBuilder.Append(GetEffectsAsSingleString(waypoint.Effects));
             stringBuilder.Append(_propertyVisitor.Visit("showWP", waypoint.ShowWp));

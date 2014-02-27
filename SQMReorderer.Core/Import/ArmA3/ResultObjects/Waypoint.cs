@@ -9,6 +9,7 @@ namespace SQMReorderer.Core.Import.ArmA3.ResultObjects
             Effects = new List<string>();
         }
 
+        public string Type { get; set; }
         public string ExpActiv { get; set; }
         public List<string> Effects { get; set; }
         public string ShowWp { get; set; }

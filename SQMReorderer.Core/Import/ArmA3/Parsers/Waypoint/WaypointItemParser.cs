@@ -12,6 +12,7 @@ namespace SQMReorderer.Core.Import.ArmA3.Parsers.Waypoint
             ContextSetters.Add(new ContextSetter<List<string>>(effectsParser, x => ParseResult.Effects = x));
 
             LineSetters.Add(new VectorPropertySetter("position", x => ParseResult.Position = x));
+            LineSetters.Add(new StringPropertySetter("type", x => ParseResult.Type = x));
             LineSetters.Add(new StringPropertySetter("expActiv", x => ParseResult.ExpActiv = x));
             LineSetters.Add(new StringPropertySetter("showWP", x => ParseResult.ShowWp = x));
         }

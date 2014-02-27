@@ -16,6 +16,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
                 "class Item0",
                 "{",
                 "position[]={4083.6555,25.784687,11750.772};",
+                "type=\"DISMISS\";",
                 "expActiv=\"op_h1;\";",
                 "showWP=\"NEVER\";",
                 "};"
@@ -58,6 +59,7 @@ namespace SQMReorderer.Tests.Import.ArmA3
             Assert.AreEqual(4083.6555, waypoint.Position.X);
             Assert.AreEqual(25.784687, waypoint.Position.Y);
             Assert.AreEqual(11750.772, waypoint.Position.Z);
+            Assert.AreEqual("DISMISS", waypoint.Type);
             Assert.AreEqual("op_h1;", waypoint.ExpActiv);
             Assert.AreEqual("NEVER", waypoint.ShowWp);
         }

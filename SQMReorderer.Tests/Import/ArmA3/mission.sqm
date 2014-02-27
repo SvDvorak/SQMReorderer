@@ -114,6 +114,7 @@ class Mission
 				class Item0
 				{
 					position[]={14132.853,19.049568,18440.096};
+					type="CYCLE";
 					expActiv="[group this, getPos this, 100] call BIS_fnc_taskPatrol;";
 					class Effects
 					{

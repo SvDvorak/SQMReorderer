@@ -307,6 +307,7 @@ namespace SQMReorderer.Core.Import
             {
                 Number = waypoint.Number,
                 Position = waypoint.Position,
+                Type = waypoint.Type,
                 ExpActiv = waypoint.ExpActiv,
                 Effects = waypoint.Effects,
                 ShowWp = waypoint.ShowWp

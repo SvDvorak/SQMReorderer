@@ -5,6 +5,6 @@ namespace SQMReorderer.Core.Import
 {
     public interface ISqmFileImporter
     {
-        SqmContents Import(Stream stream);
+        ISqmContents Import(Stream stream);
     }
 }

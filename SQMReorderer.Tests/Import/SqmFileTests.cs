@@ -60,7 +60,7 @@ namespace SQMReorderer.Tests.Import
             return importStream;
         }
 
-        private SqmContents Import(Stream importStream)
+        private ISqmContents Import(Stream importStream)
         {
             var streamToStringsReader = new StreamToStringsReader();
             var sqmContextCreator = new SqmContextCreator();
@@ -76,7 +76,7 @@ namespace SQMReorderer.Tests.Import
             return importResults;
         }
 
-        private void Export(SqmContents importResults, string path)
+        private void Export(ISqmContents importResults, string path)
         {
             var contextIndenter = new ContextIndenter();
             var streamWriterFactory = new StreamWriterFactory();
@@ -85,7 +85,7 @@ namespace SQMReorderer.Tests.Import
                 new Core.Export.ArmA3.SqmFileExporter(new Core.Export.ArmA3.SqmElementExportVisitor(), contextIndenter, streamWriterFactory),
                 new FileVersionRetriever(new StreamReaderFactory()));
             var exportStream = new FileStream(path, FileMode.OpenOrCreate);
-            sqmFileExporter.Export(exportStream, importResults);
+            //sqmFileExporter.Export(exportStream, importResults);
             exportStream.Close();
         }
 

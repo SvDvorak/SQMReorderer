@@ -75,7 +75,7 @@
     <Compile Include="Export\SqmFileExporter.cs" />
     <Compile Include="Export\SqmPropertyVisitor.cs" />
     <Compile Include="Import\ArmA2\ISqmFileImporter.cs" />
-    <Compile Include="Import\ArmA3\ResultObjects\ISqmContents.cs" />
+    <Compile Include="Import\ResultObjects\ISqmContents.cs" />
     <Compile Include="Import\ArmA3\Parsers\Waypoint\WaypointItemParser.cs" />
     <Compile Include="Import\ArmA3\Parsers\Waypoint\WaypointItemParserFactory.cs" />
     <Compile Include="Import\ArmA3\ResultObjects\Waypoint.cs" />

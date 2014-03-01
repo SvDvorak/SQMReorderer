@@ -22,19 +22,19 @@ namespace SQMReorderer.Core.Import
             _arma3Importer = arma3Importer;
         }
 
-        public SqmContents Import(Stream stream)
+        public ISqmContents Import(Stream stream)
         {
             var fileVersion = _fileVersionRetriever.GetVersion(stream);
             if (fileVersion == FileVersion.FileVersion.ArmA2)
             {
-                var arma2Contents = _arma2Importer.Import(stream);
+                return _arma2Importer.Import(stream);
 
-                return _contentCombiner.Combine(arma2Contents);
+                //return _contentCombiner.Combine(arma2Contents);
             }
 
-            var arma3Contents = _arma3Importer.Import(stream);
+            return _arma3Importer.Import(stream);
 
-            return _contentCombiner.Combine(arma3Contents);
+            //return _contentCombiner.Combine(arma3Contents);
         }
     }
 }

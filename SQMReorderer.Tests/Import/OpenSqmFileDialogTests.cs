@@ -14,7 +14,7 @@ namespace SQMReorderer.Tests.Import
         private ISqmFileImporter _sqmFileImporter;
         private IMessageBoxPresenter _messageBoxPresenter;
 
-        private SqmContents _expectedContents;
+        private ISqmContents _expectedContents;
         private MemoryStream _memoryStream;
         private OpenSqmFileDialog _openSqmFileDialog;
 
@@ -31,7 +31,7 @@ namespace SQMReorderer.Tests.Import
             _memoryStream.Length.Returns(1);
             _openFileDialogAdapter.OpenFile().Returns(_memoryStream);
 
-            _expectedContents = new SqmContents();
+            _expectedContents = Substitute.For<ISqmContents>();
             _sqmFileImporter.Import(_memoryStream).Returns(_expectedContents);
         }
 

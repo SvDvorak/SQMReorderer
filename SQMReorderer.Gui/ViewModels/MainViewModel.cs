@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SQMReorderer.Core.Export;
 using SQMReorderer.Core.Import;
+using SQMReorderer.Core.Import.ArmA3.ResultObjects;
 using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.Import.FileVersion;
 using SQMReorderer.Core.Import.ResultObjects;
@@ -14,7 +15,7 @@ namespace SQMReorderer.Gui.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private SqmContents _sqmContents;
+        private ISqmContents _sqmContents;
 
         public MainViewModel()
         {
@@ -75,7 +76,7 @@ namespace SQMReorderer.Gui.ViewModels
             {
                 var teamViewModelsFactory =
                     new TeamViewModelsFactory(new GroupViewModelsFactory(new VehicleViewModelsFactory()));
-                Teams = teamViewModelsFactory.Create(_sqmContents.Mission.Groups);
+                //Teams = teamViewModelsFactory.Create(_sqmContents.Mission.Groups);
             }
         }
 
@@ -91,9 +92,9 @@ namespace SQMReorderer.Gui.ViewModels
                 new FileVersionRetriever(new StreamReaderFactory())));
 
             var reorderer = new ViewModelToContentReorderer();
-            reorderer.Reorder(_sqmContents.Mission, Teams.ToList());
+            //reorderer.Reorder(_sqmContents.Mission, Teams.ToList());
 
-            saveSqmFileDialog.ShowDialog(_sqmContents);
+            //saveSqmFileDialog.ShowDialog(_sqmContents);
         }
     }
 }

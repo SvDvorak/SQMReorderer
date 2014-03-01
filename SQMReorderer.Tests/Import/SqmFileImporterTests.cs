@@ -10,7 +10,7 @@ namespace SQMReorderer.Tests.Import
     [TestFixture]
     public class SqmFileImporterTests
     {
-        private SqmFileImporter _sut;
+        private SqmImporter _sut;
         private IFileVersionRetriever _fileVersionRetriever;
         private Core.Import.ArmA2.ISqmFileImporter _arma2Importer;
         private Core.Import.ArmA3.ISqmFileImporter _arma3Importer;
@@ -24,7 +24,7 @@ namespace SQMReorderer.Tests.Import
             _arma3Importer = Substitute.For<Core.Import.ArmA3.ISqmFileImporter>();
             _contentCombiner = Substitute.For<ISqmContentCombiner>();
 
-            _sut = new SqmFileImporter(_fileVersionRetriever, _contentCombiner, _arma2Importer, _arma3Importer);
+            _sut = new SqmImporter(_fileVersionRetriever, _contentCombiner, _arma2Importer, _arma3Importer);
         }
 
         [Test]
@@ -33,11 +33,9 @@ namespace SQMReorderer.Tests.Import
             var stream = Substitute.For<Stream>();
             _fileVersionRetriever.GetVersion(stream).Returns(FileVersion.ArmA2);
 
-            var arma2Contents = new Core.Import.ArmA2.ResultObjects.SqmContents();
-            var expectedContents = new SqmContents();
+            var expectedContents = Substitute.For<ISqmContents>();
 
-            _arma2Importer.Import(stream).Returns(arma2Contents);
-            _contentCombiner.Combine(arma2Contents).Returns(expectedContents);
+            _arma2Importer.Import(stream).Returns(expectedContents);
 
             var sqmContents = _sut.Import(stream);
 
@@ -50,11 +48,9 @@ namespace SQMReorderer.Tests.Import
             var stream = Substitute.For<Stream>();
             _fileVersionRetriever.GetVersion(stream).Returns(FileVersion.ArmA3);
 
-            var arma3Contents = new Core.Import.ArmA3.ResultObjects.SqmContents();
-            var expectedContents = new SqmContents();
+            var expectedContents = Substitute.For<ISqmContents>();
 
-            _arma3Importer.Import(stream).Returns(arma3Contents);
-            _contentCombiner.Combine(arma3Contents).Returns(expectedContents);
+            _arma3Importer.Import(stream).Returns(expectedContents);
 
             var sqmContents = _sut.Import(stream);
 

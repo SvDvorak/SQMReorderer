@@ -1,10 +1,10 @@
 using System.IO;
-using SQMReorderer.Core.Import.ArmA3.ResultObjects;
+using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Core.Import.ArmA3
 {
     public interface ISqmFileImporter
     {
-        SqmContents Import(Stream fileStream);
+        ISqmContents Import(Stream fileStream);
     }
 }

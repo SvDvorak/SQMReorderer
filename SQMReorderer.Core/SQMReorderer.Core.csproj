@@ -116,7 +116,7 @@
     <Compile Include="Import\ArmA3\SqmParser.cs" />
     <Compile Include="Import\FileVersion\IFileVersionRetriever.cs" />
     <Compile Include="Import\ISqmContentCombiner.cs" />
-    <Compile Include="Import\ISqmFileImporter.cs" />
+    <Compile Include="Import\ISqmImporter.cs" />
     <Compile Include="Import\FileVersion\IStreamReaderAdapter.cs" />
     <Compile Include="Import\FileVersion\IStreamReaderFactory.cs" />
     <Compile Include="Import\ResultObjects\Intel.cs" />
@@ -128,7 +128,7 @@
     <Compile Include="Import\ResultObjects\Vehicle.cs" />
     <Compile Include="Import\ResultObjects\Waypoint.cs" />
     <Compile Include="Import\SqmContentCombiner.cs" />
-    <Compile Include="Import\SqmFileImporter.cs" />
+    <Compile Include="Import\SqmImporter.cs" />
     <Compile Include="Import\FileVersion\StreamReaderAdapter.cs" />
     <Compile Include="Import\FileVersion\StreamReaderFactory.cs" />
     <Compile Include="Import\Context\ISqmContextCreator.cs" />

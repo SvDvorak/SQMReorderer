@@ -11,7 +11,7 @@ namespace SQMReorderer.Tests.Import
     internal class OpenSqmFileDialogTests
     {
         private IOpenFileDialogAdapter _openFileDialogAdapter;
-        private ISqmFileImporter _sqmFileImporter;
+        private ISqmImporter _sqmImporter;
         private IMessageBoxPresenter _messageBoxPresenter;
 
         private ISqmContents _expectedContents;
@@ -22,17 +22,17 @@ namespace SQMReorderer.Tests.Import
         public void Setup()
         {
             _openFileDialogAdapter = Substitute.For<IOpenFileDialogAdapter>();
-            _sqmFileImporter = Substitute.For<ISqmFileImporter>();
+            _sqmImporter = Substitute.For<ISqmImporter>();
             _messageBoxPresenter = Substitute.For<IMessageBoxPresenter>();
 
-            _openSqmFileDialog = new OpenSqmFileDialog(_openFileDialogAdapter, _sqmFileImporter, _messageBoxPresenter);
+            _openSqmFileDialog = new OpenSqmFileDialog(_openFileDialogAdapter, _sqmImporter, _messageBoxPresenter);
 
             _memoryStream = Substitute.For<MemoryStream>();
             _memoryStream.Length.Returns(1);
             _openFileDialogAdapter.OpenFile().Returns(_memoryStream);
 
             _expectedContents = Substitute.For<ISqmContents>();
-            _sqmFileImporter.Import(_memoryStream).Returns(_expectedContents);
+            _sqmImporter.Import(_memoryStream).Returns(_expectedContents);
         }
 
         [Test]
@@ -94,7 +94,7 @@ namespace SQMReorderer.Tests.Import
         public void Shows_error_message_and_returns_null_when_sqm_import_fails()
         {
             _openFileDialogAdapter.ShowDialog().Returns(true);
-            _sqmFileImporter.Import(Arg.Any<Stream>()).Returns(x => { throw new SqmParseException("Parse error"); });
+            _sqmImporter.Import(Arg.Any<Stream>()).Returns(x => { throw new SqmParseException("Parse error"); });
 
             var sqmContents = _openSqmFileDialog.ShowDialog();
 

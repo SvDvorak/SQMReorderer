@@ -8,16 +8,16 @@ namespace SQMReorderer.Gui.Dialogs
     public class OpenSqmFileDialog
     {
         private readonly IOpenFileDialogAdapter _openFileDialog;
-        private readonly ISqmFileImporter _sqmFileImporter;
+        private readonly ISqmImporter _sqmImporter;
         private readonly IMessageBoxPresenter _messageBoxPresenter;
 
         public OpenSqmFileDialog(
             IOpenFileDialogAdapter openFileDialog,
-            ISqmFileImporter sqmFileImporter,
+            ISqmImporter sqmImporter,
             IMessageBoxPresenter messageBoxPresenter)
         {
             _openFileDialog = openFileDialog;
-            _sqmFileImporter = sqmFileImporter;
+            _sqmImporter = sqmImporter;
             _messageBoxPresenter = messageBoxPresenter;
 
             _openFileDialog.Filter = "SQM Files (*.sqm)|*.sqm";
@@ -39,7 +39,7 @@ namespace SQMReorderer.Gui.Dialogs
                         throw new EmptyFileException();
                     }
 
-                    sqmContents = _sqmFileImporter.Import(fileStream);
+                    sqmContents = _sqmImporter.Import(fileStream);
                 }
                 catch (Exception exception)
                 {

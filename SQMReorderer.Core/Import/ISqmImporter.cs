@@ -3,7 +3,7 @@ using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Core.Import
 {
-    public interface ISqmFileImporter
+    public interface ISqmImporter
     {
         ISqmContents Import(Stream stream);
     }

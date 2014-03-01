@@ -64,7 +64,7 @@ namespace SQMReorderer.Tests.Import
         {
             var streamToStringsReader = new StreamToStringsReader();
             var sqmContextCreator = new SqmContextCreator();
-            var sqmFileImporter = new SqmFileImporter(new FileVersionRetriever(new StreamReaderFactory()),
+            var sqmFileImporter = new SqmImporter(new FileVersionRetriever(new StreamReaderFactory()),
                 new SqmContentCombiner(),
                 new Core.Import.ArmA2.SqmFileImporter(streamToStringsReader, sqmContextCreator,
                     new Core.Import.ArmA2.SqmParser()),

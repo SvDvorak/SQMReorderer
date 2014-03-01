@@ -4,20 +4,17 @@ using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Core.Import
 {
-    public class SqmFileImporter : ISqmFileImporter
+    public class SqmImporter : ISqmImporter
     {
         private readonly IFileVersionRetriever _fileVersionRetriever;
-        private readonly ISqmContentCombiner _contentCombiner;
         private readonly ArmA2.ISqmFileImporter _arma2Importer;
         private readonly ArmA3.ISqmFileImporter _arma3Importer;
 
-        public SqmFileImporter(IFileVersionRetriever fileVersionRetriever,
-            ISqmContentCombiner contentCombiner,
+        public SqmImporter(IFileVersionRetriever fileVersionRetriever,
             ArmA2.ISqmFileImporter arma2Importer,
             ArmA3.ISqmFileImporter arma3Importer)
         {
             _fileVersionRetriever = fileVersionRetriever;
-            _contentCombiner = contentCombiner;
             _arma2Importer = arma2Importer;
             _arma3Importer = arma3Importer;
         }

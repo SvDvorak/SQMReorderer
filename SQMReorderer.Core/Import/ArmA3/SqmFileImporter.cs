@@ -1,6 +1,6 @@
 using System.IO;
-using SQMReorderer.Core.Import.ArmA3.ResultObjects;
 using SQMReorderer.Core.Import.Context;
+using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Core.StreamHelpers;
 
 namespace SQMReorderer.Core.Import.ArmA3
@@ -18,7 +18,7 @@ namespace SQMReorderer.Core.Import.ArmA3
             _sqmParser = sqmParser;
         }
 
-        public SqmContents Import(Stream fileStream)
+        public ISqmContents Import(Stream fileStream)
         {
             var linesInFile = _streamToStringsReader.Read(fileStream);
 

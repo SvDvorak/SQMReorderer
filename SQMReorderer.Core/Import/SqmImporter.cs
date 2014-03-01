@@ -7,12 +7,12 @@ namespace SQMReorderer.Core.Import
     public class SqmImporter : ISqmImporter
     {
         private readonly IFileVersionRetriever _fileVersionRetriever;
-        private readonly ArmA2.ISqmFileImporter _arma2Importer;
-        private readonly ArmA3.ISqmFileImporter _arma3Importer;
+        private readonly ISqmFileImporter _arma2Importer;
+        private readonly ISqmFileImporter _arma3Importer;
 
         public SqmImporter(IFileVersionRetriever fileVersionRetriever,
-            ArmA2.ISqmFileImporter arma2Importer,
-            ArmA3.ISqmFileImporter arma3Importer)
+            ISqmFileImporter arma2Importer,
+            ISqmFileImporter arma3Importer)
         {
             _fileVersionRetriever = fileVersionRetriever;
             _arma2Importer = arma2Importer;

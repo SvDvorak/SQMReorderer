@@ -91,7 +91,7 @@
     <Compile Include="Import\SqmContextCreatorTests.cs" />
     <Compile Include="Import\SqmFileTests.cs" />
     <Compile Include="Import\ArmA2\SqmParserTests.cs" />
-    <Compile Include="Import\SqmFileImporterTests.cs" />
+    <Compile Include="Import\SqmImporterTests.cs" />
     <Compile Include="Import\StringLineSetterTests.cs" />
     <Compile Include="Import\StringListPropertySetterTests.cs" />
     <Compile Include="Import\StringPropertySetterTests.cs" />
@@ -103,7 +103,6 @@
     <Compile Include="Import\ArmA3\MarkerItemParserTests.cs" />
     <Compile Include="Import\ArmA3\MissionStateParserTests.cs" />
     <Compile Include="Import\ArmA3\SensorItemParserTests.cs" />
-    <Compile Include="Import\ArmA3\SqmFileImporterTests.cs" />
     <Compile Include="Import\ArmA3\SqmParserTests.cs" />
     <Compile Include="Import\ArmA3\VehicleItemParserTests.cs" />
     <Compile Include="MainView\CombinedVehicleViewModelTests.cs" />
@@ -115,7 +114,7 @@
     <Compile Include="Import\OpenSqmFileDialogTests.cs" />
     <Compile Include="Export\SaveSqmFileDialogTests.cs" />
     <Compile Include="Export\ArmA2\SqmFileExporterTests.cs" />
-    <Compile Include="Import\ArmA2\SqmFileImporterTests.cs" />
+    <Compile Include="Import\SqmFileImporterTests.cs" />
     <Compile Include="MainView\ViewModelToContentReordererTests.cs" />
     <Compile Include="VectorTests.cs" />
   </ItemGroup>

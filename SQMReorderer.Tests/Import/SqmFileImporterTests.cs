@@ -1,60 +1,72 @@
-﻿using System.IO;
+using System.Collections.Generic;
+using System.IO;
 using NSubstitute;
 using NUnit.Framework;
 using SQMReorderer.Core.Import;
-using SQMReorderer.Core.Import.FileVersion;
-using SQMReorderer.Core.Import.ResultObjects;
+using SQMReorderer.Core.Import.ArmA2;
+using SQMReorderer.Core.Import.ArmA2.ResultObjects;
+using SQMReorderer.Core.Import.Context;
+using SQMReorderer.Core.StreamHelpers;
 
-namespace SQMReorderer.Tests.Import
+namespace SQMReorderer.Tests.Import.ArmA2
 {
     [TestFixture]
     public class SqmFileImporterTests
     {
-        private SqmImporter _sut;
-        private IFileVersionRetriever _fileVersionRetriever;
-        private Core.Import.ArmA2.ISqmFileImporter _arma2Importer;
-        private Core.Import.ArmA3.ISqmFileImporter _arma3Importer;
-        private ISqmContentCombiner _contentCombiner;
+        private SqmFileImporter _importer;
+
+        private IStreamToStringsReader _streamToStringsReader;
+        private ISqmContextCreator _sqmContextCreator;
+        private ISqmParser _sqmParser;
+
+        private SqmContents _expectedContents;
+        private SqmContext _sqmFileContext;
+        private List<string> _textLinesInStream;
+        private MemoryStream _memoryStream;
 
         [SetUp]
         public void Setup()
         {
-            _fileVersionRetriever = Substitute.For<IFileVersionRetriever>();
-            _arma2Importer = Substitute.For<Core.Import.ArmA2.ISqmFileImporter>();
-            _arma3Importer = Substitute.For<Core.Import.ArmA3.ISqmFileImporter>();
-            _contentCombiner = Substitute.For<ISqmContentCombiner>();
+            _streamToStringsReader = Substitute.For<IStreamToStringsReader>();
+            _sqmContextCreator = Substitute.For<ISqmContextCreator>();
+            _sqmParser = Substitute.For<ISqmParser>();
 
-            _sut = new SqmImporter(_fileVersionRetriever, _contentCombiner, _arma2Importer, _arma3Importer);
+            _importer = new SqmFileImporter(_streamToStringsReader, _sqmContextCreator, _sqmParser);
+
+            _memoryStream = new MemoryStream();
+
+            _textLinesInStream = new List<string>();
+            _streamToStringsReader.Read(_memoryStream).Returns(_textLinesInStream);
+
+            _sqmFileContext = new SqmContext();
+            _sqmContextCreator.CreateRootContext(_textLinesInStream).Returns(_sqmFileContext);
+
+            _expectedContents = new SqmContents();
+            _sqmParser.ParseContext(_sqmFileContext).Returns(_expectedContents);
         }
 
         [Test]
-        public void Uses_arma_2_parser_when_file_version_indicates_arma_2_version()
+        public void Uses_file_to_strings_reader_to_read_selected_file()
         {
-            var stream = Substitute.For<Stream>();
-            _fileVersionRetriever.GetVersion(stream).Returns(FileVersion.ArmA2);
+            _importer.Import(_memoryStream);
 
-            var expectedContents = Substitute.For<ISqmContents>();
-
-            _arma2Importer.Import(stream).Returns(expectedContents);
-
-            var sqmContents = _sut.Import(stream);
-
-            Assert.AreEqual(expectedContents, sqmContents);
+            _streamToStringsReader.Received().Read(_memoryStream);
         }
 
         [Test]
-        public void Uses_arma_3_parser_when_file_version_indicates_arma_3_version()
+        public void Creates_sqm_context_from_read_lines()
         {
-            var stream = Substitute.For<Stream>();
-            _fileVersionRetriever.GetVersion(stream).Returns(FileVersion.ArmA3);
+            _importer.Import(_memoryStream);
 
-            var expectedContents = Substitute.For<ISqmContents>();
+            _sqmContextCreator.Received().CreateRootContext(_textLinesInStream);
+        }
 
-            _arma3Importer.Import(stream).Returns(expectedContents);
+        [Test]
+        public void Parses_sqm_context_from_created_context()
+        {
+            _importer.Import(_memoryStream);
 
-            var sqmContents = _sut.Import(stream);
-
-            Assert.AreEqual(expectedContents, sqmContents);
+            _sqmParser.Received().ParseContext(_sqmFileContext);
         }
     }
 }

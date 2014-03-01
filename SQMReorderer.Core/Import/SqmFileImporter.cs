@@ -3,7 +3,7 @@ using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Core.StreamHelpers;
 
-namespace SQMReorderer.Core.Import.ArmA3
+namespace SQMReorderer.Core.Import
 {
     public class SqmFileImporter : ISqmFileImporter
     {

@@ -62,13 +62,12 @@ namespace SQMReorderer.Gui.ViewModels
         {
             var streamToStringsReader = new StreamToStringsReader();
             var sqmContextCreator = new SqmContextCreator();
-            var arma2Importer = new Core.Import.ArmA2.SqmFileImporter(streamToStringsReader, sqmContextCreator,
+            var arma2Importer = new SqmFileImporter(streamToStringsReader, sqmContextCreator,
                 new Core.Import.ArmA2.SqmParser());
-            var arma3Importer = new Core.Import.ArmA3.SqmFileImporter(streamToStringsReader, sqmContextCreator,
+            var arma3Importer = new SqmFileImporter(streamToStringsReader, sqmContextCreator,
                 new Core.Import.ArmA3.SqmParser());
             var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(),
-                new SqmImporter(new FileVersionRetriever(new StreamReaderFactory()), new SqmContentCombiner(),
-                    arma2Importer, arma3Importer), new MessageBoxPresenter());
+                new SqmImporter(new FileVersionRetriever(new StreamReaderFactory()), arma2Importer, arma3Importer), new MessageBoxPresenter());
 
             _sqmContents = openSqmFileDialog.ShowDialog();
 

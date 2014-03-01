@@ -65,10 +65,9 @@ namespace SQMReorderer.Tests.Import
             var streamToStringsReader = new StreamToStringsReader();
             var sqmContextCreator = new SqmContextCreator();
             var sqmFileImporter = new SqmImporter(new FileVersionRetriever(new StreamReaderFactory()),
-                new SqmContentCombiner(),
-                new Core.Import.ArmA2.SqmFileImporter(streamToStringsReader, sqmContextCreator,
+                new SqmFileImporter(streamToStringsReader, sqmContextCreator,
                     new Core.Import.ArmA2.SqmParser()),
-                new Core.Import.ArmA3.SqmFileImporter(streamToStringsReader, sqmContextCreator,
+                new SqmFileImporter(streamToStringsReader, sqmContextCreator,
                     new Core.Import.ArmA3.SqmParser()));
 
             var importResults = sqmFileImporter.Import(importStream);

@@ -74,7 +74,7 @@
     <Compile Include="Export\SqmExportException.cs" />
     <Compile Include="Export\SqmFileExporter.cs" />
     <Compile Include="Export\SqmPropertyVisitor.cs" />
-    <Compile Include="Import\ArmA2\ISqmFileImporter.cs" />
+    <Compile Include="Import\ISqmFileImporter.cs" />
     <Compile Include="Import\ResultObjects\ISqmContents.cs" />
     <Compile Include="Import\ArmA3\Parsers\Waypoint\WaypointItemParser.cs" />
     <Compile Include="Import\ArmA3\Parsers\Waypoint\WaypointItemParserFactory.cs" />
@@ -85,9 +85,7 @@
     <Compile Include="Import\ArmA2\Parsers\Waypoint\WaypointItemParserFactory.cs" />
     <Compile Include="Import\ArmA2\Parsers\Waypoint\WaypointItemParser.cs" />
     <Compile Include="Import\ArmA2\ResultObjects\Waypoint.cs" />
-    <Compile Include="Import\ArmA2\SqmFileImporter.cs" />
-    <Compile Include="Import\ArmA3\ISqmFileImporter.cs" />
-    <Compile Include="Import\ArmA3\ISqmParser.cs" />
+    <Compile Include="Import\SqmFileImporter.cs" />
     <Compile Include="Import\DataSetters\ILineSetter.cs" />
     <Compile Include="Import\DataSetters\StringListPropertySetter.cs" />
     <Compile Include="Import\FileVersion\FileVersion.cs" />
@@ -112,7 +110,6 @@
     <Compile Include="Import\ArmA3\ResultObjects\Sensor.cs" />
     <Compile Include="Import\ArmA3\ResultObjects\SqmContents.cs" />
     <Compile Include="Import\ArmA3\ResultObjects\Vehicle.cs" />
-    <Compile Include="Import\ArmA3\SqmFileImporter.cs" />
     <Compile Include="Import\ArmA3\SqmParser.cs" />
     <Compile Include="Import\FileVersion\IFileVersionRetriever.cs" />
     <Compile Include="Import\ISqmContentCombiner.cs" />
@@ -146,7 +143,7 @@
     <Compile Include="Import\DataSetters\SingleValuePropertySetterBase.cs" />
     <Compile Include="Import\DataSetters\StringPropertySetter.cs" />
     <Compile Include="Import\DataSetters\VectorPropertySetter.cs" />
-    <Compile Include="Import\ArmA2\ISqmParser.cs" />
+    <Compile Include="Import\ISqmParser.cs" />
     <Compile Include="Import\IItemParserFactory.cs" />
     <Compile Include="Import\ArmA2\Parsers\Intel\IntelParser.cs" />
     <Compile Include="Import\IParser.cs" />

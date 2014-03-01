@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMReorderer.Core.Import.ArmA2;
+using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 using SQMReorderer.Core.Import.Context;
 
 namespace SQMReorderer.Tests.Import.ArmA2
@@ -9,12 +10,6 @@ namespace SQMReorderer.Tests.Import.ArmA2
     public class SqmParserTests
     {
         private readonly SqmParser _parser = new SqmParser();
-
-        [SetUp]
-        public void SetUp()
-        {
-
-        }
 
         [Test]
         public void Expect_parser_to_parse_version()
@@ -28,7 +23,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 };
 
             var contextCreator = new SqmContextCreator();
-            var parseResult = _parser.ParseContext(contextCreator.CreateRootContext(inputText));
+            var parseResult = (SqmContents)_parser.ParseContext(contextCreator.CreateRootContext(inputText));
 
             Assert.AreEqual(11, parseResult.Version);
         }
@@ -44,7 +39,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 };
 
             var contextCreator = new SqmContextCreator();
-            var parseResult = _parser.ParseContext(contextCreator.CreateRootContext(inputText));
+            var parseResult = (SqmContents)_parser.ParseContext(contextCreator.CreateRootContext(inputText));
 
             Assert.IsNotNull(parseResult.Mission);
         }
@@ -65,7 +60,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 };
 
             var contextCreator = new SqmContextCreator();
-            var parseResult = _parser.ParseContext(contextCreator.CreateRootContext(inputText));
+            var parseResult = (SqmContents)_parser.ParseContext(contextCreator.CreateRootContext(inputText));
 
             Assert.IsNotNull(parseResult.Intro);
             Assert.AreEqual(2008, parseResult.Intro.Intel.Year);
@@ -95,7 +90,7 @@ namespace SQMReorderer.Tests.Import.ArmA2
                 };
 
             var contextCreator = new SqmContextCreator();
-            var parseResult = _parser.ParseContext(contextCreator.CreateRootContext(inputText));
+            var parseResult = (SqmContents)_parser.ParseContext(contextCreator.CreateRootContext(inputText));
 
             Assert.IsNotNull(parseResult.OutroWin);
             Assert.AreEqual(2008, parseResult.OutroWin.Intel.Year);

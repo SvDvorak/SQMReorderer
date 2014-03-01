@@ -1,6 +1,8 @@
+using SQMReorderer.Core.Import.ArmA3.ResultObjects;
+
 namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
 {
-    public class SqmContents
+    public class SqmContents : ISqmContents
     {
         public int? Version { get; set; }
 

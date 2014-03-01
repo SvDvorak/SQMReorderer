@@ -79,12 +79,13 @@ namespace SQMReorderer.Tests.Import
         {
             var contextIndenter = new ContextIndenter();
             var streamWriterFactory = new StreamWriterFactory();
-            var sqmFileExporter = new SqmFileExporter(
-                new Core.Export.ArmA2.SqmFileExporter(new Core.Export.ArmA2.SqmElementExportVisitor(), contextIndenter, streamWriterFactory), 
-                new Core.Export.ArmA3.SqmFileExporter(new Core.Export.ArmA3.SqmElementExportVisitor(), contextIndenter, streamWriterFactory),
-                new FileVersionRetriever(new StreamReaderFactory()));
+            var fileExporter = new SqmFileExporter(
+                new Core.Export.ArmA2.SqmElementExportVisitor(),
+                new Core.Export.ArmA3.SqmElementExportVisitor(), 
+                contextIndenter, streamWriterFactory);
+
             var exportStream = new FileStream(path, FileMode.OpenOrCreate);
-            //sqmFileExporter.Export(exportStream, importResults);
+            importResults.Accept(fileExporter);
             exportStream.Close();
         }
 

@@ -25,7 +25,7 @@ namespace SQMReorderer.Tests.Export
         [Test]
         public void Uses_arma_2_exporter_when_version_is_arma_2()
         {
-            var arma2Exporter = Substitute.For<Core.Export.ArmA2.ISqmFileExporter>();
+            var arma2Exporter = Substitute.For<ISqmContentsVisitor>();
             var fileVersionRetriever = Substitute.For<IFileVersionRetriever>();
             fileVersionRetriever.GetVersion(11).Returns(FileVersion.ArmA2);
 

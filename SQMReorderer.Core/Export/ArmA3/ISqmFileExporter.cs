@@ -1,5 +1,5 @@
 using System.IO;
-using SQMReorderer.Core.Import.ResultObjects;
+using SQMReorderer.Core.Import.ArmA3.ResultObjects;
 
 namespace SQMReorderer.Core.Export.ArmA3
 {

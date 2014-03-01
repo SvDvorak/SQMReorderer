@@ -5,7 +5,7 @@ using SQMReorderer.Core.Export;
 using SQMReorderer.Core.Export.ArmA2;
 using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Core.StreamHelpers;
-using SqmFileExporter = SQMReorderer.Core.Export.ArmA2.SqmFileExporter;
+using SqmFileExporter = SQMReorderer.Core.Export.SqmFileExporter;
 
 namespace SQMReorderer.Tests.Export.ArmA2
 {

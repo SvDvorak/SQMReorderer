@@ -25,13 +25,9 @@ namespace SQMReorderer.Core.Import
             if (fileVersion == FileVersion.FileVersion.ArmA2)
             {
                 return _arma2Importer.Import(stream);
-
-                //return _contentCombiner.Combine(arma2Contents);
             }
 
             return _arma3Importer.Import(stream);
-
-            //return _contentCombiner.Combine(arma3Contents);
         }
     }
 }

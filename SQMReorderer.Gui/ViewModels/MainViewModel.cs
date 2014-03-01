@@ -84,7 +84,7 @@ namespace SQMReorderer.Gui.ViewModels
             var contextIndenter = new ContextIndenter();
             var streamWriterFactory = new StreamWriterFactory();
             var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), new SqmFileExporter(
-                new Core.Export.ArmA2.SqmFileExporter(new Core.Export.ArmA2.SqmElementExportVisitor(),
+                new SqmFileExporter(new Core.Export.ArmA2.SqmElementExportVisitor(),
                     contextIndenter, streamWriterFactory),
                 new Core.Export.ArmA3.SqmFileExporter(new Core.Export.ArmA3.SqmElementExportVisitor(),
                     contextIndenter, streamWriterFactory),

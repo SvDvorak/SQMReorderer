@@ -10,5 +10,10 @@ namespace SQMReorderer.Core.Import.ArmA3.ResultObjects
         public MissionState Intro { get; set; }
         public MissionState OutroWin { get; set; }
         public MissionState OutroLose { get; set; }
+
+        public void Accept(ISqmContentsVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
     }
 }

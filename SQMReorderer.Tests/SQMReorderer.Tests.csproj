@@ -64,8 +64,9 @@
   <ItemGroup>
     <Compile Include="DelegateCommandTests.cs" />
     <Compile Include="DoubleExtensionsTests.cs" />
+    <Compile Include="Export\SqmFileExporterTests_arma_3.cs" />
+    <Compile Include="Export\SqmFileExporterTestsBase.cs" />
     <Compile Include="Export\ArmA3\SqmElementExportVisitorTests.cs" />
-    <Compile Include="Export\ArmA3\SqmFileExporterTests.cs" />
     <Compile Include="Export\ContextIndenterTests.cs" />
     <Compile Include="Export\ArmA2\SqmElementExportVisitorTests.cs" />
     <Compile Include="Export\SqmPropertyVisitorTests.cs" />
@@ -74,7 +75,6 @@
     <Compile Include="Import\ArmA2\WaypointItemParserTests.cs" />
     <Compile Include="Import\CommonRegexPatternsTests.cs" />
     <Compile Include="Import\ArmA2\ContextSetterTests.cs" />
-    <Compile Include="Import\SqmContentCombinerTests_arma_3.cs" />
     <Compile Include="Import\DoublePropertySetterTests.cs" />
     <Compile Include="Import\FileVersionRetrieverTests.cs" />
     <Compile Include="Import\IntegerListPropertySetterTests.cs" />
@@ -86,7 +86,6 @@
     <Compile Include="Import\MultiLineStringListPropertySetterTests.cs" />
     <Compile Include="Import\ParsingHelperFunctionsTests.cs" />
     <Compile Include="Import\ArmA2\SensorItemParserTests.cs" />
-    <Compile Include="Import\SqmContentCombinerTests_arma_2.cs" />
     <Compile Include="Import\SqmContextCreatorTests.cs" />
     <Compile Include="Import\SqmFileTests.cs" />
     <Compile Include="Import\ArmA2\SqmParserTests.cs" />
@@ -112,7 +111,7 @@
     <Compile Include="MainView\ViewModelBaseTests.cs" />
     <Compile Include="Import\OpenSqmFileDialogTests.cs" />
     <Compile Include="Export\SaveSqmFileDialogTests.cs" />
-    <Compile Include="Export\ArmA2\SqmFileExporterTests.cs" />
+    <Compile Include="Export\SqmFileExporterTests_arma_2.cs" />
     <Compile Include="Import\SqmFileImporterTests.cs" />
     <Compile Include="MainView\ViewModelToContentReordererTests.cs" />
     <Compile Include="VectorTests.cs" />

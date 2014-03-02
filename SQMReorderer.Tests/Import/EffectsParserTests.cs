@@ -3,7 +3,7 @@ using NUnit.Framework;
 using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.Import.DataSetters.Effects;
 
-namespace SQMReorderer.Tests.Import.ArmA2
+namespace SQMReorderer.Tests.Import
 {
     [TestFixture]
     public class EffectsParserTests

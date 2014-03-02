@@ -64,10 +64,12 @@
     <Compile Include="Export\ArmA3\ISqmElementVisitor.cs" />
     <Compile Include="Export\ArmA3\SqmElementExportVisitor.cs" />
     <Compile Include="Export\ContextIndenter.cs" />
+    <Compile Include="Export\ISqmFileExporterFactory.cs" />
     <Compile Include="Export\ISqmPropertyVisitor.cs" />
     <Compile Include="Export\ArmA2\SqmElementExportVisitor.cs" />
     <Compile Include="Export\SqmFileExporter.cs" />
     <Compile Include="Export\SqmExportException.cs" />
+    <Compile Include="Export\SqmFileExporterFactory.cs" />
     <Compile Include="Export\SqmPropertyVisitor.cs" />
     <Compile Include="Import\ISqmContentsVisitor.cs" />
     <Compile Include="Import\ISqmFileImporter.cs" />

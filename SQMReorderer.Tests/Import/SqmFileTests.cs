@@ -77,14 +77,14 @@ namespace SQMReorderer.Tests.Import
         private void Export(ISqmContents importResults, string path)
         {
             var contextIndenter = new ContextIndenter();
-            var streamWriterFactory = new StreamWriterFactory();
+            var exportStream = new FileStream(path, FileMode.OpenOrCreate);
+            var streamWriter = new StreamWriterAdapter(exportStream);
             var fileExporter = new SqmFileExporter(
-                new MemoryStream(), 
+                streamWriter,
                 new Core.Export.ArmA2.SqmElementExportVisitor(),
                 new Core.Export.ArmA3.SqmElementExportVisitor(), 
-                contextIndenter, streamWriterFactory);
+                contextIndenter);
 
-            var exportStream = new FileStream(path, FileMode.OpenOrCreate);
             importResults.Accept(fileExporter);
             exportStream.Close();
         }

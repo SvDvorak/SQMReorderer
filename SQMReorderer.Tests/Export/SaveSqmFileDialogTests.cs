@@ -1,6 +1,7 @@
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
+using SQMReorderer.Core.Export;
 using SQMReorderer.Core.Import;
 using SQMReorderer.Gui.Dialogs;
 
@@ -11,7 +12,7 @@ namespace SQMReorderer.Tests.Export
     {
         private SaveSqmFileDialog _saveSqmFileDialog;
         private ISaveFileDialogAdapter _saveFileDialogAdapter;
-        private ISqmContentsVisitor _sqmFileExporter;
+        private ISqmFileExporterFactory _sqmFileExporterFactory;
 
         private ISqmContents _sqmContents;
         private MemoryStream _memoryStream;
@@ -20,8 +21,8 @@ namespace SQMReorderer.Tests.Export
         public void Setup()
         {
             _saveFileDialogAdapter = Substitute.For<ISaveFileDialogAdapter>();
-            _sqmFileExporter = Substitute.For<ISqmContentsVisitor>();
-            _saveSqmFileDialog = new SaveSqmFileDialog(_saveFileDialogAdapter, _sqmFileExporter);
+            _sqmFileExporterFactory = Substitute.For<ISqmFileExporterFactory>();
+            _saveSqmFileDialog = new SaveSqmFileDialog(_saveFileDialogAdapter, _sqmFileExporterFactory);
 
             _sqmContents = Substitute.For<ISqmContents>();
             _memoryStream = Substitute.For<MemoryStream>();
@@ -50,10 +51,12 @@ namespace SQMReorderer.Tests.Export
         public void Exports_sqm_contents_using_stream()
         {
             _saveFileDialogAdapter.ShowDialog().Returns(true);
+            var sqmContentsVisitor = Substitute.For<ISqmContentsVisitor>();
+            _sqmFileExporterFactory.Create(_memoryStream).Returns(sqmContentsVisitor);
 
             _saveSqmFileDialog.ShowDialog(_sqmContents);
 
-            _sqmContents.Accept(_sqmFileExporter);
+            _sqmContents.Accept(sqmContentsVisitor);
         }
 
         [Test]

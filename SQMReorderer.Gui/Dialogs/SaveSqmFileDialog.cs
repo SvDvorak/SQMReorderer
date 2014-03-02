@@ -1,3 +1,4 @@
+using SQMReorderer.Core.Export;
 using SQMReorderer.Core.Import;
 
 namespace SQMReorderer.Gui.Dialogs
@@ -5,12 +6,12 @@ namespace SQMReorderer.Gui.Dialogs
     public class SaveSqmFileDialog
     {
         private readonly ISaveFileDialogAdapter _saveFileDialogAdapter;
-        private readonly ISqmContentsVisitor _sqmFileExporter;
+        private readonly ISqmFileExporterFactory _exporterFactory;
 
-        public SaveSqmFileDialog(ISaveFileDialogAdapter saveFileDialogAdapter, ISqmContentsVisitor sqmFileExporter)
+        public SaveSqmFileDialog(ISaveFileDialogAdapter saveFileDialogAdapter, ISqmFileExporterFactory exporterFactory)
         {
             _saveFileDialogAdapter = saveFileDialogAdapter;
-            _sqmFileExporter = sqmFileExporter;
+            _exporterFactory = exporterFactory;
 
             _saveFileDialogAdapter.AddExtension = true;
             _saveFileDialogAdapter.Filter = "SQM File (*.sqm)|*.sqm";
@@ -23,8 +24,9 @@ namespace SQMReorderer.Gui.Dialogs
             if(shouldOpen.HasValue && shouldOpen.Value)
             {
                 var fileStream = _saveFileDialogAdapter.OpenFile();
+                var exporter = _exporterFactory.Create(fileStream);
 
-                sqmContents.Accept(_sqmFileExporter);
+                sqmContents.Accept(exporter);
 
                 fileStream.Close();
             }

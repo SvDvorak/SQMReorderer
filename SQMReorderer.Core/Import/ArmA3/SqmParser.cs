@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 using SQMReorderer.Core.Import.ArmA3.Parsers.MissionState;
 using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.Import.DataSetters;
-using SQMReorderer.Core.Import.ResultObjects;
 using MissionState = SQMReorderer.Core.Import.ArmA3.ResultObjects.MissionState;
 using SqmContents = SQMReorderer.Core.Import.ArmA3.ResultObjects.SqmContents;
 

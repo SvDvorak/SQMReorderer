@@ -1,7 +1,6 @@
 using System;
 using SQMReorderer.Core.Import;
 using SQMReorderer.Core.Import.FileVersion;
-using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Gui.Dialogs
 {

@@ -1,11 +1,10 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using SQMReorderer.Core.Export;
 using SQMReorderer.Core.Import;
-using SQMReorderer.Core.Import.ArmA3.ResultObjects;
 using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.Import.FileVersion;
-using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Core.StreamHelpers;
 using SQMReorderer.Gui.Command;
 using SQMReorderer.Gui.Dialogs;
@@ -84,11 +83,10 @@ namespace SQMReorderer.Gui.ViewModels
             var contextIndenter = new ContextIndenter();
             var streamWriterFactory = new StreamWriterFactory();
             var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), new SqmFileExporter(
-                new SqmFileExporter(new Core.Export.ArmA2.SqmElementExportVisitor(),
-                    contextIndenter, streamWriterFactory),
-                new Core.Export.ArmA3.SqmFileExporter(new Core.Export.ArmA3.SqmElementExportVisitor(),
-                    contextIndenter, streamWriterFactory),
-                new FileVersionRetriever(new StreamReaderFactory())));
+                new MemoryStream(), 
+                new Core.Export.ArmA2.SqmElementExportVisitor(),
+                new Core.Export.ArmA3.SqmElementExportVisitor(),
+                contextIndenter, streamWriterFactory));
 
             var reorderer = new ViewModelToContentReorderer();
             //reorderer.Reorder(_sqmContents.Mission, Teams.ToList());

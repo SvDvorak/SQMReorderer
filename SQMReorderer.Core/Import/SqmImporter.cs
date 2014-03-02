@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using SQMReorderer.Core.Import.FileVersion;
-using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Core.Import
 {

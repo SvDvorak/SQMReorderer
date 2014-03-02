@@ -1,9 +1,7 @@
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
-using SQMReorderer.Core.Export;
-using SQMReorderer.Core.Export.ArmA2;
-using SQMReorderer.Core.Import.ResultObjects;
+using SQMReorderer.Core.Import;
 using SQMReorderer.Gui.Dialogs;
 
 namespace SQMReorderer.Tests.Export
@@ -13,17 +11,19 @@ namespace SQMReorderer.Tests.Export
     {
         private SaveSqmFileDialog _saveSqmFileDialog;
         private ISaveFileDialogAdapter _saveFileDialogAdapter;
-        private ISqmFileExporter _sqmFileExporter;
+        private ISqmContentsVisitor _sqmFileExporter;
 
+        private ISqmContents _sqmContents;
         private MemoryStream _memoryStream;
 
         [SetUp]
         public void Setup()
         {
             _saveFileDialogAdapter = Substitute.For<ISaveFileDialogAdapter>();
-            _sqmFileExporter = Substitute.For<ISqmFileExporter>();
+            _sqmFileExporter = Substitute.For<ISqmContentsVisitor>();
             _saveSqmFileDialog = new SaveSqmFileDialog(_saveFileDialogAdapter, _sqmFileExporter);
 
+            _sqmContents = Substitute.For<ISqmContents>();
             _memoryStream = Substitute.For<MemoryStream>();
             _saveFileDialogAdapter.OpenFile().Returns(_memoryStream);
         }
@@ -31,7 +31,7 @@ namespace SQMReorderer.Tests.Export
         [Test]
         public void Shows_save_file_dialog()
         {
-            _saveSqmFileDialog.ShowDialog(new SqmContents());
+            _saveSqmFileDialog.ShowDialog(_sqmContents);
 
             _saveFileDialogAdapter.Received().ShowDialog();
         }
@@ -41,7 +41,7 @@ namespace SQMReorderer.Tests.Export
         {
             _saveFileDialogAdapter.ShowDialog().Returns(true);
 
-            _saveSqmFileDialog.ShowDialog(new SqmContents());
+            _saveSqmFileDialog.ShowDialog(_sqmContents);
 
             _saveFileDialogAdapter.Received().OpenFile();
         }
@@ -49,12 +49,11 @@ namespace SQMReorderer.Tests.Export
         [Test]
         public void Exports_sqm_contents_using_stream()
         {
-            var sqmContents = new SqmContents();
             _saveFileDialogAdapter.ShowDialog().Returns(true);
 
-            _saveSqmFileDialog.ShowDialog(sqmContents);
+            _saveSqmFileDialog.ShowDialog(_sqmContents);
 
-            _sqmFileExporter.Received().Export(_memoryStream, sqmContents);
+            _sqmContents.Accept(_sqmFileExporter);
         }
 
         [Test]
@@ -62,7 +61,7 @@ namespace SQMReorderer.Tests.Export
         {
             _saveFileDialogAdapter.ShowDialog().Returns(true);
 
-            _saveSqmFileDialog.ShowDialog(new SqmContents());
+            _saveSqmFileDialog.ShowDialog(_sqmContents);
 
             _memoryStream.Received().Close();
         }
@@ -72,7 +71,7 @@ namespace SQMReorderer.Tests.Export
         {
             _saveFileDialogAdapter.ShowDialog().Returns(false);
 
-            _saveSqmFileDialog.ShowDialog(new SqmContents());
+            _saveSqmFileDialog.ShowDialog(_sqmContents);
 
             _saveFileDialogAdapter.DidNotReceive().OpenFile();
         }

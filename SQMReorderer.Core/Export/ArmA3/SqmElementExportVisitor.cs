@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SQMReorderer.Core.Import.ResultObjects;
+using SQMReorderer.Core.Import.ArmA3.ResultObjects;
 
 namespace SQMReorderer.Core.Export.ArmA3
 {

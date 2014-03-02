@@ -6,7 +6,6 @@ using SQMReorderer.Core.Export;
 using SQMReorderer.Core.Import;
 using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.Import.FileVersion;
-using SQMReorderer.Core.Import.ResultObjects;
 using SQMReorderer.Core.StreamHelpers;
 
 namespace SQMReorderer.Tests.Import
@@ -80,6 +79,7 @@ namespace SQMReorderer.Tests.Import
             var contextIndenter = new ContextIndenter();
             var streamWriterFactory = new StreamWriterFactory();
             var fileExporter = new SqmFileExporter(
+                new MemoryStream(), 
                 new Core.Export.ArmA2.SqmElementExportVisitor(),
                 new Core.Export.ArmA3.SqmElementExportVisitor(), 
                 contextIndenter, streamWriterFactory);

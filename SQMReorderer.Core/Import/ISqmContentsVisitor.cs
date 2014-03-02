@@ -1,12 +1,5 @@
-namespace SQMReorderer.Core.Import.ResultObjects
+namespace SQMReorderer.Core.Import
 {
-    public interface ISqmContents
-    {
-        int? Version { get; set; }
-
-        void Accept(ISqmContentsVisitor visitor);
-    }
-
     public interface ISqmContentsVisitor
     {
         void Visit(ArmA2.ResultObjects.SqmContents arma2Contents);

@@ -116,7 +116,7 @@
     <Compile Include="MainView\ArmA3\VehicleViewModelTests.cs" />
     <Compile Include="MainView\ViewModelBaseTests.cs" />
     <Compile Include="Import\OpenSqmFileDialogTests.cs" />
-    <Compile Include="Export\SaveSqmFileDialogTests.cs" />
+    <Compile Include="Export\SaveSqmAsFileDialogTests.cs" />
     <Compile Include="Export\SqmFileExporterTests_arma_2.cs" />
     <Compile Include="Import\SqmFileImporterTests.cs" />
     <Compile Include="MainView\ArmA2\ViewModelToContentReordererTests.cs" />

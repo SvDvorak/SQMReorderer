@@ -3,12 +3,12 @@ using SQMReorderer.Core.Import;
 
 namespace SQMReorderer.Gui.Dialogs
 {
-    public class SaveSqmFileDialog
+    public class SaveSqmAsFileDialog
     {
         private readonly ISaveFileDialogAdapter _saveFileDialogAdapter;
         private readonly ISqmFileExporterFactory _exporterFactory;
 
-        public SaveSqmFileDialog(ISaveFileDialogAdapter saveFileDialogAdapter, ISqmFileExporterFactory exporterFactory)
+        public SaveSqmAsFileDialog(ISaveFileDialogAdapter saveFileDialogAdapter, ISqmFileExporterFactory exporterFactory)
         {
             _saveFileDialogAdapter = saveFileDialogAdapter;
             _exporterFactory = exporterFactory;

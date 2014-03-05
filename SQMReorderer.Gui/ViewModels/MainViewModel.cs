@@ -14,14 +14,17 @@ namespace SQMReorderer.Gui.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private ISqmContents _sqmContents;
+        private string _lastOpenedFilePath;
 
         public MainViewModel()
         {
             OpenCommand = new DelegateCommand(OpenFile);
+            SaveCommand = new DelegateCommand(SaveFile);
             SaveAsCommand = new DelegateCommand(SaveFileAs);
         }
 
         public DelegateCommand OpenCommand { get; private set; }
+        public DelegateCommand SaveCommand { get; private set; }
         public DelegateCommand SaveAsCommand { get; private set; }
 
         private IEnumerable<ITeamViewModel> _teams;
@@ -32,7 +35,6 @@ namespace SQMReorderer.Gui.ViewModels
         }
 
         private IEnumerable<object> _selectedItems;
-
         public IEnumerable<object> SelectedItems
         {
             get { return _selectedItems; }
@@ -48,7 +50,6 @@ namespace SQMReorderer.Gui.ViewModels
         }
 
         private CombinedVehicleViewModel _selectedItemsViewModel;
-
         public CombinedVehicleViewModel SelectedItemsViewModel
         {
             get { return _selectedItemsViewModel; }
@@ -74,13 +75,18 @@ namespace SQMReorderer.Gui.ViewModels
                     new TeamViewModelsFactory(new GroupViewModelsFactory(new VehicleViewModelsFactory())),
                     new ArmA3.TeamViewModelsFactory(new ArmA3.GroupViewModelsFactory(new ArmA3.VehicleViewModelsFactory())));
                 Teams = _sqmContents.Accept(teamViewModelsVisitor);
+                _lastOpenedFilePath = openSqmFileDialog.SelectedPath;
             }
+        }
+
+        private void SaveFile()
+        {
         }
 
         private void SaveFileAs()
         {
             var exporterFactory = new SqmFileExporterFactory(new Core.Export.ArmA2.SqmElementExportVisitor(), new Core.Export.ArmA3.SqmElementExportVisitor(), new ContextIndenter());
-            var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), exporterFactory);
+            var saveSqmFileDialog = new SaveSqmAsFileDialog(new SaveFileDialogAdapter(), exporterFactory);
 
             var reordererVisitor = new ViewModelToContentReordererVisitor(
                 Teams.ToList(),

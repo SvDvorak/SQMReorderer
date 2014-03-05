@@ -61,7 +61,7 @@
     <Compile Include="Dialogs\OpenFileDialogAdapter.cs" />
     <Compile Include="Dialogs\OpenSqmFileDialog.cs" />
     <Compile Include="Dialogs\SaveFileDialogAdapter.cs" />
-    <Compile Include="Dialogs\SaveSqmFileDialog.cs" />
+    <Compile Include="Dialogs\SaveSqmAsFileDialog.cs" />
     <Compile Include="TestMainViewModel.cs" />
     <Compile Include="ViewModels\ArmA2\IViewModelToContentReorderer.cs" />
     <Compile Include="ViewModels\ArmA3\IViewModelToContentReorderer.cs" />

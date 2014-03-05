@@ -113,5 +113,13 @@ namespace SQMReorderer.Tests.Import
             _messageBoxPresenter.Received().ShowError("Unable to read file: Empty file");
             Assert.IsNull(sqmContents);
         }
+
+        [Test]
+        public void Selected_path_returns_file_name_from_dialog()
+        {
+            _openFileDialogAdapter.FileName = "testFileName";
+
+            Assert.AreEqual("testFileName", _openSqmFileDialog.SelectedPath);
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using NUnit.Framework;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 using SQMReorderer.Gui.ViewModels;
+using SQMReorderer.Gui.ViewModels.ArmA2;
 
 namespace SQMReorderer.Tests.MainView
 {

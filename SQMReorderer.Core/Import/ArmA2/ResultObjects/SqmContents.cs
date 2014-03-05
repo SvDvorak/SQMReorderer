@@ -13,5 +13,10 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
         {
             visitor.Visit(this);
         }
+
+        public T Accept<T>(ISqmContentsVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
+        }
     }
 }

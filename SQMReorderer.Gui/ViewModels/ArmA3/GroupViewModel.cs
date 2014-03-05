@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using SQMReorderer.Core.Import.ArmA2.ResultObjects;
+using SQMReorderer.Core.Import.ArmA3.ResultObjects;
 
-namespace SQMReorderer.Gui.ViewModels
+namespace SQMReorderer.Gui.ViewModels.ArmA3
 {
     public class GroupViewModel
     {

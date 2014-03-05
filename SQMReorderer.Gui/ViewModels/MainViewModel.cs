@@ -7,6 +7,7 @@ using SQMReorderer.Core.Import.FileVersion;
 using SQMReorderer.Core.StreamHelpers;
 using SQMReorderer.Gui.Command;
 using SQMReorderer.Gui.Dialogs;
+using SQMReorderer.Gui.ViewModels.ArmA2;
 
 namespace SQMReorderer.Gui.ViewModels
 {
@@ -23,9 +24,8 @@ namespace SQMReorderer.Gui.ViewModels
         public DelegateCommand OpenCommand { get; private set; }
         public DelegateCommand SaveAsCommand { get; private set; }
 
-        private IEnumerable<TeamViewModel> _teams;
-
-        public IEnumerable<TeamViewModel> Teams
+        private IEnumerable<ITeamViewModel> _teams;
+        public IEnumerable<ITeamViewModel> Teams
         {
             get { return _teams; }
             set { Set(value, () => Teams, () => _teams = value); }
@@ -70,9 +70,10 @@ namespace SQMReorderer.Gui.ViewModels
 
             if (_sqmContents != null)
             {
-                var teamViewModelsFactory =
-                    new TeamViewModelsFactory(new GroupViewModelsFactory(new VehicleViewModelsFactory()));
-                //Teams = teamViewModelsFactory.Create(_sqmContents.Mission.Groups);
+                var teamViewModelsVisitor = new TeamViewModelsFactoryVisitor(
+                    new TeamViewModelsFactory(new GroupViewModelsFactory(new VehicleViewModelsFactory())),
+                    new ArmA3.TeamViewModelsFactory(new ArmA3.GroupViewModelsFactory(new ArmA3.VehicleViewModelsFactory())));
+                Teams = _sqmContents.Accept(teamViewModelsVisitor);
             }
         }
 

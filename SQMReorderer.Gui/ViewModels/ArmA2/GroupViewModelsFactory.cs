@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 
-namespace SQMReorderer.Gui.ViewModels
+namespace SQMReorderer.Gui.ViewModels.ArmA2
 {
     public class GroupViewModelsFactory : IGroupViewModelsFactory
     {

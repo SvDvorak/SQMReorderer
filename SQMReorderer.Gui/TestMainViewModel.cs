@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 using SQMReorderer.Gui.ViewModels;
+using SQMReorderer.Gui.ViewModels.ArmA2;
 
 namespace SQMReorderer.Gui
 {

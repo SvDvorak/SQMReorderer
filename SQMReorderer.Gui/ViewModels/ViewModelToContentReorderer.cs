@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
+using SQMReorderer.Gui.ViewModels.ArmA2;
 
 namespace SQMReorderer.Gui.ViewModels
 {

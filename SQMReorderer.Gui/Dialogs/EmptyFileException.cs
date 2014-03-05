@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SQMReorderer.Core.Import.FileVersion
+namespace SQMReorderer.Gui.Dialogs
 {
     public class EmptyFileException : Exception
     {

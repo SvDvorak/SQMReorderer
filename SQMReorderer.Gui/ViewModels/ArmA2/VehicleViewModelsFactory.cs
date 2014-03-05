@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 
-namespace SQMReorderer.Gui.ViewModels
+namespace SQMReorderer.Gui.ViewModels.ArmA2
 {
     public class VehicleViewModelsFactory : IVehicleViewModelsFactory
     {

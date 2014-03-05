@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace SQMReorderer.Gui.ViewModels
+namespace SQMReorderer.Gui.ViewModels.ArmA3
 {
-    public class TeamViewModel
+    public class TeamViewModel : ITeamViewModel
     {
         public TeamViewModel()
         {

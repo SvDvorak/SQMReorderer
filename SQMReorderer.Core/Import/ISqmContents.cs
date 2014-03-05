@@ -5,5 +5,6 @@ namespace SQMReorderer.Core.Import
         int? Version { get; set; }
 
         void Accept(ISqmContentsVisitor visitor);
+        T Accept<T>(ISqmContentsVisitor<T> visitor);
     }
 }

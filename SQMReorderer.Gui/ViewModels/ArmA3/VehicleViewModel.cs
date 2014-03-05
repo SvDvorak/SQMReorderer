@@ -4,7 +4,7 @@ using SQMReorderer.Core.Import.ArmA3.ResultObjects;
 
 namespace SQMReorderer.Gui.ViewModels.ArmA3
 {
-    public class VehicleViewModel : ViewModelBase
+    public class VehicleViewModel : ViewModelBase, IVehicleViewModel
     {
         public VehicleViewModel(Vehicle vehicle, List<VehicleViewModel> childItemViewModels)
         {

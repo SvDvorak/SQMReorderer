@@ -63,10 +63,14 @@
     <Compile Include="Dialogs\SaveFileDialogAdapter.cs" />
     <Compile Include="Dialogs\SaveSqmAsFileDialog.cs" />
     <Compile Include="TestMainViewModel.cs" />
+    <Compile Include="ViewModels\ICombinedVehicleViewModel.cs" />
+    <Compile Include="ViewModels\ArmA3\CombinedVehicleViewModel.cs" />
+    <Compile Include="ViewModels\CombinedVehicleViewModelFactory.cs" />
+    <Compile Include="ViewModels\IVehicleViewModel.cs" />
     <Compile Include="ViewModels\ArmA2\IViewModelToContentReorderer.cs" />
     <Compile Include="ViewModels\ArmA3\IViewModelToContentReorderer.cs" />
     <Compile Include="ViewModels\ArmA3\ViewModelToContentReorderer.cs" />
-    <Compile Include="ViewModels\CombinedVehicleViewModel.cs" />
+    <Compile Include="ViewModels\ArmA2\CombinedVehicleViewModel.cs" />
     <Compile Include="ViewModels\ArmA2\GroupViewModelsFactory.cs" />
     <Compile Include="ViewModels\ArmA2\IGroupViewModelsFactory.cs" />
     <Compile Include="ViewModels\ArmA3\GroupViewModel.cs" />

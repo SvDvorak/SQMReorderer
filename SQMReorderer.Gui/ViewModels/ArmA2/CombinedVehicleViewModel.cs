@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SQMReorderer.Gui.ViewModels.ArmA2;
 
-namespace SQMReorderer.Gui.ViewModels
+namespace SQMReorderer.Gui.ViewModels.ArmA2
 {
-    public class CombinedVehicleViewModel : ViewModelBase
+    public class CombinedVehicleViewModel : ViewModelBase, ICombinedVehicleViewModel
     {
         private readonly List<VehicleViewModel> _vehicles;
 

@@ -1,14 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using SQMReorderer.Core.Export;
-using SQMReorderer.Core.Export.ArmA2;
 using SQMReorderer.Core.Import;
 using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.Import.FileVersion;
 using SQMReorderer.Core.StreamHelpers;
 using SQMReorderer.Gui.Command;
 using SQMReorderer.Gui.Dialogs;
-using SQMReorderer.Gui.ViewModels.ArmA2;
 
 namespace SQMReorderer.Gui.ViewModels
 {
@@ -43,15 +41,15 @@ namespace SQMReorderer.Gui.ViewModels
             {
                 Set(value, () => SelectedItems, () => _selectedItems = value);
                 SelectedItemsViewModel =
-                    new CombinedVehicleViewModel(_selectedItems
-                        .Where(x => x is VehicleViewModel)
-                        .Cast<VehicleViewModel>()
+                    new CombinedVehicleViewModelFactory().Create(_selectedItems
+                        .Where(x => x is IVehicleViewModel)
+                        .Cast<IVehicleViewModel>()
                         .ToList());
             }
         }
 
-        private CombinedVehicleViewModel _selectedItemsViewModel;
-        public CombinedVehicleViewModel SelectedItemsViewModel
+        private ICombinedVehicleViewModel _selectedItemsViewModel;
+        public ICombinedVehicleViewModel SelectedItemsViewModel
         {
             get { return _selectedItemsViewModel; }
             set { Set(value, () => SelectedItemsViewModel, () => _selectedItemsViewModel = value); }
@@ -73,7 +71,7 @@ namespace SQMReorderer.Gui.ViewModels
             if (_sqmContents != null)
             {
                 var teamViewModelsVisitor = new TeamViewModelsFactoryVisitor(
-                    new TeamViewModelsFactory(new GroupViewModelsFactory(new VehicleViewModelsFactory())),
+                    new ArmA2.TeamViewModelsFactory(new ArmA2.GroupViewModelsFactory(new ArmA2.VehicleViewModelsFactory())),
                     new ArmA3.TeamViewModelsFactory(new ArmA3.GroupViewModelsFactory(new ArmA3.VehicleViewModelsFactory())));
 
                 Teams = _sqmContents.Accept(teamViewModelsVisitor);
@@ -87,11 +85,11 @@ namespace SQMReorderer.Gui.ViewModels
             {
                 var saveSqmFile = new SaveSqmFile(
                     new StreamFactory(), 
-                    new SqmFileExporterFactory(new SqmElementExportVisitor(), new Core.Export.ArmA3.SqmElementExportVisitor(), new ContextIndenter()));
+                    new SqmFileExporterFactory(new Core.Export.ArmA2.SqmElementExportVisitor(), new Core.Export.ArmA3.SqmElementExportVisitor(), new ContextIndenter()));
 
                 var reordererVisitor = new ViewModelToContentReordererVisitor(
                     Teams.ToList(),
-                    new ViewModelToContentReorderer(),
+                    new ArmA2.ViewModelToContentReorderer(),
                     new ArmA3.ViewModelToContentReorderer());
 
                 _sqmContents.Accept(reordererVisitor);
@@ -102,12 +100,12 @@ namespace SQMReorderer.Gui.ViewModels
 
         private void SaveFileAs()
         {
-            var exporterFactory = new SqmFileExporterFactory(new SqmElementExportVisitor(), new Core.Export.ArmA3.SqmElementExportVisitor(), new ContextIndenter());
+            var exporterFactory = new SqmFileExporterFactory(new Core.Export.ArmA2.SqmElementExportVisitor(), new Core.Export.ArmA3.SqmElementExportVisitor(), new ContextIndenter());
             var saveSqmFileDialog = new SaveSqmAsFileDialog(new SaveFileDialogAdapter(), exporterFactory);
 
             var reordererVisitor = new ViewModelToContentReordererVisitor(
                 Teams.ToList(),
-                new ViewModelToContentReorderer(),
+                new ArmA2.ViewModelToContentReorderer(),
                 new ArmA3.ViewModelToContentReorderer());
 
             _sqmContents.Accept(reordererVisitor);

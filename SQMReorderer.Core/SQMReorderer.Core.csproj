@@ -67,10 +67,13 @@
     <Compile Include="Export\ISqmFileExporterFactory.cs" />
     <Compile Include="Export\ISqmPropertyVisitor.cs" />
     <Compile Include="Export\ArmA2\SqmElementExportVisitor.cs" />
+    <Compile Include="Export\IStreamFactory.cs" />
+    <Compile Include="Export\SaveSqmFile.cs" />
     <Compile Include="Export\SqmFileExporter.cs" />
     <Compile Include="Export\SqmExportException.cs" />
     <Compile Include="Export\SqmFileExporterFactory.cs" />
     <Compile Include="Export\SqmPropertyVisitor.cs" />
+    <Compile Include="Export\StreamFactory.cs" />
     <Compile Include="Import\ISqmContentsVisitor.cs" />
     <Compile Include="Import\ISqmFileImporter.cs" />
     <Compile Include="Import\ISqmContents.cs" />

@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using NUnit.Framework;
-using SQMReorderer.Core.Import.ArmA2.ResultObjects;
-using SQMReorderer.Gui.ViewModels;
-using SQMReorderer.Gui.ViewModels.ArmA2;
+using SQMReorderer.Core.Import.ArmA3.ResultObjects;
+using SQMReorderer.Gui.ViewModels.ArmA3;
 
-namespace SQMReorderer.Tests.MainView
+namespace SQMReorderer.Tests.MainView.ArmA3
 {
     [TestFixture]
     public class ViewModelToContentReordererTests

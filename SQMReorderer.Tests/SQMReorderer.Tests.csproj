@@ -103,6 +103,7 @@
     <Compile Include="Import\ArmA3\SensorItemParserTests.cs" />
     <Compile Include="Import\ArmA3\SqmParserTests.cs" />
     <Compile Include="Import\ArmA3\VehicleItemParserTests.cs" />
+    <Compile Include="MainView\ArmA3\ViewModelToContentReordererTests.cs" />
     <Compile Include="MainView\CombinedVehicleViewModelTests.cs" />
     <Compile Include="MainView\ArmA2\GroupViewModelsFactoryTests.cs" />
     <Compile Include="MainView\ArmA2\TeamViewModelsFactoryTests.cs" />
@@ -118,7 +119,8 @@
     <Compile Include="Export\SaveSqmFileDialogTests.cs" />
     <Compile Include="Export\SqmFileExporterTests_arma_2.cs" />
     <Compile Include="Import\SqmFileImporterTests.cs" />
-    <Compile Include="MainView\ViewModelToContentReordererTests.cs" />
+    <Compile Include="MainView\ArmA2\ViewModelToContentReordererTests.cs" />
+    <Compile Include="MainView\ViewModelToContentReordererVisitorTests.cs" />
     <Compile Include="VectorTests.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
-using SQMReorderer.Gui.ViewModels.ArmA2;
 
-namespace SQMReorderer.Gui.ViewModels
+namespace SQMReorderer.Gui.ViewModels.ArmA2
 {
-    public class ViewModelToContentReorderer
+    public class ViewModelToContentReorderer : IViewModelToContentReorderer
     {
         private Dictionary<Vehicle, List<Vehicle>> _parentChildDictionary;
 

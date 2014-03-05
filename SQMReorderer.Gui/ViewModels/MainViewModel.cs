@@ -82,10 +82,14 @@ namespace SQMReorderer.Gui.ViewModels
             var exporterFactory = new SqmFileExporterFactory(new Core.Export.ArmA2.SqmElementExportVisitor(), new Core.Export.ArmA3.SqmElementExportVisitor(), new ContextIndenter());
             var saveSqmFileDialog = new SaveSqmFileDialog(new SaveFileDialogAdapter(), exporterFactory);
 
-            var reorderer = new ViewModelToContentReorderer();
-            //reorderer.Reorder(_sqmContents.Mission, Teams.ToList());
+            var reordererVisitor = new ViewModelToContentReordererVisitor(
+                Teams.ToList(),
+                new ViewModelToContentReorderer(),
+                new ArmA3.ViewModelToContentReorderer());
 
-            //saveSqmFileDialog.ShowDialog(_sqmContents);
+            _sqmContents.Accept(reordererVisitor);
+
+            saveSqmFileDialog.ShowDialog(_sqmContents);
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.ArmA2.ResultObjects;
-using SQMReorderer.Core.Import.Context;
-using SQMReorderer.Core.Import.HelperFunctions;
+using SQMImportExport.Import.ArmA2.ResultObjects;
+using SQMImportExport.Import.Context;
+using SQMImportExport.Import.HelperFunctions;
 
-namespace SQMReorderer.Core.Import.ArmA2.Parsers
+namespace SQMImportExport.Import.ArmA2.Parsers
 {
     internal class ItemParserBase<TItemType> : ParserBase<TItemType>
         where TItemType : ItemBase, new ()

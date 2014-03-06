@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using SQMReorderer.Core.Export;
-using SQMReorderer.Core.Import;
-using SQMReorderer.Core.Import.Context;
-using SQMReorderer.Core.Import.FileVersion;
-using SQMReorderer.Core.StreamHelpers;
+using SQMImportExport.Export;
+using SQMImportExport.Import;
 using SQMReorderer.Gui.Command;
 using SQMReorderer.Gui.Dialogs;
 using SQMReorderer.Gui.Dialogs.AddInit;

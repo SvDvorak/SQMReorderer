@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.Context;
+using SQMImportExport.Import.Context;
 
-namespace SQMReorderer.Core.Import.DataSetters
+namespace SQMImportExport.Import.DataSetters
 {
     internal class MultiLineStringListPropertySetter : IContextSetter
     {

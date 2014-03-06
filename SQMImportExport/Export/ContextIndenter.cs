@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace SQMReorderer.Core.Export
+namespace SQMImportExport.Export
 {
     internal interface IContextIndenter
     {

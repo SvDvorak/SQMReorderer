@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using SQMReorderer.Core.Import.ArmA3.Parsers.Waypoint;
-using SQMReorderer.Core.Import.DataSetters;
+using SQMImportExport.Import.ArmA3.Parsers.Waypoint;
+using SQMImportExport.Import.DataSetters;
 
-namespace SQMReorderer.Core.Import.ArmA3.Parsers.Vehicle
+namespace SQMImportExport.Import.ArmA3.Parsers.Vehicle
 {
     internal class VehicleItemParser : ItemParserBase<ResultObjects.Vehicle>
     {

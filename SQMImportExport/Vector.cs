@@ -1,4 +1,4 @@
-namespace SQMReorderer.Core
+namespace SQMImportExport
 {
     public class Vector
     {

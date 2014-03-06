@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using SQMReorderer.Core.Import.DataSetters;
-using SQMReorderer.Core.Import.DataSetters.Effects;
+using SQMImportExport.Import.DataSetters;
+using SQMImportExport.Import.DataSetters.Effects;
 
-namespace SQMReorderer.Core.Import.ArmA3.Parsers.Waypoint
+namespace SQMImportExport.Import.ArmA3.Parsers.Waypoint
 {
     internal class WaypointItemParser : ItemParserBase<ResultObjects.Waypoint>
     {

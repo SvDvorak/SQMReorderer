@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMReorderer.Core.Import.Context;
-using SQMReorderer.Core.Import.DataSetters.Effects;
+using SQMImportExport.Import.Context;
+using SQMImportExport.Import.DataSetters.Effects;
 
 namespace SQMReorderer.Tests.Import
 {

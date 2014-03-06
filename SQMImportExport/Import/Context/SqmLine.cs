@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace SQMReorderer.Core.Import.Context
+namespace SQMImportExport.Import.Context
 {
     internal class SqmLine
     {

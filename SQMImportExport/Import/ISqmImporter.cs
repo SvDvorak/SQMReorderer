@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace SQMReorderer.Core.Import
+namespace SQMImportExport.Import
 {
     public interface ISqmImporter
     {

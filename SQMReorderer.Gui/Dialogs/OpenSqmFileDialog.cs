@@ -1,5 +1,5 @@
 using System;
-using SQMReorderer.Core.Import;
+using SQMImportExport.Import;
 
 namespace SQMReorderer.Gui.Dialogs
 {

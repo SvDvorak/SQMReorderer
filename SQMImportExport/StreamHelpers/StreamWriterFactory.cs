@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace SQMReorderer.Core.StreamHelpers
+namespace SQMImportExport.StreamHelpers
 {
     internal class StreamWriterFactory : IStreamWriterFactory
     {

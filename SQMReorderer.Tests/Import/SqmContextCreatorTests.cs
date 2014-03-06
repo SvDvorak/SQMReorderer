@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMReorderer.Core.Import.Context;
+using SQMImportExport.Import.Context;
 
 namespace SQMReorderer.Tests.Import
 {

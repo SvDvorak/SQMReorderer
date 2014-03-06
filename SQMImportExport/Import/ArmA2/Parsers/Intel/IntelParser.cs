@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.DataSetters;
+using SQMImportExport.Import.DataSetters;
 
-namespace SQMReorderer.Core.Import.ArmA2.Parsers.Intel
+namespace SQMImportExport.Import.ArmA2.Parsers.Intel
 {
     internal class IntelParser : ParserBase<ResultObjects.Intel>
     {

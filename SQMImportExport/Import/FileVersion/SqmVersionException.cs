@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SQMReorderer.Core.Import.FileVersion
+namespace SQMImportExport.Import.FileVersion
 {
     internal class SqmVersionException : Exception
     {

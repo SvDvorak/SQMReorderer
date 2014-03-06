@@ -2,6 +2,7 @@
 using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
+using SQMImportExport.Import.ArmA2.ResultObjects;
 using SQMReorderer.Gui.ViewModels;
 
 namespace SQMReorderer.Tests.MainView
@@ -27,7 +28,7 @@ namespace SQMReorderer.Tests.MainView
 
             var sut = new ViewModelToContentReordererVisitor(teamViewModels.Cast<ITeamViewModel>().ToList(), _arma2Reorderer, _arma3Reorderer);
 
-            var arma2Contents = new Core.Import.ArmA2.ResultObjects.SqmContents() { Mission = new Core.Import.ArmA2.ResultObjects.MissionState() };
+            var arma2Contents = new SqmContents() { Mission = new MissionState() };
             sut.Visit(arma2Contents);
 
             _arma2Reorderer.Received().Reorder(
@@ -43,7 +44,7 @@ namespace SQMReorderer.Tests.MainView
 
             var sut = new ViewModelToContentReordererVisitor(teamViewModels.Cast<ITeamViewModel>().ToList(), _arma2Reorderer, _arma3Reorderer);
 
-            var arma3Contents = new Core.Import.ArmA3.ResultObjects.SqmContents() { Mission = new Core.Import.ArmA3.ResultObjects.MissionState() };
+            var arma3Contents = new SQMImportExport.Import.ArmA3.ResultObjects.SqmContents() { Mission = new SQMImportExport.Import.ArmA3.ResultObjects.MissionState() };
             sut.Visit(arma3Contents);
 
             _arma3Reorderer.Received().Reorder(

@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.ArmA3.Parsers.Intel;
-using SQMReorderer.Core.Import.ArmA3.Parsers.Marker;
-using SQMReorderer.Core.Import.ArmA3.Parsers.Sensor;
-using SQMReorderer.Core.Import.ArmA3.Parsers.Vehicle;
-using SQMReorderer.Core.Import.DataSetters;
+using SQMImportExport.Import.ArmA3.Parsers.Intel;
+using SQMImportExport.Import.ArmA3.Parsers.Marker;
+using SQMImportExport.Import.ArmA3.Parsers.Sensor;
+using SQMImportExport.Import.ArmA3.Parsers.Vehicle;
+using SQMImportExport.Import.DataSetters;
 
-namespace SQMReorderer.Core.Import.ArmA3.Parsers.MissionState
+namespace SQMImportExport.Import.ArmA3.Parsers.MissionState
 {
     internal class MissionStateParser : ParserBase<ResultObjects.MissionState>
     {

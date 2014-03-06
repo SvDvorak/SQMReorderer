@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SQMReorderer.Core.Import.ArmA3.ResultObjects
+namespace SQMImportExport.Import.ArmA3.ResultObjects
 {
     public class Sensor : ItemBase
     {

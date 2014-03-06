@@ -1,6 +1,6 @@
-﻿using SQMReorderer.Core.Import.DataSetters;
+﻿using SQMImportExport.Import.DataSetters;
 
-namespace SQMReorderer.Core.Import.ArmA2.Parsers.Marker
+namespace SQMImportExport.Import.ArmA2.Parsers.Marker
 {
     internal class MarkerItemParser : ItemParserBase<ResultObjects.Marker>
     {

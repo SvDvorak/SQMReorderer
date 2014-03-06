@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SQMReorderer.Core.Import.ResultObjects
+namespace SQMImportExport.Import.ResultObjects
 {
     public class MarkersArray
     {

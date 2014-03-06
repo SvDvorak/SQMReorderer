@@ -1,4 +1,4 @@
-namespace SQMReorderer.Core.Import
+namespace SQMImportExport.Import
 {
     public interface ISqmContentsVisitor
     {

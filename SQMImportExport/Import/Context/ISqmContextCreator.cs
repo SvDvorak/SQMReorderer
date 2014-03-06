@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SQMReorderer.Core.Import.Context
+namespace SQMImportExport.Import.Context
 {
     internal interface ISqmContextCreator
     {

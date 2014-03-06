@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.Context;
-using SQMReorderer.Core.Import.DataSetters;
+using SQMImportExport.Import.Context;
+using SQMImportExport.Import.DataSetters;
 
-namespace SQMReorderer.Core.Import
+namespace SQMImportExport.Import
 {
     internal abstract class ParserBase<TParseResult> : IParser<TParseResult>
         where TParseResult : new()

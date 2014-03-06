@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using SQMReorderer.Core.Import.ResultObjects;
+using SQMImportExport.Import.ResultObjects;
 
-namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
+namespace SQMImportExport.Import.ArmA2.ResultObjects
 {
     public class Vehicle : ItemBase
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SQMReorderer.Core.Import.DataSetters.Effects
+namespace SQMImportExport.Import.DataSetters.Effects
 {
     internal class EffectsParserFactory : IItemParserFactory<List<string>>
     {

@@ -1,4 +1,4 @@
-namespace SQMReorderer.Core.Import.ArmA3.Parsers.Sensor
+namespace SQMImportExport.Import.ArmA3.Parsers.Sensor
 {
     internal class SensorItemParserFactory : IItemParserFactory<ResultObjects.Sensor>
     {

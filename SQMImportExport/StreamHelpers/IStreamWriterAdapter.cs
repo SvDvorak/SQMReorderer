@@ -1,4 +1,4 @@
-namespace SQMReorderer.Core.StreamHelpers
+namespace SQMImportExport.StreamHelpers
 {
     internal interface IStreamWriterAdapter
     {

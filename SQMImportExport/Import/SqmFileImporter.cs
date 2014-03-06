@@ -1,8 +1,8 @@
 using System.IO;
-using SQMReorderer.Core.Import.Context;
-using SQMReorderer.Core.StreamHelpers;
+using SQMImportExport.Import.Context;
+using SQMImportExport.StreamHelpers;
 
-namespace SQMReorderer.Core.Import
+namespace SQMImportExport.Import
 {
     internal class SqmFileImporter : ISqmFileImporter
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace SQMReorderer.Core.Import
+namespace SQMImportExport.Import
 {
     [Serializable]
     internal class SqmParseException : Exception

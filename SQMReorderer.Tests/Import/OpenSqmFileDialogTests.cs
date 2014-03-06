@@ -1,7 +1,7 @@
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
-using SQMReorderer.Core.Import;
+using SQMImportExport.Import;
 using SQMReorderer.Gui.Dialogs;
 
 namespace SQMReorderer.Tests.Import

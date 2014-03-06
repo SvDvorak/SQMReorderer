@@ -1,4 +1,4 @@
-﻿namespace SQMReorderer.Core.Import.ArmA2.Parsers.Waypoint
+﻿namespace SQMImportExport.Import.ArmA2.Parsers.Waypoint
 {
     internal class WaypointItemParserFactory : IItemParserFactory<ResultObjects.Waypoint>
     {

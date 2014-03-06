@@ -1,6 +1,6 @@
 using System;
 
-namespace SQMReorderer.Core.Export
+namespace SQMImportExport.Export
 {
     internal class SqmExportException : Exception
     {

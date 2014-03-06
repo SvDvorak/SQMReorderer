@@ -1,6 +1,6 @@
-using SQMReorderer.Core.Import.Context;
+using SQMImportExport.Import.Context;
 
-namespace SQMReorderer.Core.Import
+namespace SQMImportExport.Import
 {
     internal interface IParser<TParseResult>
     {

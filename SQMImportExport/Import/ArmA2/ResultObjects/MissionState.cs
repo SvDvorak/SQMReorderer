@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
+namespace SQMImportExport.Import.ArmA2.ResultObjects
 {
     public class MissionState
     {

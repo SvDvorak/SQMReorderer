@@ -1,4 +1,4 @@
-﻿namespace SQMReorderer.Core.Import.FileVersion
+﻿namespace SQMImportExport.Import.FileVersion
 {
     internal interface IStreamReaderAdapter
     {

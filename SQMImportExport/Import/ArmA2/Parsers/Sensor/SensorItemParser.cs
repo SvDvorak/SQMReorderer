@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using SQMReorderer.Core.Import.DataSetters;
-using SQMReorderer.Core.Import.DataSetters.Effects;
+using SQMImportExport.Import.DataSetters;
+using SQMImportExport.Import.DataSetters.Effects;
 
-namespace SQMReorderer.Core.Import.ArmA2.Parsers.Sensor
+namespace SQMImportExport.Import.ArmA2.Parsers.Sensor
 {
     internal class SensorItemParser : ItemParserBase<ResultObjects.Sensor>
     {

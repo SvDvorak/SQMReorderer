@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace SQMReorderer.Core.Import.FileVersion
+namespace SQMImportExport.Import.FileVersion
 {
     internal class FileVersionRetriever : IFileVersionRetriever
     {

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace SQMReorderer.Core.Import.FileVersion
+namespace SQMImportExport.Import.FileVersion
 {
     internal class StreamReaderAdapter : IStreamReaderAdapter
     {

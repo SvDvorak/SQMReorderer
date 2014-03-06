@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMReorderer.Core;
-using SQMReorderer.Core.Export;
-using SQMReorderer.Core.Import.ArmA2.ResultObjects;
-using SQMReorderer.Core.Import.ResultObjects;
+using SQMImportExport;
+using SQMImportExport.Export;
+using SQMImportExport.Import.ResultObjects;
 
 namespace SQMReorderer.Tests.Export
 {

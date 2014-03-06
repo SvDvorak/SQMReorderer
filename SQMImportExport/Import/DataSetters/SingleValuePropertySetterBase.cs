@@ -1,6 +1,6 @@
 using System;
 
-namespace SQMReorderer.Core.Import.DataSetters
+namespace SQMImportExport.Import.DataSetters
 {
     internal abstract class SingleValuePropertySetterBase<T> : LineSetterBase
     {

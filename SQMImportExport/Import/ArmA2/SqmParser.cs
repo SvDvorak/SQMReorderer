@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.ArmA2.Parsers.MissionState;
-using SQMReorderer.Core.Import.Context;
-using SQMReorderer.Core.Import.DataSetters;
-using MissionState = SQMReorderer.Core.Import.ArmA2.ResultObjects.MissionState;
-using SqmContents = SQMReorderer.Core.Import.ArmA2.ResultObjects.SqmContents;
+using SQMImportExport.Import.ArmA2.Parsers.MissionState;
+using SQMImportExport.Import.ArmA2.ResultObjects;
+using SQMImportExport.Import.Context;
+using SQMImportExport.Import.DataSetters;
 
-namespace SQMReorderer.Core.Import.ArmA2
+namespace SQMImportExport.Import.ArmA2
 {
     internal class SqmParser : ParserBase<SqmContents>, ISqmParser
     {

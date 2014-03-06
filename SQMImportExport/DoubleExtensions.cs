@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace SQMReorderer.Core
+namespace SQMImportExport
 {
     public static class DoubleExtensions
     {

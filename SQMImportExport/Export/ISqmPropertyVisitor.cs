@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SQMReorderer.Core.Export
+namespace SQMImportExport.Export
 {
     internal interface ISqmPropertyVisitor
     {

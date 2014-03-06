@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace SQMReorderer.Core.Import.HelperFunctions
+namespace SQMImportExport.Import.HelperFunctions
 {
     internal class ParsingHelperFunctions
     {

@@ -1,8 +1,7 @@
 ﻿using System;
-using SQMReorderer.Core.Import.ArmA2.Parsers;
-using SQMReorderer.Core.Import.Context;
+using SQMImportExport.Import.Context;
 
-namespace SQMReorderer.Core.Import.DataSetters
+namespace SQMImportExport.Import.DataSetters
 {
     internal class ContextSetter<TParseResult> : IContextSetter
     {

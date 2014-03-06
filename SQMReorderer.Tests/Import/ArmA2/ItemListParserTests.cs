@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMReorderer.Core.Import;
-using SQMReorderer.Core.Import.ArmA2;
-using SQMReorderer.Core.Import.ArmA2.Parsers;
-using SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle;
-using SQMReorderer.Core.Import.ArmA2.ResultObjects;
-using SQMReorderer.Core.Import.Context;
+using SQMImportExport.Import;
+using SQMImportExport.Import.ArmA2.Parsers;
+using SQMImportExport.Import.ArmA2.Parsers.Vehicle;
+using SQMImportExport.Import.ArmA2.ResultObjects;
+using SQMImportExport.Import.Context;
 
 namespace SQMReorderer.Tests.Import.ArmA2
 {

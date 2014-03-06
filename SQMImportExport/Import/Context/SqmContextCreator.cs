@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using SQMReorderer.Core.Import.HelperFunctions;
+using SQMImportExport.Import.HelperFunctions;
 
-namespace SQMReorderer.Core.Import.Context
+namespace SQMImportExport.Import.Context
 {
     internal class SqmContextCreator : ISqmContextCreator
     {

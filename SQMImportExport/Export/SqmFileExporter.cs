@@ -1,7 +1,7 @@
-using SQMReorderer.Core.Import;
-using SQMReorderer.Core.StreamHelpers;
+using SQMImportExport.Import;
+using SQMImportExport.StreamHelpers;
 
-namespace SQMReorderer.Core.Export
+namespace SQMImportExport.Export
 {
     internal class SqmFileExporter : ISqmContentsVisitor
     {

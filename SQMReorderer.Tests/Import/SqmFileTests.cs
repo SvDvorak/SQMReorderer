@@ -2,11 +2,13 @@
 using System.Reflection;
 using System.Text;
 using NUnit.Framework;
-using SQMReorderer.Core.Export;
-using SQMReorderer.Core.Import;
-using SQMReorderer.Core.Import.Context;
-using SQMReorderer.Core.Import.FileVersion;
-using SQMReorderer.Core.StreamHelpers;
+using SQMImportExport.Export;
+using SQMImportExport.Export.ArmA2;
+using SQMImportExport.Import;
+using SQMImportExport.Import.ArmA2;
+using SQMImportExport.Import.Context;
+using SQMImportExport.Import.FileVersion;
+using SQMImportExport.StreamHelpers;
 
 namespace SQMReorderer.Tests.Import
 {
@@ -65,9 +67,9 @@ namespace SQMReorderer.Tests.Import
             var sqmContextCreator = new SqmContextCreator();
             var sqmFileImporter = new SqmImporter(new FileVersionRetriever(new StreamReaderFactory()),
                 new SqmFileImporter(streamToStringsReader, sqmContextCreator,
-                    new Core.Import.ArmA2.SqmParser()),
+                    new SqmParser()),
                 new SqmFileImporter(streamToStringsReader, sqmContextCreator,
-                    new Core.Import.ArmA3.SqmParser()));
+                    new SQMImportExport.Import.ArmA3.SqmParser()));
 
             var importResults = sqmFileImporter.Import(importStream);
 
@@ -81,8 +83,8 @@ namespace SQMReorderer.Tests.Import
             var streamWriter = new StreamWriterAdapter(exportStream);
             var fileExporter = new SqmFileExporter(
                 streamWriter,
-                new Core.Export.ArmA2.SqmElementExportVisitor(),
-                new Core.Export.ArmA3.SqmElementExportVisitor(), 
+                new SqmElementExportVisitor(),
+                new SQMImportExport.Export.ArmA3.SqmElementExportVisitor(), 
                 contextIndenter);
 
             importResults.Accept(fileExporter);

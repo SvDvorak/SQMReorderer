@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SQMReorderer.Core.Import.ArmA2.ResultObjects;
+using SQMImportExport.Import.ArmA2.ResultObjects;
 
-namespace SQMReorderer.Core.Export.ArmA2
+namespace SQMImportExport.Export.ArmA2
 {
     internal class SqmElementExportVisitor : ISqmElementVisitor
     {

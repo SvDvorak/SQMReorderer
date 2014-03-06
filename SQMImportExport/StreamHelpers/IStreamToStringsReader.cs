@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace SQMReorderer.Core.StreamHelpers
+namespace SQMImportExport.StreamHelpers
 {
     internal interface IStreamToStringsReader
     {

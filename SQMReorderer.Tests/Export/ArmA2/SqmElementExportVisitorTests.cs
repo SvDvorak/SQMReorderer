@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
-using SQMReorderer.Core;
-using SQMReorderer.Core.Export.ArmA2;
-using SQMReorderer.Core.Import.ArmA2.ResultObjects;
-using SQMReorderer.Core.Import.ResultObjects;
+using SQMImportExport;
+using SQMImportExport.Export.ArmA2;
+using SQMImportExport.Import.ArmA2.ResultObjects;
+using SQMImportExport.Import.ResultObjects;
 
 namespace SQMReorderer.Tests.Export.ArmA2
 {

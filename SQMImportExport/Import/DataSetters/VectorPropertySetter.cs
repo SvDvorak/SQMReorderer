@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using SQMReorderer.Core.Import.HelperFunctions;
+using SQMImportExport.Import.HelperFunctions;
 
-namespace SQMReorderer.Core.Import.DataSetters
+namespace SQMImportExport.Import.DataSetters
 {
     internal class VectorPropertySetter : MultiValuePropertySetterBase<Vector>
     {

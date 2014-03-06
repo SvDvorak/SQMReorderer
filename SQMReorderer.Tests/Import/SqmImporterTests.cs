@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using NSubstitute;
 using NUnit.Framework;
-using SQMReorderer.Core.Import;
-using SQMReorderer.Core.Import.FileVersion;
+using SQMImportExport.Import;
+using SQMImportExport.Import.FileVersion;
 
 namespace SQMReorderer.Tests.Import
 {

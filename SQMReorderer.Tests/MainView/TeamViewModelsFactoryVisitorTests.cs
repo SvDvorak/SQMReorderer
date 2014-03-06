@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
+using SQMImportExport.Import.ArmA2.ResultObjects;
 using SQMReorderer.Gui.ViewModels;
 
 namespace SQMReorderer.Tests.MainView
@@ -11,14 +12,14 @@ namespace SQMReorderer.Tests.MainView
         [Test]
         public void Visits_with_arma_2_contents()
         {
-            var missionGroups = new List<Core.Import.ArmA2.ResultObjects.Vehicle>();
+            var missionGroups = new List<Vehicle>();
             var exectedTeamViewModel = new Gui.ViewModels.ArmA2.TeamViewModel();
             var teamViewModelsFactory = Substitute.For<Gui.ViewModels.ArmA2.ITeamViewModelsFactory>();
             teamViewModelsFactory.Create(missionGroups).Returns(new List<Gui.ViewModels.ArmA2.TeamViewModel>() { exectedTeamViewModel });
 
-            var arma2Contents = new Core.Import.ArmA2.ResultObjects.SqmContents()
+            var arma2Contents = new SqmContents()
                 {
-                    Mission = new Core.Import.ArmA2.ResultObjects.MissionState()
+                    Mission = new MissionState()
                         {
                             Groups = missionGroups
                         }
@@ -33,14 +34,14 @@ namespace SQMReorderer.Tests.MainView
         [Test]
         public void Visits_with_arma_3_contents()
         {
-            var missionGroups = new List<Core.Import.ArmA3.ResultObjects.Vehicle>();
+            var missionGroups = new List<SQMImportExport.Import.ArmA3.ResultObjects.Vehicle>();
             var exectedTeamViewModel = new Gui.ViewModels.ArmA3.TeamViewModel();
             var teamViewModelsFactory = Substitute.For<Gui.ViewModels.ArmA3.ITeamViewModelsFactory>();
             teamViewModelsFactory.Create(missionGroups).Returns(new List<Gui.ViewModels.ArmA3.TeamViewModel>() { exectedTeamViewModel });
 
-            var arma3Contents = new Core.Import.ArmA3.ResultObjects.SqmContents()
+            var arma3Contents = new SQMImportExport.Import.ArmA3.ResultObjects.SqmContents()
                 {
-                    Mission = new Core.Import.ArmA3.ResultObjects.MissionState()
+                    Mission = new SQMImportExport.Import.ArmA3.ResultObjects.MissionState()
                         {
                             Groups = missionGroups
                         }

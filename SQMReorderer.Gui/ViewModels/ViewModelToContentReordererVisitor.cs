@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SQMReorderer.Core.Import;
+using SQMImportExport.Import;
+using SQMImportExport.Import.ArmA2.ResultObjects;
 
 namespace SQMReorderer.Gui.ViewModels
 {
@@ -20,12 +21,12 @@ namespace SQMReorderer.Gui.ViewModels
             _arma3Reorderer = arma3Reorderer;
         }
 
-        public void Visit(Core.Import.ArmA2.ResultObjects.SqmContents arma2Contents)
+        public void Visit(SqmContents arma2Contents)
         {
             _arma2Reorderer.Reorder(arma2Contents.Mission, _teamViewModels.Cast<ArmA2.TeamViewModel>().ToList());
         }
 
-        public void Visit(Core.Import.ArmA3.ResultObjects.SqmContents arma3Contents)
+        public void Visit(SQMImportExport.Import.ArmA3.ResultObjects.SqmContents arma3Contents)
         {
             _arma3Reorderer.Reorder(arma3Contents.Mission, _teamViewModels.Cast<ArmA3.TeamViewModel>().ToList());
         }

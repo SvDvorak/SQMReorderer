@@ -7,7 +7,7 @@
     <ProjectGuid>{2A3D6BF9-D17A-43BD-BEA5-EBB73EB6E569}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SQMReorderer.Core</RootNamespace>
+    <RootNamespace>SQMImportExport</RootNamespace>
     <AssemblyName>SQMReorderer.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -1,6 +1,6 @@
-using SQMReorderer.Core.Import;
+using SQMImportExport.Import;
 
-namespace SQMReorderer.Core.Export
+namespace SQMImportExport.Export
 {
     public class SaveSqmFile
     {

@@ -1,4 +1,4 @@
-namespace SQMReorderer.Core.Import.ArmA3.Parsers.Marker
+namespace SQMImportExport.Import.ArmA3.Parsers.Marker
 {
     internal class MarkerItemParserFactory : IItemParserFactory<ResultObjects.Marker>
     {

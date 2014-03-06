@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.Context;
+using SQMImportExport.Import.Context;
 
-namespace SQMReorderer.Core.Import.ArmA2.Parsers
+namespace SQMImportExport.Import.ArmA2.Parsers
 {
     internal class ItemListParser<TItemType> : IParser<List<TItemType>>
     {

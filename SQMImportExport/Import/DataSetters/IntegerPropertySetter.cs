@@ -1,7 +1,7 @@
 using System;
-using SQMReorderer.Core.Import.HelperFunctions;
+using SQMImportExport.Import.HelperFunctions;
 
-namespace SQMReorderer.Core.Import.DataSetters
+namespace SQMImportExport.Import.DataSetters
 {
     internal class IntegerPropertySetter : SingleValuePropertySetterBase<int>
     {

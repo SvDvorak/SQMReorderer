@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace SQMReorderer.Core.Import.Context
+namespace SQMImportExport.Import.Context
 {
     internal class SqmContext
     {

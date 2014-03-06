@@ -1,4 +1,4 @@
-﻿namespace SQMReorderer.Core.Import.HelperFunctions
+﻿namespace SQMImportExport.Import.HelperFunctions
 {
     public static class CommonRegexPatterns
     {

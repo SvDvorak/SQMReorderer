@@ -1,4 +1,4 @@
-namespace SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle
+namespace SQMImportExport.Import.ArmA2.Parsers.Vehicle
 {
     internal class VehicleItemParserFactory : IItemParserFactory<ResultObjects.Vehicle>
     {

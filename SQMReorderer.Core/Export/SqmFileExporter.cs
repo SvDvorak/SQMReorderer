@@ -3,7 +3,7 @@ using SQMReorderer.Core.StreamHelpers;
 
 namespace SQMReorderer.Core.Export
 {
-    public class SqmFileExporter : ISqmContentsVisitor
+    internal class SqmFileExporter : ISqmContentsVisitor
     {
         private readonly IStreamWriterAdapter _streamWriter;
         private readonly ArmA2.ISqmElementVisitor _arma2ElementVisitor;

@@ -1,10 +1,9 @@
 using System;
 using System.Text.RegularExpressions;
-using SQMReorderer.Core.Import.ArmA2;
 
 namespace SQMReorderer.Core.Import.Context
 {
-    public class SqmLine
+    internal class SqmLine
     {
         public SqmLine(string lineText)
         {

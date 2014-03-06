@@ -3,7 +3,7 @@ using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 
 namespace SQMReorderer.Core.Export.ArmA2
 {
-    public interface ISqmElementVisitor
+    internal interface ISqmElementVisitor
     {
         string Visit(string elementName, SqmContents sqmContents);
         string Visit(string elementName, MissionState mission);

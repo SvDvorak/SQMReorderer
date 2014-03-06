@@ -2,12 +2,12 @@
 
 namespace SQMReorderer.Core.Export
 {
-    public interface IContextIndenter
+    internal interface IContextIndenter
     {
         string Indent(string text);
     }
 
-    public class ContextIndenter : IContextIndenter
+    internal class ContextIndenter : IContextIndenter
     {
         public string Indent(string text)
         {

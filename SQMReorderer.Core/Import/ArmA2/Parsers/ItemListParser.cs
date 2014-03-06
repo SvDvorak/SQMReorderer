@@ -5,7 +5,7 @@ using SQMReorderer.Core.Import.Context;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers
 {
-    public class ItemListParser<TItemType> : IParser<List<TItemType>>
+    internal class ItemListParser<TItemType> : IParser<List<TItemType>>
     {
         private readonly Regex _classRegex = new Regex(@"class\s+(?<class>\w+)", RegexOptions.Compiled);
         private readonly Regex _itemCountRegex = new Regex(@"items\=(?<itemCount>\d+)", RegexOptions.Compiled);

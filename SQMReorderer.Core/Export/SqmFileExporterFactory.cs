@@ -10,7 +10,7 @@ namespace SQMReorderer.Core.Export
         private readonly ArmA3.ISqmElementVisitor _arma3Exporter;
         private readonly IContextIndenter _contextIndenter;
 
-        public SqmFileExporterFactory(
+        internal SqmFileExporterFactory(
             ArmA2.ISqmElementVisitor arma2Exporter,
             ArmA3.ISqmElementVisitor arma3Exporter,
             IContextIndenter contextIndenter)

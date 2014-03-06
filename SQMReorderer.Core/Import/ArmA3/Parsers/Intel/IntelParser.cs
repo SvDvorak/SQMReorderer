@@ -3,7 +3,7 @@ using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Core.Import.ArmA3.Parsers.Intel
 {
-    public class IntelParser : ParserBase<ResultObjects.Intel>
+    internal class IntelParser : ParserBase<ResultObjects.Intel>
     {
         private readonly Regex _intelRegex = new Regex(@"class Intel", RegexOptions.Compiled);
 

@@ -7,7 +7,7 @@ namespace SQMReorderer.Core.Export
         private readonly IStreamFactory _streamFactory;
         private readonly ISqmFileExporterFactory _exporterFactory;
 
-        public SaveSqmFile(IStreamFactory streamFactory, ISqmFileExporterFactory exporterFactory)
+        internal SaveSqmFile(IStreamFactory streamFactory, ISqmFileExporterFactory exporterFactory)
         {
             _streamFactory = streamFactory;
             _exporterFactory = exporterFactory;

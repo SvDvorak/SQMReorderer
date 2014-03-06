@@ -2,7 +2,7 @@
 
 namespace SQMReorderer.Core.Import.FileVersion
 {
-    public class StreamReaderAdapter : IStreamReaderAdapter
+    internal class StreamReaderAdapter : IStreamReaderAdapter
     {
         private readonly StreamReader _streamReader;
 

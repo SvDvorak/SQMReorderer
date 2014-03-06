@@ -2,7 +2,7 @@ using System;
 
 namespace SQMReorderer.Core.Import.DataSetters
 {
-    public abstract class SingleValuePropertySetterBase<T> : LineSetterBase
+    internal abstract class SingleValuePropertySetterBase<T> : LineSetterBase
     {
         protected Action<T> PropertySetter { get; private set; }
 

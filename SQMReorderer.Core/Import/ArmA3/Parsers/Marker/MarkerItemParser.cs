@@ -2,7 +2,7 @@
 
 namespace SQMReorderer.Core.Import.ArmA3.Parsers.Marker
 {
-    public class MarkerItemParser : ItemParserBase<ResultObjects.Marker>
+    internal class MarkerItemParser : ItemParserBase<ResultObjects.Marker>
     {
         public MarkerItemParser()
         {

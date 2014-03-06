@@ -2,7 +2,7 @@
 
 namespace SQMReorderer.Core.Import.FileVersion
 {
-    public interface IFileVersionRetriever
+    internal interface IFileVersionRetriever
     {
         FileVersion GetVersion(int version);
         FileVersion GetVersion(Stream stream);

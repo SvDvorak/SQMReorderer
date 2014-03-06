@@ -1,6 +1,6 @@
 namespace SQMReorderer.Core.StreamHelpers
 {
-    public interface IStreamWriterAdapter
+    internal interface IStreamWriterAdapter
     {
         void Write(string text);
         void Flush();

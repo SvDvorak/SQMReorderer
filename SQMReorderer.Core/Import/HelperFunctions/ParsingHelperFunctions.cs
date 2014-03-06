@@ -2,7 +2,7 @@
 
 namespace SQMReorderer.Core.Import.HelperFunctions
 {
-    public class ParsingHelperFunctions
+    internal class ParsingHelperFunctions
     {
         private readonly Regex _startBracketRegex = new Regex(@"^\s*\{\s*$", RegexOptions.Compiled);
         private readonly Regex _endBracketRegex = new Regex(@"^\s*\};\s*$", RegexOptions.Compiled);

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace SQMReorderer.Core.Export
 {
-    public interface ISqmPropertyVisitor
+    internal interface ISqmPropertyVisitor
     {
         string Visit(string propertyName, string value);
         string Visit(string propertyName, Vector value);

@@ -6,7 +6,7 @@ using SQMReorderer.Core.Import.HelperFunctions;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers
 {
-    public class ItemParserBase<TItemType> : ParserBase<TItemType>
+    internal class ItemParserBase<TItemType> : ParserBase<TItemType>
         where TItemType : ItemBase, new ()
     {
         private readonly Regex _itemNumberRegex;

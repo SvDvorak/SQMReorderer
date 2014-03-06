@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace SQMReorderer.Core.Import.DataSetters.Effects
 {
-    public class EffectsParser : ParserBase<List<string>>
+    internal class EffectsParser : ParserBase<List<string>>
     {
         private readonly Regex _effectsRegex = new Regex(@"class Effects", RegexOptions.Compiled);
 

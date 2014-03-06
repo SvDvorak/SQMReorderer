@@ -5,7 +5,7 @@ using SQMReorderer.Core.Import.HelperFunctions;
 
 namespace SQMReorderer.Core.Import.DataSetters
 {
-    public class VectorPropertySetter : MultiValuePropertySetterBase<Vector>
+    internal class VectorPropertySetter : MultiValuePropertySetterBase<Vector>
     {
         private readonly NumberFormatInfo _doubleFormatInfo;
 

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle;
 using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Core.Import.ArmA2.ResultObjects

@@ -4,7 +4,7 @@ using SQMReorderer.Core.StreamHelpers;
 
 namespace SQMReorderer.Core.Import
 {
-    public class SqmFileImporter : ISqmFileImporter
+    internal class SqmFileImporter : ISqmFileImporter
     {
         private readonly IStreamToStringsReader _streamToStringsReader;
         private readonly ISqmContextCreator _sqmContextCreator;

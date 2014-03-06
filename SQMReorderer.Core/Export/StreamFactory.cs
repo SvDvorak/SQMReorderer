@@ -2,7 +2,7 @@ using System.IO;
 
 namespace SQMReorderer.Core.Export
 {
-    public class StreamFactory : IStreamFactory
+    internal class StreamFactory : IStreamFactory
     {
         public Stream Create(string filePath)
         {

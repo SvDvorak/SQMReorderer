@@ -5,7 +5,7 @@ using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle
 {
-    public class VehicleItemParser : ItemParserBase<ResultObjects.Vehicle>
+    internal class VehicleItemParser : ItemParserBase<ResultObjects.Vehicle>
     {
         public VehicleItemParser()
         {

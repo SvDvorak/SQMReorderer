@@ -5,7 +5,7 @@ using SQMReorderer.Core.Import.HelperFunctions;
 
 namespace SQMReorderer.Core.Import.DataSetters
 {
-    public class IntegerListPropertySetter : MultiValuePropertySetterBase<List<int>>
+    internal class IntegerListPropertySetter : MultiValuePropertySetterBase<List<int>>
     {
         public IntegerListPropertySetter(string propertyName, Action<List<int>> propertySetter)
             : base(propertyName, CommonRegexPatterns.IntegerPattern, propertySetter)

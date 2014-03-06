@@ -5,7 +5,7 @@ using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Core.Import
 {
-    public abstract class ParserBase<TParseResult> : IParser<TParseResult>
+    internal abstract class ParserBase<TParseResult> : IParser<TParseResult>
         where TParseResult : new()
     {
         public List<IContextSetter> ContextSetters { get; private set; }

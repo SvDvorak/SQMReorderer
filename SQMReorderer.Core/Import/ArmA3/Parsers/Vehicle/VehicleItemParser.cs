@@ -4,7 +4,7 @@ using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Core.Import.ArmA3.Parsers.Vehicle
 {
-    public class VehicleItemParser : ItemParserBase<ResultObjects.Vehicle>
+    internal class VehicleItemParser : ItemParserBase<ResultObjects.Vehicle>
     {
         public VehicleItemParser()
         {

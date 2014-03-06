@@ -4,7 +4,7 @@ using SQMReorderer.Core.Import.DataSetters.Effects;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers.Sensor
 {
-    public class SensorItemParser : ItemParserBase<ResultObjects.Sensor>
+    internal class SensorItemParser : ItemParserBase<ResultObjects.Sensor>
     {
         public SensorItemParser()
         {

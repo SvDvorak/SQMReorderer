@@ -2,7 +2,7 @@
 
 namespace SQMReorderer.Core.Import.FileVersion
 {
-    public interface IStreamReaderFactory
+    internal interface IStreamReaderFactory
     {
         IStreamReaderAdapter Create(Stream stream);
     }

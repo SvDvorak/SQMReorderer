@@ -3,7 +3,7 @@ using SQMReorderer.Core.Import.HelperFunctions;
 
 namespace SQMReorderer.Core.Import.DataSetters
 {
-    public class IntegerPropertySetter : SingleValuePropertySetterBase<int>
+    internal class IntegerPropertySetter : SingleValuePropertySetterBase<int>
     {
         public IntegerPropertySetter(string propertyName, Action<int> propertySetter)
             : base(propertyName, CommonRegexPatterns.IntegerPattern, propertySetter)

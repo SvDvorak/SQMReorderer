@@ -2,7 +2,7 @@
 
 namespace SQMReorderer.Core.Import
 {
-    public interface ISqmParser
+    internal interface ISqmParser
     {
         ISqmContents ParseContext(SqmContext context);
     }

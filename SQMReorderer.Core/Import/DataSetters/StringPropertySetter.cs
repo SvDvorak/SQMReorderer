@@ -2,7 +2,7 @@ using System;
 
 namespace SQMReorderer.Core.Import.DataSetters
 {
-    public class StringPropertySetter : SingleValuePropertySetterBase<string>
+    internal class StringPropertySetter : SingleValuePropertySetterBase<string>
     {
         public StringPropertySetter(string propertyName, Action<string> propertySetter)
             : base(propertyName, @""".*""", propertySetter)

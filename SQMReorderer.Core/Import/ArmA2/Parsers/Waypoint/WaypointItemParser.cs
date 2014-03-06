@@ -4,7 +4,7 @@ using SQMReorderer.Core.Import.DataSetters.Effects;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers.Waypoint
 {
-    public class WaypointItemParser : ItemParserBase<ResultObjects.Waypoint>
+    internal class WaypointItemParser : ItemParserBase<ResultObjects.Waypoint>
     {
         public WaypointItemParser()
         {

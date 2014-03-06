@@ -3,7 +3,7 @@ using System.IO;
 
 namespace SQMReorderer.Core.StreamHelpers
 {
-    public class StreamWriterAdapter : IStreamWriterAdapter, IDisposable
+    internal class StreamWriterAdapter : IStreamWriterAdapter, IDisposable
     {
         private readonly StreamWriter _streamWriter;
 

@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace SQMReorderer.Core.Import.Context
 {
-    public class SqmContext
+    internal class SqmContext
     {
         public string Header { get; set; }
 

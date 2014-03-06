@@ -4,7 +4,7 @@ using SQMReorderer.Core.Import.Context;
 
 namespace SQMReorderer.Core.Import.DataSetters
 {
-    public class ContextSetter<TParseResult> : IContextSetter
+    internal class ContextSetter<TParseResult> : IContextSetter
     {
         private readonly IParser<TParseResult> _parser;
         private readonly Action<TParseResult> _contextSetter;

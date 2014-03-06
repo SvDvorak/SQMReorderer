@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace SQMReorderer.Core.Import.FileVersion
 {
-    public class FileVersionRetriever : IFileVersionRetriever
+    internal class FileVersionRetriever : IFileVersionRetriever
     {
         private readonly IStreamReaderFactory _streamReaderFactory;
 

@@ -5,7 +5,7 @@ using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Core.Export
 {
-    public class SqmPropertyVisitor : ISqmPropertyVisitor
+    internal class SqmPropertyVisitor : ISqmPropertyVisitor
     {
         public string Visit(string propertyName, string value)
         {

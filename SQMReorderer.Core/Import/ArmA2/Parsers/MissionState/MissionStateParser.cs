@@ -8,7 +8,7 @@ using SQMReorderer.Core.Import.DataSetters;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers.MissionState
 {
-    public class MissionStateParser : ParserBase<ResultObjects.MissionState>
+    internal class MissionStateParser : ParserBase<ResultObjects.MissionState>
     {
         private readonly Regex _missionStateHeaderRegex;
 

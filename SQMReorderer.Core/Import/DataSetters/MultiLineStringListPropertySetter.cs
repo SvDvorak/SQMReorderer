@@ -5,7 +5,7 @@ using SQMReorderer.Core.Import.Context;
 
 namespace SQMReorderer.Core.Import.DataSetters
 {
-    public class MultiLineStringListPropertySetter : IContextSetter
+    internal class MultiLineStringListPropertySetter : IContextSetter
     {
         private readonly Regex _propertyNameRegex;
         private readonly Regex _listStringRegex;

@@ -3,7 +3,7 @@ using SQMReorderer.Core.Import.Context;
 
 namespace SQMReorderer.Core.Import.DataSetters
 {
-    public abstract class LineSetterBase : ILineSetter
+    internal abstract class LineSetterBase : ILineSetter
     {
         private readonly Regex _lineRegex;
 

@@ -4,7 +4,7 @@ using SQMReorderer.Core.Import.HelperFunctions;
 
 namespace SQMReorderer.Core.Import.Context
 {
-    public class SqmContextCreator : ISqmContextCreator
+    internal class SqmContextCreator : ISqmContextCreator
     {
         private readonly ParsingHelperFunctions _parsingHelperFunctions;
 

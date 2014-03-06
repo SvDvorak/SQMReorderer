@@ -2,7 +2,7 @@
 
 namespace SQMReorderer.Core.Import.FileVersion
 {
-    public class StreamReaderFactory : IStreamReaderFactory
+    internal class StreamReaderFactory : IStreamReaderFactory
     {
         public IStreamReaderAdapter Create(Stream stream)
         {

@@ -9,7 +9,7 @@ namespace SQMReorderer.Core.Import
         private readonly ISqmFileImporter _arma2Importer;
         private readonly ISqmFileImporter _arma3Importer;
 
-        public SqmImporter(IFileVersionRetriever fileVersionRetriever,
+        internal SqmImporter(IFileVersionRetriever fileVersionRetriever,
             ISqmFileImporter arma2Importer,
             ISqmFileImporter arma3Importer)
         {
@@ -17,6 +17,8 @@ namespace SQMReorderer.Core.Import
             _arma2Importer = arma2Importer;
             _arma3Importer = arma3Importer;
         }
+
+    //public SqmImporter() : this(new FileVersionRetriever(new StreamReaderFactory()), new Core.Import.ArmA2.)
 
         public ISqmContents Import(Stream stream)
         {

@@ -8,7 +8,7 @@ using SqmContents = SQMReorderer.Core.Import.ArmA3.ResultObjects.SqmContents;
 
 namespace SQMReorderer.Core.Import.ArmA3
 {
-    public class SqmParser : ParserBase<SqmContents>, ISqmParser
+    internal class SqmParser : ParserBase<SqmContents>, ISqmParser
     {
         public SqmParser()
         {

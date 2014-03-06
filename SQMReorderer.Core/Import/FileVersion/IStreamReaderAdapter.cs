@@ -1,6 +1,6 @@
 ﻿namespace SQMReorderer.Core.Import.FileVersion
 {
-    public interface IStreamReaderAdapter
+    internal interface IStreamReaderAdapter
     {
         string ReadLine();
     }

@@ -2,7 +2,7 @@
 
 namespace SQMReorderer.Core.Import.DataSetters
 {
-    public class StringLineSetter : LineSetterBase
+    internal class StringLineSetter : LineSetterBase
     {
         private readonly Action<string> _lineSetter;
 

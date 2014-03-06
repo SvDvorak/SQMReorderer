@@ -2,7 +2,7 @@ using System.IO;
 
 namespace SQMReorderer.Core.StreamHelpers
 {
-    public class StreamWriterFactory : IStreamWriterFactory
+    internal class StreamWriterFactory : IStreamWriterFactory
     {
         public IStreamWriterAdapter Create(Stream stream)
         {

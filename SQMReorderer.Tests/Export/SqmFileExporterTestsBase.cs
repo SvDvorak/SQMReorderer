@@ -7,11 +7,11 @@ namespace SQMReorderer.Tests.Export
 {
     public class SqmFileExporterTestsBase
     {
-        protected SqmFileExporter Exporter;
-        protected Core.Export.ArmA2.ISqmElementVisitor Arma2Visitor;
-        protected Core.Export.ArmA3.ISqmElementVisitor Arma3Visitor;
-        protected IStreamWriterAdapter StreamWriter;
-        protected IContextIndenter ContextIndenter;
+        internal SqmFileExporter Exporter;
+        internal Core.Export.ArmA2.ISqmElementVisitor Arma2Visitor;
+        internal Core.Export.ArmA3.ISqmElementVisitor Arma3Visitor;
+        internal IStreamWriterAdapter StreamWriter;
+        internal IContextIndenter ContextIndenter;
 
         [SetUp]
         public void Setup()

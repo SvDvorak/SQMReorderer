@@ -6,7 +6,7 @@ using SQMReorderer.Core.Import.ArmA3.ResultObjects;
 
 namespace SQMReorderer.Core.Export.ArmA3
 {
-    public class SqmElementExportVisitor : ISqmElementVisitor
+    internal class SqmElementExportVisitor : ISqmElementVisitor
     {
         private readonly SqmPropertyVisitor _propertyVisitor = new SqmPropertyVisitor();
 

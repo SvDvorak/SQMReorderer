@@ -3,7 +3,7 @@ using System.IO;
 
 namespace SQMReorderer.Core.StreamHelpers
 {
-    public class StreamToStringsReader : IStreamToStringsReader
+    internal class StreamToStringsReader : IStreamToStringsReader
     {
         public List<string> Read(Stream stream)
         {

@@ -59,14 +59,8 @@ namespace SQMReorderer.Gui.ViewModels
 
         private void OpenFile()
         {
-            var streamToStringsReader = new StreamToStringsReader();
-            var sqmContextCreator = new SqmContextCreator();
-            var arma2Importer = new SqmFileImporter(streamToStringsReader, sqmContextCreator,
-                new Core.Import.ArmA2.SqmParser());
-            var arma3Importer = new SqmFileImporter(streamToStringsReader, sqmContextCreator,
-                new Core.Import.ArmA3.SqmParser());
             var openSqmFileDialog = new OpenSqmFileDialog(new OpenFileDialogAdapter(),
-                new SqmImporter(new FileVersionRetriever(new StreamReaderFactory()), arma2Importer, arma3Importer), new MessageBoxPresenter());
+                new SqmImporter(), new MessageBoxPresenter());
 
             _sqmContents = openSqmFileDialog.ShowDialog();
 
@@ -85,9 +79,7 @@ namespace SQMReorderer.Gui.ViewModels
         {
             if(!string.IsNullOrEmpty(_lastOpenedFilePath))
             {
-                var saveSqmFile = new SaveSqmFile(
-                    new StreamFactory(), 
-                    new SqmFileExporterFactory(new Core.Export.ArmA2.SqmElementExportVisitor(), new Core.Export.ArmA3.SqmElementExportVisitor(), new ContextIndenter()));
+                var saveSqmFile = new SaveSqmFile();
 
                 var reordererVisitor = new ViewModelToContentReordererVisitor(
                     Teams.ToList(),
@@ -102,7 +94,7 @@ namespace SQMReorderer.Gui.ViewModels
 
         private void SaveFileAs()
         {
-            var exporterFactory = new SqmFileExporterFactory(new Core.Export.ArmA2.SqmElementExportVisitor(), new Core.Export.ArmA3.SqmElementExportVisitor(), new ContextIndenter());
+            var exporterFactory = new SqmFileExporterFactory();
             var saveSqmFileDialog = new SaveSqmAsFileDialog(new SaveFileDialogAdapter(), exporterFactory);
 
             var reordererVisitor = new ViewModelToContentReordererVisitor(

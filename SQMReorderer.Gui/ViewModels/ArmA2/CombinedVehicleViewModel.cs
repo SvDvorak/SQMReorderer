@@ -80,7 +80,7 @@ namespace SQMReorderer.Gui.ViewModels.ArmA2
 
             if (addInitResult.DialogResult == DialogResult.Ok)
             {
-                SetCombinedValue(x => x.Init += " " + addInitResult.InitToAdd);
+                SetCombinedValue(x => x.Init += addInitResult.InitToAdd);
                 FirePropertyChanged(() => Init);
             }
         }

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using SQMReorderer.Core.Import.ArmA2.Parsers.Waypoint;
+using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 using SQMReorderer.Core.Import.DataSetters;
+using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle
 {
@@ -43,14 +45,24 @@ namespace SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle
 
         private void SetMultiLineMarkers(List<string> markers)
         {
-            ParseResult.Markers = markers;
-            ParseResult.IsMarkersSingleLine = false;
+            var markersArray = new MarkersArray
+                {
+                    Items = markers,
+                    IsMarkersSingleLine = false
+                };
+
+            ParseResult.Markers = markersArray;
         }
 
         private void SetSingleLineMarkers(List<string> markers)
         {
-            ParseResult.Markers = markers;
-            ParseResult.IsMarkersSingleLine = true;
+            var markersArray = new MarkersArray
+                {
+                    Items = markers,
+                    IsMarkersSingleLine = true
+                };
+
+            ParseResult.Markers = markersArray;
         }
     }
 }

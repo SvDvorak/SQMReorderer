@@ -4,6 +4,7 @@ using NUnit.Framework;
 using SQMReorderer.Core;
 using SQMReorderer.Core.Export.ArmA2;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
+using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Tests.Export.ArmA2
 {
@@ -244,29 +245,10 @@ namespace SQMReorderer.Tests.Export.ArmA2
             vehicle.Fuel = 1.1;
             vehicle.Ammo = 2.2;
             vehicle.Text = "UnitGUE_MTR1_AG";
-            vehicle.Markers = new List<string> { "as_1", "as_2" };
+            vehicle.Markers = new MarkersArray() { Items = new List<string> { "as_1", "as_2" } };
             vehicle.Init = "GrpGUE_MTR1 = group this; nul = [\"mtrag\",this] execVM \"f\\common\\folk_assignGear.sqf\";";
             vehicle.Description = "TK Local Mortar Team 1 Assistant Gunner";
             vehicle.Synchronizations = new List<int> { 1, 2, 3 };
-
-            var actualVehicleText = _exportVisitor.Visit("Item", vehicle);
-
-            Assert.AreEqual(originalVehicleText.ToString(), actualVehicleText);
-        }
-
-        [Test]
-        public void Expect_exporter_to_export_markers_as_single_line_if_set()
-        {
-            var originalVehicleText = new StringBuilder();
-
-            originalVehicleText.Append("class Item0\n");
-            originalVehicleText.Append("{\n");
-            originalVehicleText.Append("markers[]={\"text1\",\"text2\",\"text3\"};\n");
-            originalVehicleText.Append("};\n");
-
-            var vehicle = new Vehicle();
-            vehicle.Markers = new List<string> { "text1", "text2", "text3" };
-            vehicle.IsMarkersSingleLine = true;
 
             var actualVehicleText = _exportVisitor.Visit("Item", vehicle);
 

@@ -5,7 +5,6 @@ using SQMReorderer.Core.StreamHelpers;
 
 namespace SQMReorderer.Tests.Export
 {
-    [TestFixture]
     public class SqmFileExporterTestsBase
     {
         protected SqmFileExporter Exporter;

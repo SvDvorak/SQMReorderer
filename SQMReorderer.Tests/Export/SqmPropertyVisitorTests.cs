@@ -2,6 +2,8 @@
 using NUnit.Framework;
 using SQMReorderer.Core;
 using SQMReorderer.Core.Export;
+using SQMReorderer.Core.Import.ArmA2.ResultObjects;
+using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Tests.Export
 {
@@ -18,7 +20,9 @@ namespace SQMReorderer.Tests.Export
             var intPropertyText = propertyVisitor.Visit("leader", 1);
             var doublePropertyText = propertyVisitor.Visit("skill", 0.60000002);
             var intListPropertyText = propertyVisitor.Visit("synchronizations", new List<int>() { 1, 2, 3 });
-            var stringListPropertyText = propertyVisitor.Visit("addOns", new List<string>() {"brown", "blur"});
+            var stringListPropertyText = propertyVisitor.Visit("addOns", new List<string>() { "brown", "blur" });
+            var markerArrayPropertyText = propertyVisitor.Visit("markers",
+                new MarkersArray() { Items = new List<string>() { "m1", "m2" } });
 
             const string correctStringListText = 
                 "addOns[]=\n" +
@@ -27,12 +31,20 @@ namespace SQMReorderer.Tests.Export
                 "\"blur\"\n" +
                 "};\n";
 
+            const string correctMarkerArrayText =
+               "markers[]=\n" +
+                "{\n" +
+                "\"m1\",\n" +
+                "\"m2\"\n" +
+                "};\n";
+
             Assert.AreEqual("side=\"WEST\";\n", stringPropertyText);
             Assert.AreEqual("position[]={1,2,3};\n", vectorPropertyText);
             Assert.AreEqual("leader=1;\n", intPropertyText);
             Assert.AreEqual("skill=0.60000002;\n", doublePropertyText);
             Assert.AreEqual("synchronizations[]={1,2,3};\n", intListPropertyText);
             Assert.AreEqual(correctStringListText, stringListPropertyText);
+            Assert.AreEqual(correctMarkerArrayText, markerArrayPropertyText);
         }
 
         [Test]
@@ -46,6 +58,7 @@ namespace SQMReorderer.Tests.Export
             var doublePropertyText = propertyVisitor.Visit("skill", (double?)null);
             var intListPropertyText = propertyVisitor.Visit("synchronizations", (List<int>)null);
             var stringListPropertyText = propertyVisitor.Visit("Effects", (List<string>)null);
+            var markerArrayPropertyText = propertyVisitor.Visit("markers", (MarkersArray)null);
 
             Assert.AreEqual("", stringPropertyText);
             Assert.AreEqual("", vectorPropertyText);
@@ -53,6 +66,7 @@ namespace SQMReorderer.Tests.Export
             Assert.AreEqual("", doublePropertyText);
             Assert.AreEqual("", intListPropertyText);
             Assert.AreEqual("", stringListPropertyText);
+            Assert.AreEqual("", markerArrayPropertyText);
         }
 
         [Test]
@@ -65,6 +79,19 @@ namespace SQMReorderer.Tests.Export
 
             Assert.AreEqual("", intListPropertyText);
             Assert.AreEqual("", stringListPropertyText);
+        }
+
+        [Test]
+        public void Expect_single_line_marker_array_to_be_written_as_single_line()
+        {
+            var propertyVisitor = new SqmPropertyVisitor();
+
+            var markerArrayPropertyText = propertyVisitor.Visit("markers",
+                new MarkersArray() { IsMarkersSingleLine = true, Items = new List<string>() { "mark", "merk" } });
+
+            const string correctMarkerArrayText = "markers[]={\"mark\",\"merk\"};\n";
+
+            Assert.AreEqual(correctMarkerArrayText, markerArrayPropertyText);
         }
     }
 }

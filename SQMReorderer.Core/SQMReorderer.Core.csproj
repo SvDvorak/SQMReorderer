@@ -74,6 +74,7 @@
     <Compile Include="Export\SqmFileExporterFactory.cs" />
     <Compile Include="Export\SqmPropertyVisitor.cs" />
     <Compile Include="Export\StreamFactory.cs" />
+    <Compile Include="Import\ResultObjects\MarkersArray.cs" />
     <Compile Include="Import\ISqmContentsVisitor.cs" />
     <Compile Include="Import\ISqmFileImporter.cs" />
     <Compile Include="Import\ISqmContents.cs" />

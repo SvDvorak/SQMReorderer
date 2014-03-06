@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Core.Export
 {
@@ -101,6 +103,47 @@ namespace SQMReorderer.Core.Export
                 }
 
                 stringBuilder.Append("\n");
+            }
+
+            stringBuilder.Append("};\n");
+
+            return stringBuilder.ToString();
+        }
+
+        public string Visit(string propertyName, MarkersArray markers)
+        {
+            if (markers == null)
+            {
+                return "";
+            }
+
+            var stringBuilder = new StringBuilder();
+
+            if (markers.IsMarkersSingleLine)
+            {
+                stringBuilder.Append(GetMarkersAsSingleString(markers.Items));
+            }
+            else
+            {
+                stringBuilder.Append(Visit("markers", markers.Items));
+            }
+
+            return stringBuilder.ToString();
+        }
+
+        private string GetMarkersAsSingleString(List<string> markers)
+        {
+            var stringBuilder = new StringBuilder();
+            stringBuilder.Append("markers[]={");
+
+            if (markers.Count > 0)
+            {
+                for (int index = 0; index < markers.Count - 1; index++)
+                {
+                    var marker = markers[index];
+                    stringBuilder.Append("\"" + marker + "\",");
+                }
+                stringBuilder.Append("\"" + markers.Last() + "\"");
             }
 
             stringBuilder.Append("};\n");

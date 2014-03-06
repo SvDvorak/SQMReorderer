@@ -159,47 +159,13 @@ namespace SQMReorderer.Core.Export.ArmA2
             stringBuilder.Append(_propertyVisitor.Visit("fuel", vehicle.Fuel));
             stringBuilder.Append(_propertyVisitor.Visit("ammo", vehicle.Ammo));
             stringBuilder.Append(_propertyVisitor.Visit("text", vehicle.Text));
-
-            if (vehicle.IsMarkersSingleLine)
-            {
-                stringBuilder.Append(GetMarkersAsSingleString(vehicle.Markers));
-            }
-            else
-            {
-                stringBuilder.Append(_propertyVisitor.Visit("markers", vehicle.Markers));
-            }
-
+            stringBuilder.Append(_propertyVisitor.Visit("markers", vehicle.Markers));
             stringBuilder.Append(_propertyVisitor.Visit("init", vehicle.Init));
             stringBuilder.Append(_propertyVisitor.Visit("description", vehicle.Description));
             stringBuilder.Append(_propertyVisitor.Visit("synchronizations", vehicle.Synchronizations));
 
             stringBuilder.Append(Visit("Vehicles", vehicle.Vehicles));
             stringBuilder.Append(Visit("Waypoints", vehicle.Waypoints));
-
-            stringBuilder.Append("};\n");
-
-            return stringBuilder.ToString();
-        }
-
-        private string GetMarkersAsSingleString(List<string> markers)
-        {
-            if (markers == null)
-            {
-                return "";
-            }
-
-            var stringBuilder = new StringBuilder();
-            stringBuilder.Append("markers[]={");
-
-            if (markers.Count > 0)
-            {
-                for (int index = 0; index < markers.Count - 1; index++)
-                {
-                    var marker = markers[index];
-                    stringBuilder.Append("\"" + marker + "\",");
-                }
-                stringBuilder.Append("\"" + markers.Last() + "\"");
-            }
 
             stringBuilder.Append("};\n");
 

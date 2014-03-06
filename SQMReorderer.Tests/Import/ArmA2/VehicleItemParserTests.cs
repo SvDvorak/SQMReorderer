@@ -246,8 +246,8 @@ namespace SQMReorderer.Tests.Import.ArmA2
         {
             var itemResult = _parser.ParseContext(_itemWithMarkersContext);
 
-            Assert.AreEqual("text1", itemResult.Markers[0]);
-            Assert.AreEqual("text2", itemResult.Markers[1]);
+            Assert.AreEqual("text1", itemResult.Markers.Items[0]);
+            Assert.AreEqual("text2", itemResult.Markers.Items[1]);
         }
 
         [Test]
@@ -263,10 +263,10 @@ namespace SQMReorderer.Tests.Import.ArmA2
 
             var itemResult = _parser.ParseContext(context);
 
-            Assert.IsTrue(itemResult.IsMarkersSingleLine);
-            Assert.AreEqual("text1", itemResult.Markers[0]);
-            Assert.AreEqual("text2", itemResult.Markers[1]);
-            Assert.AreEqual("text3", itemResult.Markers[2]);
+            Assert.IsTrue(itemResult.Markers.IsMarkersSingleLine);
+            Assert.AreEqual("text1", itemResult.Markers.Items[0]);
+            Assert.AreEqual("text2", itemResult.Markers.Items[1]);
+            Assert.AreEqual("text3", itemResult.Markers.Items[2]);
         }
     }
 }

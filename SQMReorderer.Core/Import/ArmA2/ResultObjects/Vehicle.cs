@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using SQMReorderer.Core.Import.ArmA2.Parsers.Vehicle;
+using SQMReorderer.Core.Import.ResultObjects;
 
 namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
 {
@@ -7,7 +9,6 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
         public Vehicle()
         {
             Synchronizations = new List<int>();
-            Markers = new List<string>();
             Vehicles = new List<Vehicle>();
             Waypoints = new List<Waypoint>();
         }
@@ -30,14 +31,12 @@ namespace SQMReorderer.Core.Import.ArmA2.ResultObjects
         public double? Fuel { get; set; }
         public double? Ammo { get; set; }
         public string Text { get; set; }
-        public List<string> Markers { get; set; }
+        public MarkersArray Markers { get; set; }
         public string Init { get; set; }
         public string Description { get; set; }
         public List<int> Synchronizations { get; set; }
 
         public List<Vehicle> Vehicles { get; set; }
         public List<Waypoint> Waypoints { get; set; }
-
-        public bool IsMarkersSingleLine { get; set; }
     }
 }

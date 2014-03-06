@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMReorderer.Core;
 using SQMReorderer.Core.Import;
 using SQMReorderer.Core.Import.ArmA3.Parsers.Intel;
 using SQMReorderer.Core.Import.ArmA3.ResultObjects;

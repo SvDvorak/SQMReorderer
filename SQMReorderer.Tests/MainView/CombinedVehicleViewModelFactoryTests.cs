@@ -10,7 +10,7 @@ namespace SQMReorderer.Tests.MainView
         [Test]
         public void Creates_arma_2_combined_view_model_when_using_arma_2_vehicles()
         {
-            var sut = new CombinedVehicleViewModelFactory();
+            var sut = new CombinedVehicleViewModelFactory(null);
 
             var combinedVehicleViewModel = sut.Create(new List<IVehicleViewModel>()
                 {
@@ -23,7 +23,7 @@ namespace SQMReorderer.Tests.MainView
         [Test]
         public void Creates_arma_3_combined_view_model_when_using_arma_3_vehicles()
         {
-            var sut = new CombinedVehicleViewModelFactory();
+            var sut = new CombinedVehicleViewModelFactory(null);
 
             var combinedVehicleViewModel = sut.Create(new List<IVehicleViewModel>()
                 {
@@ -36,7 +36,7 @@ namespace SQMReorderer.Tests.MainView
         [Test]
         public void Returns_null_when_no_elements_are_in_list()
         {
-            var sut = new CombinedVehicleViewModelFactory();
+            var sut = new CombinedVehicleViewModelFactory(null);
 
             var combinedVehicleViewModel = sut.Create(new List<IVehicleViewModel>());
 

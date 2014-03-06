@@ -15,7 +15,7 @@ namespace SQMReorderer.Gui.ViewModels
 
             var propertyName = GetPropertyName(propertyLambda);
 
-            if(PropertyChanged != null)
+            if (PropertyChanged != null)
             {
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -23,14 +23,14 @@ namespace SQMReorderer.Gui.ViewModels
 
         private string GetPropertyName<TProperty>(Expression<Func<TProperty>> propertyLambda)
         {
-            MemberExpression member = propertyLambda.Body as MemberExpression;
+            var member = propertyLambda.Body as MemberExpression;
             if (member == null)
             {
                 throw new ArgumentException(
                     string.Format("Expression '{0}' refers to a method, not a property.", propertyLambda));
             }
 
-            PropertyInfo propertyInfo = member.Member as PropertyInfo;
+            var propertyInfo = member.Member as PropertyInfo;
             if (propertyInfo == null)
             {
                 throw new ArgumentException(
@@ -42,10 +42,10 @@ namespace SQMReorderer.Gui.ViewModels
 
         protected void FirePropertyChanged<TProperty>(Expression<Func<TProperty>> propertyLambda)
         {
-	    if(PropertyChanged != null)
-	    {
-	        PropertyChanged(this, new PropertyChangedEventArgs(GetPropertyName(propertyLambda)));
-	    }
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(GetPropertyName(propertyLambda)));
+            }
         }
     }
 }

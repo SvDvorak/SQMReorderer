@@ -148,7 +148,7 @@
     <Compile Include="Import\ArmA2\Parsers\Sensor\SensorItemParserFactory.cs" />
     <Compile Include="Import\ArmA2\Parsers\Vehicle\VehicleItemParser.cs" />
     <Compile Include="Import\ArmA2\Parsers\Vehicle\VehicleItemParserFactory.cs" />
-    <Compile Include="Import\Result.cs" />
+    <Compile Include="Result.cs" />
     <Compile Include="Import\ArmA2\ResultObjects\Intel.cs" />
     <Compile Include="Import\ArmA2\ResultObjects\ItemBase.cs" />
     <Compile Include="Import\ArmA2\ResultObjects\Marker.cs" />

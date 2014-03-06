@@ -7,6 +7,7 @@ using SQMReorderer.Core.Import.FileVersion;
 using SQMReorderer.Core.StreamHelpers;
 using SQMReorderer.Gui.Command;
 using SQMReorderer.Gui.Dialogs;
+using SQMReorderer.Gui.Dialogs.AddInit;
 
 namespace SQMReorderer.Gui.ViewModels
 {
@@ -40,8 +41,9 @@ namespace SQMReorderer.Gui.ViewModels
             set
             {
                 Set(value, () => SelectedItems, () => _selectedItems = value);
+                var combinedVehicleViewModelFactory = new CombinedVehicleViewModelFactory(new AddInitDialogFactory());
                 SelectedItemsViewModel =
-                    new CombinedVehicleViewModelFactory().Create(_selectedItems
+                    combinedVehicleViewModelFactory.Create(_selectedItems
                         .Where(x => x is IVehicleViewModel)
                         .Cast<IVehicleViewModel>()
                         .ToList());

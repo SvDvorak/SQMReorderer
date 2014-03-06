@@ -1,4 +1,4 @@
-namespace SQMReorderer.Core.Import
+namespace SQMReorderer.Core
 {
     public enum Result
     {

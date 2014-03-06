@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SQMReorderer.Gui.Command;
+using SQMReorderer.Gui.Dialogs;
+using SQMReorderer.Gui.Dialogs.AddInit;
 
 namespace SQMReorderer.Gui.ViewModels.ArmA3
 {
     public class CombinedVehicleViewModel : ViewModelBase, ICombinedVehicleViewModel
     {
         private readonly List<VehicleViewModel> _vehicles;
+        private readonly IAddInitDialogFactory _addInitDialogFactory;
 
-        public CombinedVehicleViewModel(List<VehicleViewModel> vehicles)
+        public CombinedVehicleViewModel(List<VehicleViewModel> vehicles, IAddInitDialogFactory addInitDialogFactory)
         {
             _vehicles = vehicles;
+            _addInitDialogFactory = addInitDialogFactory;
+            AddInitCommand = new DelegateCommand(AddInit);
         }
+
+        public DelegateCommand AddInitCommand { get; private set; }
 
         public string VehicleName
         {
@@ -63,6 +71,18 @@ namespace SQMReorderer.Gui.ViewModels.ArmA3
         private void SetCombinedValue(Action<VehicleViewModel> setValueFunc)
         {
             _vehicles.ForEach(setValueFunc);
+        }
+
+        private void AddInit()
+        {
+            var addInitDialog = _addInitDialogFactory.Create();
+            var addInitResult = addInitDialog.ShowDialog();
+
+            if (addInitResult.DialogResult == DialogResult.Ok)
+            {
+                SetCombinedValue(x => x.Init += " " + addInitResult.InitToAdd);
+                FirePropertyChanged(() => Init);
+            }
         }
     }
 }

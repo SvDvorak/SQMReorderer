@@ -15,14 +15,13 @@
         <ResourceDictionary>
             <gui:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
             <Style x:Key="itemRowStackPanel" TargetType="{x:Type DockPanel}">
-                <Setter Property="Margin" Value="0 0 0 3" />
+                <Setter Property="Margin" Value="0 0 10 3" />
             </Style>
             <Style x:Key="itemInfoTextBlock" TargetType="{x:Type TextBlock}">
                 <Setter Property="Width" Value="80" />
                 <Setter Property="VerticalAlignment" Value="Center" />
             </Style>
             <Style x:Key="itemInfoTextBox" TargetType="{x:Type TextBox}">
-                <Setter Property="Margin" Value="0 0 10 0"/>
             </Style>
 
             <Style x:Key="itemTextStyle" TargetType="{x:Type TextBlock}">
@@ -123,7 +122,8 @@
                 </DockPanel>
                 <DockPanel Style="{StaticResource itemRowStackPanel}">
                     <TextBlock Text="Init:" Style="{StaticResource itemInfoTextBlock}" />
-                    <TextBox Text="{Binding Init, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource itemInfoTextBox}" />
+                    <Button Content="Add" Command="{Binding AddInitCommand}" DockPanel.Dock="Right" Width="45" />
+                    <TextBox Text="{Binding Init, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource itemInfoTextBox}" Margin="0 0 10 0" />
                 </DockPanel>
             </StackPanel>
         </Grid>

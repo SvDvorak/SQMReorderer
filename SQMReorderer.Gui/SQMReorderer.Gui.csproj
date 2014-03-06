@@ -53,7 +53,16 @@
     </ApplicationDefinition>
     <Compile Include="Command\ActionCanNotBeNullException.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
+    <Compile Include="Dialogs\AddInit\AddInitDialog.xaml.cs">
+      <DependentUpon>AddInitDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AddInit\AddInitDialogFactory.cs" />
+    <Compile Include="Dialogs\AddInit\AddInitResult.cs" />
+    <Compile Include="Dialogs\AddInit\AddInitViewModel.cs" />
+    <Compile Include="Dialogs\AddInit\IAddInitDialogFactory.cs" />
+    <Compile Include="Dialogs\DialogResult.cs" />
     <Compile Include="Dialogs\EmptyFileException.cs" />
+    <Compile Include="Dialogs\AddInit\IAddInitDialog.cs" />
     <Compile Include="Dialogs\IMessageBoxPresenter.cs" />
     <Compile Include="Dialogs\ISaveFileDialogAdapter.cs" />
     <Compile Include="Dialogs\IOpenFileDialogAdapter.cs" />
@@ -96,6 +105,10 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ArmA2\ViewModelToContentReorderer.cs" />
     <Compile Include="ViewModels\ViewModelToContentReordererVisitor.cs" />
+    <Page Include="Dialogs\AddInit\AddInitDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

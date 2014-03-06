@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
+using NSubstitute;
 using NUnit.Framework;
+using SQMReorderer.Core;
 using SQMReorderer.Core.Import.ArmA2.ResultObjects;
+using SQMReorderer.Gui.Dialogs;
+using SQMReorderer.Gui.Dialogs.AddInit;
 using SQMReorderer.Gui.ViewModels.ArmA2;
 
 namespace SQMReorderer.Tests.MainView.ArmA2
@@ -11,7 +15,7 @@ namespace SQMReorderer.Tests.MainView.ArmA2
         [Test]
         public void Null_is_returned_for_properties_when_no_vehicles_are_available()
         {
-            var sut = new CombinedVehicleViewModel(new List<VehicleViewModel>());
+            var sut = new CombinedVehicleViewModel(new List<VehicleViewModel>(), null);
 
             Assert.AreEqual(null, sut.VehicleName);
             Assert.AreEqual(null, sut.Rank);
@@ -42,7 +46,7 @@ namespace SQMReorderer.Tests.MainView.ArmA2
                 };
 
             var vehicles = CreateViewModelList(vehicle1, vehicle2);
-            var sut = new CombinedVehicleViewModel(vehicles);
+            var sut = new CombinedVehicleViewModel(vehicles, null);
 
             Assert.AreEqual(null, sut.VehicleName);
             Assert.AreEqual(null, sut.Rank);
@@ -73,7 +77,7 @@ namespace SQMReorderer.Tests.MainView.ArmA2
                 };
 
             var vehicles = CreateViewModelList(vehicle1, vehicle2);
-            var sut = new CombinedVehicleViewModel(vehicles);
+            var sut = new CombinedVehicleViewModel(vehicles, null);
 
             Assert.AreEqual(vehicle1.VehicleName, sut.VehicleName);
             Assert.AreEqual(vehicle1.Rank, sut.Rank);
@@ -89,7 +93,7 @@ namespace SQMReorderer.Tests.MainView.ArmA2
             var vehicle2 = new Vehicle();
 
             var vehicles = CreateViewModelList(vehicle1, vehicle2);
-            var sut = new CombinedVehicleViewModel(vehicles);
+            var sut = new CombinedVehicleViewModel(vehicles, null);
 
             sut.VehicleName = "name";
             sut.Rank = "rank";
@@ -111,6 +115,63 @@ namespace SQMReorderer.Tests.MainView.ArmA2
 
             Assert.AreEqual("init", vehicle1.Init);
             Assert.AreEqual("init", vehicle2.Init);
+        }
+
+        [Test]
+        public void Adds_text_to_init_when_add_init_is_called()
+        {
+            var addInitDialogFactory = Substitute.For<IAddInitDialogFactory>();
+            var addInitDialog = Substitute.For<IAddInitDialog>();
+            addInitDialogFactory.Create().Returns(addInitDialog);
+
+            var sut = new CombinedVehicleViewModel(new List<VehicleViewModel>()
+                {
+                    new VehicleViewModel(new Vehicle(), new List<VehicleViewModel>())
+                }, addInitDialogFactory);
+
+            var addInitResult = new AddInitResult() { DialogResult = DialogResult.Ok, InitToAdd = "added stuff"};
+            addInitDialog.ShowDialog().Returns(addInitResult);
+            sut.AddInitCommand.Execute();
+
+            Assert.AreEqual(" added stuff", sut.Init);
+        }
+
+        [Test]
+        public void Does_not_do_anything_when_add_init_is_cancelled()
+        {
+            var addInitDialogFactory = Substitute.For<IAddInitDialogFactory>();
+            var addInitDialog = Substitute.For<IAddInitDialog>();
+            addInitDialogFactory.Create().Returns(addInitDialog);
+
+            var sut = new CombinedVehicleViewModel(new List<VehicleViewModel>()
+                {
+                    new VehicleViewModel(new Vehicle() { Init = "old text"}, new List<VehicleViewModel>())
+                }, addInitDialogFactory);
+
+            var addInitResult = new AddInitResult() { DialogResult = DialogResult.Cancel };
+            addInitDialog.ShowDialog().Returns(addInitResult);
+            sut.AddInitCommand.Execute();
+
+            Assert.AreEqual("old text", sut.Init);
+        }
+
+        [Test]
+        public void Calls_property_changed_when_init_is_added()
+        {
+            var addInitDialogFactory = Substitute.For<IAddInitDialogFactory>();
+            var addInitDialog = Substitute.For<IAddInitDialog>();
+            addInitDialogFactory.Create().Returns(addInitDialog);
+
+            var sut = new CombinedVehicleViewModel(new List<VehicleViewModel>(), addInitDialogFactory);
+
+            var newText = "";
+            sut.PropertyChanged += (sender, args) => { newText = args.PropertyName == "Init" ? " new text" : ""; };
+
+            var addInitResult = new AddInitResult() { InitToAdd = "new text", DialogResult = DialogResult.Ok };
+            addInitDialog.ShowDialog().Returns(addInitResult);
+            sut.AddInitCommand.Execute();
+
+            Assert.AreEqual(" new text", newText);
         }
 
         private List<VehicleViewModel> CreateViewModelList(Vehicle vehicle1, Vehicle vehicle2)

@@ -154,9 +154,9 @@
       <Project>{20D00BCA-1981-4A2F-815B-79F05EDF6277}</Project>
       <Name>MultiSelectionTreeView</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SQMReorderer.Core\SQMReorderer.Core.csproj">
+    <ProjectReference Include="..\SQMImportExport\SQMImportExport.csproj">
       <Project>{2a3d6bf9-d17a-43bd-bea5-ebb73eb6e569}</Project>
-      <Name>SQMReorderer.Core</Name>
+      <Name>SQMImportExport</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

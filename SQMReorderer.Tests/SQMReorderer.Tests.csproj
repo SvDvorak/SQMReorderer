@@ -127,9 +127,9 @@
     <Compile Include="VectorTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SQMReorderer.Core\SQMReorderer.Core.csproj">
+    <ProjectReference Include="..\SQMImportExport\SQMImportExport.csproj">
       <Project>{2a3d6bf9-d17a-43bd-bea5-ebb73eb6e569}</Project>
-      <Name>SQMReorderer.Core</Name>
+      <Name>SQMImportExport</Name>
     </ProjectReference>
     <ProjectReference Include="..\SQMReorderer.Gui\SQMReorderer.Gui.csproj">
       <Project>{c7d24ed6-684a-4772-8d10-fa2684d54ff5}</Project>

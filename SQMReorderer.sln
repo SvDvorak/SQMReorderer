@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiSelectionTreeView", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQMReorderer.Tests", "SQMReorderer.Tests\SQMReorderer.Tests.csproj", "{47888AD3-BB00-415D-9C69-CE88C2EBD76B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQMReorderer.Core", "SQMReorderer.Core\SQMReorderer.Core.csproj", "{2A3D6BF9-D17A-43BD-BEA5-EBB73EB6E569}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQMImportExport", "SQMImportExport\SQMImportExport.csproj", "{2A3D6BF9-D17A-43BD-BEA5-EBB73EB6E569}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,6 +13,16 @@ namespace SQMReorderer.Core.Export
             _exporterFactory = exporterFactory;
         }
 
+        public SaveSqmFile()
+            : this(
+                new StreamFactory(),
+                new SqmFileExporterFactory(
+                    new ArmA2.SqmElementExportVisitor(),
+                    new ArmA3.SqmElementExportVisitor(),
+                    new ContextIndenter()))
+        {
+        }
+
         public void Save(string filePath, ISqmContents sqmContents)
         {
             var stream = _streamFactory.Create(filePath);

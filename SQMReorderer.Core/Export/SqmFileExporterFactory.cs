@@ -20,6 +20,14 @@ namespace SQMReorderer.Core.Export
             _contextIndenter = contextIndenter;
         }
 
+        public SqmFileExporterFactory()
+            : this(
+            new ArmA2.SqmElementExportVisitor(),
+            new ArmA3.SqmElementExportVisitor(),
+            new ContextIndenter())
+        {
+        }
+
         public ISqmContentsVisitor Create(Stream stream)
         {
             return new SqmFileExporter(

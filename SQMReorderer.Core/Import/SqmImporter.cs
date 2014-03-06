@@ -1,5 +1,7 @@
 ﻿using System.IO;
+using SQMReorderer.Core.Import.Context;
 using SQMReorderer.Core.Import.FileVersion;
+using SQMReorderer.Core.StreamHelpers;
 
 namespace SQMReorderer.Core.Import
 {
@@ -18,7 +20,13 @@ namespace SQMReorderer.Core.Import
             _arma3Importer = arma3Importer;
         }
 
-    //public SqmImporter() : this(new FileVersionRetriever(new StreamReaderFactory()), new Core.Import.ArmA2.)
+        public SqmImporter()
+            : this(
+                new FileVersionRetriever(new StreamReaderFactory()),
+                new SqmFileImporter(new StreamToStringsReader(), new SqmContextCreator(), new ArmA2.SqmParser()),
+                new SqmFileImporter(new StreamToStringsReader(), new SqmContextCreator(), new ArmA3.SqmParser()))
+        {
+        }
 
         public ISqmContents Import(Stream stream)
         {

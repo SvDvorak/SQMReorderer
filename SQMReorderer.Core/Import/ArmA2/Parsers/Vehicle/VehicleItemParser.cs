@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using SQMReorderer.Core.Import.ArmA2.Parsers.Waypoint;
-using SQMReorderer.Core.Import.ArmA2.ResultObjects;
 using SQMReorderer.Core.Import.DataSetters;
 using SQMReorderer.Core.Import.ResultObjects;
 

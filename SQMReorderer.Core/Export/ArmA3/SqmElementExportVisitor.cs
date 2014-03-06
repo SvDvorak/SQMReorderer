@@ -189,7 +189,7 @@ namespace SQMReorderer.Core.Export.ArmA3
             stringBuilder.Append(_propertyVisitor.Visit("completitionRadius", waypoint.CompletitionRadius));
             stringBuilder.Append(_propertyVisitor.Visit("type", waypoint.Type));
             stringBuilder.Append(_propertyVisitor.Visit("expActiv", waypoint.ExpActiv));
-            stringBuilder.Append(GetEffectsAsSingleString(waypoint.Effects));
+            stringBuilder.Append(_propertyVisitor.VisitEffects(waypoint.Effects));
             stringBuilder.Append(_propertyVisitor.Visit("timeoutMin", waypoint.TimeoutMin));
             stringBuilder.Append(_propertyVisitor.Visit("timeoutMid", waypoint.TimeoutMid));
             stringBuilder.Append(_propertyVisitor.Visit("timeoutMax", waypoint.TimeoutMax));
@@ -247,29 +247,7 @@ namespace SQMReorderer.Core.Export.ArmA3
             stringBuilder.Append(_propertyVisitor.Visit("age", sensor.Age));
             stringBuilder.Append(_propertyVisitor.Visit("expCond", sensor.ExpCond));
             stringBuilder.Append(_propertyVisitor.Visit("expActiv", sensor.ExpActiv));
-            stringBuilder.Append(GetEffectsAsSingleString(sensor.Effects));
-            stringBuilder.Append("};\n");
-
-            return stringBuilder.ToString();
-        }
-
-        private string GetEffectsAsSingleString(List<string> effects)
-        {
-            if (effects == null)
-            {
-                return "";
-            }
-
-            var stringBuilder = new StringBuilder();
-
-            stringBuilder.Append("class Effects\n");
-            stringBuilder.Append("{\n");
-
-            foreach (var effect in effects)
-            {
-                stringBuilder.Append(effect + "\n");
-            }
-
+            stringBuilder.Append(_propertyVisitor.VisitEffects(sensor.Effects));
             stringBuilder.Append("};\n");
 
             return stringBuilder.ToString();

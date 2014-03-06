@@ -150,5 +150,27 @@ namespace SQMReorderer.Core.Export
 
             return stringBuilder.ToString();
         }
+
+        public string VisitEffects(List<string> effects)
+        {
+            if (effects == null)
+            {
+                return "";
+            }
+
+            var stringBuilder = new StringBuilder();
+
+            stringBuilder.Append("class Effects\n");
+            stringBuilder.Append("{\n");
+
+            foreach (var effect in effects)
+            {
+                stringBuilder.Append(effect + "\n");
+            }
+
+            stringBuilder.Append("};\n");
+
+            return stringBuilder.ToString();
+        }
     }
 }

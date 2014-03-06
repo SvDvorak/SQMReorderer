@@ -23,6 +23,7 @@ namespace SQMReorderer.Tests.Export
             var stringListPropertyText = propertyVisitor.Visit("addOns", new List<string>() { "brown", "blur" });
             var markerArrayPropertyText = propertyVisitor.Visit("markers",
                 new MarkersArray() { Items = new List<string>() { "m1", "m2" } });
+            var effectsPropertyText = propertyVisitor.VisitEffects(new List<string>() { "effect1", "effect2" });
 
             const string correctStringListText = 
                 "addOns[]=\n" +
@@ -38,6 +39,13 @@ namespace SQMReorderer.Tests.Export
                 "\"m2\"\n" +
                 "};\n";
 
+            const string correctEffectsText =
+               "class Effects\n" +
+                "{\n" +
+                "effect1\n" +
+                "effect2\n" +
+                "};\n";
+
             Assert.AreEqual("side=\"WEST\";\n", stringPropertyText);
             Assert.AreEqual("position[]={1,2,3};\n", vectorPropertyText);
             Assert.AreEqual("leader=1;\n", intPropertyText);
@@ -45,6 +53,7 @@ namespace SQMReorderer.Tests.Export
             Assert.AreEqual("synchronizations[]={1,2,3};\n", intListPropertyText);
             Assert.AreEqual(correctStringListText, stringListPropertyText);
             Assert.AreEqual(correctMarkerArrayText, markerArrayPropertyText);
+            Assert.AreEqual(correctEffectsText, effectsPropertyText);
         }
 
         [Test]
@@ -59,6 +68,7 @@ namespace SQMReorderer.Tests.Export
             var intListPropertyText = propertyVisitor.Visit("synchronizations", (List<int>)null);
             var stringListPropertyText = propertyVisitor.Visit("Effects", (List<string>)null);
             var markerArrayPropertyText = propertyVisitor.Visit("markers", (MarkersArray)null);
+            var effectsPropertyText = propertyVisitor.VisitEffects(null);
 
             Assert.AreEqual("", stringPropertyText);
             Assert.AreEqual("", vectorPropertyText);
@@ -67,6 +77,7 @@ namespace SQMReorderer.Tests.Export
             Assert.AreEqual("", intListPropertyText);
             Assert.AreEqual("", stringListPropertyText);
             Assert.AreEqual("", markerArrayPropertyText);
+            Assert.AreEqual("", effectsPropertyText);
         }
 
         [Test]

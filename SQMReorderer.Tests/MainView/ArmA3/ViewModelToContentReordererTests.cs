@@ -245,7 +245,61 @@ namespace SQMReorderer.Tests.MainView.ArmA3
             Assert.AreEqual(1, mission.Groups[1].Vehicles[0].Id);
             Assert.AreEqual(4, mission.Groups[2].Vehicles[0].Id);
             Assert.AreEqual(3, mission.Groups[3].Vehicles[0].Id);
+        }
 
+        [Test]
+        public void Item_numbers_are_updated_when_order_is_changed()
+        {
+            var mission = new MissionState
+                {
+                    Groups = new List<Vehicle>
+                        {
+                            new Vehicle
+                                {
+                                    Vehicles = new List<Vehicle>
+                                        {
+                                            new Vehicle
+                                                {
+                                                    Number = 0,
+                                                    Id = 1
+                                                },
+                                            new Vehicle
+                                                {
+                                                    Number = 1,
+                                                    Id = 2
+                                                },
+                                        }
+                                }
+                        }
+                };
+
+            var teamViewModels = new List<TeamViewModel>
+                {
+                    new TeamViewModel
+                        {
+                            Groups = new ObservableCollection<GroupViewModel>
+                                {
+                                    new GroupViewModel
+                                        {
+                                            ConnectedVehicle = mission.Groups[0],
+                                            Vehicles = new ObservableCollection<VehicleViewModel>()
+                                                {
+                                                    new VehicleViewModel(mission.Groups[0].Vehicles[1], new List<VehicleViewModel>()),
+                                                    new VehicleViewModel(mission.Groups[0].Vehicles[0], new List<VehicleViewModel>())
+                                                }
+                                        },
+                                }
+                        },
+                };
+
+            var sut = new ViewModelToContentReorderer();
+
+            sut.Reorder(mission, teamViewModels);
+
+            Assert.AreEqual(0, mission.Groups[0].Vehicles[0].Number);
+            Assert.AreEqual(2, mission.Groups[0].Vehicles[0].Id);
+            Assert.AreEqual(1, mission.Groups[0].Vehicles[1].Number);
+            Assert.AreEqual(1, mission.Groups[0].Vehicles[1].Id);
         }
 
         [Test]

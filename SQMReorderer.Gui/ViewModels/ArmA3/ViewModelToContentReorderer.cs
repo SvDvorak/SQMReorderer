@@ -6,11 +6,11 @@ namespace SQMReorderer.Gui.ViewModels.ArmA3
 {
     public class ViewModelToContentReorderer : IViewModelToContentReorderer
     {
-        private Dictionary<Vehicle, List<Vehicle>> _parentChildDictionary;
+        private Dictionary<Vehicle, VehiclePositionInfo> _parentChildDictionary;
 
         public void Reorder(MissionState mission, List<TeamViewModel> teamViewModels)
         {
-            _parentChildDictionary = new Dictionary<Vehicle, List<Vehicle>>();
+            _parentChildDictionary = new Dictionary<Vehicle, VehiclePositionInfo>();
 
             foreach (var teamViewModel in teamViewModels)
             {
@@ -20,25 +20,55 @@ namespace SQMReorderer.Gui.ViewModels.ArmA3
             UpdateOrder(mission.Groups);
         }
 
-        private void AddToDictionary(IEnumerable<GroupViewModel> groups)
+        private void AddToDictionary(List<GroupViewModel> groups)
         {
-            foreach (var group in groups)
+            for (int index = 0; index < groups.Count; index++)
             {
-                _parentChildDictionary.Add(group.ConnectedVehicle, group.Vehicles.Select(x => x.Vehicle).ToList());
+                var groupViewModel = groups[index];
+                _parentChildDictionary.Add(
+                    groupViewModel.ConnectedVehicle,
+                    new VehiclePositionInfo(index, groupViewModel.Vehicles.Select(x => x.Vehicle).ToList()));
+
+                AddToDictionary(groupViewModel.Vehicles.ToList());
             }
         }
 
-        private void UpdateOrder(IEnumerable<Vehicle> vehicles)
+        private void AddToDictionary(List<VehicleViewModel> vehicles)
+        {
+            for (int index = 0; index < vehicles.Count; index++)
+            {
+                var groupViewModel = vehicles[index];
+                _parentChildDictionary.Add(
+                    groupViewModel.Vehicle,
+                    new VehiclePositionInfo(index, new List<Vehicle>()));
+            }
+        }
+
+        private void UpdateOrder(List<Vehicle> vehicles)
         {
             foreach (var vehicle in vehicles)
             {
                 if(_parentChildDictionary.ContainsKey(vehicle))
                 {
-                    vehicle.Vehicles = _parentChildDictionary[vehicle];
+                    var vehiclePositionInfo = _parentChildDictionary[vehicle];
+                    vehicle.Number = vehiclePositionInfo.Number;
+                    vehicle.Vehicles = vehiclePositionInfo.Children;
                 }
 
                 UpdateOrder(vehicle.Vehicles);
             }
+        }
+
+        private class VehiclePositionInfo
+        {
+            public VehiclePositionInfo(int number, List<Vehicle> children)
+            {
+                Number = number;
+                Children = children;
+            }
+
+            public int Number { get; set; }
+            public List<Vehicle> Children { get; set; } 
         }
     }
 }

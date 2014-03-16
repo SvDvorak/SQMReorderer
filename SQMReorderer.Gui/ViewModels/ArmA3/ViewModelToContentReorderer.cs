@@ -22,7 +22,7 @@ namespace SQMReorderer.Gui.ViewModels.ArmA3
 
         private void AddToDictionary(List<GroupViewModel> groups)
         {
-            for (int index = 0; index < groups.Count; index++)
+            for (var index = 0; index < groups.Count; index++)
             {
                 var groupViewModel = groups[index];
                 _parentChildDictionary.Add(
@@ -35,7 +35,7 @@ namespace SQMReorderer.Gui.ViewModels.ArmA3
 
         private void AddToDictionary(List<VehicleViewModel> vehicles)
         {
-            for (int index = 0; index < vehicles.Count; index++)
+            for (var index = 0; index < vehicles.Count; index++)
             {
                 var groupViewModel = vehicles[index];
                 _parentChildDictionary.Add(
@@ -67,8 +67,8 @@ namespace SQMReorderer.Gui.ViewModels.ArmA3
                 Children = children;
             }
 
-            public int Number { get; set; }
-            public List<Vehicle> Children { get; set; } 
+            public int Number { get; private set; }
+            public List<Vehicle> Children { get; private set; } 
         }
     }
 }

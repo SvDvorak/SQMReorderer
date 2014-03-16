@@ -20,20 +20,14 @@ namespace SQMReorderer.Tests.MainView.ArmA3
                                 {
                                     Vehicles = new List<Vehicle>
                                         {
-                                            new Vehicle
-                                                {
-                                                    Id = 1
-                                                }
+                                            CreateVehicle(0)
                                         }
                                 },
                             new Vehicle
                                 {
                                     Vehicles = new List<Vehicle>
                                         {
-                                            new Vehicle
-                                                {
-                                                    Id = 2
-                                                }
+                                            CreateVehicle(1)
                                         }
                                 }
                         }
@@ -68,8 +62,8 @@ namespace SQMReorderer.Tests.MainView.ArmA3
 
             sut.Reorder(mission, new List<TeamViewModel> { teamViewModel });
 
-            Assert.AreEqual(1, mission.Groups[0].Vehicles[0].Id);
-            Assert.AreEqual(2, mission.Groups[1].Vehicles[0].Id);
+            Assert.AreEqual(0, mission.Groups[0].Vehicles[0].Id);
+            Assert.AreEqual(1, mission.Groups[1].Vehicles[0].Id);
         }
 
         [Test]
@@ -83,20 +77,14 @@ namespace SQMReorderer.Tests.MainView.ArmA3
                                 {
                                     Vehicles = new List<Vehicle>
                                         {
-                                            new Vehicle
-                                                {
-                                                    Id = 1
-                                                }
+                                            CreateVehicle(0)
                                         }
                                 },
                             new Vehicle
                                 {
                                     Vehicles = new List<Vehicle>
                                         {
-                                            new Vehicle
-                                                {
-                                                    Id = 2
-                                                }
+                                            CreateVehicle(1)
                                         }
                                 }
                         }
@@ -131,8 +119,8 @@ namespace SQMReorderer.Tests.MainView.ArmA3
 
             sut.Reorder(mission, new List<TeamViewModel> { teamViewModel });
 
-            Assert.AreEqual(2, mission.Groups[0].Vehicles[0].Id);
-            Assert.AreEqual(1, mission.Groups[1].Vehicles[0].Id);
+            Assert.AreEqual(1, mission.Groups[0].Vehicles[0].Id);
+            Assert.AreEqual(0, mission.Groups[1].Vehicles[0].Id);
         }
 
         [Test]
@@ -146,40 +134,28 @@ namespace SQMReorderer.Tests.MainView.ArmA3
                                 {
                                     Vehicles = new List<Vehicle>
                                         {
-                                            new Vehicle
-                                                {
-                                                    Id = 1
-                                                }
+                                            CreateVehicle(0)
                                         }
                                 },
                             new Vehicle
                                 {
                                     Vehicles = new List<Vehicle>
                                         {
-                                            new Vehicle
-                                                {
-                                                    Id = 2
-                                                }
+                                            CreateVehicle(1)
                                         }
                                 },
                             new Vehicle
                                 {
                                     Vehicles = new List<Vehicle>
                                         {
-                                            new Vehicle
-                                                {
-                                                    Id = 3
-                                                }
+                                            CreateVehicle(2)
                                         }
                                 },
                             new Vehicle
                                 {
                                     Vehicles = new List<Vehicle>
                                         {
-                                            new Vehicle
-                                                {
-                                                    Id = 4
-                                                }
+                                            CreateVehicle(3)
                                         }
                                 }
                         }
@@ -241,10 +217,10 @@ namespace SQMReorderer.Tests.MainView.ArmA3
 
             sut.Reorder(mission, teamViewModels);
 
-            Assert.AreEqual(2, mission.Groups[0].Vehicles[0].Id);
-            Assert.AreEqual(1, mission.Groups[1].Vehicles[0].Id);
-            Assert.AreEqual(4, mission.Groups[2].Vehicles[0].Id);
-            Assert.AreEqual(3, mission.Groups[3].Vehicles[0].Id);
+            Assert.AreEqual(1, mission.Groups[0].Vehicles[0].Id);
+            Assert.AreEqual(0, mission.Groups[1].Vehicles[0].Id);
+            Assert.AreEqual(3, mission.Groups[2].Vehicles[0].Id);
+            Assert.AreEqual(2, mission.Groups[3].Vehicles[0].Id);
         }
 
         [Test]
@@ -258,16 +234,8 @@ namespace SQMReorderer.Tests.MainView.ArmA3
                                 {
                                     Vehicles = new List<Vehicle>
                                         {
-                                            new Vehicle
-                                                {
-                                                    Number = 0,
-                                                    Id = 1
-                                                },
-                                            new Vehicle
-                                                {
-                                                    Number = 1,
-                                                    Id = 2
-                                                },
+                                            CreateVehicle(0),
+                                            CreateVehicle(1)
                                         }
                                 }
                         }
@@ -282,10 +250,12 @@ namespace SQMReorderer.Tests.MainView.ArmA3
                                     new GroupViewModel
                                         {
                                             ConnectedVehicle = mission.Groups[0],
-                                            Vehicles = new ObservableCollection<VehicleViewModel>()
+                                            Vehicles = new ObservableCollection<VehicleViewModel>
                                                 {
-                                                    new VehicleViewModel(mission.Groups[0].Vehicles[1], new List<VehicleViewModel>()),
-                                                    new VehicleViewModel(mission.Groups[0].Vehicles[0], new List<VehicleViewModel>())
+                                                    new VehicleViewModel(mission.Groups[0].Vehicles[1],
+                                                        new List<VehicleViewModel>()),
+                                                    new VehicleViewModel(mission.Groups[0].Vehicles[0],
+                                                        new List<VehicleViewModel>())
                                                 }
                                         },
                                 }
@@ -297,9 +267,9 @@ namespace SQMReorderer.Tests.MainView.ArmA3
             sut.Reorder(mission, teamViewModels);
 
             Assert.AreEqual(0, mission.Groups[0].Vehicles[0].Number);
-            Assert.AreEqual(2, mission.Groups[0].Vehicles[0].Id);
+            Assert.AreEqual(1, mission.Groups[0].Vehicles[0].Id);
             Assert.AreEqual(1, mission.Groups[0].Vehicles[1].Number);
-            Assert.AreEqual(1, mission.Groups[0].Vehicles[1].Id);
+            Assert.AreEqual(0, mission.Groups[0].Vehicles[1].Id);
         }
 
         [Test]
@@ -313,10 +283,7 @@ namespace SQMReorderer.Tests.MainView.ArmA3
                                 {
                                     Vehicles = new List<Vehicle>
                                         {
-                                            new Vehicle
-                                                {
-                                                    Id = 1,
-                                                }
+                                            CreateVehicle(0)
                                         }
                                 }
                         }
@@ -328,7 +295,16 @@ namespace SQMReorderer.Tests.MainView.ArmA3
 
             sut.Reorder(mission, new List<TeamViewModel> { teamViewModel });
 
-            Assert.AreEqual(1, mission.Groups[0].Vehicles[0].Id);
+            Assert.AreEqual(0, mission.Groups[0].Vehicles[0].Id);
+        }
+
+        private Vehicle CreateVehicle(int id)
+        {
+            return new Vehicle
+                {
+                    Number = id,
+                    Id = id
+                };
         }
     }
 }

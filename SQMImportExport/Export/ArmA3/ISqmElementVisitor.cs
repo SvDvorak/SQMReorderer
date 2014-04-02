@@ -8,7 +8,7 @@ namespace SQMImportExport.Export.ArmA3
         string Visit(string elementName, SqmContents sqmContents);
         string Visit(string elementName, MissionState mission);
         string Visit(string elementName, Intel intel);
-        string Visit(string elementName, List<Vehicle> vehicles);
+        string Visit(string elementName, IEnumerable<Vehicle> vehicles);
         string Visit(string elementName, List<Marker> markers);
         string Visit(string elementName, List<Sensor> sensors);
         string Visit(string elementName, Vehicle vehicle);

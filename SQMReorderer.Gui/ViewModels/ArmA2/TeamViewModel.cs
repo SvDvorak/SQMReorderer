@@ -8,12 +8,12 @@ namespace SQMReorderer.Gui.ViewModels.ArmA2
     {
         public TeamViewModel()
         {
-            Groups = new ObservableCollection<GroupViewModel>();
+            Groups = new ObservableCollection<IGroupViewModel>();
         }
 
         public string Side { get; set; }
 
-        public ObservableCollection<GroupViewModel> Groups { get; set; }
+        public ObservableCollection<IGroupViewModel> Groups { get; set; }
 
         public List<Type> ChildTypes
         {

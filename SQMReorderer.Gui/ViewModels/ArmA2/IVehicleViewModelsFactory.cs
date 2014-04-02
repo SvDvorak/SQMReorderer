@@ -5,6 +5,6 @@ namespace SQMReorderer.Gui.ViewModels.ArmA2
 {
     public interface IVehicleViewModelsFactory
     {
-        List<VehicleViewModel> Create(List<Vehicle> vehicles);
+        IEnumerable<VehicleViewModel> Create(IEnumerable<Vehicle> vehicles);
     }
 }

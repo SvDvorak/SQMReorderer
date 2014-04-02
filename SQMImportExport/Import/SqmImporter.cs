@@ -28,7 +28,7 @@ namespace SQMImportExport.Import
         {
         }
 
-        public ISqmContents Import(Stream stream)
+        public SqmContentsBase Import(Stream stream)
         {
             var fileVersion = _fileVersionRetriever.GetVersion(stream);
             if (fileVersion == FileVersion.FileVersion.ArmA2)

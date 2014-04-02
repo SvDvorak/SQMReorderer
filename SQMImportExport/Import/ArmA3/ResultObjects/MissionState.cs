@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SQMImportExport.Import.ArmA3.ResultObjects
 {
-    public class MissionState
+    public class MissionState : MissionStateBase
     {
         public MissionState()
         {
@@ -22,7 +23,12 @@ namespace SQMImportExport.Import.ArmA3.ResultObjects
 
         public Intel Intel { get; set; }
 
-        public List<Vehicle> Groups { get; set; }
+        public new List<Vehicle> Groups
+        {
+            get { return base.Groups.Cast<Vehicle>().ToList(); }
+            set { base.Groups = value; }
+        }
+
         public List<Vehicle> Vehicles { get; set; }
         public List<Marker> Markers { get; set; }
         public List<Sensor> Sensors { get; set; }

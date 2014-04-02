@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using SQMImportExport.Import.ResultObjects;
 
 namespace SQMImportExport.Import.ArmA2.ResultObjects
 {
-    public class Sensor : ItemBase
+    public class Sensor : VehicleBase
     {
         public Sensor()
         {

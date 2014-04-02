@@ -2,6 +2,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using SQMImportExport.Import.ArmA3.ResultObjects;
+using SQMReorderer.Gui.ViewModels;
 using SQMReorderer.Gui.ViewModels.ArmA3;
 
 namespace SQMReorderer.Tests.MainView.ArmA3
@@ -66,14 +67,14 @@ namespace SQMReorderer.Tests.MainView.ArmA3
 
             _vehicleViewModelsFactory.Create(vehicles[0].Vehicles).Returns(new List<VehicleViewModel>
                 {
-                    new VehicleViewModel(vehicle1, new List<VehicleViewModel>()),
-                    new VehicleViewModel(vehicle2, new List<VehicleViewModel>())
+                    new VehicleViewModel(vehicle1, new List<VehicleViewModelBase>()),
+                    new VehicleViewModel(vehicle2, new List<VehicleViewModelBase>())
                 });
 
             _vehicleViewModelsFactory.Create(vehicles[1].Vehicles).Returns(new List<VehicleViewModel>
                 {
-                    new VehicleViewModel(vehicle3, new List<VehicleViewModel>()),
-                    new VehicleViewModel(vehicle4, new List<VehicleViewModel>())
+                    new VehicleViewModel(vehicle3, new List<VehicleViewModelBase>()),
+                    new VehicleViewModel(vehicle4, new List<VehicleViewModelBase>())
                 });
 
             var groupViewModels = _sut.Create(vehicles);

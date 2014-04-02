@@ -29,7 +29,7 @@ namespace SQMImportExport.Import.ArmA3
             get { throw new NotImplementedException(); }
         }
 
-        public new ISqmContents ParseContext(SqmContext context)
+        public new SqmContentsBase ParseContext(SqmContext context)
         {
             return base.ParseContext(context);
         }

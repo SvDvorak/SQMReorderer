@@ -1,6 +1,8 @@
+using SQMImportExport.Import.ResultObjects;
+
 namespace SQMImportExport.Import.ArmA3.ResultObjects
 {
-    public class Marker : ItemBase
+    public class Marker : VehicleBase
     {
         public string Text { get; set; }
         public string Name { get; set; }

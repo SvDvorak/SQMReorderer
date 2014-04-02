@@ -13,7 +13,7 @@ namespace SQMReorderer.Tests.Export
         private Stream _stream;
         private ISqmFileExporterFactory _exporterFactory;
         private ISqmContentsVisitor _exportVisitor;
-        private ISqmContents _sqmContents;
+        private SqmContentsBase _sqmContents;
 
         [SetUp]
         public void Setup()
@@ -24,7 +24,7 @@ namespace SQMReorderer.Tests.Export
             _exporterFactory = Substitute.For<ISqmFileExporterFactory>();
             _exportVisitor = Substitute.For<ISqmContentsVisitor>();
 
-            _sqmContents = Substitute.For<ISqmContents>();
+            _sqmContents = Substitute.For<SqmContentsBase>();
         }
 
         [Test]

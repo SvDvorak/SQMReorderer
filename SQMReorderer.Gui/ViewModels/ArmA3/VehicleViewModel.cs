@@ -4,15 +4,19 @@ using SQMImportExport.Import.ArmA3.ResultObjects;
 
 namespace SQMReorderer.Gui.ViewModels.ArmA3
 {
-    public class VehicleViewModel : ViewModelBase, IVehicleViewModel
+    public class VehicleViewModel : VehicleViewModelBase
     {
-        public VehicleViewModel(Vehicle vehicle, List<VehicleViewModel> childItemViewModels)
+        public VehicleViewModel(Vehicle vehicle, List<VehicleViewModelBase> childItemViewModels)
         {
             Vehicle = vehicle;
-            Children = new ObservableCollection<VehicleViewModel>(childItemViewModels);
+            Children = new ObservableCollection<VehicleViewModelBase>(childItemViewModels);
         }
 
-        public Vehicle Vehicle { get; private set; }
+        public new Vehicle Vehicle
+        {
+            get { return (Vehicle)base.Vehicle; }
+            private set { base.Vehicle = value; }
+        }
 
         public string Header { get { return GetPropertyWithData(); } }
 
@@ -66,7 +70,7 @@ namespace SQMReorderer.Gui.ViewModels.ArmA3
             }
         }
 
-        public ObservableCollection<VehicleViewModel> Children { get; set; }
+        public ObservableCollection<VehicleViewModelBase> Children { get; set; }
 
         private string GetPropertyWithData()
         {

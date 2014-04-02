@@ -23,9 +23,9 @@ namespace SQMReorderer.Gui.Dialogs
 
         public string SelectedPath { get { return _openFileDialog.FileName; } }
 
-        public ISqmContents ShowDialog()
+        public SqmContentsBase ShowDialog()
         {
-            ISqmContents sqmContents = null;
+            SqmContentsBase sqmContents = null;
             var shouldSave = _openFileDialog.ShowDialog();
 
             if (shouldSave.HasValue && shouldSave.Value)

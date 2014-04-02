@@ -5,6 +5,7 @@ using NUnit.Framework;
 using SQMImportExport.Import.ArmA3.ResultObjects;
 using SQMReorderer.Gui.Dialogs;
 using SQMReorderer.Gui.Dialogs.AddInit;
+using SQMReorderer.Gui.ViewModels;
 using SQMReorderer.Gui.ViewModels.ArmA3;
 
 namespace SQMReorderer.Tests.MainView.ArmA3
@@ -178,7 +179,7 @@ namespace SQMReorderer.Tests.MainView.ArmA3
 
         private List<VehicleViewModel> CreateViewModelList(params Vehicle[] vehicles)
         {
-            return vehicles.Select(x => new VehicleViewModel(x, new List<VehicleViewModel>())).ToList();
+            return vehicles.Select(x => new VehicleViewModel(x, new List<VehicleViewModelBase>())).ToList();
         }
     }
 }

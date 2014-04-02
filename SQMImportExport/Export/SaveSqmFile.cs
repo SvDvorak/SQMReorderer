@@ -23,7 +23,7 @@ namespace SQMImportExport.Export
         {
         }
 
-        public void Save(string filePath, ISqmContents sqmContents)
+        public void Save(string filePath, SqmContentsBase sqmContents)
         {
             var stream = _streamFactory.Create(filePath);
 

@@ -30,7 +30,7 @@ namespace SQMReorderer.Tests.Import
             var stream = Substitute.For<Stream>();
             _fileVersionRetriever.GetVersion(stream).Returns(FileVersion.ArmA2);
 
-            var expectedContents = Substitute.For<ISqmContents>();
+            var expectedContents = Substitute.For<SqmContentsBase>();
 
             _arma2Importer.Import(stream).Returns(expectedContents);
 
@@ -45,7 +45,7 @@ namespace SQMReorderer.Tests.Import
             var stream = Substitute.For<Stream>();
             _fileVersionRetriever.GetVersion(stream).Returns(FileVersion.ArmA3);
 
-            var expectedContents = Substitute.For<ISqmContents>();
+            var expectedContents = Substitute.For<SqmContentsBase>();
 
             _arma3Importer.Import(stream).Returns(expectedContents);
 

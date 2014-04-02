@@ -42,9 +42,9 @@ namespace SQMReorderer.Gui.ViewModels.ArmA2
             return "Group " + _groupEnumerator;
         }
 
-        private ObservableCollection<VehicleViewModel> CreateVehicles(Vehicle vehicle)
+        private ObservableCollection<VehicleViewModelBase> CreateVehicles(Vehicle vehicle)
         {
-            return new ObservableCollection<VehicleViewModel>(
+            return new ObservableCollection<VehicleViewModelBase>(
                 _vehicleViewModelsFactory.Create(vehicle.Vehicles));
         }
     }

@@ -61,7 +61,7 @@ namespace SQMReorderer.Tests.Import
             return importStream;
         }
 
-        private ISqmContents Import(Stream importStream)
+        private SqmContentsBase Import(Stream importStream)
         {
             var streamToStringsReader = new StreamToStringsReader();
             var sqmContextCreator = new SqmContextCreator();
@@ -76,7 +76,7 @@ namespace SQMReorderer.Tests.Import
             return importResults;
         }
 
-        private void Export(ISqmContents importResults, string path)
+        private void Export(SqmContentsBase importResults, string path)
         {
             var contextIndenter = new ContextIndenter();
             var exportStream = new FileStream(path, FileMode.OpenOrCreate);

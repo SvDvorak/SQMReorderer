@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SQMImportExport.Import.ArmA3.ResultObjects;
+using SQMImportExport.Import.ResultObjects;
 
 namespace SQMImportExport.Export.ArmA3
 {
@@ -91,8 +92,8 @@ namespace SQMImportExport.Export.ArmA3
 
         private string Visit(
             string elementName,
-            List<ItemBase> items,
-            Func<string, ItemBase, string> getItemString)
+            List<VehicleBase> items,
+            Func<string, VehicleBase, string> getItemString)
         {
             if (items == null || items.Count == 0)
             {
@@ -115,24 +116,24 @@ namespace SQMImportExport.Export.ArmA3
             return itemsString.ToString();
         }
 
-        public string Visit(string elementName, List<Vehicle> vehicles)
+        public string Visit(string elementName, IEnumerable<Vehicle> vehicles)
         {
-            return Visit(elementName, vehicles.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Vehicle) item));
+            return Visit(elementName, vehicles.Cast<VehicleBase>().ToList(), (itemName, item) => Visit(itemName, (Vehicle) item));
         }
 
         private string Visit(string elementName, List<Waypoint> waypoints)
         {
-            return Visit(elementName, waypoints.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Waypoint)item));
+            return Visit(elementName, waypoints.Cast<VehicleBase>().ToList(), (itemName, item) => Visit(itemName, (Waypoint)item));
         }
 
         public string Visit(string elementName, List<Marker> markers)
         {
-            return Visit(elementName, markers.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Marker) item));
+            return Visit(elementName, markers.Cast<VehicleBase>().ToList(), (itemName, item) => Visit(itemName, (Marker) item));
         }
 
         public string Visit(string elementName, List<Sensor> sensors)
         {
-            return Visit(elementName, sensors.Cast<ItemBase>().ToList(), (itemName, item) => Visit(itemName, (Sensor) item));
+            return Visit(elementName, sensors.Cast<VehicleBase>().ToList(), (itemName, item) => Visit(itemName, (Sensor) item));
         }
 
         public string Visit(string elementName, Vehicle vehicle)
@@ -165,7 +166,7 @@ namespace SQMImportExport.Export.ArmA3
             stringBuilder.Append(_propertyVisitor.Visit("description", vehicle.Description));
             stringBuilder.Append(_propertyVisitor.Visit("synchronizations", vehicle.Synchronizations));
 
-            stringBuilder.Append(Visit("Vehicles", vehicle.Vehicles));
+            stringBuilder.Append(Visit("Vehicles", vehicle.Vehicles.Cast<Vehicle>()));
             stringBuilder.Append(Visit("Waypoints", vehicle.Waypoints));
 
             stringBuilder.Append("};\n");

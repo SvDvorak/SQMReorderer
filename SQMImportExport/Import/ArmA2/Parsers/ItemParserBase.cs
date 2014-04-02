@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using SQMImportExport.Import.ArmA2.ResultObjects;
 using SQMImportExport.Import.Context;
 using SQMImportExport.Import.HelperFunctions;
+using SQMImportExport.Import.ResultObjects;
 
 namespace SQMImportExport.Import.ArmA2.Parsers
 {
     internal class ItemParserBase<TItemType> : ParserBase<TItemType>
-        where TItemType : ItemBase, new ()
+        where TItemType : VehicleBase, new ()
     {
         private readonly Regex _itemNumberRegex;
 

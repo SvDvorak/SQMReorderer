@@ -4,6 +4,6 @@ namespace SQMImportExport.Import
 {
     internal interface ISqmParser
     {
-        ISqmContents ParseContext(SqmContext context);
+        SqmContentsBase ParseContext(SqmContext context);
     }
 }

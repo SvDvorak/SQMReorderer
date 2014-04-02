@@ -5,6 +5,6 @@ namespace SQMReorderer.Gui.ViewModels.ArmA2
 {
     public interface IViewModelToContentReorderer
     {
-        void Reorder(MissionState mission, List<TeamViewModel> teamViewModels);
+        void Reorder(MissionState mission, List<ITeamViewModel> teamViewModels);
     }
 }

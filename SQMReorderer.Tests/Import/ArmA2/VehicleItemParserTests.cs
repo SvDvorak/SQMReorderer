@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using SQMImportExport.Import;
 using SQMImportExport.Import.ArmA2.Parsers.Vehicle;
@@ -211,17 +212,18 @@ namespace SQMReorderer.Tests.Import.ArmA2
 
             var itemResult = _parser.ParseContext(context);
 
-            Assert.AreEqual("SomeText", itemResult.Vehicles[0].Text);
+            Assert.AreEqual("SomeText", itemResult.Vehicles.First().Text);
         }
 
         [Test]
         public void Expect_parser_to_parse_complex_item_with_sub_items()
         {
             var itemResult = _parser.ParseContext(_completeComplexGroupItemContext);
+            var vehicles = itemResult.Vehicles.ToList();
 
-            Assert.AreEqual(4, itemResult.Vehicles.Count);
-            Assert.AreEqual("UnitUS_Bravo_FTL", itemResult.Vehicles[0].Text);
-            Assert.AreEqual("UnitUS_Bravo_Eng", itemResult.Vehicles[3].Text);
+            Assert.AreEqual(4, vehicles.Count);
+            Assert.AreEqual("UnitUS_Bravo_FTL", vehicles[0].Text);
+            Assert.AreEqual("UnitUS_Bravo_Eng", vehicles[3].Text);
         }
 
         [Test]

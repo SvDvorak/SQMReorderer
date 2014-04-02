@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
 using SQMImportExport.Import.ArmA2.ResultObjects;
+using SQMReorderer.Gui.ViewModels;
 using SQMReorderer.Gui.ViewModels.ArmA2;
 
 namespace SQMReorderer.Tests.MainView.ArmA2
@@ -64,17 +66,21 @@ namespace SQMReorderer.Tests.MainView.ArmA2
                         }
                 };
 
-            _vehicleViewModelsFactory.Create(vehicles[0].Vehicles).Returns(new List<VehicleViewModel>
-                {
-                    new VehicleViewModel(vehicle1, new List<VehicleViewModel>()),
-                    new VehicleViewModel(vehicle2, new List<VehicleViewModel>())
-                });
+            _vehicleViewModelsFactory
+                .Create(Arg.Is<List<Vehicle>>(x => x.SequenceEqual(vehicles[0].Vehicles)))
+                .Returns(new List<VehicleViewModel>
+					{
+						new VehicleViewModel(vehicle1, new List<VehicleViewModelBase>()),
+						new VehicleViewModel(vehicle2, new List<VehicleViewModelBase>())
+					});
 
-            _vehicleViewModelsFactory.Create(vehicles[1].Vehicles).Returns(new List<VehicleViewModel>
-                {
-                    new VehicleViewModel(vehicle3, new List<VehicleViewModel>()),
-                    new VehicleViewModel(vehicle4, new List<VehicleViewModel>())
-                });
+            _vehicleViewModelsFactory
+                .Create(Arg.Is<List<Vehicle>>(x => x.SequenceEqual(vehicles[1].Vehicles)))
+                .Returns(new List<VehicleViewModel>
+					{
+						new VehicleViewModel(vehicle3, new List<VehicleViewModelBase>()),
+						new VehicleViewModel(vehicle4, new List<VehicleViewModelBase>())
+					});
 
             var groupViewModels = _sut.Create(vehicles);
 

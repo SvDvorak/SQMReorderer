@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMImportExport.Import.ArmA2.ResultObjects;
+using SQMReorderer.Gui.ViewModels;
 using SQMReorderer.Gui.ViewModels.ArmA2;
 
 namespace SQMReorderer.Tests.MainView.ArmA2
@@ -19,7 +20,7 @@ namespace SQMReorderer.Tests.MainView.ArmA2
             vehicle.Description = "DESC";
             vehicle.Init = "INIT";
 
-            var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModel>());
+            var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModelBase>());
 
             Assert.AreEqual("VEHICLE", itemViewModel.VehicleName);
             Assert.AreEqual("RANK", itemViewModel.Rank);
@@ -38,7 +39,7 @@ namespace SQMReorderer.Tests.MainView.ArmA2
                     Side = "side"
                 };
 
-            var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModel>());
+            var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModelBase>());
 
             Assert.AreEqual("text", itemViewModel.Header);
         }
@@ -52,7 +53,7 @@ namespace SQMReorderer.Tests.MainView.ArmA2
                     Side = "side"
                 };
 
-            var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModel>());
+            var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModelBase>());
 
             Assert.AreEqual("vehicleName", itemViewModel.Header);
         }
@@ -65,7 +66,7 @@ namespace SQMReorderer.Tests.MainView.ArmA2
                     Side = "side"
                 };
 
-            var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModel>());
+            var itemViewModel = new VehicleViewModel(vehicle, new List<VehicleViewModelBase>());
 
             Assert.AreEqual("side", itemViewModel.Header);
         }
@@ -73,7 +74,7 @@ namespace SQMReorderer.Tests.MainView.ArmA2
         [Test]
         public void Fires_property_changed_for_header_when_property_is_changed()
         {
-            var itemViewModel = new VehicleViewModel(new Vehicle(), new List<VehicleViewModel>());
+            var itemViewModel = new VehicleViewModel(new Vehicle(), new List<VehicleViewModelBase>());
             int headerChangedCount = 0;
 
             itemViewModel.PropertyChanged += (sender, args) =>

@@ -17,7 +17,7 @@ namespace SQMReorderer.Gui.Dialogs
             _saveFileDialogAdapter.Filter = "SQM File (*.sqm)|*.sqm";
         }
 
-        public void ShowDialog(ISqmContents sqmContents)
+        public void ShowDialog(SqmContentsBase sqmContents)
         {
             var shouldOpen = _saveFileDialogAdapter.ShowDialog();
 

@@ -49,9 +49,9 @@ namespace SQMReorderer.Gui.ViewModels.ArmA3
             return "CIVILIAN";
         }
 
-        private ObservableCollection<GroupViewModel> CreateGroups(List<Vehicle> teamGroups)
+        private ObservableCollection<IGroupViewModel> CreateGroups(List<Vehicle> teamGroups)
         {
-            return new ObservableCollection<GroupViewModel>(_groupViewModelsFactory.Create(teamGroups));
+            return new ObservableCollection<IGroupViewModel>(_groupViewModelsFactory.Create(teamGroups));
         }
     }
 }

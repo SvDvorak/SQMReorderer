@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
+using SQMImportExport.Import.ResultObjects;
 
 namespace SQMImportExport.Import.ArmA3.ResultObjects
 {
-    public class Vehicle : ItemBase
+    public class Vehicle : VehicleBase
     {
         public Vehicle()
         {
@@ -29,7 +31,12 @@ namespace SQMImportExport.Import.ArmA3.ResultObjects
         public string Description { get; set; }
         public List<int> Synchronizations { get; set; }
 
-        public List<Vehicle> Vehicles { get; set; }
+        public new IEnumerable<Vehicle> Vehicles
+        {
+            get { return base.Vehicles.Cast<Vehicle>(); }
+            set { base.Vehicles = value; }
+        }
+
         public List<Waypoint> Waypoints { get; set; }
     }
 }

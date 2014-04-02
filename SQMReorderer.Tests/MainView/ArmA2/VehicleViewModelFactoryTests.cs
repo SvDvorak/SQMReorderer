@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using SQMImportExport.Import.ArmA2.ResultObjects;
 using SQMReorderer.Gui.ViewModels.ArmA2;
@@ -32,7 +33,7 @@ namespace SQMReorderer.Tests.MainView.ArmA2
                 };
 
             var sut = new VehicleViewModelsFactory();
-            var vehicleViewModels = sut.Create(vehicles);
+            var vehicleViewModels = sut.Create(vehicles).ToList();
 
             Assert.AreEqual(vehicle1, vehicleViewModels[0].Vehicle);
             Assert.AreEqual(vehicle2, vehicleViewModels[1].Vehicle);

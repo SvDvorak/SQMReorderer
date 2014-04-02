@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using SQMImportExport.Import.ArmA2.ResultObjects;
+using SQMImportExport.Import.ResultObjects;
 
 namespace SQMReorderer.Gui.ViewModels.ArmA2
 {
-    public class GroupViewModel
+    public class GroupViewModel : IGroupViewModel
     {
         public string Name { get; set; }
-        public Vehicle ConnectedVehicle { get; set; }
+        public VehicleBase ConnectedVehicle { get; set; }
 
-        public ObservableCollection<VehicleViewModel> Vehicles { get; set; }
+        public ObservableCollection<VehicleViewModelBase> Vehicles { get; set; }
 
         public List<Type> ChildTypes 
         {
@@ -18,7 +18,7 @@ namespace SQMReorderer.Gui.ViewModels.ArmA2
             {
                 return new List<Type>()
                     {
-                        typeof (VehicleViewModel)
+                        typeof (VehicleViewModelBase)
                     };
             }
         }

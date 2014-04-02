@@ -17,7 +17,7 @@ namespace SQMImportExport.Import
             _sqmParser = sqmParser;
         }
 
-        public ISqmContents Import(Stream fileStream)
+        public SqmContentsBase Import(Stream fileStream)
         {
             var linesInFile = _streamToStringsReader.Read(fileStream);
 

@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
-using SQMImportExport.Import.ArmA2.ResultObjects;
 using SQMReorderer.Gui.ViewModels;
+using ArmA2Objects = SQMImportExport.Import.ArmA2.ResultObjects;
+using ArmA3Objects = SQMImportExport.Import.ArmA3.ResultObjects;
 
 namespace SQMReorderer.Tests.MainView
 {
@@ -12,14 +14,16 @@ namespace SQMReorderer.Tests.MainView
         [Test]
         public void Visits_with_arma_2_contents()
         {
-            var missionGroups = new List<Vehicle>();
-            var exectedTeamViewModel = new Gui.ViewModels.ArmA2.TeamViewModel();
+            var missionGroups = new List<ArmA2Objects.Vehicle>();
+            var expectedTeamViewModel = new Gui.ViewModels.ArmA2.TeamViewModel();
             var teamViewModelsFactory = Substitute.For<Gui.ViewModels.ArmA2.ITeamViewModelsFactory>();
-            teamViewModelsFactory.Create(missionGroups).Returns(new List<Gui.ViewModels.ArmA2.TeamViewModel>() { exectedTeamViewModel });
+            teamViewModelsFactory
+                .Create(Arg.Is<List<ArmA2Objects.Vehicle>>(x => x.SequenceEqual(missionGroups)))
+                .Returns(new List<Gui.ViewModels.ArmA2.TeamViewModel>() { expectedTeamViewModel });
 
-            var arma2Contents = new SqmContents()
+            var arma2Contents = new ArmA2Objects.SqmContents()
                 {
-                    Mission = new MissionState()
+                    Mission = new ArmA2Objects.MissionState()
                         {
                             Groups = missionGroups
                         }
@@ -28,20 +32,22 @@ namespace SQMReorderer.Tests.MainView
             var sut = new TeamViewModelsFactoryVisitor(teamViewModelsFactory, null);
             var teamViewModels = sut.Visit(arma2Contents);
 
-            Assert.AreEqual(exectedTeamViewModel, teamViewModels[0]);
+            Assert.AreEqual(expectedTeamViewModel, teamViewModels[0]);
         }
 
         [Test]
         public void Visits_with_arma_3_contents()
         {
-            var missionGroups = new List<SQMImportExport.Import.ArmA3.ResultObjects.Vehicle>();
-            var exectedTeamViewModel = new Gui.ViewModels.ArmA3.TeamViewModel();
+            var missionGroups = new List<ArmA3Objects.Vehicle>();
+            var expectedTeamViewModel = new Gui.ViewModels.ArmA3.TeamViewModel();
             var teamViewModelsFactory = Substitute.For<Gui.ViewModels.ArmA3.ITeamViewModelsFactory>();
-            teamViewModelsFactory.Create(missionGroups).Returns(new List<Gui.ViewModels.ArmA3.TeamViewModel>() { exectedTeamViewModel });
+            teamViewModelsFactory
+                .Create(Arg.Is<List<ArmA3Objects.Vehicle>>(x => x.SequenceEqual(missionGroups)))
+                .Returns(new List<Gui.ViewModels.ArmA3.TeamViewModel>() { expectedTeamViewModel });
 
-            var arma3Contents = new SQMImportExport.Import.ArmA3.ResultObjects.SqmContents()
+            var arma3Contents = new ArmA3Objects.SqmContents()
                 {
-                    Mission = new SQMImportExport.Import.ArmA3.ResultObjects.MissionState()
+                    Mission = new ArmA3Objects.MissionState()
                         {
                             Groups = missionGroups
                         }
@@ -50,7 +56,7 @@ namespace SQMReorderer.Tests.MainView
             var sut = new TeamViewModelsFactoryVisitor(null, teamViewModelsFactory);
             var teamViewModels = sut.Visit(arma3Contents);
 
-            Assert.AreEqual(exectedTeamViewModel, teamViewModels[0]);
+            Assert.AreEqual(expectedTeamViewModel, teamViewModels[0]);
         }
     }
 }

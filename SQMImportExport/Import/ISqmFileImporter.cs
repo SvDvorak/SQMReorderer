@@ -4,6 +4,6 @@ namespace SQMImportExport.Import
 {
     internal interface ISqmFileImporter
     {
-        ISqmContents Import(Stream fileStream);
+        SqmContentsBase Import(Stream fileStream);
     }
 }

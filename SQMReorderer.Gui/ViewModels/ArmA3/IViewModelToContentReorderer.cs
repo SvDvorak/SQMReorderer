@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using SQMImportExport.Import.ArmA3.ResultObjects;
+using SQMImportExport.Import;
 
 namespace SQMReorderer.Gui.ViewModels.ArmA3
 {
     public interface IViewModelToContentReorderer
     {
-        void Reorder(MissionState mission, List<TeamViewModel> teamViewModels);
+        void Reorder(MissionStateBase mission, List<ITeamViewModel> teamViewModels);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using SQMImportExport;
@@ -293,8 +294,10 @@ namespace SQMReorderer.Tests.Export.ArmA3
             item1_2.Number = 5;
             item1_2.Id = 6;
 
-            item1.Vehicles.Add(item1_1);
-            item1.Vehicles.Add(item1_2);
+            var item1Vehicles = item1.Vehicles.ToList();
+            item1Vehicles.Add(item1_1);
+            item1Vehicles.Add(item1_2);
+            item1.Vehicles = item1Vehicles;
 
             var actualItemsText = exportVisitor.Visit("Item", item1);
 

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using SQMImportExport.Import.ResultObjects;
 
 namespace SQMImportExport.Import.ArmA3.ResultObjects
 {
-    public class Waypoint : ItemBase
+    public class Waypoint : VehicleBase
     {
         public Waypoint()
         {

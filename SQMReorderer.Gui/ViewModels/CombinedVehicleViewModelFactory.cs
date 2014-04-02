@@ -13,7 +13,7 @@ namespace SQMReorderer.Gui.ViewModels
             _addInitDialogFactory = addInitDialogFactory;
         }
 
-        public ICombinedVehicleViewModel Create(List<IVehicleViewModel> vehicleViewModels)
+        public ICombinedVehicleViewModel Create(List<VehicleViewModelBase> vehicleViewModels)
         {
             if (vehicleViewModels.Count == 0)
             {

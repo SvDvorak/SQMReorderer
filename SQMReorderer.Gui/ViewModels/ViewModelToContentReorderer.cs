@@ -1,16 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
-using SQMImportExport.Import.ArmA3.ResultObjects;
+using SQMImportExport.Import;
+using SQMImportExport.Import.ResultObjects;
+using SQMReorderer.Gui.ViewModels.ArmA3;
 
-namespace SQMReorderer.Gui.ViewModels.ArmA3
+namespace SQMReorderer.Gui.ViewModels
 {
     public class ViewModelToContentReorderer : IViewModelToContentReorderer
     {
-        private Dictionary<Vehicle, VehiclePositionInfo> _parentChildDictionary;
+        private Dictionary<VehicleBase, VehiclePositionInfo> _parentChildDictionary;
+        private int _continousGroupIndex;
 
-        public void Reorder(MissionState mission, List<TeamViewModel> teamViewModels)
+        public void Reorder(MissionStateBase mission, List<ITeamViewModel> teamViewModels)
         {
-            _parentChildDictionary = new Dictionary<Vehicle, VehiclePositionInfo>();
+            _parentChildDictionary = new Dictionary<VehicleBase, VehiclePositionInfo>();
+            _continousGroupIndex = 0;
 
             foreach (var teamViewModel in teamViewModels)
             {
@@ -20,31 +24,33 @@ namespace SQMReorderer.Gui.ViewModels.ArmA3
             UpdateOrder(mission.Groups);
         }
 
-        private void AddToDictionary(List<GroupViewModel> groups)
+        private void AddToDictionary(List<IGroupViewModel> groups)
         {
             for (var index = 0; index < groups.Count; index++)
             {
                 var groupViewModel = groups[index];
                 _parentChildDictionary.Add(
                     groupViewModel.ConnectedVehicle,
-                    new VehiclePositionInfo(index, groupViewModel.Vehicles.Select(x => x.Vehicle).ToList()));
+                    new VehiclePositionInfo(index + _continousGroupIndex, groupViewModel.Vehicles.Select(x => x.Vehicle).ToList()));
 
                 AddToDictionary(groupViewModel.Vehicles.ToList());
             }
+
+            _continousGroupIndex = groups.Count;
         }
 
-        private void AddToDictionary(List<VehicleViewModel> vehicles)
+        private void AddToDictionary(List<VehicleViewModelBase> vehicles)
         {
             for (var index = 0; index < vehicles.Count; index++)
             {
                 var groupViewModel = vehicles[index];
                 _parentChildDictionary.Add(
                     groupViewModel.Vehicle,
-                    new VehiclePositionInfo(index, new List<Vehicle>()));
+                    new VehiclePositionInfo(index, new List<VehicleBase>()));
             }
         }
 
-        private void UpdateOrder(List<Vehicle> vehicles)
+        private void UpdateOrder(IEnumerable<VehicleBase> vehicles)
         {
             foreach (var vehicle in vehicles)
             {
@@ -61,14 +67,14 @@ namespace SQMReorderer.Gui.ViewModels.ArmA3
 
         private class VehiclePositionInfo
         {
-            public VehiclePositionInfo(int number, List<Vehicle> children)
+            public VehiclePositionInfo(int number, List<VehicleBase> children)
             {
                 Number = number;
                 Children = children;
             }
 
             public int Number { get; private set; }
-            public List<Vehicle> Children { get; private set; } 
+            public List<VehicleBase> Children { get; private set; } 
         }
     }
 }

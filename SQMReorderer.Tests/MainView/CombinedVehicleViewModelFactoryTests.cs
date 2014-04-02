@@ -12,9 +12,9 @@ namespace SQMReorderer.Tests.MainView
         {
             var sut = new CombinedVehicleViewModelFactory(null);
 
-            var combinedVehicleViewModel = sut.Create(new List<IVehicleViewModel>()
+            var combinedVehicleViewModel = sut.Create(new List<VehicleViewModelBase>()
                 {
-                    new Gui.ViewModels.ArmA2.VehicleViewModel(null, new List<Gui.ViewModels.ArmA2.VehicleViewModel>())
+                    new Gui.ViewModels.ArmA2.VehicleViewModel(null, new List<VehicleViewModelBase>())
                 });
 
             Assert.IsInstanceOf<Gui.ViewModels.ArmA2.CombinedVehicleViewModel>(combinedVehicleViewModel);
@@ -25,9 +25,9 @@ namespace SQMReorderer.Tests.MainView
         {
             var sut = new CombinedVehicleViewModelFactory(null);
 
-            var combinedVehicleViewModel = sut.Create(new List<IVehicleViewModel>()
+            var combinedVehicleViewModel = sut.Create(new List<VehicleViewModelBase>()
                 {
-                    new Gui.ViewModels.ArmA3.VehicleViewModel(null, new List<Gui.ViewModels.ArmA3.VehicleViewModel>())
+                    new Gui.ViewModels.ArmA3.VehicleViewModel(null, new List<VehicleViewModelBase>())
                 });
 
             Assert.IsInstanceOf<Gui.ViewModels.ArmA3.CombinedVehicleViewModel>(combinedVehicleViewModel);
@@ -38,7 +38,7 @@ namespace SQMReorderer.Tests.MainView
         {
             var sut = new CombinedVehicleViewModelFactory(null);
 
-            var combinedVehicleViewModel = sut.Create(new List<IVehicleViewModel>());
+            var combinedVehicleViewModel = sut.Create(new List<VehicleViewModelBase>());
 
             Assert.IsNull(combinedVehicleViewModel);
         }

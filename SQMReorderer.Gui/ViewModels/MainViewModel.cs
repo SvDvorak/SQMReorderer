@@ -10,7 +10,7 @@ namespace SQMReorderer.Gui.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private ISqmContents _sqmContents;
+        private SqmContentsBase _sqmContents;
         private string _lastOpenedFilePath;
 
         public MainViewModel()
@@ -41,8 +41,8 @@ namespace SQMReorderer.Gui.ViewModels
                 var combinedVehicleViewModelFactory = new CombinedVehicleViewModelFactory(new AddInitDialogFactory());
                 SelectedItemsViewModel =
                     combinedVehicleViewModelFactory.Create(_selectedItems
-                        .Where(x => x is IVehicleViewModel)
-                        .Cast<IVehicleViewModel>()
+                        .Where(x => x is VehicleViewModelBase)
+                        .Cast<VehicleViewModelBase>()
                         .ToList());
             }
         }
@@ -78,12 +78,8 @@ namespace SQMReorderer.Gui.ViewModels
             {
                 var saveSqmFile = new SaveSqmFile();
 
-                var reordererVisitor = new ViewModelToContentReordererVisitor(
-                    Teams.ToList(),
-                    new ArmA2.ViewModelToContentReorderer(),
-                    new ArmA3.ViewModelToContentReorderer());
-
-                _sqmContents.Accept(reordererVisitor);
+                var contentReorderer = new ViewModelToContentReorderer();
+				contentReorderer.Reorder(_sqmContents.Mission, Teams.ToList());
 
                 saveSqmFile.Save(_lastOpenedFilePath, _sqmContents);
             }
@@ -94,12 +90,8 @@ namespace SQMReorderer.Gui.ViewModels
             var exporterFactory = new SqmFileExporterFactory();
             var saveSqmFileDialog = new SaveSqmAsFileDialog(new SaveFileDialogAdapter(), exporterFactory);
 
-            var reordererVisitor = new ViewModelToContentReordererVisitor(
-                Teams.ToList(),
-                new ArmA2.ViewModelToContentReorderer(),
-                new ArmA3.ViewModelToContentReorderer());
-
-            _sqmContents.Accept(reordererVisitor);
+            var contentReorderer = new ViewModelToContentReorderer();
+            contentReorderer.Reorder(_sqmContents.Mission, Teams.ToList());
 
             saveSqmFileDialog.ShowDialog(_sqmContents);
         }

@@ -71,6 +71,8 @@
     <Compile Include="Export\ContextIndenterTests.cs" />
     <Compile Include="Export\ArmA2\SqmElementExportVisitorTests.cs" />
     <Compile Include="Export\SqmPropertyVisitorTests.cs" />
+    <Compile Include="IEnumerableExtensions.cs" />
+    <Compile Include="IEnumerableExtensionsTests.cs" />
     <Compile Include="Import\ArmA3\WaypointItemParserTests.cs" />
     <Compile Include="Import\EffectsParserTests.cs" />
     <Compile Include="Import\ArmA2\WaypointItemParserTests.cs" />
@@ -105,7 +107,7 @@
     <Compile Include="Import\ArmA3\SqmParserTests.cs" />
     <Compile Include="Import\ArmA3\VehicleItemParserTests.cs" />
     <Compile Include="MainView\ArmA3\CombinedVehicleViewModelTests.cs" />
-    <Compile Include="MainView\ArmA3\ViewModelToContentReordererTests.cs" />
+    <Compile Include="MainView\ViewModelToContentReordererTests.cs" />
     <Compile Include="MainView\ArmA2\CombinedVehicleViewModelTests.cs" />
     <Compile Include="MainView\ArmA2\GroupViewModelsFactoryTests.cs" />
     <Compile Include="MainView\ArmA2\TeamViewModelsFactoryTests.cs" />
@@ -122,8 +124,6 @@
     <Compile Include="Export\SaveSqmAsFileDialogTests.cs" />
     <Compile Include="Export\SqmFileExporterTests_arma_2.cs" />
     <Compile Include="Import\SqmFileImporterTests.cs" />
-    <Compile Include="MainView\ArmA2\ViewModelToContentReordererTests.cs" />
-    <Compile Include="MainView\ViewModelToContentReordererVisitorTests.cs" />
     <Compile Include="VectorTests.cs" />
   </ItemGroup>
   <ItemGroup>

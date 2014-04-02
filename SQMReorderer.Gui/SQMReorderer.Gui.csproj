@@ -37,6 +37,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SQMImportExport, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SQMImportExport.0.1\lib\net40\SQMImportExport.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml">
@@ -144,6 +148,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -155,10 +160,6 @@
     <ProjectReference Include="..\MultiSelectionTreeView\MultiSelectionTreeView.csproj">
       <Project>{20D00BCA-1981-4A2F-815B-79F05EDF6277}</Project>
       <Name>MultiSelectionTreeView</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SQMImportExport\SQMImportExport.csproj">
-      <Project>{2a3d6bf9-d17a-43bd-bea5-ebb73eb6e569}</Project>
-      <Name>SQMImportExport</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

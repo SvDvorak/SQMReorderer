@@ -57,56 +57,13 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EmbeddedResource Include="Import\ArmA3\mission.sqm" />
-    <EmbeddedResource Include="Import\ArmA2\mission.sqm" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DelegateCommandTests.cs" />
-    <Compile Include="DoubleExtensionsTests.cs" />
     <Compile Include="Export\SaveSqmFileTests.cs" />
-    <Compile Include="Export\SqmExporterTests.cs" />
-    <Compile Include="Export\SqmFileExporterTests_arma_3.cs" />
-    <Compile Include="Export\SqmFileExporterTestsBase.cs" />
-    <Compile Include="Export\ArmA3\SqmElementExportVisitorTests.cs" />
-    <Compile Include="Export\ContextIndenterTests.cs" />
-    <Compile Include="Export\ArmA2\SqmElementExportVisitorTests.cs" />
-    <Compile Include="Export\SqmPropertyVisitorTests.cs" />
     <Compile Include="IEnumerableExtensions.cs" />
     <Compile Include="IEnumerableExtensionsTests.cs" />
-    <Compile Include="Import\ArmA3\WaypointItemParserTests.cs" />
-    <Compile Include="Import\EffectsParserTests.cs" />
-    <Compile Include="Import\ArmA2\WaypointItemParserTests.cs" />
-    <Compile Include="Import\CommonRegexPatternsTests.cs" />
-    <Compile Include="Import\ArmA2\ContextSetterTests.cs" />
-    <Compile Include="Import\DoublePropertySetterTests.cs" />
-    <Compile Include="Import\FileVersionRetrieverTests.cs" />
-    <Compile Include="Import\IntegerListPropertySetterTests.cs" />
-    <Compile Include="Import\IntegerPropertySetterTests.cs" />
-    <Compile Include="Import\ArmA2\IntelParserTests.cs" />
-    <Compile Include="Import\ArmA2\ItemListParserTests.cs" />
-    <Compile Include="Import\ArmA2\MarkerItemParserTests.cs" />
-    <Compile Include="Import\ArmA2\MissionStateParserTests.cs" />
-    <Compile Include="Import\MultiLineStringListPropertySetterTests.cs" />
-    <Compile Include="Import\ParsingHelperFunctionsTests.cs" />
-    <Compile Include="Import\ArmA2\SensorItemParserTests.cs" />
-    <Compile Include="Import\SqmContextCreatorTests.cs" />
-    <Compile Include="Import\SqmFileTests.cs" />
-    <Compile Include="Import\ArmA2\SqmParserTests.cs" />
-    <Compile Include="Import\SqmImporterTests.cs" />
-    <Compile Include="Import\StringLineSetterTests.cs" />
-    <Compile Include="Import\StringListPropertySetterTests.cs" />
-    <Compile Include="Import\StringPropertySetterTests.cs" />
-    <Compile Include="Import\VectorPropertySetterTests.cs" />
-    <Compile Include="Import\ArmA2\VehicleItemParserTests.cs" />
-    <Compile Include="Import\ArmA3\ContextSetterTests.cs" />
-    <Compile Include="Import\ArmA3\IntelParserTests.cs" />
-    <Compile Include="Import\ArmA3\ItemListParserTests.cs" />
-    <Compile Include="Import\ArmA3\MarkerItemParserTests.cs" />
-    <Compile Include="Import\ArmA3\MissionStateParserTests.cs" />
-    <Compile Include="Import\ArmA3\SensorItemParserTests.cs" />
-    <Compile Include="Import\ArmA3\SqmParserTests.cs" />
-    <Compile Include="Import\ArmA3\VehicleItemParserTests.cs" />
     <Compile Include="MainView\ArmA3\CombinedVehicleViewModelTests.cs" />
     <Compile Include="MainView\ViewModelToContentReordererTests.cs" />
     <Compile Include="MainView\ArmA2\CombinedVehicleViewModelTests.cs" />
@@ -123,15 +80,8 @@
     <Compile Include="MainView\ViewModelBaseTests.cs" />
     <Compile Include="Import\OpenSqmFileDialogTests.cs" />
     <Compile Include="Export\SaveSqmAsFileDialogTests.cs" />
-    <Compile Include="Export\SqmFileExporterTests_arma_2.cs" />
-    <Compile Include="Import\SqmFileImporterTests.cs" />
-    <Compile Include="VectorTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SQMImportExport\SQMImportExport.csproj">
-      <Project>{2a3d6bf9-d17a-43bd-bea5-ebb73eb6e569}</Project>
-      <Name>SQMImportExport</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SQMReorderer.Gui\SQMReorderer.Gui.csproj">
       <Project>{c7d24ed6-684a-4772-8d10-fa2684d54ff5}</Project>
       <Name>SQMReorderer.Gui</Name>
@@ -145,6 +95,10 @@
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="SQMImportExport, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SQMImportExport.0.1\lib\net40\SQMImportExport.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

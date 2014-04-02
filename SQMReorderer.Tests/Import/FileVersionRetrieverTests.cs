@@ -26,7 +26,7 @@ namespace SQMReorderer.Tests.Import
         [Test]
         public void Throws_exception_when_stream_is_empty()
         {
-            Assert.Throws<SqmVersionException>(() => _sut.GetVersion(_stream));
+            Assert.Throws<SqmMissingVersionException>(() => _sut.GetVersion(_stream));
         }
 
         [Test]
@@ -34,13 +34,15 @@ namespace SQMReorderer.Tests.Import
         {
             _streamReader.ReadLine().Returns("blagh blagh");
 
-            Assert.Throws<SqmVersionException>(() => _sut.GetVersion(_stream));
+            Assert.Throws<SqmMissingVersionException>(() => _sut.GetVersion(_stream));
         }
 
         [Test]
         public void Throws_exception_when_file_version_is_unknown()
         {
-            Assert.Throws<SqmVersionException>(() => _sut.GetVersion(0));
+            _streamReader.ReadLine().Returns("version=14;");
+
+            Assert.Throws<SqmIncorrectVersionException>(() => _sut.GetVersion(_stream));
         }
 
         [Test]
@@ -48,10 +50,8 @@ namespace SQMReorderer.Tests.Import
         {
             _streamReader.ReadLine().Returns("version=11;");
 
-            var intFileVersion = _sut.GetVersion(11);
             var streamFileVersion = _sut.GetVersion(_stream);
 
-            Assert.AreEqual(FileVersion.ArmA2, intFileVersion);
             Assert.AreEqual(FileVersion.ArmA2, streamFileVersion);
         }
 
@@ -60,10 +60,8 @@ namespace SQMReorderer.Tests.Import
         {
             _streamReader.ReadLine().Returns("version=12;");
 
-            var intFileVersion = _sut.GetVersion(12);
             var streamFileVersion = _sut.GetVersion(_stream);
 
-            Assert.AreEqual(FileVersion.ArmA3, intFileVersion);
             Assert.AreEqual(FileVersion.ArmA3, streamFileVersion);
         }
 

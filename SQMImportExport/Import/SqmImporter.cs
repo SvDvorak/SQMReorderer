@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using SQMImportExport.Common;
 using SQMImportExport.Import.Context;
 using SQMImportExport.Import.FileVersion;
@@ -31,13 +32,27 @@ namespace SQMImportExport.Import
 
         public SqmContentsBase Import(Stream stream)
         {
-            var fileVersion = _fileVersionRetriever.GetVersion(stream);
-            if (fileVersion == FileVersion.FileVersion.ArmA2)
+            try
             {
-                return _arma2Importer.Import(stream);
-            }
+                var fileVersion = _fileVersionRetriever.GetVersion(stream);
+                if (fileVersion == FileVersion.FileVersion.ArmA2)
+                {
+                    return _arma2Importer.Import(stream);
+                }
 
-            return _arma3Importer.Import(stream);
+                return _arma3Importer.Import(stream);
+            }
+            catch (Exception exception)
+            {
+                throw new SqmContentsInvalidException(exception);
+            }
+        }
+    }
+
+    public class SqmContentsInvalidException : Exception
+    {
+        public SqmContentsInvalidException(Exception innerException) : base("SQM file contents are invalid", innerException)
+        {
         }
     }
 }

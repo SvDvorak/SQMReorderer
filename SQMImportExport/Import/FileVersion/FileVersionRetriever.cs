@@ -15,20 +15,6 @@ namespace SQMImportExport.Import.FileVersion
             _streamReaderFactory = streamReaderFactory;
         }
 
-        public FileVersion GetVersion(int version)
-        {
-            if (version == 11)
-            {
-                return FileVersion.ArmA2;
-            }
-            if (version == 12)
-            {
-                return FileVersion.ArmA3;
-            }
-
-            throw new SqmVersionException("Version " + version + " is unknown");
-        }
-
         public FileVersion GetVersion(Stream stream)
         {
             var streamReader = _streamReaderFactory.Create(stream);
@@ -41,18 +27,31 @@ namespace SQMImportExport.Import.FileVersion
             return GetVersion(version);
         }
 
+        private FileVersion GetVersion(int version)
+        {
+            if (version == 11)
+            {
+                return FileVersion.ArmA2;
+            }
+            if (version == 12)
+            {
+                return FileVersion.ArmA3;
+            }
+
+            throw new SqmIncorrectVersionException(version);
+        }
+
         private int MatchVersion(string versionLine)
         {
             var match = _versionRegex.Match(versionLine);
             var versionGroup = match.Groups["version"];
 
-            var version = -1;
-            if (versionGroup.Success)
+            if (!versionGroup.Success)
             {
-                version = Convert.ToInt32(versionGroup.Value);
+				throw new SqmMissingVersionException();
             }
 
-            return version;
+            return Convert.ToInt32(versionGroup.Value);
         }
     }
 }

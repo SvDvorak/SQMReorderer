@@ -70,7 +70,6 @@
     <Compile Include="Export\ArmA2\SqmElementExportVisitor.cs" />
     <Compile Include="Export\SqmExporter.cs" />
     <Compile Include="Export\SqmFileExporter.cs" />
-    <Compile Include="Export\SqmExportException.cs" />
     <Compile Include="Export\SqmFileExporterFactory.cs" />
     <Compile Include="Export\SqmPropertyVisitor.cs" />
     <Compile Include="Common\IMissionState.cs" />

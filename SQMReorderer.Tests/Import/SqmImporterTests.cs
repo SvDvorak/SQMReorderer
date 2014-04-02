@@ -26,6 +26,15 @@ namespace SQMReorderer.Tests.Import
         }
 
         [Test]
+        public void Throws_incorrect_file_contents_when_missing_version()
+        {
+            var stream = Substitute.For<Stream>();
+            _fileVersionRetriever.GetVersion(stream).Returns(x => { throw new SqmMissingVersionException(); });
+
+            Assert.Throws<SqmContentsInvalidException>(() => _sut.Import(stream));
+        }
+
+        [Test]
         public void Uses_arma_2_parser_when_file_version_indicates_arma_2_version()
         {
             var stream = Substitute.For<Stream>();

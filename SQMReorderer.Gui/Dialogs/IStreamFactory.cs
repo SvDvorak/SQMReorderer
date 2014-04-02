@@ -1,8 +1,8 @@
 using System.IO;
 
-namespace SQMImportExport.Export
+namespace SQMReorderer.Gui.Dialogs
 {
-    internal interface IStreamFactory
+    public interface IStreamFactory
     {
         Stream Create(string filePath);
     }

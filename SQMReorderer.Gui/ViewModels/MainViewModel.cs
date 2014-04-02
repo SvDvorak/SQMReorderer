@@ -77,7 +77,7 @@ namespace SQMReorderer.Gui.ViewModels
         {
             if(!string.IsNullOrEmpty(_lastOpenedFilePath))
             {
-                var saveSqmFile = new SaveSqmFile();
+                var saveSqmFile = new SaveSqmFile(new StreamFactory(), new SqmExporter());
 
                 var contentReorderer = new ViewModelToContentReorderer();
 				contentReorderer.Reorder(_sqmContents.Mission, Teams.ToList());

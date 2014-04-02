@@ -65,6 +65,7 @@
     <Compile Include="DelegateCommandTests.cs" />
     <Compile Include="DoubleExtensionsTests.cs" />
     <Compile Include="Export\SaveSqmFileTests.cs" />
+    <Compile Include="Export\SqmExporterTests.cs" />
     <Compile Include="Export\SqmFileExporterTests_arma_3.cs" />
     <Compile Include="Export\SqmFileExporterTestsBase.cs" />
     <Compile Include="Export\ArmA3\SqmElementExportVisitorTests.cs" />

@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace SQMImportExport.Export
+namespace SQMReorderer.Gui.Dialogs
 {
     internal class StreamFactory : IStreamFactory
     {

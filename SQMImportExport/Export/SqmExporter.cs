@@ -1,21 +1,19 @@
+﻿using System.IO;
 using SQMImportExport.Common;
 
 namespace SQMImportExport.Export
 {
-    public class SaveSqmFile
+    public class SqmExporter : ISqmExporter
     {
-        private readonly IStreamFactory _streamFactory;
         private readonly ISqmFileExporterFactory _exporterFactory;
 
-        internal SaveSqmFile(IStreamFactory streamFactory, ISqmFileExporterFactory exporterFactory)
+        public SqmExporter(ISqmFileExporterFactory exporterFactory)
         {
-            _streamFactory = streamFactory;
             _exporterFactory = exporterFactory;
         }
 
-        public SaveSqmFile()
+        public SqmExporter()
             : this(
-                new StreamFactory(),
                 new SqmFileExporterFactory(
                     new ArmA2.SqmElementExportVisitor(),
                     new ArmA3.SqmElementExportVisitor(),
@@ -23,14 +21,10 @@ namespace SQMImportExport.Export
         {
         }
 
-        public void Save(string filePath, SqmContentsBase sqmContents)
+        public void Export(Stream stream, SqmContentsBase contents)
         {
-            var stream = _streamFactory.Create(filePath);
-
             var exportVisitor = _exporterFactory.Create(stream);
-            sqmContents.Accept(exportVisitor);
-
-            stream.Close();
+            contents.Accept(exportVisitor);
         }
     }
 }

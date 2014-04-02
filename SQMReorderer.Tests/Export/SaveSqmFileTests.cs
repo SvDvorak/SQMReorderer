@@ -3,7 +3,7 @@ using NSubstitute;
 using NUnit.Framework;
 using SQMImportExport.Common;
 using SQMImportExport.Export;
-using SQMImportExport.Import;
+using SQMReorderer.Gui.Dialogs;
 
 namespace SQMReorderer.Tests.Export
 {
@@ -12,8 +12,7 @@ namespace SQMReorderer.Tests.Export
     {
         private IStreamFactory _streamFactory;
         private Stream _stream;
-        private ISqmFileExporterFactory _exporterFactory;
-        private ISqmContentsVisitor _exportVisitor;
+        private ISqmExporter _sqmExporter;
         private SqmContentsBase _sqmContents;
 
         [SetUp]
@@ -22,22 +21,20 @@ namespace SQMReorderer.Tests.Export
             _streamFactory = Substitute.For<IStreamFactory>();
             _stream = Substitute.For<Stream>();
 
-            _exporterFactory = Substitute.For<ISqmFileExporterFactory>();
-            _exportVisitor = Substitute.For<ISqmContentsVisitor>();
+            _sqmExporter = Substitute.For<ISqmExporter>();
 
             _sqmContents = Substitute.For<SqmContentsBase>();
         }
 
         [Test]
-        public void Contents_accept_visitor_created_from_exporter()
+        public void Exports_contents_with_exporter_using_stream()
         {
             _streamFactory.Create("testFilePath").Returns(_stream);
-            _exporterFactory.Create(_stream).Returns(_exportVisitor);
 
-            var sut = new SaveSqmFile(_streamFactory, _exporterFactory);
+            var sut = new SaveSqmFile(_streamFactory, _sqmExporter);
             sut.Save("testFilePath", _sqmContents);
 
-            _sqmContents.Received().Accept(_exportVisitor);
+			_sqmExporter.Received().Export(_stream, _sqmContents);
         }
 
         [Test]
@@ -45,7 +42,7 @@ namespace SQMReorderer.Tests.Export
         {
             _streamFactory.Create("testFilePath").Returns(_stream);
 
-            var sut = new SaveSqmFile(_streamFactory, _exporterFactory);
+            var sut = new SaveSqmFile(_streamFactory, _sqmExporter);
             sut.Save("testFilePath", _sqmContents);
 
             _stream.Received().Close();

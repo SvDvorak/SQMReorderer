@@ -88,8 +88,7 @@ namespace SQMReorderer.Gui.ViewModels
 
         private void SaveFileAs()
         {
-            var exporterFactory = new SqmFileExporterFactory();
-            var saveSqmFileDialog = new SaveSqmAsFileDialog(new SaveFileDialogAdapter(), exporterFactory);
+            var saveSqmFileDialog = new SaveSqmAsFileDialog(new SaveFileDialogAdapter(), new SqmExporter());
 
             var contentReorderer = new ViewModelToContentReorderer();
             contentReorderer.Reorder(_sqmContents.Mission, Teams.ToList());

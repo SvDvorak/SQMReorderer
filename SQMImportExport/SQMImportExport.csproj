@@ -165,7 +165,7 @@
     <Compile Include="StreamHelpers\StreamToStringsReader.cs" />
     <Compile Include="StreamHelpers\StreamWriterAdapter.cs" />
     <Compile Include="StreamHelpers\StreamWriterFactory.cs" />
-    <Compile Include="Vector.cs" />
+    <Compile Include="Common\Vector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

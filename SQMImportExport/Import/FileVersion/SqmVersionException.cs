@@ -9,7 +9,7 @@ namespace SQMImportExport.Import.FileVersion
         }
     }
 
-    internal class SqmIncorrectVersionException : SqmVersionException
+    public class SqmIncorrectVersionException : SqmVersionException
     {
         public SqmIncorrectVersionException(int version) : base("Version " + version + " is unknown")
         {

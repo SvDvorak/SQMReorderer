@@ -2,7 +2,7 @@
 
 namespace SQMImportExport
 {
-    public static class DoubleExtensions
+    internal static class DoubleExtensions
     {
         public static string ToStringInvariant(this double value)
         {

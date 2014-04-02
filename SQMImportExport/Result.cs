@@ -1,6 +1,6 @@
 namespace SQMImportExport
 {
-    public enum Result
+    internal enum Result
     {
         Success,
         Failure

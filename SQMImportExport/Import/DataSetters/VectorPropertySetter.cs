@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using SQMImportExport.Common;
 using SQMImportExport.Import.HelperFunctions;
 
 namespace SQMImportExport.Import.DataSetters

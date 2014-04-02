@@ -7,7 +7,7 @@ namespace SQMImportExport.Export
     {
         private readonly ISqmFileExporterFactory _exporterFactory;
 
-        public SqmExporter(ISqmFileExporterFactory exporterFactory)
+        internal SqmExporter(ISqmFileExporterFactory exporterFactory)
         {
             _exporterFactory = exporterFactory;
         }

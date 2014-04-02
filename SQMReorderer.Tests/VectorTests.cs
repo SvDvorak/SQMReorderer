@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SQMImportExport;
+using SQMImportExport.Common;
 
 namespace SQMReorderer.Tests
 {

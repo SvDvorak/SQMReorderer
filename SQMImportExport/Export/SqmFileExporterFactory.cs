@@ -4,7 +4,7 @@ using SQMImportExport.StreamHelpers;
 
 namespace SQMImportExport.Export
 {
-    public class SqmFileExporterFactory : ISqmFileExporterFactory
+    internal class SqmFileExporterFactory : ISqmFileExporterFactory
     {
         private readonly ArmA2.ISqmElementVisitor _arma2Exporter;
         private readonly ArmA3.ISqmElementVisitor _arma3Exporter;

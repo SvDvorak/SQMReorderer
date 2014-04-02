@@ -1,6 +1,6 @@
 ﻿namespace SQMImportExport.Import.FileVersion
 {
-    public enum FileVersion
+    internal enum FileVersion
     {
         ArmA2,
         ArmA3

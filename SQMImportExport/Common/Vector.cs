@@ -1,4 +1,4 @@
-namespace SQMImportExport
+namespace SQMImportExport.Common
 {
     public class Vector
     {

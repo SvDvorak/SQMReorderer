@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SQMImportExport;
+using SQMImportExport.Common;
 using SQMImportExport.Import.Context;
 using SQMImportExport.Import.DataSetters;
 

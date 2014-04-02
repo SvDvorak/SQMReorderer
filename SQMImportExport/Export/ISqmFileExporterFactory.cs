@@ -1,10 +1,9 @@
 using System.IO;
 using SQMImportExport.Common;
-using SQMImportExport.Import;
 
 namespace SQMImportExport.Export
 {
-    public interface ISqmFileExporterFactory
+    internal interface ISqmFileExporterFactory
     {
         ISqmContentsVisitor Create(Stream stream);
     }

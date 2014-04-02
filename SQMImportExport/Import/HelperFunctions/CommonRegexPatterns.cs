@@ -1,6 +1,6 @@
 ﻿namespace SQMImportExport.Import.HelperFunctions
 {
-    public static class CommonRegexPatterns
+    internal static class CommonRegexPatterns
     {
         public static string DoublePattern
         {

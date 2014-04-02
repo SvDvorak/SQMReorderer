@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Text;
 using NUnit.Framework;
+using SQMImportExport.Common;
 using SQMImportExport.Export;
 using SQMImportExport.Export.ArmA2;
 using SQMImportExport.Import;

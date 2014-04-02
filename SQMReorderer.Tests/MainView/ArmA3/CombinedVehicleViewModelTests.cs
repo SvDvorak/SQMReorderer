@@ -2,7 +2,7 @@
 using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
-using SQMImportExport.Import.ArmA3.ResultObjects;
+using SQMImportExport.ArmA3;
 using SQMReorderer.Gui.Dialogs;
 using SQMReorderer.Gui.Dialogs.AddInit;
 using SQMReorderer.Gui.ViewModels;

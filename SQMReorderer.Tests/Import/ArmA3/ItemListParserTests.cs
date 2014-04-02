@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMImportExport.ArmA3;
 using SQMImportExport.Import;
-using SQMImportExport.Import.ArmA3.Parsers;
-using SQMImportExport.Import.ArmA3.Parsers.Vehicle;
-using SQMImportExport.Import.ArmA3.ResultObjects;
+using SQMImportExport.Import.ArmA3;
+using SQMImportExport.Import.ArmA3.Vehicle;
 using SQMImportExport.Import.Context;
 
 namespace SQMReorderer.Tests.Import.ArmA3

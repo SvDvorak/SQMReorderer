@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SQMImportExport.Import.ArmA2.ResultObjects;
-using SQMImportExport.Import.ResultObjects;
+using SQMImportExport.ArmA2;
+using SQMImportExport.Common;
 
 namespace SQMImportExport.Export.ArmA2
 {

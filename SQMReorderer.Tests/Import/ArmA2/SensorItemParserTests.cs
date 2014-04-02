@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMImportExport.Import.ArmA2.Parsers.Sensor;
+using SQMImportExport.Import.ArmA2.Sensor;
 using SQMImportExport.Import.Context;
 
 namespace SQMReorderer.Tests.Import.ArmA2

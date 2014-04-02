@@ -1,4 +1,4 @@
-using SQMImportExport.Import;
+using SQMImportExport.Common;
 
 namespace SQMImportExport.Export
 {

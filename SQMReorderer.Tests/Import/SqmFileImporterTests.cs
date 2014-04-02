@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
+using SQMImportExport.ArmA2;
 using SQMImportExport.Import;
-using SQMImportExport.Import.ArmA2.ResultObjects;
 using SQMImportExport.Import.Context;
 using SQMImportExport.StreamHelpers;
 

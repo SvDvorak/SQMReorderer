@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMImportExport;
+using SQMImportExport.Common;
 using SQMImportExport.Export;
-using SQMImportExport.Import.ResultObjects;
 
 namespace SQMReorderer.Tests.Export
 {

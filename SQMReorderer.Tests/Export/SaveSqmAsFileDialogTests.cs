@@ -1,6 +1,7 @@
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
+using SQMImportExport.Common;
 using SQMImportExport.Export;
 using SQMImportExport.Import;
 using SQMReorderer.Gui.Dialogs;

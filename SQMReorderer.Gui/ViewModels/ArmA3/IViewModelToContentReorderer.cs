@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using SQMImportExport.Common;
 using SQMImportExport.Import;
 
 namespace SQMReorderer.Gui.ViewModels.ArmA3

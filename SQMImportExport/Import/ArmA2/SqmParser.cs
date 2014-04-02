@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using SQMImportExport.Import.ArmA2.Parsers.MissionState;
-using SQMImportExport.Import.ArmA2.ResultObjects;
+using SQMImportExport.ArmA2;
+using SQMImportExport.Common;
+using SQMImportExport.Import.ArmA2.MissionState;
 using SQMImportExport.Import.Context;
 using SQMImportExport.Import.DataSetters;
 
@@ -16,10 +17,10 @@ namespace SQMImportExport.Import.ArmA2
             var outroWinParser = new MissionStateParser("OutroWin");
             var outroLooseParser = new MissionStateParser("OutroLoose");
 
-            ContextSetters.Add(new ContextSetter<MissionState>(missionParser, x => ParseResult.Mission = x));
-            ContextSetters.Add(new ContextSetter<MissionState>(introParser, x => ParseResult.Intro = x));
-            ContextSetters.Add(new ContextSetter<MissionState>(outroWinParser, x => ParseResult.OutroWin = x));
-            ContextSetters.Add(new ContextSetter<MissionState>(outroLooseParser, x => ParseResult.OutroLose = x));
+            ContextSetters.Add(new ContextSetter<SQMImportExport.ArmA2.MissionState>(missionParser, x => ParseResult.Mission = x));
+            ContextSetters.Add(new ContextSetter<SQMImportExport.ArmA2.MissionState>(introParser, x => ParseResult.Intro = x));
+            ContextSetters.Add(new ContextSetter<SQMImportExport.ArmA2.MissionState>(outroWinParser, x => ParseResult.OutroWin = x));
+            ContextSetters.Add(new ContextSetter<SQMImportExport.ArmA2.MissionState>(outroLooseParser, x => ParseResult.OutroLose = x));
 
             LineSetters.Add(new IntegerPropertySetter("version", x => ParseResult.Version = x));
         }

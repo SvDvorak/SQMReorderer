@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using SQMImportExport.Import.ArmA2.ResultObjects;
+using SQMImportExport.ArmA2;
 
 namespace SQMImportExport.Export.ArmA2
 {

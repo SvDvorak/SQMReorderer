@@ -1,5 +1,5 @@
 using System.IO;
-using SQMImportExport.Import;
+using SQMImportExport.Common;
 using SQMImportExport.StreamHelpers;
 
 namespace SQMImportExport.Export

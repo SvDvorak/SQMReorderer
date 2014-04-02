@@ -1,4 +1,4 @@
-using SQMImportExport.Import;
+using SQMImportExport.Common;
 using SQMImportExport.StreamHelpers;
 
 namespace SQMImportExport.Export
@@ -22,7 +22,7 @@ namespace SQMImportExport.Export
             _contextIndenter = contextIndenter;
         }
 
-        public void Visit(Import.ArmA2.ResultObjects.SqmContents arma2Contents)
+        public void Visit(SQMImportExport.ArmA2.SqmContents arma2Contents)
         {
             var contentText = _arma2ElementVisitor.Visit("", arma2Contents);
             var indentedText = _contextIndenter.Indent(contentText);
@@ -30,7 +30,7 @@ namespace SQMImportExport.Export
             WriteText(indentedText);
         }
 
-        public void Visit(Import.ArmA3.ResultObjects.SqmContents arma3Contents)
+        public void Visit(SQMImportExport.ArmA3.SqmContents arma3Contents)
         {
             var contentText = _arma3ElementVisitor.Visit("", arma3Contents);
             var indentedText = _contextIndenter.Indent(contentText);

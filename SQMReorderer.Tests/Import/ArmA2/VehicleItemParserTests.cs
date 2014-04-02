@@ -2,7 +2,7 @@
 using System.Linq;
 using NUnit.Framework;
 using SQMImportExport.Import;
-using SQMImportExport.Import.ArmA2.Parsers.Vehicle;
+using SQMImportExport.Import.ArmA2.Vehicle;
 using SQMImportExport.Import.Context;
 
 namespace SQMReorderer.Tests.Import.ArmA2

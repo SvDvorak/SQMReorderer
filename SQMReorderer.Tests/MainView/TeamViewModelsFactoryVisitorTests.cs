@@ -2,9 +2,8 @@
 using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
+using SQMImportExport.ArmA2;
 using SQMReorderer.Gui.ViewModels;
-using ArmA2Objects = SQMImportExport.Import.ArmA2.ResultObjects;
-using ArmA3Objects = SQMImportExport.Import.ArmA3.ResultObjects;
 
 namespace SQMReorderer.Tests.MainView
 {
@@ -14,16 +13,16 @@ namespace SQMReorderer.Tests.MainView
         [Test]
         public void Visits_with_arma_2_contents()
         {
-            var missionGroups = new List<ArmA2Objects.Vehicle>();
+            var missionGroups = new List<Vehicle>();
             var expectedTeamViewModel = new Gui.ViewModels.ArmA2.TeamViewModel();
             var teamViewModelsFactory = Substitute.For<Gui.ViewModels.ArmA2.ITeamViewModelsFactory>();
             teamViewModelsFactory
-                .Create(Arg.Is<List<ArmA2Objects.Vehicle>>(x => x.SequenceEqual(missionGroups)))
+                .Create(Arg.Is<List<Vehicle>>(x => x.SequenceEqual(missionGroups)))
                 .Returns(new List<Gui.ViewModels.ArmA2.TeamViewModel>() { expectedTeamViewModel });
 
-            var arma2Contents = new ArmA2Objects.SqmContents()
+            var arma2Contents = new SqmContents()
                 {
-                    Mission = new ArmA2Objects.MissionState()
+                    Mission = new MissionState()
                         {
                             Groups = missionGroups
                         }
@@ -38,16 +37,16 @@ namespace SQMReorderer.Tests.MainView
         [Test]
         public void Visits_with_arma_3_contents()
         {
-            var missionGroups = new List<ArmA3Objects.Vehicle>();
+            var missionGroups = new List<SQMImportExport.ArmA3.Vehicle>();
             var expectedTeamViewModel = new Gui.ViewModels.ArmA3.TeamViewModel();
             var teamViewModelsFactory = Substitute.For<Gui.ViewModels.ArmA3.ITeamViewModelsFactory>();
             teamViewModelsFactory
-                .Create(Arg.Is<List<ArmA3Objects.Vehicle>>(x => x.SequenceEqual(missionGroups)))
+                .Create(Arg.Is<List<SQMImportExport.ArmA3.Vehicle>>(x => x.SequenceEqual(missionGroups)))
                 .Returns(new List<Gui.ViewModels.ArmA3.TeamViewModel>() { expectedTeamViewModel });
 
-            var arma3Contents = new ArmA3Objects.SqmContents()
+            var arma3Contents = new SQMImportExport.ArmA3.SqmContents()
                 {
-                    Mission = new ArmA3Objects.MissionState()
+                    Mission = new SQMImportExport.ArmA3.MissionState()
                         {
                             Groups = missionGroups
                         }

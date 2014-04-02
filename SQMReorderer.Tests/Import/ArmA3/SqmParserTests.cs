@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SQMImportExport.ArmA3;
 using SQMImportExport.Import.ArmA3;
-using SQMImportExport.Import.ArmA3.ResultObjects;
 using SQMImportExport.Import.Context;
 
 namespace SQMReorderer.Tests.Import.ArmA3

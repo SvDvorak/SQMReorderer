@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using SQMImportExport.Common;
 using SQMImportExport.Import.Context;
 using SQMImportExport.Import.FileVersion;
 using SQMImportExport.StreamHelpers;

@@ -3,9 +3,9 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using SQMImportExport;
+using SQMImportExport.ArmA2;
+using SQMImportExport.Common;
 using SQMImportExport.Export.ArmA2;
-using SQMImportExport.Import.ArmA2.ResultObjects;
-using SQMImportExport.Import.ResultObjects;
 
 namespace SQMReorderer.Tests.Export.ArmA2
 {

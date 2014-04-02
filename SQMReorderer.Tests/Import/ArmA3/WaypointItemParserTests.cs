@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMImportExport.Import.ArmA3.Parsers.Waypoint;
+using SQMImportExport.Import.ArmA3.Waypoint;
 using SQMImportExport.Import.Context;
 
 namespace SQMReorderer.Tests.Import.ArmA3

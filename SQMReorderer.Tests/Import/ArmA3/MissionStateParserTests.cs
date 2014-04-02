@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMImportExport.Import.ArmA3.Parsers.MissionState;
+using SQMImportExport.Import.ArmA3.MissionState;
 using SQMImportExport.Import.Context;
 
 namespace SQMReorderer.Tests.Import.ArmA3

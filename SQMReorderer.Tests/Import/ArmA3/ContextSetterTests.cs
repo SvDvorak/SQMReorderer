@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SQMImportExport;
-using SQMImportExport.Import.ArmA3.Parsers.Intel;
-using SQMImportExport.Import.ArmA3.ResultObjects;
+using SQMImportExport.ArmA3;
+using SQMImportExport.Import.ArmA3.Intel;
 using SQMImportExport.Import.Context;
 using SQMImportExport.Import.DataSetters;
 

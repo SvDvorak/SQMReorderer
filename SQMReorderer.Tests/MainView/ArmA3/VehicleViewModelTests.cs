@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SQMImportExport.Import.ArmA3.ResultObjects;
+using SQMImportExport.ArmA3;
 using SQMReorderer.Gui.ViewModels;
 using SQMReorderer.Gui.ViewModels.ArmA3;
 

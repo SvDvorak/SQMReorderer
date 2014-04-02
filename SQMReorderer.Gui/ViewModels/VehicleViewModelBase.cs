@@ -1,4 +1,4 @@
-﻿using SQMImportExport.Import.ResultObjects;
+﻿using SQMImportExport.Common;
 
 namespace SQMReorderer.Gui.ViewModels
 {

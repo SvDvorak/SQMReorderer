@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SQMImportExport.Import.ResultObjects;
+using SQMImportExport.Common;
 
 namespace SQMImportExport.Export
 {

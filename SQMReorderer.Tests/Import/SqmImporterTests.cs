@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using NSubstitute;
 using NUnit.Framework;
+using SQMImportExport.Common;
 using SQMImportExport.Import;
 using SQMImportExport.Import.FileVersion;
 

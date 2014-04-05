@@ -1,3 +1,2 @@
-*SQMReorderer
-
-SQMReorderer is an application that helps out with modifying ArmA *.sqm files
+#SQM Reorderer
+SQM Reorderer is an application that helps out with modifying ArmA *.sqm files
